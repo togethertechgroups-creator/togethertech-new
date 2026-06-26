@@ -1,0 +1,115 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  password  String
+  role      String   @default("ADMIN")
+  createdAt DateTime @default(now())
+}
+
+model Service {
+  id               String   @id @default(uuid())
+  title            String
+  slug             String   @unique
+  shortDescription String
+  fullDescription  String
+  image            String
+  features         String   // Comma-separated or JSON string
+  status           String   @default("ACTIVE") // ACTIVE, INACTIVE
+  createdAt        DateTime @default(now())
+}
+
+model Portfolio {
+  id           String   @id @default(uuid())
+  projectName  String
+  clientName   String
+  category     String   // Websites, Apps, Software, UI/UX, Logo, Posters
+  image        String
+  description  String
+  technologies String   // Comma-separated values
+  projectLink  String?
+  status       String   @default("ACTIVE")
+  createdAt    DateTime @default(now())
+}
+
+model Package {
+  id            String   @id @default(uuid())
+  packageName   String
+  price         String
+  description   String
+  features      String   // Comma-separated values
+  isRecommended Boolean  @default(false)
+  status        String   @default("ACTIVE")
+  createdAt     DateTime @default(now())
+}
+
+model TeamMember {
+  id          String   @id @default(uuid())
+  name        String
+  role        String
+  photo       String
+  bio         String
+  skills      String   // Comma-separated values
+  socialLinks String   // JSON string of platforms and links
+  status      String   @default("ACTIVE")
+  createdAt   DateTime @default(now())
+}
+
+model Blog {
+  id             String   @id @default(uuid())
+  title          String
+  slug           String   @unique
+  image          String
+  content        String
+  category       String
+  seoTitle       String?
+  seoDescription String?
+  status         String   @default("PUBLISHED") // DRAFT, PUBLISHED
+  createdAt      DateTime @default(now())
+}
+
+model Testimonial {
+  id           String   @id @default(uuid())
+  clientName   String
+  businessName String
+  review       String
+  rating       Int      @default(5)
+  photo        String?
+  status       String   @default("ACTIVE")
+  createdAt    DateTime @default(now())
+}
+
+model Enquiry {
+  id              String   @id @default(uuid())
+  name            String
+  mobile          String
+  email           String
+  businessName    String?
+  requiredService String
+  budget          String
+  message         String
+  status          String   @default("NEW") // NEW, CONTACTED, IN_PROGRESS, CONVERTED, CLOSED
+  createdAt       DateTime @default(now())
+}
+
+model Settings {
+  id             String @id @default("global")
+  companyName    String @default("Together Tech Groups")
+  phone          String @default("+91 98765 43210")
+  email          String @default("contact@togethertechgroups.in")
+  whatsapp       String @default("+91 98765 43210")
+  address        String @default("123 Tech Park, India")
+  logo           String @default("/images/logo.svg")
+  socialLinks    String @default("{}") // JSON string
+  seoTitle       String @default("Together Tech Groups | Your Growth, Our Technology")
+  seoDescription String @default("We create professional websites, mobile apps, custom software, branding, SEO, and digital marketing solutions.")
+}

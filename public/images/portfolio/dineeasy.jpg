@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+    <defs>
+      <linearGradient id="grad-DineEasyQROrdering" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#EF8E01;stop-opacity:1" />
+        <stop offset="100%" style="stop-color:#030a1e;stop-opacity:1" />
+      </linearGradient>
+      <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#grad-DineEasyQROrdering)" />
+    <rect width="100%" height="100%" fill="url(#grid)" />
+    
+    <!-- Design details -->
+    <circle cx="700" cy="100" r="150" fill="rgba(239,142,1,0.1)" filter="blur(50px)" />
+    <circle cx="100" cy="400" r="100" fill="rgba(0,56,189,0.2)" filter="blur(30px)" />
+    
+    <text x="50" y="80" fill="#EF8E01" font-family="system-ui, sans-serif" font-weight="900" font-size="20" letter-spacing="2">WEB APPLICATION</text>
+    <text x="50" y="250" fill="#FFFFFF" font-family="system-ui, sans-serif" font-weight="900" font-size="44" letter-spacing="1">DineEasy QR Ordering</text>
+    <text x="50" y="300" fill="#EEEEEE" font-family="system-ui, sans-serif" font-weight="500" font-size="18" opacity="0.8">Together Tech Groups | Premium Solutions</text>
+    
+    <line x1="50" y1="110" x2="200" y2="110" stroke="#EF8E01" stroke-width="4" />
+  </svg>

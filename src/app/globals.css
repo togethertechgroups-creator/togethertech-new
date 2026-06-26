@@ -1,0 +1,193 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Hoshiko Satsuki';
+  src: url('/fonts/HoshikoSatsuki.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.font-hoshiko {
+  font-family: 'Hoshiko Satsuki', sans-serif !important;
+}
+
+@font-face {
+  font-family: 'Neogen Black';
+  src: url('/fonts/Neogen-Black.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.font-neogen {
+  font-family: 'Neogen Black', sans-serif !important;
+}
+
+@font-face {
+  font-family: 'Biooris';
+  src: url('/fonts/biooris.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.font-biooris {
+  font-family: 'Biooris', sans-serif !important;
+}
+
+@font-face {
+  font-family: 'Mitshuka';
+  src: url('/fonts/Mitshuka.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.font-mitshuka {
+  font-family: 'Mitshuka', sans-serif !important;
+  letter-spacing: 0.04em !important;
+  word-spacing: 0.18em !important;
+  line-height: 1.8 !important;
+  margin-top: 1.25rem !important;
+  font-weight: normal !important;
+}
+
+
+
+:root {
+  --background: #ffffff;
+  /* Clean white base */
+  --foreground: #0f172a;
+  /* Slate 900 */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-outfit), system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #70B33F;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #5c9930;
+}
+
+/* Starbucks-style Moving Diagonal Ribbon Banner */
+.ribbon-container {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 96px;
+  display: flex;
+  align-items: center;
+}
+
+.ribbon-banner {
+  display: flex;
+  white-space: nowrap;
+  background: #70B33F;
+  color: #ffffff;
+  padding: 10px 0;
+  font-weight: 800;
+  font-size: 1.35rem;
+  letter-spacing: 0.1em;
+  transform: rotate(-1.2deg) scale(1.05);
+  box-shadow: 0 4px 20px rgba(112, 179, 63, 0.2);
+  border-top: 2px solid #5c9930;
+  border-bottom: 2px solid #5c9930;
+  width: 100%;
+}
+
+.ribbon-text {
+  animation: marquee 25s linear infinite;
+  display: flex;
+  flex-shrink: 0;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* Float animations */
+.float-element {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-12px) rotate(1.5deg);
+  }
+
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+/* Glassmorphism utility */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(112, 179, 63, 0.12);
+}
+
+.glass-panel-light {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(112, 179, 63, 0.15);
+}
+
+/* Custom shadow effects */
+.shadow-blue-glow {
+  box-shadow: 0 10px 30px -10px rgba(112, 179, 63, 0.2);
+}
+
+.shadow-orange-glow {
+  box-shadow: 0 10px 35px -5px rgba(112, 179, 63, 0.25);
+}
+
+/* Custom form styling */
+.form-input-focus {
+  transition: all 0.3s ease;
+}
+
+.form-input-focus:focus {
+  border-color: #70B33F;
+  box-shadow: 0 0 0 3px rgba(112, 179, 63, 0.15);
+  outline: none;
+}
+
+/* Responsive Hero Section Background */
+.hero-section-bg {
+  background: #ffffff;
+}
