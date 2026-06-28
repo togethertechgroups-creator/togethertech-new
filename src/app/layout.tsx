@@ -16,6 +16,18 @@ const hoshikoSatsuki = localFont({
   display: 'swap',
 });
 
+const eternalo = localFont({
+  src: './fonts/Eternalo.ttf',
+  variable: '--font-eternalo',
+  display: 'swap',
+});
+
+const rusticDelight = localFont({
+  src: './fonts/RusticDelight.ttf',
+  variable: '--font-rustic',
+  display: 'swap',
+});
+
 export const metadata: Metadata = {
   title: 'Together Tech Groups | Your Growth, Our Technology',
   description: 'We create professional websites, mobile apps, custom software, branding, SEO, and digital marketing solutions that help your business grow faster.',
@@ -29,7 +41,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${outfit.variable} ${hoshikoSatsuki.variable} antialiased bg-brandDark text-slate-100`}>
+      <body className={`${outfit.variable} ${hoshikoSatsuki.variable} ${eternalo.variable} ${rusticDelight.variable} antialiased bg-brandDark text-slate-100`}>
         <ClientLayoutWrapper>{children}</ClientLayoutWrapper>
       </body>
     </html>

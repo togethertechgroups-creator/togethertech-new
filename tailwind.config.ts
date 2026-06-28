@@ -27,6 +27,8 @@ export default {
       fontFamily: {
         outfit: ["var(--font-outfit)", "sans-serif"],
         hoshiko: ["var(--font-hoshiko)", "sans-serif"],
+        eternalo: ["var(--font-eternalo)", "sans-serif"],
+        rustic: ["var(--font-rustic)", "sans-serif"],
       },
     },
   },

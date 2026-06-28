@@ -41,7 +41,7 @@ export default async function BlogPage() {
             THE TECH INSIGHTS
           </div>
           <h1 className="text-5xl md:text-7xl font-black tracking-tight leading-tight">
-            Technical <span className="bg-gradient-to-r from-brandGreen to-[#0084FF] bg-clip-text text-transparent">Excellence</span> meets<br/>
+            Technical <span className="bg-gradient-to-r from-brandGreen to-[#0084FF] bg-clip-text text-transparent">Excellence</span> meets<br className="hidden md:inline"/>
             Human <span className="bg-gradient-to-r from-brandGreen to-[#0084FF] bg-clip-text text-transparent">Ingenuity</span>
           </h1>
           <p className="text-slate-400 text-lg md:text-xl max-w-2xl leading-relaxed">

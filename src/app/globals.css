@@ -55,6 +55,30 @@
   font-weight: normal !important;
 }
 
+@font-face {
+  font-family: 'Eternalo';
+  src: url('/fonts/Eternalo.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.font-eternalo {
+  font-family: 'Eternalo', sans-serif !important;
+}
+
+@font-face {
+  font-family: 'Rustic Delight';
+  src: url('/fonts/RusticDelight.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.font-rustic {
+  font-family: 'Rustic Delight', sans-serif !important;
+}
+
 
 
 :root {
