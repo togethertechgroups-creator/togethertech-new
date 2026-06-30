@@ -6,7 +6,7 @@ export const metadata = {
   description: 'Browse our project portfolio showcasing our custom apps, business POS systems, web developments, and logo designs.',
 };
 
-export const revalidate = 0; // Dynamic server rendering
+export const revalidate = 60; // Cache and revalidate every 60 seconds (ISR)
 
 export default async function PortfolioPage() {
   const portfolios = await prisma.portfolio.findMany({

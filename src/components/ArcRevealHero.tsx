@@ -156,7 +156,8 @@ export function ArcRevealHero({
     <section
       aria-label="Hero"
       className={cn(
-        "relative isolate min-h-screen w-full overflow-hidden bg-background text-foreground",
+        "relative isolate min-h-screen w-full bg-background text-foreground",
+        phase !== "done" && "overflow-hidden",
         className,
       )}
     >

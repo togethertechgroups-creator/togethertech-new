@@ -1,7 +1,7 @@
 import { prisma } from '@/lib/db';
 import HomeClient from '@/components/HomeClient';
 
-export const revalidate = 0; // Dynamic server rendering
+export const revalidate = 60; // Cache and revalidate every 60 seconds (ISR)
 
 export default async function Home() {
   const services = await prisma.service.findMany({
@@ -12,8 +12,7 @@ export default async function Home() {
 
   const portfolios = await prisma.portfolio.findMany({
     where: { status: 'ACTIVE' },
-    take: 4,
-    orderBy: { createdAt: 'asc' },
+    orderBy: { createdAt: 'desc' },
   });
 
   const packages = await prisma.package.findMany({

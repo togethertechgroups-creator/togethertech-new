@@ -22,7 +22,7 @@ export const metadata = {
   description: 'Meet our professional engineers and interface designers specializing in Flutter app development and custom web systems.',
 };
 
-export const revalidate = 0; // Dynamic server rendering
+export const revalidate = 60; // Cache and revalidate every 60 seconds (ISR)
 
 export default async function TeamPage() {
   const teamMembers = await prisma.teamMember.findMany({
@@ -40,17 +40,17 @@ export default async function TeamPage() {
   );
 
   return (
-    <div className="relative min-h-screen bg-[#0A0A0A] text-slate-100 overflow-hidden pt-32 pb-24">
-      {/* Ambient mesh background */}
-      <div className="absolute top-0 left-0 w-full h-full z-0 opacity-30 pointer-events-none bg-[radial-gradient(at_0%_0%,rgba(112,179,63,0.2)_0px,transparent_50%),radial-gradient(at_100%_0%,rgba(0,132,255,0.15)_0px,transparent_50%)]" />
-
+    <div className="relative min-h-screen bg-white text-brandDark overflow-hidden pt-36 pb-24 border-t border-slate-100">
       <main className="relative z-10 max-w-7xl mx-auto px-6 space-y-24">
         {/* Hero Section */}
         <section className="text-center max-w-3xl mx-auto space-y-6">
-          <h1 className="text-5xl md:text-6xl font-black tracking-tight bg-gradient-to-r from-brandGreen to-[#0084FF] bg-clip-text text-transparent">
+          <span className="text-brandGreen font-extrabold text-sm uppercase tracking-wider bg-brandGreen/10 border border-brandGreen/25 rounded-full px-4 py-1.5 inline-block">
+            Our Professionals
+          </span>
+          <h1 className="text-5xl md:text-6xl font-black tracking-tight text-brandDark">
             Architects of Innovation
           </h1>
-          <p className="text-lg text-slate-400 leading-relaxed">
+          <p className="text-lg text-brandGray leading-relaxed font-biooris">
             Our multidisciplinary team combines technical rigor with creative flair to build digital experiences that redefine industry standards.
           </p>
         </section>
@@ -59,29 +59,28 @@ export default async function TeamPage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* K. Aarsha - Featured Backend Architect (7/12 cols) */}
           {aarsha && (
-            <div className="lg:col-span-7 bg-white/[0.02] backdrop-blur-md border border-white/[0.08] rounded-3xl overflow-hidden flex flex-col md:flex-row group hover:bg-white/[0.05] hover:border-white/[0.15] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.5),0_0_30px_rgba(112,179,63,0.08)]">
+            <div className="lg:col-span-7 bg-white border border-slate-200/80 rounded-3xl overflow-hidden flex flex-col md:flex-row shadow-sm hover:shadow-md hover:border-brandGreen/35 transition-all duration-500 hover:-translate-y-2">
               <div className="md:w-1/2 relative overflow-hidden h-64 md:h-auto min-h-[320px]">
                 <img 
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
+                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" 
                   alt={aarsha.name}
                   src={aarsha.photo}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-transparent opacity-70" />
               </div>
               <div className="p-8 md:w-1/2 flex flex-col justify-center space-y-6">
                 <div>
                   <span className="text-xxs font-black text-brandGreen uppercase tracking-widest block mb-2">
                     {aarsha.role}
                   </span>
-                  <h2 className="text-3xl font-extrabold tracking-tight text-white">{aarsha.name}</h2>
+                  <h2 className="text-3xl font-extrabold tracking-tight text-brandDark">{aarsha.name}</h2>
                 </div>
-                <p className="text-slate-400 text-sm leading-relaxed">
+                <p className="text-brandGray text-sm leading-relaxed">
                   {aarsha.bio}
                 </p>
                 <div className="flex space-x-4 pt-2">
-                  <Terminal className="w-5 h-5 text-slate-400 hover:text-brandGreen transition-colors" />
-                  <Database className="w-5 h-5 text-slate-400 hover:text-brandGreen transition-colors" />
-                  <Cloud className="w-5 h-5 text-slate-400 hover:text-brandGreen transition-colors" />
+                  <Terminal className="w-5 h-5 text-slate-500 hover:text-brandGreen transition-colors" />
+                  <Database className="w-5 h-5 text-slate-500 hover:text-brandGreen transition-colors" />
+                  <Cloud className="w-5 h-5 text-slate-500 hover:text-brandGreen transition-colors" />
                 </div>
               </div>
             </div>
@@ -89,25 +88,25 @@ export default async function TeamPage() {
 
           {/* P. Priyadharshini - Mobile Specialist (5/12 cols) */}
           {priya && (
-            <div className="lg:col-span-5 bg-white/[0.02] backdrop-blur-md border border-white/[0.08] rounded-3xl p-8 flex flex-col justify-between group hover:bg-white/[0.05] hover:border-white/[0.15] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.5),0_0_30px_rgba(0,132,255,0.08)]">
+            <div className="lg:col-span-5 bg-white border border-slate-200/80 rounded-3xl p-8 flex flex-col justify-between shadow-sm hover:shadow-md hover:border-brandGreen/35 transition-all duration-500 hover:-translate-y-2">
               <div className="space-y-6">
-                <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-brandGreen/25 p-1 group-hover:border-brandGreen transition-colors">
+                <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-brandGreen/25 p-1 hover:border-brandGreen transition-colors">
                   <img className="w-full h-full object-cover rounded-full" alt={priya.name} src={priya.photo} />
                 </div>
                 <div>
                   <span className="text-xxs font-black text-[#0084FF] uppercase tracking-widest block mb-2">
                     {priya.role}
                   </span>
-                  <h2 className="text-3xl font-extrabold tracking-tight text-white">{priya.name}</h2>
+                  <h2 className="text-3xl font-extrabold tracking-tight text-brandDark">{priya.name}</h2>
                 </div>
-                <p className="text-slate-400 text-sm leading-relaxed">
+                <p className="text-brandGray text-sm leading-relaxed">
                   {priya.bio}
                 </p>
               </div>
-              <div className="pt-6 mt-6 border-t border-white/[0.06] flex justify-between items-center">
+              <div className="pt-6 mt-6 border-t border-slate-100 flex justify-between items-center">
                 <div className="flex gap-2">
                   {priya.skills.split(',').slice(0, 2).map((skill, index) => (
-                    <span key={index} className="px-3 py-1 rounded-full bg-[#0084FF]/10 text-[#0084FF] text-xxs font-bold uppercase tracking-wide">
+                    <span key={index} className="px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-xxs font-bold uppercase tracking-wide">
                       {skill.trim()}
                     </span>
                   ))}
@@ -119,22 +118,22 @@ export default async function TeamPage() {
 
           {/* M. Velmurugan - Experience Designer (5/12 cols) */}
           {vel && (
-            <div className="lg:col-span-5 bg-white/[0.02] backdrop-blur-md border border-white/[0.08] rounded-3xl p-8 flex flex-col justify-between group hover:bg-white/[0.05] hover:border-white/[0.15] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.5),0_0_30px_rgba(112,179,63,0.08)]">
+            <div className="lg:col-span-5 bg-white border border-slate-200/80 rounded-3xl p-8 flex flex-col justify-between shadow-sm hover:shadow-md hover:border-brandGreen/35 transition-all duration-500 hover:-translate-y-2">
               <div className="space-y-6">
-                <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-brandGreen/25 p-1 group-hover:border-brandGreen transition-colors">
+                <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-brandGreen/25 p-1 hover:border-brandGreen transition-colors">
                   <img className="w-full h-full object-cover rounded-full" alt={vel.name} src={vel.photo} />
                 </div>
                 <div>
                   <span className="text-xxs font-black text-brandGreen uppercase tracking-widest block mb-2">
                     {vel.role}
                   </span>
-                  <h2 className="text-3xl font-extrabold tracking-tight text-white">{vel.name}</h2>
+                  <h2 className="text-3xl font-extrabold tracking-tight text-brandDark">{vel.name}</h2>
                 </div>
-                <p className="text-slate-400 text-sm leading-relaxed">
+                <p className="text-brandGray text-sm leading-relaxed">
                   {vel.bio}
                 </p>
               </div>
-              <div className="pt-6 mt-6 border-t border-white/[0.06] flex justify-between items-center">
+              <div className="pt-6 mt-6 border-t border-slate-100 flex justify-between items-center">
                 <div className="flex gap-2">
                   {vel.skills.split(',').slice(0, 2).map((skill, index) => (
                     <span key={index} className="px-3 py-1 rounded-full bg-brandGreen/10 text-brandGreen text-xxs font-bold uppercase tracking-wide">
@@ -148,13 +147,13 @@ export default async function TeamPage() {
           )}
 
           {/* CTA Join Card (7/12 cols) */}
-          <div className="lg:col-span-7 bg-gradient-to-br from-white/[0.02] to-brandGreen/[0.03] backdrop-blur-md border border-white/[0.08] rounded-3xl p-8 flex flex-col justify-center items-center text-center relative overflow-hidden group hover:border-white/[0.15] transition-all duration-500">
+          <div className="lg:col-span-7 bg-slate-50 border border-slate-200/80 rounded-3xl p-8 flex flex-col justify-center items-center text-center relative overflow-hidden shadow-sm hover:border-brandGreen/35 transition-all duration-500">
             <div className="absolute -top-10 -right-10 opacity-[0.03] pointer-events-none">
-              <Users className="w-64 h-64 text-white" />
+              <Users className="w-64 h-64 text-brandDark" />
             </div>
             <div className="max-w-md space-y-6 relative z-10">
-              <h3 className="text-3xl font-extrabold tracking-tight text-white">Ready to Innovate With Us?</h3>
-              <p className="text-slate-400 text-sm leading-relaxed">
+              <h3 className="text-3xl font-extrabold tracking-tight text-brandDark">Ready to Innovate With Us?</h3>
+              <p className="text-brandGray text-sm leading-relaxed">
                 We are always looking for passionate engineers and creative thinkers to join our mission of technical excellence.
               </p>
               <Link 
@@ -170,18 +169,18 @@ export default async function TeamPage() {
 
         {/* Secondary Grid for any newly added active team members */}
         {otherMembers.length > 0 && (
-          <section className="space-y-8 pt-12 border-t border-white/[0.06]">
-            <h3 className="text-2xl font-bold text-white">Additional Professionals</h3>
+          <section className="space-y-8 pt-12 border-t border-slate-200">
+            <h3 className="text-2xl font-bold text-brandDark">Additional Professionals</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {otherMembers.map((member) => {
                 const socialObj = JSON.parse(member.socialLinks || '{}');
                 return (
                   <div
                     key={member.id}
-                    className="bg-white/[0.02] backdrop-blur-md border border-white/[0.08] rounded-3xl p-8 flex flex-col justify-between group hover:bg-white/[0.05] hover:border-white/[0.15] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_15px_30px_rgba(0,0,0,0.4)]"
+                    className="bg-white border border-slate-200/80 rounded-3xl p-8 flex flex-col justify-between shadow-sm hover:shadow-md hover:border-brandGreen/35 transition-all duration-500 hover:-translate-y-1"
                   >
                     <div className="space-y-6">
-                      <div className="w-20 h-20 rounded-full overflow-hidden border border-white/[0.1] p-1">
+                      <div className="w-20 h-20 rounded-full overflow-hidden border border-slate-200 p-1">
                         {member.photo ? (
                           <img className="w-full h-full object-cover rounded-full" alt={member.name} src={member.photo} />
                         ) : (
@@ -194,21 +193,21 @@ export default async function TeamPage() {
                         <span className="text-xxs font-bold text-brandGreen uppercase tracking-widest block mb-1">
                           {member.role}
                         </span>
-                        <h4 className="text-xl font-bold text-white">{member.name}</h4>
+                        <h4 className="text-xl font-bold text-brandDark">{member.name}</h4>
                       </div>
-                      <p className="text-slate-400 text-xs leading-relaxed line-clamp-3">
+                      <p className="text-brandGray text-xs leading-relaxed line-clamp-3">
                         {member.bio}
                       </p>
                       <div className="flex flex-wrap gap-1.5 pt-2">
                         {member.skills.split(',').map((skill, index) => (
-                          <span key={index} className="px-2 py-0.5 rounded bg-white/[0.04] text-slate-300 text-[10px] font-bold">
+                          <span key={index} className="px-2 py-0.5 rounded bg-slate-100 text-brandDark text-[10px] font-bold">
                             {skill.trim()}
                           </span>
                         ))}
                       </div>
                     </div>
                     
-                    <div className="pt-6 mt-6 border-t border-white/[0.06] flex space-x-4">
+                    <div className="pt-6 mt-6 border-t border-slate-100 flex space-x-4">
                       {socialObj.linkedin && (
                         <a href={socialObj.linkedin} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-brandGreen transition-colors">
                           <LinkedinIcon className="w-4 h-4" />

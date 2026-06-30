@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   };
 }
 
-export const revalidate = 0; // Dynamic server rendering
+export const revalidate = 60; // Cache and revalidate every 60 seconds (ISR)
 
 export default async function PortfolioDetailPage({
   params,
@@ -55,7 +55,12 @@ export default async function PortfolioDetailPage({
           {/* Main Info */}
           <div className="lg:col-span-2 space-y-8">
             <div className="bg-slate-900 rounded-3xl overflow-hidden shadow-md h-96 flex items-center justify-center relative">
-              <span className="absolute inset-0 bg-gradient-to-t from-brandDark via-transparent to-transparent opacity-65 z-10" />
+              <img
+                src={project.image}
+                alt={project.projectName}
+                className="absolute inset-0 w-full h-full object-cover opacity-50"
+              />
+              <span className="absolute inset-0 bg-gradient-to-t from-brandDark via-brandDark/40 to-transparent z-10" />
               <div className="text-center z-20 p-6 space-y-2">
                 <span className="px-3 py-1 rounded-full bg-brandGreen text-white text-xxs font-black uppercase tracking-widest">{project.category}</span>
                 <h3 className="font-extrabold text-3xl text-white">{project.projectName}</h3>

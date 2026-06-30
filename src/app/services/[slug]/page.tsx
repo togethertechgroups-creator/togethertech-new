@@ -11,8 +11,6 @@ const getServiceIcon = (slug: string) => {
     'website-development': Code,
     'mobile-app-development': Smartphone,
     'flutter-app-development': Cpu,
-    'custom-software-development': Terminal,
-    'billing-software': Database,
     'restaurant-software': Layers,
     'crm-admin-dashboard': BarChart,
     'ui-ux-design': Palette,
@@ -35,7 +33,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
-export const revalidate = 0; // Dynamic server rendering
+export const revalidate = 60; // Cache and revalidate every 60 seconds (ISR)
 
 export default async function ServiceDetailPage({
   params,
@@ -187,7 +185,7 @@ export default async function ServiceDetailPage({
                 <div className="text-center font-bold text-xs text-slate-400 uppercase tracking-wide">Or Contact Us Directly</div>
                 <div className="flex gap-2">
                   <a
-                    href="https://wa.me/919876543210?text=Hi%20Together%20Tech%20Groups,%20I%20need%20details%20about%20website%20development.%20Please%20contact%20me."
+                    href="https://wa.me/919047549682?text=Hi%20Together%20Tech%20Groups,%20I%20need%20details%20about%20website%20development.%20Please%20contact%20me."
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex-1 py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold text-center flex items-center justify-center space-x-1.5 transition-colors"
@@ -196,7 +194,7 @@ export default async function ServiceDetailPage({
                     <span>WhatsApp</span>
                   </a>
                   <a
-                    href="tel:+919876543210"
+                    href="tel:+919047549682"
                     className="flex-1 py-3 bg-brandDark hover:bg-brandGreen text-white rounded-xl text-xs font-bold text-center flex items-center justify-center space-x-1.5 transition-colors"
                   >
                     <Phone className="w-4 h-4" />

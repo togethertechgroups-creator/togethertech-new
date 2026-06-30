@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { Mail, Phone, MapPin, Code } from 'lucide-react';
+import Image from 'next/image';
+import { Mail, Phone, MapPin } from 'lucide-react';
 
 const FacebookIcon = () => (
   <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -31,10 +32,14 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
         {/* About column */}
         <div className="space-y-6">
-          <Link href="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 rounded-xl bg-brandGreen flex items-center justify-center shadow-md">
-              <Code className="text-white w-6 h-6" />
-            </div>
+          <Link href="/" className="flex items-center space-x-3">
+            <Image
+              src="/images/logo.png"
+              alt="Together Tech Groups Logo"
+              width={52}
+              height={52}
+              className="w-13 h-13 object-contain"
+            />
             <span className="font-extrabold text-2xl tracking-tight text-brandDark">
               Together<span className="text-brandGreen">Tech</span>
             </span>
@@ -69,7 +74,6 @@ export default function Footer() {
             <li><Link href="/portfolio" className="hover:text-brandGreen transition-colors">Portfolio</Link></li>
             <li><Link href="/packages" className="hover:text-brandGreen transition-colors">Packages</Link></li>
             <li><Link href="/team" className="hover:text-brandGreen transition-colors">Our Team</Link></li>
-            <li><Link href="/blog" className="hover:text-brandGreen transition-colors">Blog</Link></li>
             <li><Link href="/contact" className="hover:text-brandGreen transition-colors">Contact Us</Link></li>
           </ul>
         </div>
@@ -80,7 +84,7 @@ export default function Footer() {
           <ul className="space-y-3 text-sm">
             <li><Link href="/services/website-development" className="hover:text-brandGreen transition-colors">Website Development</Link></li>
             <li><Link href="/services/mobile-app-development" className="hover:text-brandGreen transition-colors">Mobile App Development</Link></li>
-            <li><Link href="/services/custom-software-development" className="hover:text-brandGreen transition-colors">Custom Software Development</Link></li>
+            <li><Link href="/services/flutter-app-development" className="hover:text-brandGreen transition-colors">Flutter App Development</Link></li>
             <li><Link href="/services/ui-ux-design" className="hover:text-brandGreen transition-colors">UI/UX Prototype Design</Link></li>
             <li><Link href="/services/digital-marketing" className="hover:text-brandGreen transition-colors">Digital Marketing</Link></li>
           </ul>
@@ -92,7 +96,7 @@ export default function Footer() {
           <ul className="space-y-4 text-sm text-brandGray">
             <li className="flex items-start space-x-3">
               <Phone className="w-5 h-5 text-brandGreen mt-0.5 flex-shrink-0" />
-              <span>+91 98765 43210</span>
+              <span>+91 90475 49682</span>
             </li>
             <li className="flex items-start space-x-3">
               <Mail className="w-5 h-5 text-brandGreen mt-0.5 flex-shrink-0" />

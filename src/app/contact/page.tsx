@@ -26,8 +26,6 @@ function ContactContent() {
     'Website Development',
     'Mobile App Development',
     'Flutter App Development',
-    'Custom Software Development',
-    'Billing Software',
     'Restaurant Software',
     'CRM / Admin Dashboard',
     'UI/UX Design',
@@ -78,7 +76,7 @@ function ContactContent() {
       // Auto redirect to WhatsApp after 2 seconds
       setTimeout(() => {
         const waText = `Hi Together Tech Groups, my name is ${formData.name}. I am enquiring about ${formData.requiredService} (Budget: ${formData.budget}). ${formData.message}`;
-        window.open(`https://wa.me/919876543210?text=${encodeURIComponent(waText)}`, '_blank');
+        window.open(`https://wa.me/919047549682?text=${encodeURIComponent(waText)}`, '_blank');
       }, 1500);
 
     } catch (err: any) {
@@ -95,7 +93,7 @@ function ContactContent() {
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-10" />
         <div className="max-w-4xl mx-auto px-6 relative z-10 space-y-4 pt-8">
           <span className="text-emerald-100 font-extrabold text-sm uppercase tracking-wider">Connect With Us</span>
-          <h1 className="text-4xl md:text-6xl font-black tracking-tight">Contact Together Tech</h1>
+          <h1 className="text-4xl md:text-6xl font-black tracking-tight font-neogen">Contact Together Tech</h1>
           <p className="text-lg text-emerald-50 max-w-2xl mx-auto">
             Fill in the enquiry form or ping our WhatsApp coordinates to schedule a discussion.
           </p>
@@ -117,7 +115,7 @@ function ContactContent() {
                 </div>
                 <div>
                   <h4 className="font-extrabold text-brandDark text-sm uppercase tracking-wide">Phone Number</h4>
-                  <p className="text-sm text-brandGray font-bold mt-1">+91 98765 43210</p>
+                  <p className="text-sm text-brandGray font-bold mt-1">+91 90475 49682</p>
                 </div>
               </li>
               <li className="flex items-start space-x-4">
@@ -143,7 +141,7 @@ function ContactContent() {
             <div className="pt-6 border-t border-slate-100 space-y-4">
               <h4 className="font-extrabold text-brandDark text-sm uppercase tracking-wide">Live WhatsApp</h4>
               <a
-                href="https://wa.me/919876543210?text=Hi%20Together%20Tech%20Groups,%20I%20need%20details%20about%20your%20IT%20services."
+                href="https://wa.me/919047549682?text=Hi%20Together%20Tech%20Groups,%20I%20need%20details%20about%20your%20IT%20services."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full py-4 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl flex items-center justify-center space-x-2 transition-colors shadow-md"

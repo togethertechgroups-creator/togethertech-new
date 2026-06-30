@@ -5,6 +5,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { cn } from "@/lib/utils";
 import { RisingGlow } from "./rising-glow";
+import { motion } from "framer-motion";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -298,6 +299,27 @@ export function CinematicHero({
       {/* BACKGROUND LAYER: Hero Texts */}
       <div className="hero-text-wrapper absolute z-10 flex flex-col items-center justify-center text-center w-screen px-4 will-change-transform transform-style-3d">
         <div className="text-track gsap-reveal relative inline-block px-12 py-6">
+          {/* Floating Chibi Boy on Left */}
+          <motion.div
+            className="hidden sm:block absolute -left-20 md:-left-32 lg:-left-56 top-[-50px] md:top-[-70px] lg:top-[-110px] w-20 h-20 md:w-32 md:h-32 lg:w-56 lg:h-56 pointer-events-none z-20"
+            animate={{
+              y: [0, -12, 0],
+              rotate: [0, -4, 0],
+            }}
+            transition={{
+              duration: 5,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          >
+            <img 
+              src="/images/chibi-boy.png" 
+              alt="Chibi Coding Boy" 
+              className="w-full h-full object-contain filter drop-shadow-[0_10px_20px_rgba(0,0,0,0.15)]" 
+            />
+          </motion.div>
+
+
           <RisingGlow
             width="100%"
             height={180}

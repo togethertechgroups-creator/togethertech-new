@@ -15,15 +15,15 @@
 }
 
 @font-face {
-  font-family: 'Neogen Black';
+  font-family: 'Neogen-Black';
   src: url('/fonts/Neogen-Black.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
 
 .font-neogen {
-  font-family: 'Neogen Black', sans-serif !important;
+  font-family: 'Neogen-Black', sans-serif !important;
 }
 
 @font-face {
@@ -90,6 +90,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -214,4 +215,19 @@ body {
 /* Responsive Hero Section Background */
 .hero-section-bg {
   background: #ffffff;
+}
+
+/* Animated border glow keyframes */
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-border-flow {
+  background-size: 200% 200%;
+  animation: gradient-shift 6s ease infinite;
 }

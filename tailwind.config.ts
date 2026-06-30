@@ -29,6 +29,7 @@ export default {
         hoshiko: ["var(--font-hoshiko)", "sans-serif"],
         eternalo: ["var(--font-eternalo)", "sans-serif"],
         rustic: ["var(--font-rustic)", "sans-serif"],
+        neogen: ["var(--font-neogen)", "sans-serif"],
       },
     },
   },

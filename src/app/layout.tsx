@@ -28,6 +28,12 @@ const rusticDelight = localFont({
   display: 'swap',
 });
 
+const neogenBlack = localFont({
+  src: './fonts/Neogen-Black.ttf',
+  variable: '--font-neogen',
+  display: 'swap',
+});
+
 export const metadata: Metadata = {
   title: 'Together Tech Groups | Your Growth, Our Technology',
   description: 'We create professional websites, mobile apps, custom software, branding, SEO, and digital marketing solutions that help your business grow faster.',
@@ -41,7 +47,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${outfit.variable} ${hoshikoSatsuki.variable} ${eternalo.variable} ${rusticDelight.variable} antialiased bg-brandDark text-slate-100`}>
+      <body className={`${outfit.variable} ${hoshikoSatsuki.variable} ${eternalo.variable} ${rusticDelight.variable} ${neogenBlack.variable} antialiased bg-brandDark text-slate-100`}>
         <ClientLayoutWrapper>{children}</ClientLayoutWrapper>
       </body>
     </html>

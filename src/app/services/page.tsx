@@ -4,21 +4,20 @@ import {
   ArrowRight, ShieldCheck, Code, Smartphone, Cpu,
   Layers, Palette, Search, Terminal, BarChart, Database, Award, Zap, Users
 } from 'lucide-react';
+import { FlipCard, FlipCardFront, FlipCardBack } from '@/components/ui/FlipCard';
 
 export const metadata = {
   title: 'Our Services | Together Tech Groups',
   description: 'Explore our full suite of IT and digital marketing solutions including website development, app engineering, custom software, and SEO.',
 };
 
-export const revalidate = 0; // Dynamic server rendering
+export const revalidate = 60; // Cache and revalidate every 60 seconds (ISR)
 
 const getServiceIcon = (slug: string) => {
   const iconMap: { [key: string]: any } = {
     'website-development': Code,
     'mobile-app-development': Smartphone,
     'flutter-app-development': Cpu,
-    'custom-software-development': Terminal,
-    'billing-software': Database,
     'restaurant-software': Layers,
     'crm-admin-dashboard': BarChart,
     'ui-ux-design': Palette,
@@ -29,6 +28,23 @@ const getServiceIcon = (slug: string) => {
     'digital-marketing': Users,
   };
   return iconMap[slug] || Code;
+};
+
+const getServicePrice = (slug: string): string => {
+  const priceMap: { [key: string]: string } = {
+    'website-development': '₹7,000',
+    'mobile-app-development': '₹15,000',
+    'flutter-app-development': '₹20,000',
+    'restaurant-software': '₹13,000',
+    'crm-admin-dashboard': '₹15,000',
+    'ui-ux-design': '₹3,000',
+    'logo-design': '₹1,000',
+    'poster-design': '₹1,000',
+    'seo': '₹5,000',
+    'meta-google-ads': '₹5,000',
+    'digital-marketing': '₹8,000',
+  };
+  return priceMap[slug] || 'Contact Us';
 };
 
 export default async function ServicesPage() {
@@ -42,7 +58,7 @@ export default async function ServicesPage() {
       {/* Header */}
       <section className="pt-36 pb-12 bg-slate-50 text-center">
         <div className="max-w-3xl mx-auto px-6">
-          <p className="text-[#EF8E01] font-medium font-biooris text-lg md:text-xl lg:text-2xl leading-relaxed">
+          <p className="text-brandDark font-medium font-biooris text-lg md:text-xl lg:text-2xl leading-relaxed">
             We design and construct high-performance digital solutions to resolve complex business bottlenecks.
           </p>
         </div>
@@ -55,29 +71,50 @@ export default async function ServicesPage() {
             {services.map((svc) => {
               const IconComp = getServiceIcon(svc.slug);
               return (
-                <div
-                  key={svc.id}
-                  className="bg-white p-8 rounded-3xl border border-slate-200/80 shadow-sm flex flex-col justify-between hover:shadow-md hover:border-brandGreen/35 hover:-translate-y-2 transition-all duration-300 group"
-                >
-                  <div className="space-y-6">
-                    <div className="w-14 h-14 rounded-2xl bg-brandGreenLight flex items-center justify-center text-brandGreen">
-                      <IconComp className="w-7 h-7" />
+                <FlipCard key={svc.id} className="h-[360px]">
+                  <FlipCardFront className="bg-white p-8 rounded-3xl border border-slate-200/80 shadow-sm flex flex-col justify-between group h-full">
+                    <div className="space-y-6">
+                      <div className="w-14 h-14 rounded-2xl bg-brandGreenLight flex items-center justify-center text-brandGreen">
+                        <IconComp className="w-7 h-7" />
+                      </div>
+                      <div className="space-y-3">
+                        <h3 className="font-extrabold text-2xl text-brandDark group-hover:text-brandGreen transition-colors">{svc.title}</h3>
+                        <p className="text-sm text-brandGray leading-relaxed line-clamp-3">{svc.shortDescription}</p>
+                      </div>
                     </div>
-                    <div className="space-y-3">
-                      <h3 className="font-extrabold text-2xl text-brandDark group-hover:text-brandGreen transition-colors">{svc.title}</h3>
-                      <p className="text-sm text-brandGray leading-relaxed min-h-[72px] line-clamp-3">{svc.shortDescription}</p>
+                    <div className="pt-4 flex items-center text-xs font-bold text-brandGreen space-x-1.5 uppercase tracking-wider">
+                      <span>Hover to Flip</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
                     </div>
-                  </div>
-                  <div className="pt-8">
-                    <Link
-                      href={`/services/${svc.slug}`}
-                      className="inline-flex items-center text-sm font-bold text-brandGreen hover:text-brandGreenHover transition-colors space-x-2"
-                    >
-                      <span>Read More</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </Link>
-                  </div>
-                </div>
+                  </FlipCardFront>
+                  <FlipCardBack className="bg-[#EF8E01] p-8 rounded-3xl border border-orange-400/40 shadow-lg flex flex-col justify-between text-white h-full">
+                    <div className="space-y-6">
+                      <div className="space-y-1">
+                        <span className="text-[10px] text-white/80 font-extrabold uppercase tracking-wider block">Starting From</span>
+                        <span className="text-3xl font-black text-white block">{getServicePrice(svc.slug)}</span>
+                      </div>
+                      <div className="space-y-4">
+                        <h4 className="font-black text-xl text-white leading-tight">{svc.title}</h4>
+                        <ul className="space-y-2 text-xs text-white/90 font-bold">
+                          {svc.features.split(',').slice(0, 3).map((feat: string, idx: number) => (
+                            <li key={idx} className="flex items-center space-x-2">
+                              <span className="text-white">✓</span>
+                              <span>{feat.trim()}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                    <div className="pt-6">
+                      <Link
+                        href={`/services/${svc.slug}`}
+                        className="w-full py-3.5 bg-brandGreen hover:bg-brandGreenHover text-white font-extrabold text-center block text-xs tracking-wider transition-colors rounded-xl shadow-md uppercase"
+                      >
+                        Explore Service
+                      </Link>
+                    </div>
+                  </FlipCardBack>
+                </FlipCard>
               );
             })}
           </div>

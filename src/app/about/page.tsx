@@ -14,7 +14,7 @@ export default function AboutPage() {
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-10" />
         <div className="max-w-4xl mx-auto px-6 relative z-10 space-y-4 pt-8">
           <span className="text-emerald-100 font-extrabold text-sm uppercase tracking-wider">Who We Are</span>
-          <h1 className="text-4xl md:text-6xl font-black tracking-tight">About Together Tech</h1>
+          <h1 className="text-4xl md:text-6xl font-black tracking-tight font-neogen">About Together Tech</h1>
           <p className="text-lg text-emerald-50 max-w-2xl mx-auto">
             Turning bold concepts into operational, scalable, and responsive digital products.
           </p>
@@ -28,10 +28,10 @@ export default function AboutPage() {
             <h2 className="text-3xl md:text-5xl font-black text-brandDark tracking-tight leading-tight">
               We Build Solutions That Fuel Your Business Expansion.
             </h2>
-            <p className="text-brandGray leading-relaxed font-medium">
+            <p className="text-brandGray leading-relaxed font-medium font-biooris">
               Together Tech Groups is a modern digital technology agency. We specialize in engineering premium web portfolios, secure administrative dashboards, native iOS/Android applications, and automated system workflows that eliminate bottlenecks.
             </p>
-            <p className="text-brandGray/90 leading-relaxed">
+            <p className="text-brandGray/90 leading-relaxed font-biooris">
               We started with a single premise: technology should serve business development, not create frustration. We combine transparent pricing models (Basic, Semi-Custom, Custom) with modern design tools (Figma, React, Flutter) to ensure our clients launch with absolute market authority.
             </p>
           </div>

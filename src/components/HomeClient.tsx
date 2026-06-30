@@ -1,16 +1,19 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import ArcRevealHero from './ArcRevealHero';
 import { CinematicHero } from './ui/cinematic-hero';
+import ServicesSectionStack from './ServicesSectionStack';
 import {
   ArrowRight, Check, MessageCircle, Phone, Star,
   HelpCircle, ChevronDown, Award, Users, ShieldCheck,
   Zap, Code, Smartphone, Cpu, Layers, Palette, Search,
-  Terminal, BarChart, Database
+  Terminal, BarChart, Database, Tag, TrendingUp
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import ProjectCard from './ui/ProjectCard';
+import PackageSkewCard from './ui/PackageSkewCard';
 
 // Helper to map icons by service slug
 const getServiceIcon = (slug: string) => {
@@ -18,8 +21,6 @@ const getServiceIcon = (slug: string) => {
     'website-development': Code,
     'mobile-app-development': Smartphone,
     'flutter-app-development': Cpu,
-    'custom-software-development': Terminal,
-    'billing-software': Database,
     'restaurant-software': Layers,
     'crm-admin-dashboard': BarChart,
     'ui-ux-design': Palette,
@@ -31,6 +32,11 @@ const getServiceIcon = (slug: string) => {
   };
   return iconMap[slug] || Code;
 };
+
+// Animation path order for the jumping ball:
+// Down the left column first: 0 (Experienced Team), 2 (Proven Track Record), 4 (Professional Design), 6 (SEO-Ready Setup)
+// Then down the right column: 1 (Customized Solutions), 3 (Full-Service Support), 5 (Mobile-Friendly Grid), 7 (Instant Chat Integrations)
+const ANIMATION_PATH = [0, 2, 4, 6, 1, 3, 5, 7];
 
 interface HomeClientProps {
   services: any[];
@@ -49,6 +55,8 @@ export default function HomeClient({
 }: HomeClientProps) {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
   const [portfolioFilter, setPortfolioFilter] = useState('All');
+
+
 
   const faqs = [
     {
@@ -85,7 +93,7 @@ export default function HomeClient({
     ? portfolios
     : portfolios.filter(p => p.category === portfolioFilter);
 
-  const categories = ['All', 'Websites', 'Apps', 'Software', 'UI/UX'];
+  const categories = ['All', ...Array.from(new Set(portfolios.map((p: any) => p.category).filter(Boolean)))];
 
   return (
     <ArcRevealHero storageKey="togethertech-splash-done">
@@ -164,22 +172,63 @@ export default function HomeClient({
 
                 {/* Quick trust points */}
                 <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.5 }}
-                  className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-10 border-t border-slate-200"
+                  className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-10 border-t border-slate-200"
                 >
                   {[
-                    { label: 'Fast Delivery', desc: '5-15 Days Turnaround' },
-                    { label: 'Affordable Pricing', desc: 'Transparent Quote' },
-                    { label: 'Custom Design', desc: 'Zero Templates' },
-                    { label: 'Growth Support', desc: '24/7 Digital Scaling' },
-                  ].map((pt, i) => (
-                    <div key={i} className="space-y-1">
-                      <h3 className="font-extrabold text-brandDark text-sm">{pt.label}</h3>
-                      <p className="text-xxs text-brandGreen font-bold uppercase tracking-wider">{pt.desc}</p>
-                    </div>
-                  ))}
+                    {
+                      label: 'Fast Delivery',
+                      desc: '5-15 Days Turnaround',
+                      icon: Zap,
+                      iconColor: 'text-[#70B33F]',
+                      bgColor: 'bg-emerald-50/50',
+                      borderColor: 'border-emerald-100/30'
+                    },
+                    {
+                      label: 'Affordable Pricing',
+                      desc: 'Transparent Quote',
+                      icon: Tag,
+                      iconColor: 'text-blue-600',
+                      bgColor: 'bg-blue-50/50',
+                      borderColor: 'border-blue-100/30'
+                    },
+                    {
+                      label: 'Custom Design',
+                      desc: 'Zero Templates',
+                      icon: Palette,
+                      iconColor: 'text-[#0038BD]',
+                      bgColor: 'bg-indigo-50/50',
+                      borderColor: 'border-indigo-100/30'
+                    },
+                    {
+                      label: 'Growth Support',
+                      desc: '24/7 Digital Scaling',
+                      icon: TrendingUp,
+                      iconColor: 'text-amber-600',
+                      bgColor: 'bg-amber-50/50',
+                      borderColor: 'border-amber-100/30'
+                    },
+                  ].map((pt, i) => {
+                    const IconComponent = pt.icon;
+                    return (
+                      <motion.div
+                        key={i}
+                        whileHover={{ y: -5, scale: 1.02 }}
+                        transition={{ type: "spring", stiffness: 300, damping: 15 }}
+                        className="flex items-center gap-4 p-4 rounded-2xl bg-white/40 backdrop-blur-[6px] border border-slate-100/80 hover:bg-white/90 hover:border-[#70B33F]/25 hover:shadow-lg hover:shadow-slate-100/60 transition-all duration-300 group cursor-pointer w-full"
+                      >
+                        <div className={`p-2.5 rounded-xl border ${pt.bgColor} ${pt.borderColor} flex-shrink-0 flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-300`}>
+                          <IconComponent className={`w-5 h-5 ${pt.iconColor}`} />
+                        </div>
+                        <div className="space-y-0.5 min-w-0 text-left">
+                          <h3 className="font-extrabold text-brandDark text-sm tracking-tight font-outfit leading-tight">{pt.label}</h3>
+                          <p className="text-[10px] text-brandGreen font-bold uppercase tracking-wider leading-snug">{pt.desc}</p>
+                        </div>
+                      </motion.div>
+                    );
+                  })}
                 </motion.div>
               </div>
 
@@ -190,17 +239,6 @@ export default function HomeClient({
           </div>
         </section>
 
-        {/* STARBUCKS-STYLE RIBBON BANNER */}
-        <div className="ribbon-container bg-white border-y border-slate-100">
-          <div className="ribbon-banner">
-            <div className="ribbon-text">
-              <span>TOGETHER TECH GROUPS • YOUR GROWTH, OUR TECHNOLOGY • WEBSITES • MOBILE APPS • CUSTOM SOFTWARE • UI/UX DESIGN • SEO • DIGITAL MARKETING •&nbsp;</span>
-            </div>
-            <div className="ribbon-text">
-              <span>TOGETHER TECH GROUPS • YOUR GROWTH, OUR TECHNOLOGY • WEBSITES • MOBILE APPS • CUSTOM SOFTWARE • UI/UX DESIGN • SEO • DIGITAL MARKETING •&nbsp;</span>
-            </div>
-          </div>
-        </div>
 
         {/* CINEMATIC HERO SECTION */}
         <CinematicHero
@@ -216,45 +254,15 @@ export default function HomeClient({
         />
 
         {/* 2. SERVICES PREVIEW SECTION */}
-        <section className="py-24 bg-slate-50 text-brandDark">
-          <div className="max-w-7xl mx-auto px-6 space-y-16">
+        <section className="pt-24 pb-8 bg-[url('/images/services-bg.png')] bg-cover bg-center bg-no-repeat bg-fixed text-brandDark overflow-hidden">
+          <div className="max-w-7xl mx-auto px-6 space-y-6">
             <div className="text-center max-w-3xl mx-auto space-y-4">
               <span className="text-brandGreen font-extrabold text-sm uppercase tracking-wider bg-brandGreen/10 border border-brandGreen/25 rounded-full px-4 py-1.5">Our Expertise</span>
               <h2 className="text-3xl md:text-5xl text-brandDark font-rustic">Services We Offer</h2>
-              <p className="text-[#EF8E01] font-medium font-biooris">We design and construct high-performance digital solutions to resolve complex business bottlenecks.</p>
+              <p className="text-brandDark font-medium font-biooris">We design and construct high-performance digital solutions to resolve complex business bottlenecks.</p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {services.map((svc) => {
-                const IconComp = getServiceIcon(svc.slug);
-                return (
-                  <motion.div
-                    key={svc.id}
-                    whileHover={{ y: -8 }}
-                    className="bg-white p-8 rounded-3xl border border-slate-200/80 shadow-sm hover:shadow-md hover:border-brandGreen/30 transition-all duration-300 flex flex-col justify-between group"
-                  >
-                    <div className="space-y-6">
-                      <div className="w-14 h-14 rounded-2xl bg-brandGreenLight flex items-center justify-center text-brandGreen">
-                        <IconComp className="w-7 h-7" />
-                      </div>
-                      <div className="space-y-2">
-                        <h3 className="font-extrabold text-2xl text-brandDark group-hover:text-brandGreen transition-colors">{svc.title}</h3>
-                        <p className="text-sm text-brandGray leading-relaxed line-clamp-3">{svc.shortDescription}</p>
-                      </div>
-                    </div>
-                    <div className="pt-8">
-                      <Link
-                        href={`/services/${svc.slug}`}
-                        className="inline-flex items-center text-sm font-bold text-brandGreen hover:text-brandGreenHover transition-colors space-x-2"
-                      >
-                        <span>Read More</span>
-                        <ArrowRight className="w-4 h-4" />
-                      </Link>
-                    </div>
-                  </motion.div>
-                );
-              })}
-            </div>
+            <ServicesSectionStack services={services} />
 
             <div className="text-center">
               <Link
@@ -267,40 +275,238 @@ export default function HomeClient({
           </div>
         </section>
 
-        {/* 3. WHY CHOOSE US */}
-        <section className="py-24 bg-white text-brandDark relative overflow-hidden border-t border-slate-100">
-          <div className="max-w-7xl mx-auto px-6 space-y-16">
-            <div className="text-center max-w-3xl mx-auto space-y-4">
-              <span className="text-brandGreen font-extrabold text-sm uppercase tracking-wider bg-brandGreen/10 border border-brandGreen/25 rounded-full px-4 py-1.5">The Advantage</span>
-              <h2 className="text-3xl md:text-5xl font-rustic">Why Partner With Us?</h2>
-              <p className="text-[#EF8E01] font-medium font-biooris">We deliver enterprise-quality execution at prices designed for growing business ecosystems.</p>
+        {/* 3. WHY CHOOSE US - AWSM AGENCY STYLE */}
+        <section
+          className="relative py-24 bg-white text-brandDark overflow-hidden border-y border-slate-100"
+          style={{
+            backgroundImage: "radial-gradient(circle at 2px 2px, rgba(15,23,42,0.06) 1px, transparent 0)",
+            backgroundSize: "24px 24px"
+          }}
+        >
+          {/* Abstract Decorations */}
+          <div className="absolute top-0 left-0 w-32 h-32 opacity-10 pointer-events-none">
+            <svg className="w-full h-full" viewBox="0 0 100 100">
+              <path d="M0,0 Q50,0 100,50" fill="none" stroke="black" strokeWidth={0.5} />
+            </svg>
+          </div>
+          <div className="absolute top-4 right-4 w-12 h-12 opacity-20 grid grid-cols-4 gap-1">
+            {[...Array(12)].map((_, i) => (
+              <div key={i} className="w-1.5 h-1.5 bg-slate-900 rounded-full" />
+            ))}
+          </div>
+
+          <div className="max-w-6xl mx-auto px-6 flex flex-col justify-between">
+            {/* Header / Logo */}
+            <div className="w-full flex justify-center lg:justify-start mb-12">
+              <div className="text-center lg:text-left">
+                <h2 className="text-3xl font-black tracking-tighter flex flex-row items-baseline gap-2 leading-none text-brandDark">
+                  <span className="font-neogen">Together.</span>
+                  <span className="text-[10px] tracking-[0.25em] uppercase font-black opacity-70">Tech Groups</span>
+                </h2>
+              </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {/* Title Section (Single line, left aligned on desktop) */}
+            <div className="relative w-full flex flex-col lg:flex-row items-center lg:items-end justify-between mb-20 gap-8">
+              <div className="text-center lg:text-left z-10">
+                <h1 className="text-4xl sm:text-6xl md:text-7xl font-black leading-tight flex flex-row flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-4 font-outfit text-brandDark">
+                  <span className="tracking-tight">WHY</span>
+                  <span className="text-brandGreen tracking-tight">CHOOSE</span>
+                  <span className="flex items-center gap-3 sm:gap-4">
+                    <span className="bg-brandGreen text-white rounded-full p-2 inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 shadow-md">
+                      <svg className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </span>
+                    <span className="tracking-tight">US</span>
+                  </span>
+                </h1>
+              </div>
+              <div className="absolute right-4 lg:right-12 top-0 opacity-10 select-none pointer-events-none">
+                <span className="text-[120px] md:text-[200px] font-black leading-none text-brandDark block transform translate-x-4 -translate-y-12">?</span>
+              </div>
+            </div>
+
+            {/* Bento Grid */}
+            <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20 max-w-6xl mx-auto">
               {[
-                { icon: ShieldCheck, title: 'Professional Design', desc: 'Figma prototypes built completely from scratch matching your exact brand aesthetics.' },
-                { icon: Smartphone, title: 'Mobile-Friendly', desc: 'Fluid response grid across phones, tablets, laptops, and wide screen monitors.' },
-                { icon: Search, title: 'SEO-Ready Development', desc: 'Pre-optimized title structures, meta, indexing sitemaps, and search settings.' },
-                { icon: Cpu, title: 'Custom Admin Panel', desc: 'Manage your portfolio, team, reviews, and enquiries through a secure private dashboard.' },
-                { icon: Zap, title: 'Affordable Pricing', desc: 'Clear transparent packages with zero hidden developer maintenance charges.' },
-                { icon: Award, title: 'Fast Delivery', desc: 'Rigorous sprint logs ensuring your website launches on-time and with stability.' },
-                { icon: Users, title: 'Complete Support', desc: 'Daily tracking, hosting configurations, corporate mailboxes, and marketing advisory.' },
-                { icon: MessageCircle, title: 'Chat Integrations', desc: 'Instant floating call triggers and pre-configured WhatsApp customer templates.' }
-              ].map((item, index) => {
-                const Icon = item.icon;
+                {
+                  title: 'Customized Solutions',
+                  icon: Code,
+                  desc: 'We build tailored platforms from the ground up. Zero rigid templates, ensuring complete scaling and an identity that is uniquely yours.',
+                  colSpan: 'md:col-span-2 lg:col-span-2',
+                  badges: ['React', 'Next.js', 'Tailwind', 'Node.js']
+                },
+                {
+                  title: 'Experienced Team',
+                  icon: Users,
+                  desc: 'A dedicated group of senior architects and designers averaging 5+ years of real-world industry experience.',
+                  colSpan: 'md:col-span-1 lg:col-span-1'
+                },
+                {
+                  title: 'Professional Design',
+                  icon: Palette,
+                  desc: 'Pixel-perfect UI prototypes and wireframes crafted in Figma with deep contrast and clean typography.',
+                  colSpan: 'md:col-span-1 lg:col-span-1'
+                },
+                {
+                  title: 'Proven Track Record',
+                  icon: Award,
+                  desc: 'Dozens of successful production launches with guaranteed reliability and performance outcomes.',
+                  colSpan: 'md:col-span-1 lg:col-span-1'
+                },
+                {
+                  title: 'SEO-Ready Setup',
+                  icon: Search,
+                  desc: 'Pre-configured semantic structures, custom meta elements, XML sitemaps, and optimized image compression for organic search engine indexing.',
+                  colSpan: 'md:col-span-2 lg:col-span-2',
+                  checkmarks: ['Google Search Console', 'XML Sitemaps', 'Semantic HTML5', 'Alt Attributes']
+                },
+                {
+                  title: 'Mobile-Friendly Grid',
+                  icon: Smartphone,
+                  desc: 'Fluid layouts and flexible grids that scale smoothly across mobile devices, tablets, and wide desktop displays.',
+                  colSpan: 'md:col-span-1 lg:col-span-1'
+                },
+                {
+                  title: 'Instant Chat Integrations',
+                  icon: MessageCircle,
+                  desc: 'Direct customer routing to WhatsApp business chat, custom contact callback forms, and automated email notifications.',
+                  colSpan: 'md:col-span-1 lg:col-span-1'
+                },
+                {
+                  title: 'Full-Service Support',
+                  icon: ShieldCheck,
+                  desc: 'Complete end-to-end management, covering requirements gathering, design, domain configurations, servers, and security updates.',
+                  colSpan: 'md:col-span-1 lg:col-span-1'
+                }
+              ].map((pill, index) => {
+                const IconComponent = pill.icon;
                 return (
-                  <div
+                  <motion.div
                     key={index}
-                    className="bg-white p-8 rounded-3xl border border-slate-200/80 space-y-4 hover:border-brandGreen/30 transition-all duration-300 shadow-sm hover:shadow-md"
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ duration: 0.5, delay: index * 0.04, ease: [0.215, 0.61, 0.355, 1] }}
+                    whileHover={{ y: -6, transition: { duration: 0.2, ease: "easeOut" } }}
+                    className={`relative p-[1.5px] overflow-hidden rounded-[2rem] bg-slate-200/80 shadow-sm flex transition-all duration-300 group ${pill.colSpan}`}
                   >
-                    <div className="w-12 h-12 rounded-xl bg-brandGreenLight flex items-center justify-center text-brandGreen">
-                      <Icon className="w-6 h-6" />
+                    {/* Rotating light beam border */}
+                    <div
+                      className="absolute inset-[-1000%] bg-[conic-gradient(from_0deg,#22c55e_0%,#EF8E01_25%,transparent_50%,#22c55e_75%,#22c55e_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                      style={{ animation: 'spin 6s linear infinite' }}
+                    />
+
+                    {/* Inner Card Content */}
+                    <div className="relative bg-white p-8 rounded-[1.92rem] flex flex-col justify-between h-full w-full z-10">
+                      <div>
+                        <div className="w-12 h-12 rounded-2xl bg-brandGreen/10 border border-brandGreen/25 flex items-center justify-center text-brandGreen mb-6 group-hover:scale-110 transition-transform duration-300">
+                          <IconComponent className="w-6 h-6" />
+                        </div>
+                        <h3 className="text-xl font-extrabold text-brandDark mb-3 group-hover:text-brandGreen transition-colors">
+                          {pill.title}
+                        </h3>
+                        <p className="text-xs text-brandGray font-medium leading-relaxed">
+                          {pill.desc}
+                        </p>
+                      </div>
+
+                      {/* Extra elements for col-span-2 items */}
+                      {pill.badges && (
+                        <div className="flex flex-wrap gap-2 mt-6">
+                          {pill.badges.map((badge) => (
+                            <span
+                              key={badge}
+                              className="px-2.5 py-1 rounded-full bg-slate-100 text-slate-600 text-[10px] font-bold"
+                            >
+                              {badge}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+
+                      {pill.checkmarks && (
+                        <div className="grid grid-cols-2 gap-2 mt-6">
+                          {pill.checkmarks.map((check) => (
+                            <div
+                              key={check}
+                              className="flex items-center space-x-1.5 text-[10px] text-slate-500 font-bold"
+                            >
+                              <Check className="w-3.5 h-3.5 text-brandGreen flex-shrink-0" />
+                              <span className="truncate">{check}</span>
+                            </div>
+                          ))}
+                        </div>
+                      )}
                     </div>
-                    <h3 className="font-extrabold text-xl text-brandDark">{item.title}</h3>
-                    <p className="text-xs text-brandGray leading-relaxed">{item.desc}</p>
-                  </div>
+                  </motion.div>
                 );
               })}
+
+              {/* Let's Build Together CTA Card */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: 8 * 0.04, ease: [0.215, 0.61, 0.355, 1] }}
+                whileHover={{ y: -6, transition: { duration: 0.2, ease: "easeOut" } }}
+                className="relative p-[1.5px] overflow-hidden rounded-[2rem] bg-brandGreen/20 shadow-md shadow-brandGreen/10 flex transition-all duration-300 group md:col-span-2 lg:col-span-2"
+              >
+                {/* Rotating light beam border for CTA */}
+                <div
+                  className="absolute inset-[-1000%] bg-[conic-gradient(from_0deg,#ffffff_0%,#EF8E01_25%,transparent_50%,#EF8E01_75%,#ffffff_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                  style={{ animation: 'spin 6s linear infinite' }}
+                />
+
+                <div className="relative bg-gradient-to-br from-brandGreen to-[#5c9930] p-8 rounded-[1.92rem] text-white flex flex-col justify-between h-full w-full z-10">
+                  <div>
+                    <div className="w-12 h-12 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center text-white mb-6">
+                      <Zap className="w-6 h-6 animate-pulse" />
+                    </div>
+                    <h3 className="text-xl font-black mb-3">
+                      Ready to launch your project?
+                    </h3>
+                    <p className="text-xs text-emerald-100 font-medium leading-relaxed max-w-md">
+                      Get in touch for a free project consultation and absolute clarity on timeline and cost estimates within 24 hours.
+                    </p>
+                  </div>
+                  <div className="mt-8">
+                    <Link
+                      href="/contact"
+                      className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-white hover:bg-slate-50 text-brandGreen font-bold text-xs uppercase tracking-wider transition-colors duration-300 space-x-2 shadow-sm"
+                    >
+                      <span>Enquire Now</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </Link>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Footer banner */}
+            <div className="w-full flex flex-col md:flex-row items-center justify-between gap-6 mt-4 border-t border-slate-200 pt-8 text-brandDark">
+              <div className="text-xl font-bold tracking-wide order-2 md:order-1 font-outfit">
+                +91 90475 49682
+              </div>
+              <div className="order-1 md:order-2">
+                <Link
+                  href="/contact"
+                  className="bg-brandGreen text-white px-8 py-3 rounded-full font-black text-xs uppercase tracking-widest hover:bg-brandGreenHover transition-colors duration-300 inline-block shadow-md shadow-brandGreen/25"
+                >
+                  Contact Us
+                </Link>
+              </div>
+              <div className="order-3">
+                <a
+                  className="bg-brandDark text-white border border-slate-700/30 px-6 py-2 rounded-full text-sm font-medium hover:bg-slate-800 transition-all font-biooris"
+                  href="https://www.togethertechgroups.in"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  www.togethertechgroups.in
+                </a>
+              </div>
             </div>
           </div>
         </section>
@@ -330,99 +536,30 @@ export default function HomeClient({
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredPortfolios.map((project) => (
-                <motion.div
-                  key={project.id}
-                  layout
-                  className="bg-white rounded-3xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-md group transition-all duration-300"
-                >
-                  {/* Project Image placeholder */}
-                  <div className="h-64 bg-slate-900 relative flex items-center justify-center overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-t from-brandDark/85 to-transparent z-10 opacity-70" />
-                    <div className="text-center z-20 p-6">
-                      <span className="px-3 py-1 rounded-full bg-brandGreen text-white font-extrabold text-xxs uppercase tracking-widest">{project.category}</span>
-                      <h3 className="font-extrabold text-2xl text-white mt-3">{project.projectName}</h3>
-                      <p className="text-xs text-brandGreenLight mt-1 font-semibold">{project.clientName}</p>
-                    </div>
-                  </div>
-                  <div className="p-8 space-y-4">
-                    <p className="text-sm text-brandGray leading-relaxed">{project.description}</p>
-                    <div className="flex flex-wrap gap-1.5 pt-2">
-                      {project.technologies.split(',').map((tech: string, i: number) => (
-                        <span key={i} className="px-2.5 py-1 rounded-md bg-slate-100 text-brandDark font-bold text-xxs tracking-wide">
-                          {tech.trim()}
-                        </span>
-                      ))}
-                    </div>
-                    <div className="pt-4 flex justify-between items-center">
-                      <Link
-                        href={`/portfolio/${project.id}`}
-                        className="inline-flex items-center text-sm font-bold text-brandGreen hover:text-brandGreenHover transition-colors space-x-2"
-                      >
-                        <span>View Project Details</span>
-                        <ArrowRight className="w-4 h-4" />
-                      </Link>
-                    </div>
-                  </div>
-                </motion.div>
+                <ProjectCard key={project.id} project={project} />
               ))}
             </div>
           </div>
         </section>
 
         {/* 5. PACKAGES PREVIEW SECTION */}
-        <section className="py-24 bg-white text-brandDark relative border-t border-slate-100">
-          <div className="max-w-7xl mx-auto px-6 space-y-16">
+        <section className="py-24 bg-[#0B0F19] text-white relative overflow-hidden border-t border-slate-900">
+          {/* Subtle background glow lights */}
+          <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full bg-brandGreen/5 blur-[120px] pointer-events-none" />
+          <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] rounded-full bg-blue-500/5 blur-[120px] pointer-events-none" />
+
+          <div className="max-w-7xl mx-auto px-6 space-y-16 relative z-10">
             <div className="text-center max-w-3xl mx-auto space-y-4">
               <span className="text-brandGreen font-extrabold text-sm uppercase tracking-wider bg-brandGreen/10 border border-brandGreen/25 rounded-full px-4 py-1.5">Simple Invoicing</span>
-              <h2 className="text-3xl md:text-5xl text-brandDark font-rustic">Our Development Packages</h2>
-              <p className="text-[#EF8E01] font-medium font-biooris">Select a predefined structure or contact us for a customized development plan.</p>
+              <h2 className="text-3xl md:text-5xl text-white font-rustic">Our Development Packages</h2>
+              <p className="text-white/90 font-medium font-biooris">Select a predefined structure or contact us for a customized development plan.</p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+            <div className="flex flex-wrap justify-center gap-8 items-stretch">
               {packages.map((pkg) => (
-                <div
-                  key={pkg.id}
-                  className={`p-8 rounded-3xl flex flex-col justify-between transition-all duration-300 relative ${pkg.isRecommended
-                    ? 'bg-brandGreenLight border-2 border-brandGreen shadow-md lg:scale-105 z-10'
-                    : 'bg-white border border-slate-200/80 hover:border-brandGreen/35'
-                    }`}
-                >
-                  {pkg.isRecommended && (
-                    <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-brandGreen text-white text-xxs font-black uppercase tracking-widest shadow-md">
-                      Most Popular
-                    </span>
-                  )}
-                  <div className="space-y-6">
-                    <div className="space-y-2">
-                      <h3 className="font-extrabold text-2xl text-brandDark">{pkg.packageName}</h3>
-                      <p className="text-xs text-brandGray leading-relaxed min-h-[40px]">{pkg.description}</p>
-                    </div>
-                    <div className="pt-2 border-t border-slate-200/80 pb-4">
-                      <span className="text-4xl font-black tracking-tight text-brandDark">{pkg.price}</span>
-                    </div>
-                    <ul className="space-y-3">
-                      {pkg.features.split(',').map((feat: string, index: number) => (
-                        <li key={index} className="flex items-start space-x-2.5 text-xs text-brandDark/90">
-                          <Check className="w-4.5 h-4.5 text-brandGreen flex-shrink-0 mt-0.5" />
-                          <span>{feat.trim()}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="pt-8">
-                    <Link
-                      href={`/contact?package=${encodeURIComponent(pkg.packageName)}`}
-                      className={`w-full py-3.5 rounded-xl font-bold text-center block text-sm transition-all duration-300 ${pkg.isRecommended
-                        ? 'bg-brandGreen hover:bg-brandGreenHover text-white shadow-md shadow-brandGreen/25'
-                        : 'bg-slate-100 hover:bg-brandGreen hover:text-white text-brandDark border border-slate-200'
-                        }`}
-                    >
-                      Enquire Now
-                    </Link>
-                  </div>
-                </div>
+                <PackageSkewCard key={pkg.id} pkg={pkg} />
               ))}
             </div>
           </div>
@@ -434,7 +571,7 @@ export default function HomeClient({
             <div className="text-center max-w-3xl mx-auto space-y-4">
               <span className="text-brandGreen font-extrabold text-sm uppercase tracking-wider bg-brandGreen/10 border border-brandGreen/25 rounded-full px-4 py-1.5">Creative Brains</span>
               <h2 className="text-3xl md:text-5xl text-brandDark font-mitshuka">Meet Our Team</h2>
-              <p className="text-[#EF8E01] font-medium font-biooris">A group of young, highly-skilled professionals turning concepts into software.</p>
+              <p className="text-brandDark font-medium font-biooris">A group of young, highly-skilled professionals turning concepts into software.</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -567,7 +704,7 @@ export default function HomeClient({
                 <ArrowRight className="w-5 h-5" />
               </Link>
               <a
-                href="https://wa.me/919876543210?text=Hi%20Together%20Tech%20Groups,%20I%20need%20details%20about%20website%20development.%20Please%20contact%20me."
+                href="https://wa.me/919047549682?text=Hi%20Together%20Tech%20Groups,%20I%20need%20details%20about%20website%20development.%20Please%20contact%20me."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto px-8 py-4 rounded-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold tracking-wide transition-all duration-300 flex items-center justify-center space-x-2"

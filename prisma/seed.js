@@ -73,22 +73,7 @@ async function main() {
       image: '/images/services/flutter-dev.jpg',
       features: 'Single Codebase, High Performance, Custom Widget Design, Real-time APIs, In-App Purchases, Material Design / Cupertino UI',
     },
-    {
-      title: 'Custom Software Development',
-      slug: 'custom-software-development',
-      shortDescription: 'Bespoke software solutions built exactly around your company workflows and specific needs.',
-      fullDescription: 'Off-the-shelf software often fails to meet custom company workflows. We design and build enterprise custom systems from scratch. From workflow automation tools to complex back-office systems, we write scalable code that solves your exact operational bottlenecks.',
-      image: '/images/services/custom-software.jpg',
-      features: 'Scalable Architecture, Custom Reporting, Multi-role Access Control, REST API Integration, Automatic Backups, Dedicated Tech Support',
-    },
-    {
-      title: 'Billing Software',
-      slug: 'billing-software',
-      shortDescription: 'Fast, secure, and offline-capable billing and invoicing software for modern retail and wholesale businesses.',
-      fullDescription: 'Manage sales, keep track of stock, print invoices, and generate instant tax/GST reports with our customized desktop or cloud billing software. Designed for high volume, ease of use, and quick operations.',
-      image: '/images/services/billing-software.jpg',
-      features: 'Quick Invoicing, GST / Tax Reports, Inventory Tracker, Offline Support, Thermal Printer Integration, Barcode Scanning',
-    },
+
     {
       title: 'Restaurant Software',
       slug: 'restaurant-software',
@@ -289,47 +274,81 @@ async function main() {
   // 7. Portfolio Items
   const defaultPortfolio = [
     {
-      id: 'port-1',
-      projectName: 'SmartBilling Cloud POS',
-      clientName: 'Hindustan Distributors',
+      id: 'port-gym-software',
+      projectName: 'Gym Management Software',
+      clientName: 'Iron Forge Gyms',
       category: 'Software',
-      image: '/images/portfolio/pos.jpg',
-      description: 'A cloud-enabled desktop billing system with offline sync capabilities, live inventory controls, GST reports, and thermal printer integration.',
-      technologies: 'Next.js, Tailwind, SQLite, Node.js, Electron',
+      image: '/images/portfolio/gym-software.png',
+      description: 'A comprehensive gym administration portal featuring member attendance tracking, subscription billing, trainer assignments, and workout scheduling.',
+      technologies: 'Next.js, Tailwind CSS, Prisma, SQLite',
       projectLink: '#',
       status: 'ACTIVE'
     },
     {
-      id: 'port-2',
-      projectName: 'DineEasy Contactless Ordering',
-      clientName: 'The Food Foundry',
-      category: 'Websites',
-      image: '/images/portfolio/dineeasy.jpg',
-      description: 'Mobile-first QR ordering website for restaurants allowing table tracking, contactless billing, and live kitchen dashboard alerts.',
-      technologies: 'React, Tailwind CSS, Supabase, Express.js',
+      id: 'port-billing-software',
+      projectName: 'Billing Software',
+      clientName: 'Vikas Retailers',
+      category: 'Software',
+      image: '/images/portfolio/billing-software.png',
+      description: 'High-speed desktop billing software with offline synchronization capabilities, barcode scanner integration, tax invoice printing, and GST report tools.',
+      technologies: 'Next.js, Electron, Tailwind CSS, SQLite, Node.js',
       projectLink: '#',
       status: 'ACTIVE'
     },
     {
-      id: 'port-3',
-      projectName: 'ProTracker Mobile app',
-      clientName: 'Align Logistics',
+      id: 'port-hyundai-qr',
+      projectName: 'Hyundai Polytech QR Scanner',
+      clientName: 'Hyundai Polytech',
       category: 'Apps',
-      image: '/images/portfolio/protracker.jpg',
-      description: 'Cross-platform mobile application developed using Flutter for live tracking, driver routing, and client cargo dispatch notifications.',
-      technologies: 'Flutter, Dart, Firebase, Google Maps API',
+      image: '/images/portfolio/hyundai-qr.png',
+      description: 'Mobile QR code scanner and verification app created for Hyundai Polytech. Features lightning-fast scan reviews, log history, and database sync.',
+      technologies: 'Flutter, Dart, Node.js, PostgreSQL',
       projectLink: '#',
       status: 'ACTIVE'
     },
     {
-      id: 'port-4',
-      projectName: 'Fintech Dashboard Prototype',
-      clientName: 'Sovereign Capital',
-      category: 'UI/UX',
-      image: '/images/portfolio/fintech-ui.jpg',
-      description: 'High-fidelity Figma wireframes and visual design flow for a financial stock tracking and investment management terminal.',
-      technologies: 'Figma, Adobe Photoshop, Prototype Design',
-      projectLink: '#',
+      id: 'port-aquila-preschool',
+      projectName: 'Aquila Preschool',
+      clientName: 'Aquila Preschool',
+      category: 'Websites',
+      image: '/images/portfolio/aquila.png',
+      description: 'A friendly, modern website for Aquila Preschool featuring class portals, schedules, parent feedback boards, and event calendar updates.',
+      technologies: 'Next.js, Tailwind CSS, Framer Motion',
+      projectLink: 'https://aquila-preschool.vercel.app',
+      status: 'ACTIVE'
+    },
+
+    {
+      id: 'port-spdigitalsolutions',
+      projectName: 'SP Digital Solutions',
+      clientName: 'SP Digital Solutions',
+      category: 'Websites',
+      image: '/images/portfolio/spdigital.png',
+      description: 'Creative agency portfolio showcasing brand campaigns, design assets, and digital marketing setups.',
+      technologies: 'React, Tailwind CSS, Vercel',
+      projectLink: 'https://spdigitalsolutions-euir.vercel.app',
+      status: 'ACTIVE'
+    },
+    {
+      id: 'port-micro-laser-arts',
+      projectName: 'Micro Laser Arts',
+      clientName: 'Micro Laser Arts',
+      category: 'Websites',
+      image: '/images/portfolio/micro-laser.jpg',
+      description: 'A design catalog and showcase for micro laser cutting designs, engravings, material guides, and custom estimates.',
+      technologies: 'Next.js, Tailwind CSS, Framer Motion',
+      projectLink: 'https://micro-laser-arts.vercel.app',
+      status: 'ACTIVE'
+    },
+    {
+      id: 'port-sky-groupss',
+      projectName: 'Sky Groups Pvt Ltd',
+      clientName: 'Sky Groups Pvt Ltd',
+      category: 'Websites',
+      image: '/images/portfolio/sky-groups.jpg',
+      description: 'Corporate business website for Sky Groups Pvt Ltd with search engine optimization, fast load speeds, and layout maps.',
+      technologies: 'Next.js, Tailwind CSS, Vercel',
+      projectLink: 'https://sky-groupss.vercel.app',
       status: 'ACTIVE'
     }
   ];
@@ -341,6 +360,14 @@ async function main() {
       create: port,
     });
   }
+  const keepIds = defaultPortfolio.map(p => p.id);
+  await prisma.portfolio.deleteMany({
+    where: {
+      id: {
+        notIn: keepIds
+      }
+    }
+  });
   console.log('Portfolio seeded.');
 
   // 8. Blogs
