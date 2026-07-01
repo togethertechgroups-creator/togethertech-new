@@ -88,7 +88,7 @@ export function NotchNavbar() {
               className="w-8 h-8 sm:w-9 sm:h-9 object-contain drop-shadow-md"
               priority
             />
-            <span className="font-neogen text-xs sm:text-sm md:text-base tracking-normal leading-none font-bold">
+            <span className="font-rustic text-xs sm:text-sm md:text-base tracking-normal leading-none font-bold">
               <span className="text-[#0038BD]">Together</span>
               <span className="text-brandGreen">Tech</span>
             </span>

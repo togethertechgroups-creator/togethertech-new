@@ -442,7 +442,7 @@ export default function HomeClient({
             <div className="w-full flex justify-center lg:justify-start mb-12">
               <div className="text-center lg:text-left">
                 <h2 className="text-3xl font-black tracking-tighter flex flex-row items-baseline gap-2 leading-none text-brandDark">
-                  <span className="font-neogen">Together.</span>
+                  <span className="font-rustic">Together.</span>
                   <span className="text-[10px] tracking-[0.25em] uppercase font-black opacity-70">Tech Groups</span>
                 </h2>
               </div>

@@ -85,7 +85,7 @@ export default function SplashLoader() {
                 opacity: 1,
                 transition: { delay: 0.2, duration: 0.5 }
               }}
-              className="font-neogen text-2xl tracking-wider text-center"
+              className="font-rustic text-2xl tracking-wider text-center"
             >
               <span className="text-white">TOGETHER </span>
               <span className="text-brandGreen">TECH</span>
