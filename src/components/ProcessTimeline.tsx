@@ -107,10 +107,10 @@ export default function ProcessTimeline() {
 
   return (
     <div ref={containerRef} className="relative w-full" style={{ paddingBottom: 48 }}>
-      {/* SVG overlay */}
+      {/* SVG overlay — hidden on mobile to prevent line cutting through card contents */}
       {svgBox.width > 0 && (
         <svg
-          className="absolute inset-0 pointer-events-none overflow-visible"
+          className="absolute inset-0 pointer-events-none overflow-visible hidden md:block"
           width={svgBox.width}
           height={svgBox.height}
           style={{ zIndex: 10, top: 0, left: 0 }}
