@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { prisma } from '@/lib/db';
 import {
-  ArrowRight, Check, CheckCircle2, ChevronRight, MessageCircle, Phone,
+  ArrowRight, Check, CheckCircle2, ChevronRight, ChevronDown, MessageCircle, Phone,
   Code, Smartphone, Cpu, Layers, Palette, Search, Terminal, BarChart, Database, Award, Zap, Users
 } from 'lucide-react';
 
@@ -11,25 +11,91 @@ const getServiceIcon = (slug: string) => {
     'website-development': Code,
     'mobile-app-development': Smartphone,
     'flutter-app-development': Cpu,
+    'software-development': Terminal,
     'restaurant-software': Layers,
     'crm-admin-dashboard': BarChart,
     'ui-ux-design': Palette,
     'logo-design': Award,
     'poster-design': Palette,
     'seo': Search,
+    'seo-services': Search,
     'meta-google-ads': Zap,
+    'meta-ads-management': Zap,
     'digital-marketing': Users,
+    'branding-graphic-design': Award,
   };
   return iconMap[slug] || Code;
+};
+
+// Service FAQ mapping for dynamic SEO & GEO
+const SERVICE_FAQS: { [key: string]: { q: string, a: string }[] } = {
+  'website-development': [
+    { q: 'What types of websites do you build in Chennai?', a: 'We design and build business websites, landing pages, corporate portals, and eCommerce websites with checkout and payment integrations for clients across India.' },
+    { q: 'How much does website development cost?', a: 'Our website packages start from ₹7,000 for basic sites. Semi-Custom dynamic sites range from ₹12,000 to ₹15,000, and Fully Custom enterprise portals start from ₹20,000.' },
+    { q: 'How long does website development take?', a: 'Basic websites are completed within 5-7 days. Semi-custom websites with admin panels take around 10-15 days. Fully custom platforms take between 20-40 days depending on complexity.' }
+  ],
+  'software-development': [
+    { q: 'What custom software services do you offer?', a: 'We develop custom CRM systems, ERP software, billing software, inventory management tools, and HR management software tailored for startups and businesses.' },
+    { q: 'Can you build offline software?', a: 'Yes, we create desktop billing and retail applications that sync offline data to cloud servers in real-time when an active connection is available.' },
+    { q: 'Do you build software for startups?', a: 'Absolutely. We specialize in building MVPs, custom automation architectures, and scalable database systems for growing startups.' }
+  ],
+  'mobile-app-development': [
+    { q: 'Which platform is best for mobile apps?', a: 'We recommend Flutter app development because it enables cross-platform compilation for both iOS and Android from a single codebase, reducing development costs.' },
+    { q: 'Do you publish apps to the App Store and Google Play?', a: 'Yes, our team handles the entire publishing pipeline including store listings, privacy policies, review cycles, and release configurations.' }
+  ],
+  'digital-marketing': [
+    { q: 'How does digital marketing help my small business?', a: 'Digital marketing raises online visibility, builds brand authority, and drives conversion-focused leads through targeted performance marketing.' },
+    { q: 'Which platform is better: Google Ads or Meta Ads?', a: 'Meta Ads (Facebook/Instagram) are excellent for visual interest and direct lead generation, while Google Ads target search queries from users ready to buy.' }
+  ],
+  'seo-services': [
+    { q: 'What is the difference between On-Page and Local SEO?', a: 'On-Page SEO focuses on sitemaps, speed, and schema markup, while Local SEO optimizes your Google Business Profile and keywords for regional queries.' },
+    { q: 'How long does it take to rank on Google?', a: 'SEO is a medium-term strategy; you will typically see significant organic search discovery and ranking improvements within 3 to 6 months.' }
+  ],
+  'seo': [
+    { q: 'What is the difference between On-Page and Local SEO?', a: 'On-Page SEO focuses on sitemaps, speed, and schema markup, while Local SEO optimizes your Google Business Profile and keywords for regional queries.' },
+    { q: 'How long does it take to rank on Google?', a: 'SEO is a medium-term strategy; you will typically see significant organic search discovery and ranking improvements within 3 to 6 months.' }
+  ],
+  'meta-ads-management': [
+    { q: 'Do you write the ad copy and design the graphics?', a: 'Yes, our team creates high-converting ad copies, design templates, and video assets, while setting up tracking pixels and APIs.' }
+  ],
+  'meta-google-ads': [
+    { q: 'Do you write the ad copy and design the graphics?', a: 'Yes, our team creates high-converting ad copies, design templates, and video assets, while setting up tracking pixels and APIs.' }
+  ],
+  'ui-ux-design': [
+    { q: 'What design tools do you use?', a: 'We use Figma to compile wireframes, user journeys, responsive grids, and interactive prototypes for design approval.' }
+  ],
+  'branding-graphic-design': [
+    { q: 'What does your branding kit include?', a: 'Our branding packages include vector logo files (SVG, AI, EPS), custom typography scales, color palettes, and social media creative templates.' }
+  ]
 };
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const service = await prisma.service.findUnique({ where: { slug } });
   if (!service) return { title: 'Service Not Found' };
+  
+  const title = `${service.title} Company in Chennai | Together Tech`;
+  const description = `Looking for ${service.title} in Chennai? Together Tech provides professional, affordable ${service.title} and IT Solutions across India.`;
+  
   return {
-    title: `${service.title} | Together Tech Groups`,
-    description: service.shortDescription,
+    title,
+    description,
+    alternates: {
+      canonical: `https://togethertechgroups.in/services/${slug}`,
+    },
+    openGraph: {
+      title,
+      description,
+      url: `https://togethertechgroups.in/services/${slug}`,
+      siteName: 'Together Tech',
+      locale: 'en_IN',
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+    }
   };
 }
 
@@ -70,8 +136,71 @@ export default async function ServiceDetailPage({
     { name: 'Custom Enterprise Suite', desc: 'Custom databases, external API routing, and high availability systems.' }
   ];
 
+  // Specific FAQs for dynamic schema and page content
+  const serviceFaqs = SERVICE_FAQS[slug] || [];
+
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        "@id": `https://togethertechgroups.in/services/${slug}#service`,
+        "name": service.title,
+        "description": service.shortDescription,
+        "provider": {
+          "@type": "LocalBusiness",
+          "@id": "https://togethertechgroups.in/#localbusiness",
+          "name": "Together Tech"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `https://togethertechgroups.in/services/${slug}#breadcrumb`,
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://togethertechgroups.in"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Services",
+            "item": "https://togethertechgroups.in/services"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": service.title,
+            "item": `https://togethertechgroups.in/services/${slug}`
+          }
+        ]
+      }
+    ]
+  };
+
+  if (serviceFaqs.length > 0) {
+    serviceSchema["@graph"].push({
+      "@type": "FAQPage",
+      "@id": `https://togethertechgroups.in/services/${slug}#faq`,
+      "mainEntity": serviceFaqs.map(f => ({
+        "@type": "Question",
+        "name": f.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": f.a
+        }
+      }))
+    } as any);
+  }
+
   return (
     <div className="space-y-0">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
 
       {/* Dynamic Header */}
       <section className="py-24 bg-gradient-to-r from-brandGreen to-[#5c9930] text-white relative overflow-hidden">
@@ -149,6 +278,29 @@ export default async function ServiceDetailPage({
                 ))}
               </div>
             </div>
+
+            {/* FAQs Accordion Section (Details/Summary native style for RSC) */}
+            {serviceFaqs.length > 0 && (
+              <div className="space-y-6 pt-6">
+                <h3 className="text-2xl font-black text-brandDark tracking-tight">Frequently Asked Questions</h3>
+                <div className="space-y-4">
+                  {serviceFaqs.map((faq, index) => (
+                    <details
+                      key={index}
+                      className="group border border-slate-200 rounded-2xl bg-white overflow-hidden transition-all duration-300 shadow-sm"
+                    >
+                      <summary className="flex justify-between items-center p-5 font-bold text-base text-brandDark hover:text-brandGreen cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+                        <span>{faq.q}</span>
+                        <ChevronDown className="w-5 h-5 text-slate-400 transition-transform duration-300 group-open:rotate-180 group-open:text-brandGreen" />
+                      </summary>
+                      <div className="px-5 pb-5 text-xs text-brandGray leading-relaxed border-t border-slate-100 pt-3">
+                        {faq.a}
+                      </div>
+                    </details>
+                  ))}
+                </div>
+              </div>
+            )}
 
           </div>
 

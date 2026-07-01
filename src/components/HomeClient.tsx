@@ -9,7 +9,7 @@ import {
   ArrowRight, Check, MessageCircle, Phone, Star,
   HelpCircle, ChevronDown, Award, Users, ShieldCheck,
   Zap, Code, Smartphone, Cpu, Layers, Palette, Search,
-  Terminal, BarChart, Database, Tag, TrendingUp
+  Terminal, BarChart, Database, Tag, TrendingUp, Heart
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ProjectCard from './ui/ProjectCard';
@@ -60,8 +60,20 @@ export default function HomeClient({
 
   const faqs = [
     {
-      q: 'How much does a website cost?',
-      a: 'A basic website starts at ₹7,000. Semi-custom dynamic websites range from ₹10,000 to ₹15,000, and fully custom enterprise platforms or e-commerce websites start from ₹20,000 depending on your exact requirements and integrations.',
+      q: 'What services does Together Tech provide?',
+      a: 'Together Tech provides Website Development, Software Development, Mobile App Development, Digital Marketing, SEO Services, Meta Ads Management, UI/UX Design, Branding, and Custom IT Solutions.',
+    },
+    {
+      q: 'Why choose Together Tech?',
+      a: 'Together Tech delivers scalable software, modern websites, high-performance mobile applications, and data-driven digital marketing solutions tailored to your business goals.',
+    },
+    {
+      q: 'Who needs website development?',
+      a: 'Startups, small businesses, enterprises, restaurants, healthcare providers, educational institutions, eCommerce businesses, and service-based companies.',
+    },
+    {
+      q: 'How much does website development cost?',
+      a: 'Website development costs vary depending on the number of pages, required features, integrations, and custom functionality.',
     },
     {
       q: 'How many days will it take to complete a website?',
@@ -94,6 +106,19 @@ export default function HomeClient({
     : portfolios.filter(p => p.category === portfolioFilter);
 
   const categories = ['All', ...Array.from(new Set(portfolios.map((p: any) => p.category).filter(Boolean)))];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.a
+      }
+    }))
+  };
 
   return (
     <ArcRevealHero storageKey="togethertech-splash-done">
@@ -146,8 +171,8 @@ export default function HomeClient({
                   transition={{ duration: 0.6, delay: 0.1 }}
                   className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-neogen tracking-tight text-brandDark text-left leading-tight"
                 >
-                  Build Your Digital Future <br className="hidden sm:inline" />
-                  With <span className="text-[#0038BD]">Together</span> <span className="text-brandGreen">Tech</span>
+                  Custom Software, Website & <br />
+                  <span className="text-[#0038BD]">Mobile App</span> <span className="text-brandGreen">Development</span> Company
                 </motion.h1>
 
                 {/* Paragraph (Increased size and weight on mobile: text-base font-semibold) */}
@@ -349,6 +374,49 @@ export default function HomeClient({
           </div>
         </section>
 
+        {/* CORE EXPERTISE (H2 headings for each service) */}
+        <section className="py-24 bg-white text-brandDark relative overflow-hidden">
+          <div className="max-w-7xl mx-auto px-6 space-y-12">
+            <div className="text-center max-w-3xl mx-auto space-y-4">
+              <span className="text-brandGreen font-extrabold text-sm uppercase tracking-wider bg-brandGreen/10 border border-brandGreen/25 rounded-full px-4 py-1.5">Our Verticals</span>
+              <h2 className="text-3xl md:text-5xl text-brandDark font-rustic">Our Service Verticals</h2>
+              <p className="text-brandGray font-medium leading-relaxed font-biooris">We specialize in these 8 core divisions to deliver premium digital systems for your business.</p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {[
+                { title: 'Website Development Services', slug: 'website-development', desc: 'Custom responsive designs, eCommerce sites, corporate portals, and landing pages with Next.js.', icon: Code },
+                { title: 'Software Development Services', slug: 'software-development', desc: 'Bespoke CRM, ERP software, inventory systems, and business automation software for startups.', icon: Database },
+                { title: 'Mobile App Development', slug: 'mobile-app-development', desc: 'High-performance cross-platform Android and iOS mobile app development using Flutter.', icon: Smartphone },
+                { title: 'Digital Marketing Services', slug: 'digital-marketing', desc: 'Social media marketing, performance marketing, brand campaigns, and conversions.', icon: Users },
+                { title: 'SEO Services', slug: 'seo-services', desc: 'On-page audits, local SEO, technical SEO, and schema configuration to rank in Google & AI search.', icon: Search },
+                { title: 'Meta Ads Management', slug: 'meta-ads-management', desc: 'Targeted lead generation campaigns on Facebook and Instagram with pixel optimization.', icon: Zap },
+                { title: 'UI UX Design', slug: 'ui-ux-design', desc: 'High-fidelity Figma prototypes, design systems, wireframes, and intuitive user experiences.', icon: Palette },
+                { title: 'Branding & Graphic Design', slug: 'branding-graphic-design', desc: 'Logo design, corporate identity guides, visual graphics, and marketing creatives.', icon: Award },
+              ].map((item, index) => {
+                const Icon = item.icon;
+                return (
+                  <div key={index} className="p-6 rounded-3xl bg-slate-50 border border-slate-200 hover:border-brandGreen/35 hover:shadow-lg transition-all duration-300 flex flex-col justify-between space-y-4">
+                    <div className="space-y-3">
+                      <div className="w-10 h-10 rounded-xl bg-brandGreen/10 border border-brandGreen/25 flex items-center justify-center text-brandGreen">
+                        <Icon className="w-5 h-5" />
+                      </div>
+                      <h2 className="text-lg font-extrabold font-outfit text-brandDark">
+                        {item.title}
+                      </h2>
+                      <p className="text-xs text-brandGray leading-relaxed font-biooris">{item.desc}</p>
+                    </div>
+                    <Link href={`/services/${item.slug}`} className="text-xs font-bold text-brandGreen hover:text-brandGreenHover flex items-center space-x-1.5 pt-2">
+                      <span>Learn more</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
         {/* 3. WHY CHOOSE US - AWSM AGENCY STYLE */}
         <section
           className="relative py-24 bg-white text-brandDark overflow-hidden border-y border-slate-100"
@@ -383,7 +451,7 @@ export default function HomeClient({
             {/* Title Section (Single line, left aligned on desktop) */}
             <div className="relative w-full flex flex-col lg:flex-row items-center lg:items-end justify-between mb-20 gap-8">
               <div className="text-center lg:text-left z-10">
-                <h1 className="text-4xl sm:text-6xl md:text-7xl font-black leading-tight flex flex-row flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-4 font-outfit text-brandDark">
+                <h2 className="text-4xl sm:text-6xl md:text-7xl font-black leading-tight flex flex-row flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-4 font-outfit text-brandDark">
                   <span className="tracking-tight">WHY</span>
                   <span className="text-brandGreen tracking-tight">CHOOSE</span>
                   <span className="flex items-center gap-3 sm:gap-4">
@@ -392,9 +460,9 @@ export default function HomeClient({
                         <path d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
                     </span>
-                    <span className="tracking-tight">US</span>
+                    <span className="tracking-tight">TOGETHER TECH</span>
                   </span>
-                </h1>
+                </h2>
               </div>
               <div className="absolute right-4 lg:right-12 top-0 opacity-10 select-none pointer-events-none">
                 <span className="text-[120px] md:text-[200px] font-black leading-none text-brandDark block transform translate-x-4 -translate-y-12">?</span>
@@ -585,6 +653,67 @@ export default function HomeClient({
           </div>
         </section>
 
+        {/* OUR PROCESS SECTION */}
+        <section className="py-24 bg-brandDark text-white relative overflow-hidden border-t border-slate-900">
+          <div className="absolute top-0 right-0 w-80 h-80 bg-brandGreen/5 blur-3xl pointer-events-none" />
+          <div className="max-w-7xl mx-auto px-6 space-y-16 relative z-10">
+            <div className="text-center max-w-3xl mx-auto space-y-4">
+              <span className="text-brandGreen font-extrabold text-sm uppercase tracking-wider bg-brandGreen/10 border border-brandGreen/25 rounded-full px-4 py-1.5">How We Deliver</span>
+              <h2 className="text-3xl md:text-5xl text-white font-rustic">Our Process</h2>
+              <p className="text-slate-300 font-medium font-biooris">A systematic, transparent, and collaborative design and engineering workflow.</p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
+              {[
+                { step: '01', title: 'Discovery & Plan', desc: 'We align on requirements, user flows, and wireframe prototypes.' },
+                { step: '02', title: 'UI/UX Design', desc: 'Figma mockups, typography selection, and color palettes are approved.' },
+                { step: '03', title: 'Development', desc: 'We write fully responsive code, set up secure databases, and hook APIs.' },
+                { step: '04', title: 'QA & Testing', desc: 'We test load speeds, mobile responsiveness, and technical SEO structure.' },
+                { step: '05', title: 'Deployment', desc: 'Client domain mapping, server configuration, and final hand-over.' }
+              ].map((step, i) => (
+                <div key={i} className="bg-slate-950/60 border border-slate-800/80 p-6 rounded-3xl space-y-4 hover:border-brandGreen/30 transition-colors relative group">
+                  <div className="text-4xl font-extrabold text-brandGreen/20 group-hover:text-brandGreen/40 transition-colors font-outfit">{step.step}</div>
+                  <h3 className="text-lg font-bold text-white">{step.title}</h3>
+                  <p className="text-xs text-slate-400 leading-relaxed font-biooris">{step.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* INDUSTRIES WE SERVE SECTION */}
+        <section className="py-24 bg-slate-50 text-brandDark relative overflow-hidden border-t border-slate-100">
+          <div className="max-w-7xl mx-auto px-6 space-y-16">
+            <div className="text-center max-w-3xl mx-auto space-y-4">
+              <span className="text-brandGreen font-extrabold text-sm uppercase tracking-wider bg-brandGreen/10 border border-brandGreen/25 rounded-full px-4 py-1.5">Who We Support</span>
+              <h2 className="text-3xl md:text-5xl text-brandDark font-rustic mt-2">Industries We Serve</h2>
+              <p className="text-brandGray font-medium font-biooris">Engineering custom software and digital portals for a diverse range of business sectors.</p>
+            </div>
+            
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+              {[
+                { name: 'Startups & SMEs', desc: 'SaaS, MVP designs & websites', icon: Zap },
+                { name: 'Ecommerce Brands', desc: 'Custom stores & checkout routes', icon: Tag },
+                { name: 'Healthcare Providers', desc: 'Clinics, dentists & booking portals', icon: Heart },
+                { name: 'Restaurants & Cafes', desc: 'Contactless ordering POS & menus', icon: Layers },
+                { name: 'Education & Schools', desc: 'Portals, calendars & class guides', icon: Award },
+                { name: 'Service Providers', desc: 'Booking forms & local SEO landing pages', icon: Smartphone }
+              ].map((ind, i) => {
+                const Icon = ind.icon;
+                return (
+                  <div key={i} className="bg-white p-6 rounded-3xl border border-slate-200 text-center hover:border-brandGreen/35 hover:shadow-md transition-all space-y-3">
+                    <div className="w-10 h-10 rounded-2xl bg-brandGreen/10 flex items-center justify-center text-brandGreen mx-auto">
+                      <Icon className="w-5 h-5" />
+                    </div>
+                    <h3 className="font-extrabold text-sm text-brandDark font-outfit">{ind.name}</h3>
+                    <p className="text-[10px] text-brandGray leading-relaxed">{ind.desc}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
         {/* 4. PORTFOLIO PREVIEW SECTION */}
         <section className="py-24 bg-slate-50 text-brandDark">
           <div className="max-w-7xl mx-auto px-6 space-y-12">
@@ -719,6 +848,7 @@ export default function HomeClient({
           <div className="max-w-4xl mx-auto px-6 space-y-16">
             <div className="text-center space-y-4">
               <span className="text-brandGreen font-extrabold text-sm uppercase tracking-wider bg-brandGreen/10 border border-brandGreen/25 rounded-full px-4 py-1.5">Got Questions?</span>
+              <h2 className="text-3xl md:text-5xl text-brandDark font-rustic mt-4">Frequently Asked Questions</h2>
             </div>
 
             <div className="space-y-4">
@@ -789,6 +919,10 @@ export default function HomeClient({
             </div>
           </div>
         </section>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
       </div>
     </ArcRevealHero>
   );

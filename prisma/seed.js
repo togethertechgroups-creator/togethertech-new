@@ -53,18 +53,67 @@ async function main() {
       title: 'Website Development',
       slug: 'website-development',
       shortDescription: 'We build responsive, fast-loading, and SEO-optimized websites tailored to your business needs.',
-      fullDescription: 'Our website development service covers everything from corporate portfolios to complex e-commerce platforms. We use modern tech stacks (React, Next.js) to deliver lightning-fast loading speeds, interactive designs, and a clean user experience. Each website is built with SEO best practices and mobile responsiveness in mind.',
+      fullDescription: 'Our Website Development Company in Chennai provides high-impact responsive website design, business website design, corporate website development, landing page development, and eCommerce website development across India. We use Next.js and Tailwind CSS for lightning-fast speeds and search engine rankings.',
       image: '/images/services/web-dev.jpg',
-      features: 'Responsive Layout, SEO-Optimized, Admin Panel Access, Speed Performance, WhatsApp Chat Integration, Custom Contact Forms',
+      features: 'Responsive Website Development, Business Website Design, Corporate Website Development, Ecommerce Website Development, Landing Page Development, Portfolio Website Design, WordPress Development, Custom Website Development',
+    },
+    {
+      title: 'Software Development',
+      slug: 'software-development',
+      shortDescription: 'Custom software, ERP, CRM, and automation solutions built for scalable business growth.',
+      fullDescription: 'As a leading Software Development Company in Chennai, Together Tech designs and develops custom software, ERP software, CRM software, inventory management systems, billing systems, and HR management software tailored for startups and enterprises across India.',
+      image: '/images/services/software-dev.jpg',
+      features: 'Custom Software Development, ERP Software Development, CRM Software Development, Inventory Management Software, Billing Software, HR Management Software, Business Automation Software, Software for Startups',
     },
     {
       title: 'Mobile App Development',
       slug: 'mobile-app-development',
-      shortDescription: 'Get native and cross-platform mobile apps for Android and iOS with sleek UI and robust backends.',
-      fullDescription: 'We specialize in mobile application design and development. Whether you need a utility tool, a customer portal, or a native experience, we deliver stable, high-performing apps using Swift, Kotlin, or React Native. Connected with secure real-time databases and payment processing pipelines.',
+      shortDescription: 'Premium cross-platform and native mobile applications for Android and iOS devices.',
+      fullDescription: 'Together Tech is a premier Mobile App Development Company in Chennai. We develop native iOS, Android, and cross-platform apps using Flutter. Get secure user authentication, offline support, real-time databases, and payment gateway integrations built for business mobile apps.',
       image: '/images/services/mobile-dev.jpg',
-      features: 'Native Android & iOS, Offline Mode Support, Push Notifications, Secure User Auth, Payment Gateways, Dynamic Store Publishing',
+      features: 'Android App Development, iOS App Development, Flutter App Development, Cross-Platform App Development, Business Mobile Apps, Push Notifications, Payment Gateways',
     },
+    {
+      title: 'Digital Marketing',
+      slug: 'digital-marketing',
+      shortDescription: 'Data-driven performance marketing, social media campaigns, and lead generation.',
+      fullDescription: 'Our Digital Marketing Agency in Chennai helps brands grow with tailored social media marketing, performance marketing, Instagram marketing, Facebook ads, and brand authority building across India.',
+      image: '/images/services/digital-marketing.jpg',
+      features: 'Performance Marketing, Social Media Marketing, Instagram Marketing, Facebook Ads, Lead Generation, Brand Authority, Content Strategy',
+    },
+    {
+      title: 'SEO Services',
+      slug: 'seo-services',
+      shortDescription: 'Rank higher on Google and AI search engines with on-page, local, and technical SEO.',
+      fullDescription: 'Together Tech is an expert SEO Company in Chennai. We deliver organic traffic growth, technical SEO audits, local SEO setup, and Schema markup optimization to make your business discoverable in Google and generative search engines (Gemini, ChatGPT).',
+      image: '/images/services/seo.jpg',
+      features: 'Technical SEO, Local SEO, On-Page SEO Audit, Schema Markup, XML Sitemap, Robots.txt, Google Search Console, Canonical URLs',
+    },
+    {
+      title: 'Meta Ads Management',
+      slug: 'meta-ads-management',
+      shortDescription: 'High-converting ad campaigns on Facebook and Instagram to scale lead generation and ROAS.',
+      fullDescription: 'As a result-driven Meta Ads Agency in Chennai, we build conversion-focused ad funnels, set up Meta Pixels, create ad copy, and optimize bids to generate high-quality leads for businesses across India.',
+      image: '/images/services/ads.jpg',
+      features: 'Facebook Ads, Instagram Marketing, Meta Pixel Setup, Lead Generation, Retargeting Funnels, Copywriting & Ad Creatives, Weekly Reports',
+    },
+    {
+      title: 'UI/UX Design',
+      slug: 'ui-ux-design',
+      shortDescription: 'Stunning user-centered interface designs, wireframes, and prototypes in Figma.',
+      fullDescription: 'Our UI/UX Design Company in Chennai creates user journey maps, high-fidelity Figma mockups, and interactive prototypes. We focus on modern typography, accessibility, custom components, and layouts that convert visitors.',
+      image: '/images/services/ui-ux.jpg',
+      features: 'UI/UX Design, Web UI Design, Figma Mockups, User Journey Mapping, Interactive Prototypes, Design System Creation, Responsive Grid, Usability Testing',
+    },
+    {
+      title: 'Branding & Graphic Design',
+      slug: 'branding-graphic-design',
+      shortDescription: 'Establish your brand identity with professional logos, graphic designs, and creatives.',
+      fullDescription: 'Our Branding Agency in Chennai designs vector-based professional logos, brand identity guides, social media creatives, and premium graphic design packages that elevate business visibility and establish a lasting visual brand.',
+      image: '/images/services/logo-design.jpg',
+      features: 'Branding Agency, Graphic Design, Logo Design, Brand Identity Design, Social Media Creatives, Vector SVGs, Brand Kit Guides',
+    },
+    // Keep old slugs for compatibility
     {
       title: 'Flutter App Development',
       slug: 'flutter-app-development',
@@ -73,7 +122,6 @@ async function main() {
       image: '/images/services/flutter-dev.jpg',
       features: 'Single Codebase, High Performance, Custom Widget Design, Real-time APIs, In-App Purchases, Material Design / Cupertino UI',
     },
-
     {
       title: 'Restaurant Software',
       slug: 'restaurant-software',
@@ -89,14 +137,6 @@ async function main() {
       fullDescription: 'Get complete visibility of your operations, customer journeys, sales leads, and team targets. Our bespoke CRMs and custom admin panels aggregate your data into interactive visual charts (bar, line, donut) to help you make informed business decisions.',
       image: '/images/services/crm-dashboard.jpg',
       features: 'Lead Management, Dynamic Charts, Data Export (CSV/PDF), Client Profiles, Automated Email Alerts, Responsive Admin Shell',
-    },
-    {
-      title: 'UI/UX Design',
-      slug: 'ui-ux-design',
-      shortDescription: 'User-centered design prototypes, wireframes, and screen flows that look stunning and feel natural.',
-      fullDescription: 'We focus on high-fidelity designs, interactive wireframes, and micro-interactions. Using Figma, we craft custom components, typography scales, and desaturated dark-mode palettes that ensure premium aesthetics and excellent user flow.',
-      image: '/images/services/ui-ux.jpg',
-      features: 'Figma Mockups, User Journey Mapping, Interactive Prototypes, Design System Creation, Responsive Grid, Usability Testing',
     },
     {
       title: 'Logo Design',
@@ -129,14 +169,6 @@ async function main() {
       fullDescription: 'Stop throwing away money on untargeted boosts. We build conversion-driven ad funnels, set up tracking pixels, design high-converting visual creatives, and monitor custom audiences to maximize your return on ad spend (ROAS).',
       image: '/images/services/ads.jpg',
       features: 'Pixel Setup & API, Lead Generation Ads, Retargeting Funnels, Copywriting & Ad Visuals, Weekly Performance Reports, Bid Optimization',
-    },
-    {
-      title: 'Digital Marketing',
-      slug: 'digital-marketing',
-      shortDescription: 'Complete online marketing strategies combining branding, social media, content, and lead generation.',
-      fullDescription: 'Grow your business online with a holistic marketing strategy. We handle content creation, social media scheduling, newsletter email updates, and search campaigns to turn cold traffic into brand advocates.',
-      image: '/images/services/digital-marketing.jpg',
-      features: 'Social Media Strategy, Content Scheduling, Email Newsletter Setup, Brand Authority Building, Inbound Sales Lead Funnels, Monthly Analytics',
     }
   ];
 
@@ -370,28 +402,49 @@ async function main() {
   });
   console.log('Portfolio seeded.');
 
-  // 8. Blogs
   const defaultBlogs = [
     {
       id: 'blog-1',
-      title: 'Why Custom CRM is Better Than Off-The-Shelf Solutions',
-      slug: 'why-custom-crm-is-better',
-      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDAqOafszodPpsx5yFOkuz-Si87XkQOmoTObccF91qagAIOUsK13tXh9x1xbExeFeb8t-qshmDdkDLgdbcASmHxawrTPJ7fD4Pi1H1ELUIv6qlG4DZYKxA3IhUwQnU-5_H1mJ0WZVZ_m7vHoLfCbQy_Tw5oMaFWxhUcfSkkTxHeeOmIE-nsacp8YzSMSDfPWV1TozyJFhSjXnDsjVw438a5b-9uZZGXlfbgm-mNlnD27M7HhfPLmwgZXIhFtXv6_6ZLehKfNYc8uH9P',
-      content: '<p>Off-the-shelf software is built for everyone, which often means it fits no one\'s specific workflows. A custom CRM designed around your company operations eliminates unnecessary features, makes onboarding faster, and handles data exactly the way you need it to...</p><h2>Key Benefits of Custom Systems</h2><ul><li><strong>Workflow Alignment:</strong> No need to adapt your process to the tool; the tool adapts to you.</li><li><strong>Cost Efficiency:</strong> Avoid monthly per-user license fees.</li><li><strong>Seamless Integration:</strong> Hook into your existing databases and legacy software without hassle.</li></ul>',
-      category: 'Software Development',
-      seoTitle: 'Why Custom CRM Beats Off-The-Shelf Tools | Together Tech',
-      seoDescription: 'Discover why custom software and bespoke CRMs are more productive and cost-effective than standard off-the-shelf subscriptions for growing businesses.',
+      title: 'Why Every Business Needs a Professional Website',
+      slug: 'why-every-business-needs-a-website',
+      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
+      content: '<p>In 2026, a business website is no longer just a digital business card. It is the core engine of your brand reputation, customer acquisition, and operational scalability. Whether you are an IT company in Chennai or a local retail store, your customers expect to find you online.</p><h2>1. Establish Authority and Credibility</h2><p>Before making a purchase or scheduling a service, modern consumers research online. A professional website immediately builds trust, showcasing your team, case studies, and client feedback.</p><h2>2. Organic Search Discovery & AI GEO</h2><p>By implementing SEO services and structured schemas, your website becomes searchable not only on Google but also on AI platforms like ChatGPT and Gemini. If you optimize for high-intent keywords like "Best Website Development Company," you capture valuable inbound leads.</p><h2>3. Control Your Customer Journey</h2><p>Unlike third-party social media pages, a custom website allows you to own your content, integrate custom contact forms, WhatsApp chat options, and direct lead capture pipelines without being subject to algorithm updates.</p>',
+      category: 'Website Development',
+      seoTitle: 'Why Every Business Needs a Professional Website | Together Tech',
+      seoDescription: 'Discover why a professional website is critical for business growth, authority, and ranking on Google and AI search engines in 2026.',
       status: 'PUBLISHED'
     },
     {
       id: 'blog-2',
-      title: '5 Crucial Mobile App UX Design Best Practices in 2026',
-      slug: '5-mobile-app-ux-best-practices',
-      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDJ1DG09YEmF2mBjkEE8hozEYN0u1s0ZOpo3x-Y3fCsPUkDG2ZNCUDgCUJX9r9pMSo2vE76AEdfFIz-xQtBAenjR-EoENq5ZEoZIShyn9JZ2QcbgP1SzinvTunR1HDCZbWy9f20YZ2i4o3a6wvLO8VxCMqmuPrTbJVQxLL43A7bVSBazFfaAWUD6utK2OXPZkfgPFSDQD8zcHhGw_8WXpCZXdVQLQhhtK7jjnUbJ9kGEhMyanTHPwmhsE812bM5Nax_SyicXio3_Kxl',
-      content: '<p>With mobile screen sizes growing and user attention spans shrinking, mobile app design requires precision. Here are the top 5 mobile app UX best practices including touch targets, dynamic content loading, and dark theme support...</p>',
-      category: 'UI/UX Design',
-      seoTitle: '5 Crucial Mobile App UX Design Best Practices | Together Tech',
-      seoDescription: 'Learn the top mobile app user experience patterns, touch constraints, and animation speeds to build successful apps in 2026.',
+      title: 'Website vs Mobile App: Which One Should You Build First?',
+      slug: 'website-vs-mobile-app-which-first',
+      image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=800&q=80',
+      content: '<p>One of the most common questions startups and small businesses ask is whether they should build a website or a mobile app first. Both have distinct advantages, but the right choice depends on your business model, budget, and target audience.</p><h2>When to Build a Website First</h2><p>Websites are accessible to anyone with a browser. They are faster and more affordable to develop, making them ideal for search engine discovery and broad reach. If your primary goal is lead generation, content marketing, or displaying portfolios, start with website development.</p><h2>When to Build a Mobile App First</h2><p>Mobile apps are ideal for high-engagement, repeat-interaction products. If your business relies on offline access, push notifications, or hardware integrations (GPS, camera), building a mobile app using Flutter first makes sense.</p><h2>The Hybrid Strategy</h2><p>Many successful startups build an SEO-optimized responsive website first to capture search traffic and validate their product, and then build a mobile application to deepen engagement with active users.</p>',
+      category: 'Software Development',
+      seoTitle: 'Website vs Mobile App: Which to Build First? | Together Tech',
+      seoDescription: 'Compare websites and mobile apps to decide which platform is the best starting point for your business growth and budget.',
+      status: 'PUBLISHED'
+    },
+    {
+      id: 'blog-3',
+      title: 'Top SEO Trends for 2026: Search in the Age of AI',
+      slug: 'top-seo-trends-2026',
+      image: 'https://images.unsplash.com/photo-1571786256887-6067defb58a3?auto=format&fit=crop&w=800&q=80',
+      content: '<p>Search Engine Optimization is undergoing its most radical transformation. With the rise of Generative Engine Optimization (GEO) and search engines like Perplexity, ChatGPT, and Google Gemini, ranking factors have shifted from simple keyword stuffing to semantic context.</p><h2>1. Optimizing for AI Conversational Engines (GEO)</h2><p>AI search models retrieve information in natural conversational patterns. To rank, write clear, direct Q&A segments on your pages (e.g. "What services does Together Tech provide?"). Make sure your content is natural, readable, and highly informative.</p><h2>2. Technical SEO & Core Web Vitals</h2><p>Fast loading speeds under 2 seconds remain critical. Clean code structures, lightweight frameworks like Next.js, and optimized image alt tags are crucial for ranking higher on all platforms.</p><h2>3. Schema Markup and Structured Data</h2><p>By implementing Organization, LocalBusiness, FAQ, and Service schemas, you feed crawlers semantic context directly, helping AI models accurately digest your data.</p>',
+      category: 'SEO Services',
+      seoTitle: 'Top SEO & GEO Trends for 2026 | Together Tech',
+      seoDescription: 'Discover the top SEO trends in 2026, focusing on Generative Engine Optimization (GEO), AI search citations, and technical performance.',
+      status: 'PUBLISHED'
+    },
+    {
+      id: 'blog-4',
+      title: 'Benefits of Custom Software Development for Startups',
+      slug: 'benefits-of-custom-software-for-startups',
+      image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=800&q=80',
+      content: '<p>Startups need to move fast and scale efficiently. While ready-made SaaS tools seem appealing initially, they often result in restricted customization and high monthly fees as you grow. Custom software development gives you a tailored platform that fits your exact processes.</p><h2>1. Competitive Advantage</h2><p>Proprietary software allows you to build features your competitors don\'t have. This is highly attractive to investors and provides a unique customer experience.</p><h2>2. Scalability and No License Caps</h2><p>With custom ERP and CRM systems, you pay for development once. As your team grows, you do not face escalating per-seat monthly subscription costs.</p><h2>3. Security and Integration</h2><p>Custom setups offer superior security, protecting sensitive customer details. You can easily integrate with existing databases and external API systems.</p>',
+      category: 'Software Development',
+      seoTitle: 'Benefits of Custom Software for Startups | Together Tech',
+      seoDescription: 'Explore how custom software, tailored CRM, and ERP systems give startups a competitive edge and eliminate recurring SaaS costs.',
       status: 'PUBLISHED'
     }
   ];

@@ -1,5 +1,14 @@
 import { prisma } from '@/lib/db';
 import HomeClient from '@/components/HomeClient';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Together Tech | Software Development, Website Development & Digital Marketing Company',
+  description: 'Together Tech provides Website Development, Software Development, Mobile App Development, Digital Marketing, SEO, Meta Ads, UI/UX Design, Branding, and Custom IT Solutions for businesses across India.',
+  alternates: {
+    canonical: 'https://togethertechgroups.in',
+  },
+};
 
 export const revalidate = 60; // Cache and revalidate every 60 seconds (ISR)
 
