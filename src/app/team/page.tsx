@@ -55,115 +55,78 @@ export default async function TeamPage() {
           </p>
         </section>
 
-        {/* Bento Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          {/* K. Aarsha - Featured Backend Architect (7/12 cols) */}
-          {aarsha && (
-            <div className="lg:col-span-7 bg-white border border-slate-200/80 rounded-3xl overflow-hidden flex flex-col md:flex-row shadow-sm hover:shadow-md hover:border-brandGreen/35 transition-all duration-500 hover:-translate-y-2">
-              <div className="md:w-1/2 relative overflow-hidden h-64 md:h-auto min-h-[320px]">
-                <img 
-                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" 
-                  alt={aarsha.name}
-                  src={aarsha.photo}
-                />
-              </div>
-              <div className="p-8 md:w-1/2 flex flex-col justify-center space-y-6">
-                <div>
-                  <span className="text-xxs font-black text-brandGreen uppercase tracking-widest block mb-2">
-                    {aarsha.role}
-                  </span>
-                  <h2 className="text-3xl font-extrabold tracking-tight text-brandDark">{aarsha.name}</h2>
-                </div>
-                <p className="text-brandGray text-sm leading-relaxed">
-                  {aarsha.bio}
-                </p>
-                <div className="flex space-x-4 pt-2">
-                  <Terminal className="w-5 h-5 text-slate-500 hover:text-brandGreen transition-colors" />
-                  <Database className="w-5 h-5 text-slate-500 hover:text-brandGreen transition-colors" />
-                  <Cloud className="w-5 h-5 text-slate-500 hover:text-brandGreen transition-colors" />
-                </div>
-              </div>
-            </div>
-          )}
+        {/* Team Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {[vel, aarsha, priya].filter(Boolean).map((member) => {
+            const Icon = member.id === 'm-velmurugan' ? Palette : member.id === 'k-aarsha' ? Terminal : Smartphone;
+            const iconColor = member.id === 'm-velmurugan' ? 'text-brandGreen' : member.id === 'k-aarsha' ? 'text-brandGreen' : 'text-blue-500';
 
-          {/* P. Priyadharshini - Mobile Specialist (5/12 cols) */}
-          {priya && (
-            <div className="lg:col-span-5 bg-white border border-slate-200/80 rounded-3xl p-8 flex flex-col justify-between shadow-sm hover:shadow-md hover:border-brandGreen/35 transition-all duration-500 hover:-translate-y-2">
-              <div className="space-y-6">
-                <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-brandGreen/25 p-1 hover:border-brandGreen transition-colors">
-                  <img className="w-full h-full object-cover rounded-full" alt={priya.name} src={priya.photo} />
-                </div>
-                <div>
-                  <span className="text-xxs font-black text-[#0084FF] uppercase tracking-widest block mb-2">
-                    {priya.role}
-                  </span>
-                  <h2 className="text-3xl font-extrabold tracking-tight text-brandDark">{priya.name}</h2>
-                </div>
-                <p className="text-brandGray text-sm leading-relaxed">
-                  {priya.bio}
-                </p>
-              </div>
-              <div className="pt-6 mt-6 border-t border-slate-100 flex justify-between items-center">
-                <div className="flex gap-2">
-                  {priya.skills.split(',').slice(0, 2).map((skill, index) => (
-                    <span key={index} className="px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-xxs font-bold uppercase tracking-wide">
-                      {skill.trim()}
-                    </span>
-                  ))}
-                </div>
-                <Smartphone className="w-5 h-5 text-[#0084FF]" />
-              </div>
-            </div>
-          )}
-
-          {/* M. Velmurugan - Experience Designer (5/12 cols) */}
-          {vel && (
-            <div className="lg:col-span-5 bg-white border border-slate-200/80 rounded-3xl p-8 flex flex-col justify-between shadow-sm hover:shadow-md hover:border-brandGreen/35 transition-all duration-500 hover:-translate-y-2">
-              <div className="space-y-6">
-                <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-brandGreen/25 p-1 hover:border-brandGreen transition-colors">
-                  <img className="w-full h-full object-cover rounded-full" alt={vel.name} src={vel.photo} />
-                </div>
-                <div>
-                  <span className="text-xxs font-black text-brandGreen uppercase tracking-widest block mb-2">
-                    {vel.role}
-                  </span>
-                  <h2 className="text-3xl font-extrabold tracking-tight text-brandDark">{vel.name}</h2>
-                </div>
-                <p className="text-brandGray text-sm leading-relaxed">
-                  {vel.bio}
-                </p>
-              </div>
-              <div className="pt-6 mt-6 border-t border-slate-100 flex justify-between items-center">
-                <div className="flex gap-2">
-                  {vel.skills.split(',').slice(0, 2).map((skill, index) => (
-                    <span key={index} className="px-3 py-1 rounded-full bg-brandGreen/10 text-brandGreen text-xxs font-bold uppercase tracking-wide">
-                      {skill.trim()}
-                    </span>
-                  ))}
-                </div>
-                <Palette className="w-5 h-5 text-brandGreen" />
-              </div>
-            </div>
-          )}
-
-          {/* CTA Join Card (7/12 cols) */}
-          <div className="lg:col-span-7 bg-slate-50 border border-slate-200/80 rounded-3xl p-8 flex flex-col justify-center items-center text-center relative overflow-hidden shadow-sm hover:border-brandGreen/35 transition-all duration-500">
-            <div className="absolute -top-10 -right-10 opacity-[0.03] pointer-events-none">
-              <Users className="w-64 h-64 text-brandDark" />
-            </div>
-            <div className="max-w-md space-y-6 relative z-10">
-              <h3 className="text-3xl font-extrabold tracking-tight text-brandDark">Ready to Innovate With Us?</h3>
-              <p className="text-brandGray text-sm leading-relaxed">
-                We are always looking for passionate engineers and creative thinkers to join our mission of technical excellence.
-              </p>
-              <Link 
-                href="/contact" 
-                className="inline-flex items-center space-x-2 px-8 py-3 rounded-full border border-brandGreen text-brandGreen font-bold text-sm tracking-wide transition-all duration-300 hover:bg-brandGreen hover:text-white"
+            return (
+              <div 
+                key={member.id}
+                className="bg-white border border-slate-200/80 rounded-[2rem] p-8 flex flex-col justify-between shadow-sm hover:shadow-xl hover:border-brandGreen/35 transition-all duration-500 hover:-translate-y-2 group"
               >
-                <span>View Open Roles</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
+                <div className="space-y-6">
+                  {/* Photo Frame */}
+                  <div className="w-32 h-32 rounded-3xl overflow-hidden border-2 border-slate-100 p-1 group-hover:border-brandGreen/50 transition-colors mx-auto shadow-inner relative bg-slate-50">
+                    <img 
+                      className="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500" 
+                      alt={member.name} 
+                      src={member.photo} 
+                    />
+                  </div>
+                  
+                  {/* Info */}
+                  <div className="text-center space-y-2">
+                    <span className={`text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full inline-block ${member.id === 'p-priyadharshini' ? 'text-blue-600 bg-blue-50/80 border border-blue-100/50' : 'text-brandGreen bg-brandGreenLight border border-brandGreen/25'}`}>
+                      {member.role}
+                    </span>
+                    <h2 className="text-2xl font-black tracking-tight text-brandDark font-outfit">{member.name}</h2>
+                  </div>
+                  
+                  <p className="text-brandGray text-xs sm:text-sm leading-relaxed text-center font-medium min-h-[72px]">
+                    {member.bio}
+                  </p>
+                </div>
+                
+                {/* Footer skills & icon */}
+                <div className="pt-6 mt-6 border-t border-slate-100 flex justify-between items-center">
+                  <div className="flex flex-wrap gap-1.5">
+                    {member.skills.split(',').slice(0, 3).map((skill, index) => (
+                      <span 
+                        key={index} 
+                        className="px-2.5 py-0.5 rounded-md bg-slate-50 text-slate-600 text-[10px] font-extrabold uppercase tracking-wide border border-slate-100"
+                      >
+                        {skill.trim()}
+                      </span>
+                    ))}
+                  </div>
+                  <div className={`p-2 rounded-xl bg-slate-50 border border-slate-100 shrink-0 ${iconColor}`}>
+                    <Icon className="w-4 h-4" />
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* CTA Join Card (Full Width) */}
+        <div className="bg-slate-50 border border-slate-200/80 rounded-[2rem] p-10 flex flex-col justify-center items-center text-center relative overflow-hidden shadow-sm hover:border-brandGreen/35 transition-all duration-500">
+          <div className="absolute -top-10 -right-10 opacity-[0.03] pointer-events-none">
+            <Users className="w-64 h-64 text-brandDark" />
+          </div>
+          <div className="max-w-md space-y-6 relative z-10">
+            <h3 className="text-3xl font-extrabold tracking-tight text-brandDark">Ready to Innovate With Us?</h3>
+            <p className="text-brandGray text-sm leading-relaxed">
+              We are always looking for passionate engineers and creative thinkers to join our mission of technical excellence.
+            </p>
+            <Link 
+              href="/contact" 
+              className="inline-flex items-center space-x-2 px-8 py-3 rounded-full border border-brandGreen text-brandGreen font-bold text-sm tracking-wide transition-all duration-300 hover:bg-brandGreen hover:text-white"
+            >
+              <span>View Open Roles</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
         </div>
 

@@ -235,7 +235,7 @@ async function main() {
       id: 'k-aarsha',
       name: 'K. Aarsha',
       role: 'Backend Architect',
-      photo: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDmp8WZol0oBzwPhRaXIUcsgc3P0krxqeAxsczB1q5WWReW0m4CVWaNatPsHWz-SkY0qG1GKh2vJLYhtDskmHpDtLcbncTlsOQy_7pGvashV-1Uv5r9SAR93qEGWJqK-PhEYNaxIghxom92qlCNuXdPuMTJmVzaAZQb4oeBcsXEAyt0fnt3wNTwibDzfnVYkYKGABrR95Za8NJjHhTD3YSepbRmjdKS7ZZH6XrmKIt1z3PpkUVP0aayHqsP7Hmaljmqs3a5FRMiEawB',
+      photo: '/images/team/aarsha.jpg',
       bio: 'Leading the core infrastructure, K. Aarsha is responsible for crafting reliable software solutions and complex backend logic that powers our high-performance applications.',
       skills: 'Node.js, PostgreSQL, REST APIs, System Architecture, Docker, Python',
       socialLinks: JSON.stringify({ linkedin: '#', github: '#', email: 'aarsha@togethertech.in' })
@@ -244,7 +244,7 @@ async function main() {
       id: 'p-priyadharshini',
       name: 'P. Priyadharshini',
       role: 'Mobile Specialist',
-      photo: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBZHEB8mRZevvDlOvqbqtxeir0x9DVlkIOIe_XtT_xtk7xsPbv57WNxpCCPWx1XoDtXQxyklk-fj1wKh6fdvHesAS_V079rO3rLUsh5eZ_U3dmN5TZo6VNNKwfo7o65iEnTPe40hOVBjYGE0WB2-uCsRNB-obMchR8tP3vIQqlMNPLIK0ZInBGGKQRmABLAnkcBXQqYhtg5GPWb1WDHawjZv2znGTYMfborTk_ngKA6tG1yCh1T7gp549t0-kTOg3XFupoHQ9gHXblX',
+      photo: '/images/team/priyadharshini.jpg',
       bio: 'Specializing in cross-platform excellence, she focuses on building modern, high-performance mobile apps with Flutter, ensuring seamless user journeys across all devices.',
       skills: 'Flutter, Dart, Firebase, iOS/Android Store, State Management, App UX',
       socialLinks: JSON.stringify({ linkedin: '#', github: '#', email: 'priya@togethertech.in' })
@@ -253,7 +253,7 @@ async function main() {
       id: 'm-velmurugan',
       name: 'M. Velmurugan',
       role: 'Experience Designer',
-      photo: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAVfJRkhltDRyod2qLXblbWnUdXAI-Jrp_QwFueQ8mir8R6mS46LX7hhbctQQYPDxNDJvp0jFjz19xHeJLn8JwAMJ-FBnhrD1_V0iWO27BB1PDsxZK7rCexcfwBKUGU63gDK2uyv2wT0VANKXEL-mAr-DSAgJKRoPD5xC0EXkGmiF4VRdgGW6Feq1Gd7HhNw_BVLxno36JQ7J5SB0OB13XiXSNnjSsBHAACvB6H6gvDJCrzJMhJD8vbL0DqXUErc0Y4EYDYOnGcAW8o',
+      photo: '/images/team/velmurugan.jpg',
       bio: 'Velmurugan masters the intersection of form and function, handling user interface and experience design to create visually stunning and intuitively usable digital products.',
       skills: 'Figma, Adobe Illustrator, Visual Hierarchy, Prototyping, Logo Branding, Typography',
       socialLinks: JSON.stringify({ linkedin: '#', behance: '#', email: 'vel@togethertech.in' })
