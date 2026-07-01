@@ -40,7 +40,7 @@ export default function Footer() {
               height={52}
               className="w-13 h-13 object-contain"
             />
-            <span className="font-mitshuka-brand text-3xl tracking-tight text-brandDark">
+            <span className="font-neogen text-2xl tracking-tight text-brandDark">
               Together<span className="text-brandGreen">Tech</span>
             </span>
           </Link>

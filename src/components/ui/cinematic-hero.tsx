@@ -381,7 +381,7 @@ export function CinematicHero({
 
             {/* 1. TOP (Mobile) / RIGHT (Desktop): BRAND NAME */}
             <div className="card-right-text gsap-reveal order-1 lg:order-3 flex justify-center lg:justify-end z-20 w-full">
-              <h2 className="text-3xl md:text-5xl lg:text-5xl xl:text-6xl tracking-tighter text-card-silver-matte lg:mt-0 lg:text-right font-mitshuka-brand leading-normal pb-4">
+              <h2 className="text-3xl md:text-5xl lg:text-5xl xl:text-6xl font-black tracking-tighter text-card-silver-matte lg:mt-0 lg:text-right font-neogen leading-normal pb-4">
                 {brandName}
               </h2>
             </div>

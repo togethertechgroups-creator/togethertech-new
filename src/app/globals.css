@@ -55,11 +55,6 @@
   font-weight: normal !important;
 }
 
-.font-mitshuka-brand {
-  font-family: 'Mitshuka', sans-serif !important;
-  font-weight: normal !important;
-}
-
 @font-face {
   font-family: 'Eternalo';
   src: url('/fonts/Eternalo.ttf') format('truetype');
