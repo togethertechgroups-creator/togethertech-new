@@ -282,7 +282,7 @@ export default function HomeClient({
           tagline1="Develop the future,"
           tagline2="not just the code."
           cardHeading="Welcome to Together Universe"
-          cardDescription={<><span className="text-white font-semibold font-neogen">Together Tech</span> empowers growing business ecosystems with custom software, cloud operations, and premium UI/UX design.</>}
+          cardDescription={<><span className="text-white font-semibold font-mitshuka-brand">Together Tech</span> empowers growing business ecosystems with custom software, cloud operations, and premium UI/UX design.</>}
           metricValue={100}
           metricLabel="Projects Delivered"
           ctaHeading="Launch your vision."
@@ -443,7 +443,7 @@ export default function HomeClient({
             <div className="w-full flex justify-center lg:justify-start mb-12">
               <div className="text-center lg:text-left">
                 <h2 className="text-3xl font-black tracking-tighter flex flex-row items-baseline gap-2 leading-none text-brandDark">
-                  <span className="font-rustic">Together.</span>
+                  <span className="font-mitshuka-brand text-4xl">Together.</span>
                   <span className="text-[10px] tracking-[0.25em] uppercase font-black opacity-70">Tech Groups</span>
                 </h2>
               </div>
@@ -461,7 +461,7 @@ export default function HomeClient({
                         <path d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
                     </span>
-                    <span className="tracking-tight">TOGETHER TECH</span>
+                    <span className="font-mitshuka-brand normal-case text-5xl sm:text-6xl md:text-7xl font-normal">Together Tech</span>
                   </span>
                 </h2>
               </div>
