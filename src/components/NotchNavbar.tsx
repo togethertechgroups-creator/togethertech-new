@@ -25,18 +25,18 @@ const NavLink = ({
     href={href}
     onClick={onClick}
     className={cn(
-      "group flex items-center gap-1 text-[11px] font-medium transition-all duration-200 whitespace-nowrap relative py-1 px-1.5 rounded-full",
+      "group flex items-center gap-1.5 text-xs md:text-sm font-semibold transition-all duration-200 whitespace-nowrap relative py-1.5 px-3 rounded-full",
       isActive
         ? "text-[#EF8E01] font-bold"
         : "text-slate-600 hover:text-brandDark hover:bg-slate-100"
     )}
   >
-    <Icon className={cn("w-3.5 h-3.5 transition-opacity", isActive ? "opacity-100" : "opacity-60 group-hover:opacity-100")} />
+    <Icon className={cn("w-4 h-4 transition-opacity", isActive ? "opacity-100" : "opacity-60 group-hover:opacity-100")} />
     <span>{label}</span>
     {isActive && (
       <motion.span
         layoutId="activeNavLine"
-        className="absolute -bottom-1 left-2 right-2 h-0.5 bg-[#EF8E01] rounded-full"
+        className="absolute -bottom-1 left-3 right-3 h-0.5 bg-[#EF8E01] rounded-full"
         transition={{ type: "spring", stiffness: 380, damping: 30 }}
       />
     )}
@@ -67,45 +67,45 @@ export function NotchNavbar() {
   return (
     <>
       <header
-        className="fixed top-0 inset-x-0 z-50 flex items-center justify-center pt-3 px-4 transition-all duration-300"
+        className="fixed top-0 inset-x-0 z-50 flex items-center justify-center pt-5 px-4 transition-all duration-300"
       >
         {/* Pill Container */}
         <div
           className={cn(
-            "w-full max-w-3xl flex items-center justify-between gap-3 px-3 py-1.5 rounded-full border transition-all duration-300 bg-white/90 backdrop-blur-md",
+            "w-full max-w-5xl flex items-center justify-between gap-4 px-6 py-2.5 sm:py-3 rounded-full border transition-all duration-300 bg-white/90 backdrop-blur-md",
             scrolled
               ? "border-slate-200 shadow-[0_8px_32px_rgba(0,0,0,0.12)]"
               : "border-slate-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.06)]"
           )}
         >
           {/* Left: Logo */}
-          <Link href="/" className="flex items-center gap-2 shrink-0">
+          <Link href="/" className="flex items-center gap-2.5 shrink-0">
             <Image
               src="/images/logo.png"
               alt="Together Tech Groups Logo"
-              width={28}
-              height={28}
-              className="w-7 h-7 object-contain drop-shadow-md"
+              width={36}
+              height={36}
+              className="w-8 h-8 sm:w-9 sm:h-9 object-contain drop-shadow-md"
               priority
             />
-            <span className="font-neogen text-[10px] sm:text-xs tracking-tight leading-none">
+            <span className="font-neogen text-xs sm:text-sm md:text-base tracking-normal leading-none font-bold">
               <span className="text-[#0038BD]">Together</span>
               <span className="text-brandGreen">Tech</span>
             </span>
           </Link>
 
           {/* Center: Desktop Nav (Hidden on Mobile) */}
-          <nav className="hidden md:flex items-center gap-1">
+          <nav className="hidden md:flex items-center gap-1.5">
             {allItems.map((item) => (
               <NavLink key={item.label} {...item} isActive={pathname === item.href} />
             ))}
           </nav>
 
           {/* Right: CTA Button and Mobile Hamburger (Always visible CTA, hamburger only on Mobile) */}
-          <div className="flex items-center gap-1.5 shrink-0">
+          <div className="flex items-center gap-2 shrink-0">
             <Link
               href="/contact"
-              className="px-3.5 py-1.5 rounded-full bg-brandGreen hover:bg-brandGreenHover text-white text-[10px] sm:text-xs font-bold transition-all duration-200 shadow-md shadow-brandGreen/30 shrink-0"
+              className="px-5 py-2.5 rounded-full bg-brandGreen hover:bg-brandGreenHover text-white text-xs sm:text-sm font-bold transition-all duration-200 shadow-md shadow-brandGreen/30 shrink-0"
             >
               Get a Quote
             </Link>
