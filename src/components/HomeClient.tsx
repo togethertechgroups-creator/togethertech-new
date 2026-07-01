@@ -100,82 +100,94 @@ export default function HomeClient({
       <div className="space-y-0">
         {/* 1. HERO SECTION */}
         <section className="relative min-h-[95vh] flex items-center justify-center overflow-hidden bg-white pt-24 pb-16">
-          {/* Full Screen Background Image */}
-          <div className="absolute inset-0 w-full h-full z-0">
+          {/* Full Screen Background Image (Only visible on Desktop, behaves as original) */}
+          <div className="absolute inset-0 w-full h-full z-0 pointer-events-none hidden lg:block">
             <img
               src="/images/hero.png"
               alt="TogetherTech Hero Background"
-              className="w-full h-full object-cover object-[80%_center] lg:object-[104%_center]"
+              className="w-full h-full object-cover object-[104%_center]"
             />
             <div className="absolute bottom-20 left-10 w-96 h-96 rounded-full bg-emerald-500/5 blur-3xl float-element" style={{ animationDelay: '2s' }} />
 
             {/* Abstract Green Corner Curves to match the Foodied UI */}
-            <div className="absolute -top-10 -right-10 w-96 h-96 rounded-full bg-brandGreen/10 blur-2xl pointer-events-none" />
-            <div className="absolute -bottom-20 -left-20 w-80 h-80 rounded-full bg-brandGreen/5 blur-xl pointer-events-none" />
+            <div className="absolute -top-10 -right-10 w-96 h-96 rounded-full bg-brandGreen/10 blur-2xl" />
+            <div className="absolute -bottom-20 -left-20 w-80 h-80 rounded-full bg-brandGreen/5 blur-xl" />
+          </div>
+
+          {/* Background curves on Mobile/Tablet */}
+          <div className="absolute inset-0 w-full h-full z-0 pointer-events-none lg:hidden">
+            <div className="absolute -top-10 -right-10 w-80 h-80 rounded-full bg-brandGreen/5 blur-xl" />
+            <div className="absolute -bottom-20 -left-20 w-60 h-60 rounded-full bg-brandGreen/5 blur-xl" />
           </div>
 
           <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
 
-              {/* Left Column: Text & CTAs */}
-              <div className="lg:col-span-6 text-left space-y-6 bg-white/75 backdrop-blur-md p-6 md:p-8 rounded-3xl border border-slate-100/50 lg:bg-transparent lg:backdrop-blur-none lg:p-0 lg:border-none relative z-10">
-                <motion.div
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5 }}
-                  className="inline-flex items-center space-x-2 bg-brandGreenLight border border-brandGreen/20 px-4 py-1.5 rounded-full text-brandGreen"
-                >
-                  <span className="w-2.5 h-2.5 rounded-full bg-brandGreen animate-pulse" />
-                  <span className="text-xs font-bold uppercase tracking-wider">Turning Ideas Into Real Digital Solutions</span>
-                </motion.div>
+              {/* Left Column: Text & CTAs & Mobile Mockup & Feature Boxes */}
+              <div className="lg:col-span-6 text-left space-y-6 relative z-10">
+                
+                {/* Badge */}
+                <div className="flex justify-start">
+                  <motion.div
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="inline-flex items-center space-x-2 bg-brandGreenLight border border-brandGreen/20 px-4 py-1.5 rounded-full text-brandGreen"
+                  >
+                    <span className="w-2.5 h-2.5 rounded-full bg-brandGreen animate-pulse" />
+                    <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider">Turning Ideas Into Real Digital Solutions</span>
+                  </motion.div>
+                </div>
 
+                {/* Heading (Increased size on mobile: text-4xl) */}
                 <motion.h1
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.1 }}
-                  className="text-4xl sm:text-5xl md:text-6xl font-neogen tracking-tight text-brandDark leading-tight"
+                  className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-neogen tracking-tight text-brandDark text-left leading-tight"
                 >
                   Build Your Digital Future <br className="hidden sm:inline" />
                   With <span className="text-[#0038BD]">Together</span> <span className="text-brandGreen">Tech</span>
                 </motion.h1>
 
+                {/* Paragraph (Increased size and weight on mobile: text-base font-semibold) */}
                 <motion.p
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.2 }}
-                  className="text-base md:text-lg text-brandGray max-w-2xl font-medium leading-relaxed font-biooris"
+                  className="text-base sm:text-base md:text-lg text-brandGray max-w-2xl text-left font-semibold leading-relaxed font-biooris"
                 >
                   We Create Professional Websites, Mobile Apps, Custom Software, Branding, SEO, and Digital Marketing Solutions That Help Your Business Grow Faster.
                 </motion.p>
 
-                {/* Action buttons */}
+                {/* Action buttons (stacked on mobile, row on tablet/desktop) */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.3 }}
-                  className="flex flex-col sm:flex-row items-center gap-4 pt-2"
+                  className="flex flex-col sm:flex-row items-center justify-start gap-4 pt-2 w-full max-w-md"
                 >
                   <Link
                     href="/contact"
-                    className="w-full sm:w-auto px-8 py-4 rounded-full bg-brandGreen hover:bg-brandGreenHover text-white font-bold tracking-wide transition-all duration-300 shadow-md shadow-brandGreen/20 flex items-center justify-center space-x-2"
+                    className="w-full sm:w-auto px-8 py-4 rounded-full bg-brandGreen hover:bg-brandGreenHover text-white font-bold tracking-wide transition-all duration-300 shadow-md shadow-brandGreen/20 flex items-center justify-center space-x-2 text-sm uppercase"
                   >
                     <span>Get Free Quote</span>
                     <ArrowRight className="w-5 h-5" />
                   </Link>
                   <Link
                     href="/portfolio"
-                    className="w-full sm:w-auto px-8 py-4 rounded-full bg-slate-100 hover:bg-slate-200 text-brandDark font-bold tracking-wide border border-slate-200 transition-all duration-300 flex items-center justify-center"
+                    className="w-full sm:w-auto px-8 py-4 rounded-full bg-slate-100 hover:bg-slate-200 text-brandDark font-bold tracking-wide border border-slate-200 transition-all duration-300 flex items-center justify-center text-sm uppercase"
                   >
                     View Our Works
                   </Link>
                 </motion.div>
 
-                {/* Quick trust points */}
+                {/* Quick trust points / Feature boxes (Responsive grid: 2-col on all viewports) */}
                 <motion.div
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.5 }}
-                  className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-10 border-t border-slate-200"
+                  className="grid grid-cols-2 gap-2 sm:gap-4 pt-8 border-t border-slate-200 w-full"
                 >
                   {[
                     {
@@ -213,26 +225,24 @@ export default function HomeClient({
                   ].map((pt, i) => {
                     const IconComponent = pt.icon;
                     return (
-                      <motion.div
+                      <div
                         key={i}
-                        whileHover={{ y: -5, scale: 1.02 }}
-                        transition={{ type: "spring", stiffness: 300, damping: 15 }}
-                        className="flex items-center gap-4 p-4 rounded-2xl bg-white/40 backdrop-blur-[6px] border border-slate-100/80 hover:bg-white/90 hover:border-[#70B33F]/25 hover:shadow-lg hover:shadow-slate-100/60 transition-all duration-300 group cursor-pointer w-full"
+                        className="flex items-center gap-2 sm:gap-4 p-2.5 sm:p-4 rounded-2xl bg-white border border-slate-100 hover:border-[#70B33F]/25 hover:shadow-lg transition-all duration-300 group cursor-pointer w-full text-left"
                       >
-                        <div className={`p-2.5 rounded-xl border ${pt.bgColor} ${pt.borderColor} flex-shrink-0 flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-300`}>
-                          <IconComponent className={`w-5 h-5 ${pt.iconColor}`} />
+                        <div className={`p-1.5 sm:p-2.5 rounded-xl border ${pt.bgColor} ${pt.borderColor} flex-shrink-0 flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-300`}>
+                          <IconComponent className={`w-4 h-4 sm:w-5 h-5 ${pt.iconColor}`} />
                         </div>
-                        <div className="space-y-0.5 min-w-0 text-left">
-                          <h3 className="font-extrabold text-brandDark text-sm tracking-tight font-outfit leading-tight">{pt.label}</h3>
-                          <p className="text-[10px] text-brandGreen font-bold uppercase tracking-wider leading-snug">{pt.desc}</p>
+                        <div className="space-y-0.5 min-w-0">
+                          <h3 className="font-extrabold text-brandDark text-[11px] sm:text-sm tracking-tight font-outfit leading-tight truncate">{pt.label}</h3>
+                          <p className="text-[9px] sm:text-[10px] text-brandGreen font-bold uppercase tracking-wider leading-snug truncate">{pt.desc}</p>
                         </div>
-                      </motion.div>
+                      </div>
                     );
                   })}
                 </motion.div>
               </div>
 
-              {/* Right Column: Spacer to let the background image show through */}
+              {/* Right Column: Spacer on desktop to let full background render on the right */}
               <div className="hidden lg:block lg:col-span-6" />
 
             </div>
@@ -262,7 +272,71 @@ export default function HomeClient({
               <p className="text-brandDark font-medium font-biooris">We design and construct high-performance digital solutions to resolve complex business bottlenecks.</p>
             </div>
 
-            <ServicesSectionStack services={services} />
+            {/* Desktop & Tablet Stacked Cards */}
+            <div className="hidden md:block">
+              <ServicesSectionStack services={services} />
+            </div>
+
+            {/* Mobile: Vertical List (One by one cards) */}
+            <div className="block md:hidden space-y-6 py-6">
+              {services.map((service, i) => {
+                const IconComponent = getServiceIcon(service.slug);
+                const featuresList = service.features
+                  ? service.features.split(',').map((f: string) => f.trim()).slice(0, 4)
+                  : [];
+
+                return (
+                  <motion.div
+                    key={service.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-30px" }}
+                    transition={{ duration: 0.4, delay: i * 0.05 }}
+                    className="p-6 rounded-3xl bg-white border border-slate-100 shadow-lg flex flex-col justify-between space-y-4"
+                  >
+                    <div className="space-y-3">
+                      {/* Icon & Title Row */}
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-xl bg-brandGreen/10 border border-brandGreen/25 flex items-center justify-center text-brandGreen">
+                          <IconComponent className="w-5 h-5" />
+                        </div>
+                        <span className="text-[10px] font-bold tracking-widest text-[#EF8E01] uppercase">Service {i + 1} of {services.length}</span>
+                      </div>
+
+                      <h3 className="text-xl font-extrabold font-outfit text-brandDark">
+                        {service.title}
+                      </h3>
+
+                      <p className="text-xs text-slate-600 leading-relaxed font-biooris">
+                        {service.shortDescription}
+                      </p>
+
+                      {/* Features list */}
+                      {featuresList.length > 0 && (
+                        <div className="grid grid-cols-2 gap-2 pt-2 border-t border-slate-100">
+                          {featuresList.map((feature: string, idx: number) => (
+                            <div key={idx} className="flex items-center space-x-1.5 text-[10px] text-slate-700">
+                              <Check className="w-3 h-3 text-brandGreen flex-shrink-0" />
+                              <span className="truncate">{feature}</span>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="pt-2">
+                      <Link
+                        href={`/services/${service.slug}`}
+                        className="w-full flex items-center justify-center px-4 py-2.5 rounded-xl bg-brandGreen hover:bg-brandGreenHover text-white font-bold text-xs uppercase tracking-wider transition-all duration-300 space-x-2"
+                      >
+                        <span>Explore details</span>
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </Link>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
 
             <div className="text-center">
               <Link

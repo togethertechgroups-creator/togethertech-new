@@ -1,15 +1,12 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import Image from "next/image"
-import Link from "next/link"
-import { usePathname } from "next/navigation"
-import {
-  Home, User, Layers, Briefcase, Tag, Users,
-  Mail, Menu, X
-} from "lucide-react"
-import { cn } from "@/lib/utils"
-import { motion, AnimatePresence } from "framer-motion"
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Menu, X, Home, User, Layers, Briefcase, Tag, Users, Mail } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { motion, AnimatePresence } from "framer-motion";
 
 const NavLink = ({
   href,
@@ -28,7 +25,7 @@ const NavLink = ({
     href={href}
     onClick={onClick}
     className={cn(
-      "group flex items-center gap-1 text-xs font-medium transition-all duration-200 whitespace-nowrap relative py-1 px-1.5 rounded-full",
+      "group flex items-center gap-1 text-[11px] font-medium transition-all duration-200 whitespace-nowrap relative py-1 px-1.5 rounded-full",
       isActive
         ? "text-[#EF8E01] font-bold"
         : "text-slate-600 hover:text-brandDark hover:bg-slate-100"
@@ -40,49 +37,45 @@ const NavLink = ({
       <motion.span
         layoutId="activeNavLine"
         className="absolute -bottom-1 left-2 right-2 h-0.5 bg-[#EF8E01] rounded-full"
-        transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+        transition={{ type: "spring", stiffness: 380, damping: 30 }}
       />
     )}
   </Link>
-)
+);
 
 const allItems = [
-  { label: "Home", href: "/", icon: Home },
-  { label: "About", href: "/about", icon: User },
-  { label: "Services", href: "/services", icon: Layers },
+  { label: "Home",      href: "/",          icon: Home },
+  { label: "About",     href: "/about",     icon: User },
+  { label: "Services",  href: "/services",  icon: Layers },
   { label: "Portfolio", href: "/portfolio", icon: Briefcase },
-  { label: "Packages", href: "/packages", icon: Tag },
-  { label: "Team", href: "/team", icon: Users },
-  { label: "Contact", href: "/contact", icon: Mail },
-]
+  { label: "Packages",  href: "/packages",  icon: Tag },
+  { label: "Team",      href: "/team",      icon: Users },
+  { label: "Contact",   href: "/contact",   icon: Mail },
+];
 
-export function NotchNavbar({ className, ...props }: React.HTMLAttributes<HTMLElement> & { logo?: React.ReactNode }) {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
-  const pathname = usePathname()
+export function NotchNavbar() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20)
-    window.addEventListener("scroll", onScroll, { passive: true })
-    return () => window.removeEventListener("scroll", onScroll)
-  }, [])
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <>
       <header
-        className={cn(
-          "fixed top-0 inset-x-0 z-50 flex items-center justify-center pt-3 px-4 transition-all duration-300",
-          className
-        )}
-        {...props}
+        className="fixed top-0 inset-x-0 z-50 flex items-center justify-center pt-3 px-4 transition-all duration-300"
       >
         {/* Pill Container */}
         <div
           className={cn(
-            "w-full max-w-3xl flex items-center justify-between gap-3 px-3 py-1.5 rounded-full border transition-all duration-300",
+            "w-full max-w-3xl flex items-center justify-between gap-3 px-3 py-1.5 rounded-full border transition-all duration-300 bg-white/90 backdrop-blur-md",
             scrolled
-              ? "bg-white border-slate-200 shadow-[0_8px_32px_rgba(0,0,0,0.12)]"
-              : "bg-white border-slate-200 shadow-[0_4px_20px_rgba(0,0,0,0.08)]"
+              ? "border-slate-200 shadow-[0_8px_32px_rgba(0,0,0,0.12)]"
+              : "border-slate-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.06)]"
           )}
         >
           {/* Left: Logo */}
@@ -95,39 +88,40 @@ export function NotchNavbar({ className, ...props }: React.HTMLAttributes<HTMLEl
               className="w-7 h-7 object-contain drop-shadow-md"
               priority
             />
-            <span className="hidden sm:block font-neogen text-xs tracking-tight leading-none">
+            <span className="font-neogen text-[10px] sm:text-xs tracking-tight leading-none">
               <span className="text-[#0038BD]">Together</span>
               <span className="text-brandGreen">Tech</span>
             </span>
           </Link>
 
-          {/* Center: Desktop Nav */}
+          {/* Center: Desktop Nav (Hidden on Mobile) */}
           <nav className="hidden md:flex items-center gap-1">
-            {allItems.map(item => (
+            {allItems.map((item) => (
               <NavLink key={item.label} {...item} isActive={pathname === item.href} />
             ))}
           </nav>
 
-          {/* Right: Mobile Menu Button */}
-          <button
-            className="md:hidden p-2 text-slate-500 hover:text-brandDark transition-colors rounded-full hover:bg-slate-100"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
+          {/* Right: CTA Button and Mobile Hamburger (Always visible CTA, hamburger only on Mobile) */}
+          <div className="flex items-center gap-1.5 shrink-0">
+            <Link
+              href="/contact"
+              className="px-3.5 py-1.5 rounded-full bg-brandGreen hover:bg-brandGreenHover text-white text-[10px] sm:text-xs font-bold transition-all duration-200 shadow-md shadow-brandGreen/30 shrink-0"
+            >
+              Get a Quote
+            </Link>
 
-          {/* Right: Contact CTA (desktop) */}
-          <Link
-            href="/contact"
-            className="hidden md:flex items-center gap-1.5 px-3 py-1 rounded-full bg-brandGreen hover:bg-brandGreenHover text-white text-xs font-bold transition-all duration-200 shadow-md shadow-brandGreen/30 shrink-0"
-          >
-            Get a Quote
-          </Link>
+            <button
+              className="md:hidden p-1.5 text-slate-500 hover:text-brandDark transition-colors rounded-full hover:bg-slate-100"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
+          </div>
         </div>
       </header>
 
-      {/* Mobile Menu Dropdown */}
+      {/* Mobile Menu Dropdown (Floating Rounded Card) */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
@@ -135,10 +129,10 @@ export function NotchNavbar({ className, ...props }: React.HTMLAttributes<HTMLEl
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.97 }}
             transition={{ duration: 0.18 }}
-            className="fixed inset-x-4 top-20 z-40 bg-white/98 backdrop-blur-xl border border-slate-200 rounded-2xl p-4 md:hidden shadow-2xl"
+            className="fixed inset-x-4 top-20 z-40 bg-white/95 backdrop-blur-xl border border-slate-200 rounded-2xl p-4 md:hidden shadow-2xl"
           >
             <nav className="flex flex-col gap-1">
-              {allItems.map(item => {
+              {allItems.map((item) => {
                 const isActive = pathname === item.href;
                 return (
                   <Link
@@ -169,7 +163,7 @@ export function NotchNavbar({ className, ...props }: React.HTMLAttributes<HTMLEl
         )}
       </AnimatePresence>
     </>
-  )
+  );
 }
 
-export default NotchNavbar
+export default NotchNavbar;

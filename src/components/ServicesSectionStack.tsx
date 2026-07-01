@@ -44,7 +44,7 @@ interface ServicesSectionStackProps {
 
 export default function ServicesSectionStack({ services }: ServicesSectionStackProps) {
   return (
-    <div className="w-full flex items-center justify-center py-12 relative overflow-visible min-h-[500px]">
+    <div className="w-full flex items-center justify-center py-12 relative overflow-hidden min-h-[500px]">
       <div className="relative w-full max-w-4xl h-[450px] flex items-center justify-center overflow-visible">
         <CardSwap
           width="100%"
