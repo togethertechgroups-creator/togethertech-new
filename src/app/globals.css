@@ -23,7 +23,7 @@
 }
 
 .font-neogen {
-  font-family: 'Neogen-Black', sans-serif !important;
+  font-family: var(--font-neogen), 'Neogen-Black', sans-serif !important;
 }
 
 @font-face {
