@@ -241,7 +241,7 @@ const CardSwap: React.FC<CardSwapProps> = ({
       {/* Manual Next Button Overlay */}
       <button
         onClick={handleNext}
-        className="absolute z-[99] right-[-50px] md:right-[-140px] lg:right-[-220px] top-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-white border border-slate-200 shadow-xl hover:shadow-2xl text-brandDark hover:text-brandGreen hover:scale-105 active:scale-95 flex items-center justify-center transition-all duration-300 group cursor-pointer"
+        className="absolute z-[99] right-[-20px] md:right-[-50px] lg:right-[-70px] top-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-white border border-slate-200 shadow-xl hover:shadow-2xl text-brandDark hover:text-brandGreen hover:scale-105 active:scale-95 flex items-center justify-center transition-all duration-300 group cursor-pointer"
         aria-label="Next Card"
       >
         <svg className="w-6 h-6 transform group-hover:translate-x-0.5 transition-transform duration-300" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
