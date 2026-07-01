@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, Home, User, Layers, Briefcase, Tag, Users, Mail } from "lucide-react";
+import { Menu, X, Home, User, Layers, Briefcase, Tag, Mail } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -49,7 +49,6 @@ const allItems = [
   { label: "Services",  href: "/services",  icon: Layers },
   { label: "Portfolio", href: "/portfolio", icon: Briefcase },
   { label: "Packages",  href: "/packages",  icon: Tag },
-  { label: "Team",      href: "/team",      icon: Users },
   { label: "Contact",   href: "/contact",   icon: Mail },
 ];
 

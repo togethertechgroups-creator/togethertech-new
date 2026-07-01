@@ -4,12 +4,20 @@ import { prisma } from '@/lib/db';
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://togethertechgroups.in';
 
-  // Static routes
-  const staticRoutes = ['', '/about', '/contact', '/portfolio', '/services', '/packages', '/team', '/blog'].map((route) => ({
-    url: `${baseUrl}${route}`,
+  // Static routes — ordered by SEO priority
+  const staticRoutes = [
+    { url: baseUrl,                         priority: 1.0 },
+    { url: `${baseUrl}/services`,           priority: 0.9 },
+    { url: `${baseUrl}/about`,              priority: 0.8 },
+    { url: `${baseUrl}/portfolio`,          priority: 0.8 },
+    { url: `${baseUrl}/packages`,           priority: 0.8 },
+    { url: `${baseUrl}/contact`,            priority: 0.8 },
+    { url: `${baseUrl}/blog`,              priority: 0.7 },
+  ].map(({ url, priority }) => ({
+    url,
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,
-    priority: route === '' ? 1.0 : 0.8,
+    priority,
   }));
 
   try {

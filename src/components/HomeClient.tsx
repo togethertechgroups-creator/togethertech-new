@@ -5,6 +5,7 @@ import Link from 'next/link';
 import ArcRevealHero from './ArcRevealHero';
 import { CinematicHero } from './ui/cinematic-hero';
 import ServicesSectionStack from './ServicesSectionStack';
+import ProcessTimeline from './ProcessTimeline';
 import {
   ArrowRight, Check, MessageCircle, Phone, Star,
   HelpCircle, ChevronDown, Award, Users, ShieldCheck,
@@ -375,7 +376,7 @@ export default function HomeClient({
         </section>
 
         {/* CORE EXPERTISE (H2 headings for each service) */}
-        <section className="py-24 bg-white text-brandDark relative overflow-hidden">
+        <section className="py-24 bg-white text-brandDark relative overflow-hidden md:hidden">
           <div className="max-w-7xl mx-auto px-6 space-y-12">
             <div className="text-center max-w-3xl mx-auto space-y-4">
               <span className="text-brandGreen font-extrabold text-sm uppercase tracking-wider bg-brandGreen/10 border border-brandGreen/25 rounded-full px-4 py-1.5">Our Verticals</span>
@@ -656,28 +657,15 @@ export default function HomeClient({
         {/* OUR PROCESS SECTION */}
         <section className="py-24 bg-brandDark text-white relative overflow-hidden border-t border-slate-900">
           <div className="absolute top-0 right-0 w-80 h-80 bg-brandGreen/5 blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#FF7A00]/3 blur-3xl pointer-events-none" />
           <div className="max-w-7xl mx-auto px-6 space-y-16 relative z-10">
             <div className="text-center max-w-3xl mx-auto space-y-4">
               <span className="text-brandGreen font-extrabold text-sm uppercase tracking-wider bg-brandGreen/10 border border-brandGreen/25 rounded-full px-4 py-1.5">How We Deliver</span>
               <h2 className="text-3xl md:text-5xl text-white font-rustic">Our Process</h2>
               <p className="text-slate-300 font-medium font-biooris">A systematic, transparent, and collaborative design and engineering workflow.</p>
             </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
-              {[
-                { step: '01', title: 'Discovery & Plan', desc: 'We align on requirements, user flows, and wireframe prototypes.' },
-                { step: '02', title: 'UI/UX Design', desc: 'Figma mockups, typography selection, and color palettes are approved.' },
-                { step: '03', title: 'Development', desc: 'We write fully responsive code, set up secure databases, and hook APIs.' },
-                { step: '04', title: 'QA & Testing', desc: 'We test load speeds, mobile responsiveness, and technical SEO structure.' },
-                { step: '05', title: 'Deployment', desc: 'Client domain mapping, server configuration, and final hand-over.' }
-              ].map((step, i) => (
-                <div key={i} className="bg-slate-950/60 border border-slate-800/80 p-6 rounded-3xl space-y-4 hover:border-brandGreen/30 transition-colors relative group">
-                  <div className="text-4xl font-extrabold text-brandGreen/20 group-hover:text-brandGreen/40 transition-colors font-outfit">{step.step}</div>
-                  <h3 className="text-lg font-bold text-white">{step.title}</h3>
-                  <p className="text-xs text-slate-400 leading-relaxed font-biooris">{step.desc}</p>
-                </div>
-              ))}
-            </div>
+
+            <ProcessTimeline />
           </div>
         </section>
 

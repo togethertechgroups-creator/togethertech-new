@@ -2,8 +2,28 @@ import Link from 'next/link';
 import { ArrowRight, Shield, Target, Compass, Heart } from 'lucide-react';
 
 export const metadata = {
-  title: 'About Us | Together Tech Groups',
-  description: 'Together Tech Groups is a digital technology company helping businesses grow through premium websites, mobile apps, and custom software.',
+  title: 'About Us | Together Tech — IT Services Company in Chennai',
+  description: 'Learn about Together Tech, a leading IT services company in Chennai. We build premium websites, mobile apps, and custom software for businesses across India. Experienced team, transparent process.',
+  keywords: [
+    'About Together Tech', 'IT Company Chennai', 'Software Company Chennai',
+    'Web Development Agency India', 'Tech Company India'
+  ],
+  alternates: { canonical: 'https://togethertechgroups.in/about' },
+  openGraph: {
+    title: 'About Together Tech | IT Services Company in Chennai',
+    description: 'Together Tech is a premium IT services company building websites, mobile apps, and custom software for businesses across India.',
+    url: 'https://togethertechgroups.in/about',
+    siteName: 'Together Tech',
+    locale: 'en_IN',
+    type: 'website',
+    images: [{ url: 'https://togethertechgroups.in/images/og-image.jpg', width: 1200, height: 630, alt: 'About Together Tech' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About Together Tech | IT Services Company in Chennai',
+    description: 'Together Tech — Premium software, websites, mobile apps, and digital marketing services.',
+    images: ['https://togethertechgroups.in/images/og-image.jpg'],
+  },
 };
 
 export default function AboutPage() {

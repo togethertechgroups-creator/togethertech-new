@@ -7,8 +7,29 @@ import {
 import { FlipCard, FlipCardFront, FlipCardBack } from '@/components/ui/FlipCard';
 
 export const metadata = {
-  title: 'Our Services | Together Tech Groups',
-  description: 'Explore our full suite of IT and digital marketing solutions including website development, app engineering, custom software, and SEO.',
+  title: 'IT Services | Website, Software, App & Digital Marketing | Together Tech',
+  description: 'Together Tech offers a full suite of IT services — Website Development, Custom Software, Mobile App Development, UI/UX Design, Digital Marketing, SEO, Meta Ads & Branding. Serving businesses across India.',
+  keywords: [
+    'IT Services Company Chennai', 'Website Development Services', 'Software Development Services India',
+    'Mobile App Development Services', 'Digital Marketing Services Chennai', 'SEO Services India',
+    'UI UX Design Services', 'Branding Services Chennai', 'Meta Ads Services'
+  ],
+  alternates: { canonical: 'https://togethertechgroups.in/services' },
+  openGraph: {
+    title: 'IT Services | Website, Software, App & Digital Marketing | Together Tech',
+    description: 'Together Tech — full-suite IT services: websites, software, mobile apps, SEO, digital marketing, and branding for businesses across India.',
+    url: 'https://togethertechgroups.in/services',
+    siteName: 'Together Tech',
+    locale: 'en_IN',
+    type: 'website',
+    images: [{ url: 'https://togethertechgroups.in/images/og-image.jpg', width: 1200, height: 630, alt: 'Together Tech IT Services' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'IT Services | Together Tech',
+    description: 'Full-suite IT services — websites, software, apps, SEO & digital marketing.',
+    images: ['https://togethertechgroups.in/images/og-image.jpg'],
+  },
 };
 
 export const revalidate = 60; // Cache and revalidate every 60 seconds (ISR)

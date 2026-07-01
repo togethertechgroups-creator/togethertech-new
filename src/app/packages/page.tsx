@@ -4,8 +4,28 @@ import { Check, X, Info } from 'lucide-react';
 import PackageSkewCard from '@/components/ui/PackageSkewCard';
 
 export const metadata = {
-  title: 'Pricing Packages | Together Tech Groups',
-  description: 'View our transparent web development pricing packages, features, and detailed package comparison tables.',
+  title: 'Website Development Pricing Packages | Together Tech',
+  description: 'View Together Tech\'s transparent website development pricing packages. Plans starting from ₹7,000 for basic sites to fully custom enterprise portals. Compare features and get a quote.',
+  keywords: [
+    'Website Development Cost India', 'Web Development Pricing Chennai',
+    'Affordable Website Development', 'Website Packages India', 'IT Services Pricing'
+  ],
+  alternates: { canonical: 'https://togethertechgroups.in/packages' },
+  openGraph: {
+    title: 'Website Development Pricing Packages | Together Tech',
+    description: 'Plans starting from ₹7,000. Compare website development packages and choose the right plan for your business.',
+    url: 'https://togethertechgroups.in/packages',
+    siteName: 'Together Tech',
+    locale: 'en_IN',
+    type: 'website',
+    images: [{ url: 'https://togethertechgroups.in/images/og-image.jpg', width: 1200, height: 630, alt: 'Together Tech Pricing Packages' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Website Development Pricing | Together Tech',
+    description: 'Transparent website development packages starting from ₹7,000.',
+    images: ['https://togethertechgroups.in/images/og-image.jpg'],
+  },
 };
 
 export const revalidate = 60; // Cache and revalidate every 60 seconds (ISR)
