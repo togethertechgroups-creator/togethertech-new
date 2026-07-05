@@ -14,21 +14,21 @@ export const metadata = {
     'Mobile App Development Services', 'Digital Marketing Services Chennai', 'SEO Services India',
     'UI UX Design Services', 'Branding Services Chennai', 'Meta Ads Services'
   ],
-  alternates: { canonical: 'https://togethertechgroups.in/services' },
+  alternates: { canonical: 'https://www.togethertechgroups.in/services' },
   openGraph: {
     title: 'IT Services | Website, Software, App & Digital Marketing | Together Tech',
     description: 'Together Tech — full-suite IT services: websites, software, mobile apps, SEO, digital marketing, and branding for businesses across India.',
-    url: 'https://togethertechgroups.in/services',
+    url: 'https://www.togethertechgroups.in/services',
     siteName: 'Together Tech',
     locale: 'en_IN',
     type: 'website',
-    images: [{ url: 'https://togethertechgroups.in/images/og-image.jpg', width: 1200, height: 630, alt: 'Together Tech IT Services' }],
+    images: [{ url: 'https://www.togethertechgroups.in/images/og-image.jpg', width: 1200, height: 630, alt: 'Together Tech IT Services' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'IT Services | Together Tech',
     description: 'Full-suite IT services — websites, software, apps, SEO & digital marketing.',
-    images: ['https://togethertechgroups.in/images/og-image.jpg'],
+    images: ['https://www.togethertechgroups.in/images/og-image.jpg'],
   },
 };
 

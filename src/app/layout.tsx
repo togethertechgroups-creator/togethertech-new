@@ -35,7 +35,7 @@ const neogenBlack = localFont({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://togethertechgroups.in'),
+  metadataBase: new URL('https://www.togethertechgroups.in'),
   title: {
     default: 'Together Tech | Software Development, Website Development & Digital Marketing Company',
     template: '%s | Together Tech'
@@ -76,7 +76,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Together Tech | Software Development, Website Development & Digital Marketing Company',
     description: 'Together Tech provides Website Development, Software Development, Mobile App Development, Digital Marketing, SEO, Meta Ads, UI/UX Design, Branding, and Custom IT Solutions for businesses across India.',
-    url: 'https://togethertechgroups.in',
+    url: 'https://www.togethertechgroups.in',
     siteName: 'Together Tech',
     locale: 'en_IN',
     type: 'website',
@@ -111,29 +111,29 @@ export default function RootLayout({
     "@graph": [
       {
         "@type": "WebSite",
-        "@id": "https://togethertechgroups.in/#website",
-        "url": "https://togethertechgroups.in",
+        "@id": "https://www.togethertechgroups.in/#website",
+        "url": "https://www.togethertechgroups.in",
         "name": "Together Tech",
         "description": "IT Services Company — Website Development, Software, Mobile Apps, Digital Marketing & SEO",
-        "publisher": { "@id": "https://togethertechgroups.in/#organization" },
+        "publisher": { "@id": "https://www.togethertechgroups.in/#organization" },
         "potentialAction": {
           "@type": "SearchAction",
           "target": {
             "@type": "EntryPoint",
-            "urlTemplate": "https://togethertechgroups.in/?q={search_term_string}"
+            "urlTemplate": "https://www.togethertechgroups.in/?q={search_term_string}"
           },
           "query-input": "required name=search_term_string"
         }
       },
       {
         "@type": "Organization",
-        "@id": "https://togethertechgroups.in/#organization",
+        "@id": "https://www.togethertechgroups.in/#organization",
         "name": "Together Tech",
         "alternateName": "Together Tech Groups",
-        "url": "https://togethertechgroups.in",
+        "url": "https://www.togethertechgroups.in",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://togethertechgroups.in/images/logo.png",
+          "url": "https://www.togethertechgroups.in/images/logo.png",
           "width": 200,
           "height": 200
         },
@@ -147,17 +147,17 @@ export default function RootLayout({
           "https://facebook.com/togethertech",
           "https://twitter.com/togethertech",
           "https://linkedin.com/company/togethertech",
-          "https://instagram.com/togethertech"
+          "https://www.instagram.com/togethertechofficial"
         ]
       },
       {
         "@type": "LocalBusiness",
-        "@id": "https://togethertechgroups.in/#localbusiness",
+        "@id": "https://www.togethertechgroups.in/#localbusiness",
         "name": "Together Tech",
-        "image": "https://togethertechgroups.in/images/logo.png",
-        "url": "https://togethertechgroups.in",
+        "image": "https://www.togethertechgroups.in/images/logo.png",
+        "url": "https://www.togethertechgroups.in",
         "telephone": "+919047549682",
-        "email": "info@togethertechgroups.in",
+        "email": "togethertechgroups@gmail.com",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "123 Tech Park, IT Corridor",

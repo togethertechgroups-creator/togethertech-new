@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { prisma } from '@/lib/db';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://togethertechgroups.in';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.togethertechgroups.in';
 
   // Static routes — ordered by SEO priority
   const staticRoutes = [

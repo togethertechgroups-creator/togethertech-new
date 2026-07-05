@@ -1,12 +1,12 @@
 import { MetadataRoute } from 'next';
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://togethertechgroups.in';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.togethertechgroups.in';
   return {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/admin/', '/api/'],
+      disallow: ['/api/'],
     },
     sitemap: `${baseUrl}/sitemap.xml`,
   };

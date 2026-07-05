@@ -8,21 +8,21 @@ export const metadata = {
     'About Together Tech', 'IT Company Chennai', 'Software Company Chennai',
     'Web Development Agency India', 'Tech Company India'
   ],
-  alternates: { canonical: 'https://togethertechgroups.in/about' },
+  alternates: { canonical: 'https://www.togethertechgroups.in/about' },
   openGraph: {
     title: 'About Together Tech | IT Services Company in Chennai',
     description: 'Together Tech is a premium IT services company building websites, mobile apps, and custom software for businesses across India.',
-    url: 'https://togethertechgroups.in/about',
+    url: 'https://www.togethertechgroups.in/about',
     siteName: 'Together Tech',
     locale: 'en_IN',
     type: 'website',
-    images: [{ url: 'https://togethertechgroups.in/images/og-image.jpg', width: 1200, height: 630, alt: 'About Together Tech' }],
+    images: [{ url: 'https://www.togethertechgroups.in/images/og-image.jpg', width: 1200, height: 630, alt: 'About Together Tech' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'About Together Tech | IT Services Company in Chennai',
     description: 'Together Tech — Premium software, websites, mobile apps, and digital marketing services.',
-    images: ['https://togethertechgroups.in/images/og-image.jpg'],
+    images: ['https://www.togethertechgroups.in/images/og-image.jpg'],
   },
 };
 

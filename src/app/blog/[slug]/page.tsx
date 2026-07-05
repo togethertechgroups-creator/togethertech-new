@@ -16,12 +16,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title,
     description,
     alternates: {
-      canonical: `https://togethertechgroups.in/blog/${slug}`,
+      canonical: `https://www.togethertechgroups.in/blog/${slug}`,
     },
     openGraph: {
       title,
       description,
-      url: `https://togethertechgroups.in/blog/${slug}`,
+      url: `https://www.togethertechgroups.in/blog/${slug}`,
       siteName: 'Together Tech',
       locale: 'en_IN',
       type: 'article',
@@ -72,7 +72,7 @@ export default async function BlogDetailPage({
     "@graph": [
       {
         "@type": "BlogPosting",
-        "@id": `https://togethertechgroups.in/blog/${slug}#post`,
+        "@id": `https://www.togethertechgroups.in/blog/${slug}#post`,
         "headline": blog.title,
         "image": blog.image,
         "datePublished": blog.createdAt.toISOString(),
@@ -80,39 +80,39 @@ export default async function BlogDetailPage({
         "author": {
           "@type": "Organization",
           "name": "Together Tech",
-          "url": "https://togethertechgroups.in"
+          "url": "https://www.togethertechgroups.in"
         },
         "publisher": {
           "@type": "Organization",
           "name": "Together Tech",
           "logo": {
             "@type": "ImageObject",
-            "url": "https://togethertechgroups.in/images/logo.png"
+            "url": "https://www.togethertechgroups.in/images/logo.png"
           }
         },
         "description": blog.seoDescription
       },
       {
         "@type": "BreadcrumbList",
-        "@id": `https://togethertechgroups.in/blog/${slug}#breadcrumb`,
+        "@id": `https://www.togethertechgroups.in/blog/${slug}#breadcrumb`,
         "itemListElement": [
           {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://togethertechgroups.in"
+            "item": "https://www.togethertechgroups.in"
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Blog",
-            "item": "https://togethertechgroups.in/blog"
+            "item": "https://www.togethertechgroups.in/blog"
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": blog.title,
-            "item": `https://togethertechgroups.in/blog/${slug}`
+            "item": `https://www.togethertechgroups.in/blog/${slug}`
           }
         ]
       }

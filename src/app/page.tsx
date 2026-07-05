@@ -16,18 +16,18 @@ export const metadata: Metadata = {
     'Google Ads Agency Chennai', 'IT Services Company India',
   ],
   alternates: {
-    canonical: 'https://togethertechgroups.in',
+    canonical: 'https://www.togethertechgroups.in',
   },
   openGraph: {
     title: 'Together Tech | Software, Website & Mobile App Development Company',
     description: 'Together Tech delivers premium Website Development, Software, Mobile Apps, Digital Marketing, SEO & UI/UX Design for businesses across India. Trusted by 50+ brands.',
-    url: 'https://togethertechgroups.in',
+    url: 'https://www.togethertechgroups.in',
     siteName: 'Together Tech',
     locale: 'en_IN',
     type: 'website',
     images: [
       {
-        url: 'https://togethertechgroups.in/images/og-image.jpg',
+        url: 'https://www.togethertechgroups.in/images/og-image.jpg',
         width: 1200,
         height: 630,
         alt: 'Together Tech - Software Development, Website Development & Digital Marketing Company',
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Together Tech | Software & Website Development Company',
     description: 'Together Tech — Premium software, websites, mobile apps, branding, and digital marketing services across India.',
-    images: ['https://togethertechgroups.in/images/og-image.jpg'],
+    images: ['https://www.togethertechgroups.in/images/og-image.jpg'],
   },
 };
 

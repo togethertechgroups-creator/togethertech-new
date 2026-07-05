@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: 'Blog | Together Tech',
   description: 'Stay updated with the latest trends in custom software development, eCommerce websites, mobile app innovations, and digital marketing strategies from Together Tech Chennai.',
   alternates: {
-    canonical: 'https://togethertechgroups.in/blog',
+    canonical: 'https://www.togethertechgroups.in/blog',
   },
 };
 
@@ -27,13 +27,13 @@ export default async function BlogIndexPage() {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://togethertechgroups.in"
+        "item": "https://www.togethertechgroups.in"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Blog",
-        "item": "https://togethertechgroups.in/blog"
+        "item": "https://www.togethertechgroups.in/blog"
       }
     ]
   };

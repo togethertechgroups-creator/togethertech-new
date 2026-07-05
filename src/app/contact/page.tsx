@@ -68,7 +68,8 @@ function ContactContent() {
       });
 
       if (!res.ok) {
-        throw new Error('Failed to submit enquiry. Please try again.');
+        const errorData = await res.json().catch(() => ({}));
+        throw new Error(errorData.error || 'Failed to submit enquiry. Please try again.');
       }
 
       setStatus('SUCCESS');
@@ -124,7 +125,7 @@ function ContactContent() {
                 </div>
                 <div>
                   <h4 className="font-extrabold text-brandDark text-sm uppercase tracking-wide">Email Address</h4>
-                  <p className="text-sm text-brandGray font-bold mt-1">contact@togethertechgroups.in</p>
+                  <p className="text-sm text-brandGray font-bold mt-1">togethertechgroups@gmail.com</p>
                 </div>
               </li>
               <li className="flex items-start space-x-4">

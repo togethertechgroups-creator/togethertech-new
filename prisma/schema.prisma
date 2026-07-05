@@ -105,7 +105,7 @@ model Settings {
   id             String @id @default("global")
   companyName    String @default("Together Tech Groups")
   phone          String @default("+91 98765 43210")
-  email          String @default("contact@togethertechgroups.in")
+  email          String @default("togethertechgroups@gmail.com")
   whatsapp       String @default("+91 98765 43210")
   address        String @default("123 Tech Park, India")
   logo           String @default("/images/logo.svg")

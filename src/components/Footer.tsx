@@ -57,7 +57,7 @@ export default function Footer() {
             <a href="https://linkedin.com/company/togethertech" className="w-9 h-9 rounded-full bg-slate-200/80 hover:bg-brandGreen hover:text-white text-brandDark transition-colors flex items-center justify-center" aria-label="Linkedin">
               <LinkedinIcon />
             </a>
-            <a href="https://instagram.com/togethertech" className="w-9 h-9 rounded-full bg-slate-200/80 hover:bg-brandGreen hover:text-white text-brandDark transition-colors flex items-center justify-center" aria-label="Instagram">
+            <a href="https://www.instagram.com/togethertechofficial" className="w-9 h-9 rounded-full bg-slate-200/80 hover:bg-brandGreen hover:text-white text-brandDark transition-colors flex items-center justify-center" aria-label="Instagram">
               <InstagramIcon />
             </a>
           </div>
@@ -99,7 +99,7 @@ export default function Footer() {
             </li>
             <li className="flex items-start space-x-3">
               <Mail className="w-5 h-5 text-brandGreen mt-0.5 flex-shrink-0" />
-              <span>contact@togethertechgroups.in</span>
+              <span>togethertechgroups@gmail.com</span>
             </li>
             <li className="flex items-start space-x-3">
               <MapPin className="w-5 h-5 text-brandGreen mt-0.5 flex-shrink-0" />
@@ -114,7 +114,6 @@ export default function Footer() {
           © {new Date().getFullYear()} Together Tech Groups. All rights reserved.
         </div>
         <div className="flex space-x-6">
-          <Link href="/admin/login" className="hover:text-brandGreen transition-colors font-semibold text-brandDark">Admin Login</Link>
           <a href="#" className="hover:text-brandGreen transition-colors">Privacy Policy</a>
           <a href="#" className="hover:text-brandGreen transition-colors">Terms of Service</a>
         </div>

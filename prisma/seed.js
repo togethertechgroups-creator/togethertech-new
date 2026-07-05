@@ -31,7 +31,7 @@ async function main() {
       id: 'global',
       companyName: 'Together Tech Groups',
       phone: '+91 98765 43210',
-      email: 'contact@togethertechgroups.in',
+      email: 'togethertechgroups@gmail.com',
       whatsapp: '+91 98765 43210',
       address: '123 Tech Park, IT Corridor, Chennai, India',
       logo: '/images/logo.svg',
@@ -39,7 +39,7 @@ async function main() {
         facebook: 'https://facebook.com/togethertech',
         twitter: 'https://twitter.com/togethertech',
         linkedin: 'https://linkedin.com/company/togethertech',
-        instagram: 'https://instagram.com/togethertech'
+        instagram: 'https://www.instagram.com/togethertechofficial'
       }),
       seoTitle: 'Together Tech Groups | Your Growth, Our Technology',
       seoDescription: 'We create professional websites, mobile apps, custom software, branding, SEO, and digital marketing solutions that help your business grow faster.',

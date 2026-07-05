@@ -10,21 +10,21 @@ export const metadata = {
     'Website Development Cost India', 'Web Development Pricing Chennai',
     'Affordable Website Development', 'Website Packages India', 'IT Services Pricing'
   ],
-  alternates: { canonical: 'https://togethertechgroups.in/packages' },
+  alternates: { canonical: 'https://www.togethertechgroups.in/packages' },
   openGraph: {
     title: 'Website Development Pricing Packages | Together Tech',
     description: 'Plans starting from ₹7,000. Compare website development packages and choose the right plan for your business.',
-    url: 'https://togethertechgroups.in/packages',
+    url: 'https://www.togethertechgroups.in/packages',
     siteName: 'Together Tech',
     locale: 'en_IN',
     type: 'website',
-    images: [{ url: 'https://togethertechgroups.in/images/og-image.jpg', width: 1200, height: 630, alt: 'Together Tech Pricing Packages' }],
+    images: [{ url: 'https://www.togethertechgroups.in/images/og-image.jpg', width: 1200, height: 630, alt: 'Together Tech Pricing Packages' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Website Development Pricing | Together Tech',
     description: 'Transparent website development packages starting from ₹7,000.',
-    images: ['https://togethertechgroups.in/images/og-image.jpg'],
+    images: ['https://www.togethertechgroups.in/images/og-image.jpg'],
   },
 };
 

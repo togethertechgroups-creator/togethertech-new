@@ -81,12 +81,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title,
     description,
     alternates: {
-      canonical: `https://togethertechgroups.in/services/${slug}`,
+      canonical: `https://www.togethertechgroups.in/services/${slug}`,
     },
     openGraph: {
       title,
       description,
-      url: `https://togethertechgroups.in/services/${slug}`,
+      url: `https://www.togethertechgroups.in/services/${slug}`,
       siteName: 'Together Tech',
       locale: 'en_IN',
       type: 'website',
@@ -144,36 +144,36 @@ export default async function ServiceDetailPage({
     "@graph": [
       {
         "@type": "Service",
-        "@id": `https://togethertechgroups.in/services/${slug}#service`,
+        "@id": `https://www.togethertechgroups.in/services/${slug}#service`,
         "name": service.title,
         "description": service.shortDescription,
         "provider": {
           "@type": "LocalBusiness",
-          "@id": "https://togethertechgroups.in/#localbusiness",
+          "@id": "https://www.togethertechgroups.in/#localbusiness",
           "name": "Together Tech"
         }
       },
       {
         "@type": "BreadcrumbList",
-        "@id": `https://togethertechgroups.in/services/${slug}#breadcrumb`,
+        "@id": `https://www.togethertechgroups.in/services/${slug}#breadcrumb`,
         "itemListElement": [
           {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://togethertechgroups.in"
+            "item": "https://www.togethertechgroups.in"
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Services",
-            "item": "https://togethertechgroups.in/services"
+            "item": "https://www.togethertechgroups.in/services"
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": service.title,
-            "item": `https://togethertechgroups.in/services/${slug}`
+            "item": `https://www.togethertechgroups.in/services/${slug}`
           }
         ]
       }
@@ -183,7 +183,7 @@ export default async function ServiceDetailPage({
   if (serviceFaqs.length > 0) {
     serviceSchema["@graph"].push({
       "@type": "FAQPage",
-      "@id": `https://togethertechgroups.in/services/${slug}#faq`,
+      "@id": `https://www.togethertechgroups.in/services/${slug}#faq`,
       "mainEntity": serviceFaqs.map(f => ({
         "@type": "Question",
         "name": f.q,
