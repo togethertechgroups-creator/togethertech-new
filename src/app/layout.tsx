@@ -3,6 +3,7 @@ import { Outfit } from 'next/font/google';
 import localFont from 'next/font/local';
 import './globals.css';
 import ClientLayoutWrapper from '@/components/ClientLayoutWrapper';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const outfit = Outfit({
   subsets: ['latin'],
@@ -215,6 +216,7 @@ export default function RootLayout({
       </head>
       <body className={`${outfit.variable} ${hoshikoSatsuki.variable} ${eternalo.variable} ${rusticDelight.variable} ${neogenBlack.variable} antialiased bg-brandDark text-slate-100`}>
         <ClientLayoutWrapper>{children}</ClientLayoutWrapper>
+        <SpeedInsights />
       </body>
     </html>
   );
