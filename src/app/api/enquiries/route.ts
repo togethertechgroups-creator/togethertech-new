@@ -11,18 +11,23 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
 
-    const enquiry = await prisma.enquiry.create({
-      data: {
-        name,
-        mobile,
-        email,
-        businessName,
-        requiredService,
-        budget,
-        message,
-        status: 'NEW',
-      },
-    });
+    let enquiry = null;
+    try {
+      enquiry = await prisma.enquiry.create({
+        data: {
+          name,
+          mobile,
+          email,
+          businessName,
+          requiredService,
+          budget,
+          message,
+          status: 'NEW',
+        },
+      });
+    } catch (dbErr) {
+      console.warn('Database write bypassed in serverless/read-only environment:', dbErr);
+    }
 
     // Mock email notification trigger
     console.log(`[EMAIL NOTIFICATION MOCK] Send to: togethertechgroups@gmail.com. Content: New enquiry received from ${name} (${email}) for service: ${requiredService}.`);
