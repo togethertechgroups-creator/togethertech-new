@@ -1,45 +1,65 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { prisma } from '@/lib/db';
 
 // 1. Upload PDF Endpoint (POST)
-// Receives Base64 encoded PDF from browser, uploads it to Uguu.se from backend, and returns the direct link
+// Receives Base64 encoded PDF from browser, stores it in SQLite, and returns our own custom download link
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { fileData, fileName, fileType } = body;
+    const { fileData, fileName } = body;
 
     if (!fileData) {
       return NextResponse.json({ error: 'No file data provided' }, { status: 400 });
     }
 
-    const buffer = Buffer.from(fileData, 'base64');
-
-    // Create a new FormData to upload to Uguu.se
-    const uguuForm = new FormData();
-    const fileBlob = new Blob([buffer], { type: fileType || 'application/pdf' });
-    uguuForm.append('files[]', fileBlob, fileName || 'document.pdf');
-
-    // Make the upload request to Uguu.se (bypasses browser CORS)
-    const uguuRes = await fetch('https://uguu.se/upload', {
-      method: 'POST',
-      body: uguuForm
+    // Save to SQLite database using Prisma
+    const savedFile = await prisma.pdfFile.create({
+      data: {
+        name: fileName || 'document.pdf',
+        data: fileData // Store base64 string directly
+      }
     });
 
-    if (!uguuRes.ok) {
-      const errText = await uguuRes.text();
-      throw new Error('Failed to upload to storage server: ' + errText);
-    }
+    // Return the URL on our custom domain
+    const downloadUrl = `https://www.togethertechgroups.in/api/upload-pdf?id=${savedFile.id}`;
 
-    const uguuData = await uguuRes.json();
-    if (!uguuData.success || !uguuData.files || !uguuData.files[0]) {
-      throw new Error('Storage server responded with failure or missing file info');
-    }
-
-    const directUrl = uguuData.files[0].url;
-
-    return NextResponse.json({ success: true, url: directUrl });
+    return NextResponse.json({ success: true, url: downloadUrl });
   } catch (err: any) {
     console.error('Server PDF upload helper failed:', err);
     return NextResponse.json({ error: err.message || 'Internal Server Error' }, { status: 500 });
   }
 }
 
+// 2. Fetch PDF Endpoint (GET)
+// Retrieves PDF from SQLite by ID and serves it as a raw PDF file
+export async function GET(req: NextRequest) {
+  try {
+    const { searchParams } = new URL(req.url);
+    const id = searchParams.get('id');
+
+    if (!id) {
+      return new NextResponse('Missing document ID', { status: 400 });
+    }
+
+    const fileRecord = await prisma.pdfFile.findUnique({
+      where: { id }
+    });
+
+    if (!fileRecord) {
+      return new NextResponse('PDF document not found or expired', { status: 404 });
+    }
+
+    // Convert Base64 back to Buffer to serve as raw binary PDF
+    const fileBuffer = Buffer.from(fileRecord.data, 'base64');
+
+    return new NextResponse(fileBuffer, {
+      headers: {
+        'Content-Type': 'application/pdf',
+        'Content-Disposition': `inline; filename="${fileRecord.name}"`
+      }
+    });
+  } catch (err: any) {
+    console.error('Fetching PDF failed:', err);
+    return new NextResponse('Internal Server Error', { status: 500 });
+  }
+}

@@ -113,3 +113,10 @@ model Settings {
   seoTitle       String @default("Together Tech | Your Growth, Our Technology")
   seoDescription String @default("We create professional websites, mobile apps, custom software, branding, SEO, and digital marketing solutions.")
 }
+
+model PdfFile {
+  id        String   @id @default(uuid())
+  name      String
+  data      String   // Store base64 string
+  createdAt DateTime @default(now())
+}
