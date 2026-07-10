@@ -243,31 +243,29 @@ export default function PdfPreview({ settings, customers, documents, setDocument
       showToast('Uploading PDF for WhatsApp delivery...', 'info_outline');
 
       const formData = new FormData();
-      formData.append('file', pdfBlob, `${activeDoc.id}.pdf`);
+      formData.append('files[]', pdfBlob, `${activeDoc.id}.pdf`);
 
-      const uploadRes = await fetch('https://tmpfiles.org/api/v1/upload', {
+      const uploadRes = await fetch('https://uguu.se/upload', {
         method: 'POST',
         body: formData
       });
 
       if (!uploadRes.ok) {
-        throw new Error('Upload to tmpfiles.org failed');
+        throw new Error('Upload to uguu.se failed');
       }
 
       const uploadData = await uploadRes.json();
-      if (!uploadData.data || !uploadData.data.url) {
-        throw new Error('Upload response missing URL');
+      if (!uploadData.success || !uploadData.files || !uploadData.files[0]) {
+        throw new Error('Upload response failed or missing file info');
       }
 
-      // Convert view URL to direct download URL (needed by WhatsApp API)
-      const publicUrl = uploadData.data.url.replace('https://tmpfiles.org/', 'https://tmpfiles.org/dl/');
+      const publicUrl = uploadData.files[0].url;
 
       showToast('Sending via Metamerged WhatsApp API...', 'send');
 
       const apiToken = '6706963cd785e0eefa38f06c81e39cd3';
-      const messageText = `Hello *${clientInfo?.name || ''}*,\n\nPlease find your *${activeDoc.type} #${activeDoc.id}* from *${settings?.businessName || 'Together Tech'}*.\n\n*Amount*: ₹${(activeDoc.amount || 0).toLocaleString()}\n*Date*: ${activeDoc.date}\n\n👉 *Download/View PDF*: ${publicUrl}\n\nThank you for your business! 🙏`;
-      
-      const apiUrl = `https://api.metamerged.com/api/send?number=${formattedPhone}&type=text&message=${encodeURIComponent(messageText)}&access_token=${apiToken}`;
+      const messageText = `Here is your ${activeDoc.type} #${activeDoc.id} from ${settings?.businessName || 'Together Tech'}.`;
+      const apiUrl = `https://api.metamerged.com/api/send?number=${formattedPhone}&type=document&message=${encodeURIComponent(messageText)}&document_url=${encodeURIComponent(publicUrl)}&file_name=${encodeURIComponent(activeDoc.id + '.pdf')}&access_token=${apiToken}`;
 
       // Use mode: 'no-cors' to prevent browser from blocking the request due to missing CORS headers on Metamerged API
       await fetch(apiUrl, { mode: 'no-cors' });
