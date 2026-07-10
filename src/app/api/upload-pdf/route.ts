@@ -1,6 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/db';
 
+const corsHeaders = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+};
+
+export async function OPTIONS(req: NextRequest) {
+  return new NextResponse(null, {
+    status: 204,
+    headers: corsHeaders,
+  });
+}
+
 // 1. Upload PDF Endpoint (POST)
 // Receives Base64 encoded PDF from browser, stores it in SQLite, and returns our own custom download link
 export async function POST(req: NextRequest) {
@@ -9,7 +22,7 @@ export async function POST(req: NextRequest) {
     const { fileData, fileName } = body;
 
     if (!fileData) {
-      return NextResponse.json({ error: 'No file data provided' }, { status: 400 });
+      return NextResponse.json({ error: 'No file data provided' }, { status: 400, headers: corsHeaders });
     }
 
     // Save to SQLite database using Prisma
@@ -23,10 +36,10 @@ export async function POST(req: NextRequest) {
     // Return the URL on our custom domain
     const downloadUrl = `https://www.togethertechgroups.in/api/upload-pdf?id=${savedFile.id}`;
 
-    return NextResponse.json({ success: true, url: downloadUrl });
+    return NextResponse.json({ success: true, url: downloadUrl }, { headers: corsHeaders });
   } catch (err: any) {
     console.error('Server PDF upload helper failed:', err);
-    return NextResponse.json({ error: err.message || 'Internal Server Error' }, { status: 500 });
+    return NextResponse.json({ error: err.message || 'Internal Server Error' }, { status: 500, headers: corsHeaders });
   }
 }
 
@@ -38,7 +51,7 @@ export async function GET(req: NextRequest) {
     const id = searchParams.get('id');
 
     if (!id) {
-      return new NextResponse('Missing document ID', { status: 400 });
+      return new NextResponse('Missing document ID', { status: 400, headers: corsHeaders });
     }
 
     const fileRecord = await prisma.pdfFile.findUnique({
@@ -46,7 +59,7 @@ export async function GET(req: NextRequest) {
     });
 
     if (!fileRecord) {
-      return new NextResponse('PDF document not found or expired', { status: 404 });
+      return new NextResponse('PDF document not found or expired', { status: 404, headers: corsHeaders });
     }
 
     // Convert Base64 back to Buffer to serve as raw binary PDF
@@ -55,11 +68,13 @@ export async function GET(req: NextRequest) {
     return new NextResponse(fileBuffer, {
       headers: {
         'Content-Type': 'application/pdf',
-        'Content-Disposition': `inline; filename="${fileRecord.name}"`
+        'Content-Disposition': `inline; filename="${fileRecord.name}"`,
+        ...corsHeaders,
       }
     });
   } catch (err: any) {
     console.error('Fetching PDF failed:', err);
-    return new NextResponse('Internal Server Error', { status: 500 });
+    return new NextResponse('Internal Server Error', { status: 500, headers: corsHeaders });
   }
 }
+

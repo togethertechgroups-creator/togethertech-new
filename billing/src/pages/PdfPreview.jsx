@@ -6,6 +6,9 @@ import jsPDF from 'jspdf';
 export default function PdfPreview({ settings, customers, documents, setDocuments, payments, showToast }) {
   const navigate = useNavigate();
   const [selectedSignatureId, setSelectedSignatureId] = useState('');
+  const [showFallbackModal, setShowFallbackModal] = useState(false);
+  const [fallbackUrl, setFallbackUrl] = useState('');
+  const [isSending, setIsSending] = useState(false);
 
   const signatures = settings?.signatures || [];
   const selectedSignature = signatures.find(s => s.id === selectedSignatureId);
@@ -191,11 +194,13 @@ export default function PdfPreview({ settings, customers, documents, setDocument
       formattedPhone = '91' + formattedPhone;
     }
 
+    setIsSending(true);
     try {
       showToast('Generating PDF for WhatsApp...', 'info_outline');
       const invoiceElement = document.getElementById('invoice-print-area');
       if (!invoiceElement) {
         showToast('Error: Invoice print area not found', 'error');
+        setIsSending(false);
         return;
       }
 
@@ -303,12 +308,15 @@ export default function PdfPreview({ settings, customers, documents, setDocument
       navigate(activeDoc.type === 'Invoice' ? '/invoices' : '/quotations');
     } catch (err) {
       console.error('WhatsApp API delivery failed:', err);
-      showToast(`Error: ${err.message || 'Unknown error'}. Redirecting to manual link...`, 'error');
+      showToast(`Error: ${err.message || 'Unknown error'}.`, 'error');
       
-      // Fallback: Open wa.me link directly
+      // Fallback: Set modal state to ask user before opening WhatsApp Web/App
       const message = `Hello ${clientInfo?.name || ''},\n\nPlease find your ${activeDoc.type} *#${activeDoc.id}* from *${settings?.businessName || 'Together Tech'}*.\n\nAmount: ₹${(activeDoc.amount || 0).toLocaleString()}\nDate: ${activeDoc.date}\n\nThank you!`;
       const waUrl = `https://wa.me/${formattedPhone}?text=${encodeURIComponent(message)}`;
-      window.open(waUrl, '_blank');
+      setFallbackUrl(waUrl);
+      setShowFallbackModal(true);
+    } finally {
+      setIsSending(false);
     }
   };
 
@@ -583,10 +591,11 @@ export default function PdfPreview({ settings, customers, documents, setDocument
           
           <button
             onClick={handleSend}
-            className="flex items-center justify-center gap-sm bg-white border border-primary text-primary py-md px-lg rounded-full font-bold hover:bg-surface-container-high transition-all active:scale-[0.98] cursor-pointer text-xs font-label-caps"
+            disabled={isSending}
+            className="flex items-center justify-center gap-sm bg-white border border-primary text-primary py-md px-lg rounded-full font-bold hover:bg-surface-container-high transition-all active:scale-[0.98] cursor-pointer text-xs font-label-caps disabled:opacity-60 disabled:cursor-not-allowed"
           >
-            <span className="material-symbols-outlined">send</span>
-            Send to Customer
+            <span className={`material-symbols-outlined ${isSending ? 'animate-spin' : ''}`}>{isSending ? 'sync' : 'send'}</span>
+            {isSending ? 'Sending...' : 'Send to Customer'}
           </button>
           
           <button
@@ -615,6 +624,54 @@ export default function PdfPreview({ settings, customers, documents, setDocument
           </div>
         </div>
       </aside>
+
+      {/* Fallback Manual Send Modal */}
+      {showFallbackModal && (
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-md animate-fade-in">
+          <div className="bg-white dark:bg-surface-container-highest rounded-2xl max-w-md w-full border border-outline-variant shadow-2xl overflow-hidden p-lg flex flex-col gap-md animate-scale-in">
+            <div className="flex items-start justify-between border-b border-outline-variant pb-md">
+              <div className="flex items-center gap-sm text-error">
+                <span className="material-symbols-outlined text-[28px]">warning</span>
+                <h3 className="font-title-md text-title-md font-bold text-on-surface">API Delivery Failed</h3>
+              </div>
+              <button 
+                onClick={() => setShowFallbackModal(false)}
+                className="text-on-surface-variant hover:text-error cursor-pointer rounded-full p-xs hover:bg-surface-container transition-all"
+              >
+                <span className="material-symbols-outlined text-[20px]">close</span>
+              </button>
+            </div>
+
+            <div className="space-y-sm py-xs text-left">
+              <p className="text-body-md text-on-surface-variant leading-relaxed">
+                We couldn't deliver the document automatically via the background API. 
+              </p>
+              <p className="text-body-sm text-on-surface-variant/80 italic bg-surface-container-low p-sm rounded-lg border border-outline-variant/50">
+                You can choose to open WhatsApp manually to send the message directly to the customer.
+              </p>
+            </div>
+
+            <div className="flex items-center justify-end gap-sm border-t border-outline-variant pt-md mt-sm">
+              <button
+                onClick={() => setShowFallbackModal(false)}
+                className="px-lg py-md border border-outline text-on-surface rounded-full font-bold hover:bg-surface-container-high transition-all active:scale-[0.98] cursor-pointer text-xs uppercase tracking-wider"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={() => {
+                  window.open(fallbackUrl, '_blank');
+                  setShowFallbackModal(false);
+                }}
+                className="flex items-center gap-xs px-lg py-md bg-primary text-white rounded-full font-bold hover:brightness-110 shadow-md transition-all active:scale-[0.98] cursor-pointer text-xs uppercase tracking-wider"
+              >
+                <span className="material-symbols-outlined text-[16px]">open_in_new</span>
+                Send Manually
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
