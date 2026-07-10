@@ -1,0 +1,438 @@
+<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Create Invoice | FinOps Central</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;family=JetBrains+Mono:wght@450&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-primary": "#bcc7de",
+                    "surface-dim": "#dcd9db",
+                    "surface-bright": "#fbf8fa",
+                    "secondary": "#0058be",
+                    "background": "#fbf8fa",
+                    "on-secondary-container": "#fefcff",
+                    "on-primary-container": "#8590a6",
+                    "on-surface": "#1b1b1d",
+                    "primary-container": "#1e293b",
+                    "surface-container-low": "#f5f3f4",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-on-surface": "#f3f0f2",
+                    "on-tertiary-container": "#8d9092",
+                    "on-background": "#1b1b1d",
+                    "on-secondary-fixed": "#001a42",
+                    "on-primary-fixed": "#111c2d",
+                    "on-secondary": "#ffffff",
+                    "outline-variant": "#c5c6cd",
+                    "on-primary-fixed-variant": "#3c475a",
+                    "secondary-container": "#2170e4",
+                    "secondary-fixed": "#d8e2ff",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed-dim": "#adc6ff",
+                    "on-error": "#ffffff",
+                    "tertiary": "#111516",
+                    "surface-container": "#f0edef",
+                    "surface-tint": "#545f73",
+                    "tertiary-fixed": "#e0e3e5",
+                    "inverse-surface": "#303032",
+                    "on-tertiary-fixed-variant": "#444749",
+                    "surface": "#fbf8fa",
+                    "tertiary-fixed-dim": "#c4c7c9",
+                    "surface-container-highest": "#e4e2e3",
+                    "on-surface-variant": "#45474c",
+                    "error": "#ba1a1a",
+                    "on-error-container": "#93000a",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed-dim": "#bcc7de",
+                    "on-tertiary-fixed": "#191c1e",
+                    "tertiary-container": "#26292b",
+                    "surface-container-high": "#eae7e9",
+                    "error-container": "#ffdad6",
+                    "surface-variant": "#e4e2e3",
+                    "primary": "#091426",
+                    "on-secondary-fixed-variant": "#004395",
+                    "outline": "#75777d",
+                    "primary-fixed": "#d8e3fb"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "xl": "32px",
+                    "sm": "8px",
+                    "md": "16px",
+                    "container-max": "1280px",
+                    "margin-desktop": "32px",
+                    "lg": "24px",
+                    "base": "4px",
+                    "gutter": "16px",
+                    "xs": "4px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "data-mono": ["JetBrains Mono"],
+                    "label-caps": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "headline-md-mobile": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "title-sm": ["Inter"],
+                    "body-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "data-mono": ["14px", {"lineHeight": "20px", "fontWeight": "450"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "display-lg": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "title-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .step-active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #0058be;
+        }
+        body {
+            background-color: #fbf8fa;
+            color: #1b1b1d;
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md overflow-x-hidden">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 overflow-y-auto bg-surface-container-low border-r border-outline-variant z-50 flex flex-col py-md px-sm">
+<div class="mb-xl px-md">
+<div class="flex items-center gap-sm mb-base">
+<div class="w-10 h-10 bg-primary rounded flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined">finance_mode</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">B2B Finance</h1>
+<p class="font-label-caps text-[10px] text-on-surface-variant tracking-widest">ENTERPRISE TIER</p>
+</div>
+</div>
+</div>
+<nav class="flex-grow space-y-xs">
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high transition-all active:translate-x-1" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-caps text-label-caps">Dashboard</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high transition-all active:translate-x-1" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-caps text-label-caps">Customers</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high transition-all active:translate-x-1" href="#">
+<span class="material-symbols-outlined">request_quote</span>
+<span class="font-label-caps text-label-caps">Quotations</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-secondary font-bold bg-secondary-container/10 border-r-4 border-secondary transition-all active:translate-x-1" href="#">
+<span class="material-symbols-outlined">receipt</span>
+<span class="font-label-caps text-label-caps">Invoices</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high transition-all active:translate-x-1" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-label-caps text-label-caps">Documents</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high transition-all active:translate-x-1" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-caps text-label-caps">Settings</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high transition-all active:translate-x-1" href="#">
+<span class="material-symbols-outlined">assessment</span>
+<span class="font-label-caps text-label-caps">Reports</span>
+</a>
+</nav>
+<div class="mt-auto border-t border-outline-variant pt-md px-sm space-y-xs">
+<button class="w-full bg-primary text-on-primary py-sm rounded font-label-caps text-label-caps mb-md flex items-center justify-center gap-sm cursor-pointer active:opacity-80 transition-opacity">
+<span class="material-symbols-outlined">add</span>
+                New Document
+            </button>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">contact_support</span>
+<span class="font-label-caps text-label-caps">Support</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-caps text-label-caps">Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 min-h-screen">
+<!-- TopNavBar -->
+<header class="bg-surface-container-lowest sticky top-0 z-40 border-b border-outline-variant flex justify-between items-center w-full px-lg py-sm">
+<div class="flex items-center gap-lg">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="pl-xl pr-md py-xs bg-surface-container-low border-none rounded text-body-sm focus:ring-2 focus:ring-secondary w-64 transition-all" placeholder="Search invoices, clients..." type="text">
+</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="p-xs rounded-full hover:bg-surface-container-low transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="p-xs rounded-full hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined">help</span>
+</button>
+<div class="h-8 w-8 rounded-full overflow-hidden border border-outline">
+<img class="w-full h-full object-cover" data-alt="A professional corporate headshot of a business executive with a friendly expression, wearing a navy blue suit against a clean, light grey studio background. The lighting is soft and even, highlighting facial features clearly, suitable for a premium financial dashboard interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOUVCN7AOnX-PmfdLpZmtZ6ccdz6O3kVo5QQyUrUQFRfBGzDpVBtPw9Ca9ySc081YB8z_x65ZaIfewmjn2HDX-at4V5lLQrIapcif_zxOcR_wVzMwYKtUzgiRQDsU7YYh1-9P5SPh-U6_dfbL-XNR3P9Y1qPsjy3MMunN_wEgRUHF88OEDg-_Dm6vhAfy5ZqO4YueAi4vLKHs5rVYvgw0yVbzXvs5v6nvBd6ed2kkhIJJCBl7WXsQY0mhjicgcy3L67KFXFsuE-fvg">
+</div>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="max-w-[1000px] mx-auto py-xl px-lg">
+<!-- Header Actions -->
+<div class="flex justify-between items-start mb-xl">
+<div>
+<h2 class="font-headline-md text-display-lg text-primary mb-xs">Create New Invoice</h2>
+<div class="flex items-center gap-md">
+<div class="flex items-center gap-xs text-secondary bg-secondary/10 px-sm py-[2px] rounded-full">
+<span class="w-2 h-2 bg-secondary rounded-full animate-pulse"></span>
+<span class="font-label-caps text-[10px]">DRAFT MODE</span>
+</div>
+<p class="text-on-surface-variant text-body-sm">Status: <span class="font-bold text-on-surface">Unsaved Draft</span></p>
+</div>
+</div>
+<div class="flex gap-sm">
+<button class="flex items-center gap-xs px-md py-sm bg-secondary-container/10 text-secondary border border-secondary rounded font-label-caps hover:bg-secondary-container/20 transition-all cursor-pointer">
+<span class="material-symbols-outlined">auto_fix</span>
+                        Convert from Quotation
+                    </button>
+</div>
+</div>
+<!-- Stepper -->
+<div class="mb-xl flex items-center justify-between max-w-2xl">
+<div class="flex flex-col items-center gap-xs relative">
+<div class="w-8 h-8 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-bold text-sm">1</div>
+<span class="font-label-caps text-[10px] text-secondary">DRAFT</span>
+</div>
+<div class="flex-grow h-[2px] bg-outline-variant mx-sm mb-4"></div>
+<div class="flex flex-col items-center gap-xs">
+<div class="w-8 h-8 rounded-full border-2 border-outline-variant text-on-surface-variant flex items-center justify-center font-bold text-sm bg-white">2</div>
+<span class="font-label-caps text-[10px] text-on-surface-variant">SENT</span>
+</div>
+<div class="flex-grow h-[2px] bg-outline-variant mx-sm mb-4"></div>
+<div class="flex flex-col items-center gap-xs">
+<div class="w-8 h-8 rounded-full border-2 border-outline-variant text-on-surface-variant flex items-center justify-center font-bold text-sm bg-white">3</div>
+<span class="font-label-caps text-[10px] text-on-surface-variant">APPROVED</span>
+</div>
+<div class="flex-grow h-[2px] bg-outline-variant mx-sm mb-4"></div>
+<div class="flex flex-col items-center gap-xs">
+<div class="w-8 h-8 rounded-full border-2 border-outline-variant text-on-surface-variant flex items-center justify-center font-bold text-sm bg-white">4</div>
+<span class="font-label-caps text-[10px] text-on-surface-variant">PAID</span>
+</div>
+</div>
+<!-- Main Form Card -->
+<div class="bg-white border border-outline-variant shadow-sm rounded-lg overflow-hidden">
+<!-- Top Detail Bar -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg p-lg border-b border-outline-variant bg-surface-container-lowest">
+<div class="space-y-xs">
+<label class="font-label-caps text-label-caps text-on-surface-variant block">INVOICE NUMBER</label>
+<div class="flex items-center gap-xs">
+<span class="text-on-surface-variant font-data-mono">INV-</span>
+<input class="border-none bg-transparent p-0 font-data-mono text-on-surface focus:ring-0 w-full" readonly="" type="text" value="2024-0042">
+<span class="material-symbols-outlined text-on-surface-variant text-sm cursor-pointer">edit</span>
+</div>
+</div>
+<div class="space-y-xs">
+<label class="font-label-caps text-label-caps text-on-surface-variant block">DUE DATE</label>
+<input class="w-full border-none bg-transparent p-0 font-body-md text-on-surface focus:ring-0" type="date" value="2024-06-15">
+</div>
+<div class="space-y-xs">
+<label class="font-label-caps text-label-caps text-on-surface-variant block">PAYMENT TERMS</label>
+<select class="w-full border-none bg-transparent p-0 font-body-md text-on-surface focus:ring-0 appearance-none cursor-pointer">
+<option>Net 30 Days</option>
+<option>Net 15 Days</option>
+<option>Due on Receipt</option>
+<option>Custom</option>
+</select>
+</div>
+</div>
+<!-- Client & Entity Section -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-xl p-lg">
+<div class="space-y-md">
+<h3 class="font-label-caps text-label-caps text-secondary">FROM</h3>
+<div class="p-md bg-surface-container-low rounded border border-dashed border-outline-variant">
+<p class="font-bold text-primary">FinOps Central Solutions</p>
+<p class="text-body-sm text-on-surface-variant">1200 Enterprise Way, Suite 400</p>
+<p class="text-body-sm text-on-surface-variant">San Francisco, CA 94105</p>
+<p class="text-body-sm text-on-surface-variant">tax-id: 99-1234567</p>
+</div>
+</div>
+<div class="space-y-md">
+<h3 class="font-label-caps text-label-caps text-secondary">BILL TO</h3>
+<div class="relative group">
+<select class="w-full bg-white border border-outline rounded p-md font-body-md text-on-surface focus:ring-2 focus:ring-secondary transition-all">
+<option>Select Client...</option>
+<option selected="">Global Logistics Partners Inc.</option>
+<option>TechNova Systems LLC</option>
+<option>Blue Sky Ventures</option>
+</select>
+<div class="mt-sm space-y-xs px-xs">
+<p class="text-body-sm text-on-surface-variant">455 Market Street</p>
+<p class="text-body-sm text-on-surface-variant">billing@globallogistics.com</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Itemized Table -->
+<div class="overflow-x-auto">
+<table class="w-full border-collapse">
+<thead>
+<tr class="bg-surface-container text-left border-y border-outline-variant">
+<th class="px-lg py-sm font-label-caps text-label-caps text-on-surface-variant">DESCRIPTION</th>
+<th class="px-lg py-sm font-label-caps text-label-caps text-on-surface-variant text-right">QUANTITY</th>
+<th class="px-lg py-sm font-label-caps text-label-caps text-on-surface-variant text-right">PRICE</th>
+<th class="px-lg py-sm font-label-caps text-label-caps text-on-surface-variant text-right">TOTAL</th>
+<th class="px-lg py-sm w-12"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-lg py-md">
+<input class="w-full border-none bg-transparent p-0 text-on-surface font-body-md focus:ring-0" type="text" value="Enterprise SaaS Subscription - Annual">
+<span class="text-[10px] text-on-surface-variant italic">Reference: QTN-2024-012</span>
+</td>
+<td class="px-lg py-md text-right">
+<input class="w-16 border-none bg-transparent p-0 text-right text-on-surface font-data-mono focus:ring-0" type="number" value="1">
+</td>
+<td class="px-lg py-md text-right">
+<input class="w-24 border-none bg-transparent p-0 text-right text-on-surface font-data-mono focus:ring-0" type="text" value="₹12,000.00">
+</td>
+<td class="px-lg py-md text-right font-data-mono font-bold">₹12,000.00</td>
+<td class="px-lg py-md text-center">
+<button class="text-on-surface-variant hover:text-error transition-colors"><span class="material-symbols-outlined text-sm">delete</span></button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-lg py-md">
+<input class="w-full border-none bg-transparent p-0 text-on-surface font-body-md focus:ring-0" type="text" value="Premium Support &amp; Implementation">
+</td>
+<td class="px-lg py-md text-right">
+<input class="w-16 border-none bg-transparent p-0 text-right text-on-surface font-data-mono focus:ring-0" type="number" value="40">
+</td>
+<td class="px-lg py-md text-right">
+<input class="w-24 border-none bg-transparent p-0 text-right text-on-surface font-data-mono focus:ring-0" type="text" value="₹150.00">
+</td>
+<td class="px-lg py-md text-right font-data-mono font-bold">₹6,000.00</td>
+<td class="px-lg py-md text-center">
+<button class="text-on-surface-variant hover:text-error transition-colors"><span class="material-symbols-outlined text-sm">delete</span></button>
+</td>
+</tr>
+<tr>
+<td class="px-lg py-sm" colspan="5">
+<button class="flex items-center gap-xs text-secondary font-label-caps hover:underline">
+<span class="material-symbols-outlined">add_circle</span>
+                                        ADD NEW LINE ITEM
+                                    </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Totals Section -->
+<div class="p-lg bg-surface-container-lowest flex justify-end">
+<div class="w-full max-w-xs space-y-sm">
+<div class="flex justify-between items-center text-on-surface-variant">
+<span class="font-label-caps text-label-caps">SUBTOTAL</span>
+<span class="font-data-mono">₹18,000.00</span>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant">
+<div class="flex items-center gap-xs">
+<span class="font-label-caps text-label-caps">TAX (8%)</span>
+<span class="material-symbols-outlined text-sm cursor-pointer">settings</span>
+</div>
+<span class="font-data-mono">₹1,440.00</span>
+</div>
+<div class="pt-sm border-t border-outline flex justify-between items-center text-primary">
+<span class="font-bold text-lg">TOTAL DUE</span>
+<span class="font-data-mono font-bold text-xl">₹19,440.00</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Notes & Terms -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg mt-lg">
+<div class="space-y-sm">
+<label class="font-label-caps text-label-caps text-on-surface-variant">NOTES TO CUSTOMER</label>
+<textarea class="w-full rounded border-outline-variant bg-white focus:ring-secondary focus:border-secondary text-body-sm" placeholder="Add a message for your client..." rows="3"></textarea>
+</div>
+<div class="space-y-sm">
+<label class="font-label-caps text-label-caps text-on-surface-variant">ATTACHMENTS</label>
+<div class="border-2 border-dashed border-outline-variant rounded p-md flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer">
+<span class="material-symbols-outlined mb-xs">upload_file</span>
+<p class="text-[10px] font-label-caps">DRAG &amp; DROP TO ATTACH FILES</p>
+</div>
+</div>
+</div>
+<!-- Sticky Action Bar -->
+<div class="mt-xl flex flex-wrap gap-md justify-end items-center sticky bottom-md bg-surface/80 backdrop-blur-md p-md rounded-lg border border-outline-variant shadow-lg">
+<button class="flex items-center gap-sm px-lg py-md bg-surface-container-low text-on-surface-variant border border-outline-variant rounded-lg font-label-caps hover:bg-surface-container-high hover:text-primary transition-all active:scale-95">
+<span class="material-symbols-outlined">save</span>
+                    Save Draft
+                </button>
+<button class="flex items-center gap-sm px-lg py-md bg-surface-container-low text-on-surface-variant border border-outline-variant rounded-lg font-label-caps hover:bg-surface-container-high hover:text-primary transition-all active:scale-95">
+<span class="material-symbols-outlined">picture_as_pdf</span>
+                    Generate PDF
+                </button>
+<div class="h-8 w-[1px] bg-outline-variant mx-xs"></div>
+<button class="flex items-center gap-sm px-xl py-md bg-secondary text-on-secondary rounded-lg font-label-caps shadow-lg hover:opacity-90 active:scale-95 transition-all" id="send-btn">
+<span class="material-symbols-outlined">send</span>
+                    Send via Email/WhatsApp
+                    <span class="material-symbols-outlined">expand_more</span>
+</button>
+</div>
+</div>
+</main>
+<!-- Micro-interaction for Send Button -->
+<script>
+        document.getElementById('send-btn').addEventListener('click', function(e) {
+            const btn = this;
+            const originalContent = btn.innerHTML;
+            btn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Sending...';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                btn.classList.replace('bg-secondary', 'bg-green-600');
+                btn.innerHTML = '<span class="material-symbols-outlined">check_circle</span> Sent Successfully';
+                
+                setTimeout(() => {
+                    btn.classList.replace('bg-green-600', 'bg-secondary');
+                    btn.innerHTML = originalContent;
+                    btn.disabled = false;
+                }, 2000);
+            }, 1500);
+        });
+    </script>
+
+
+
+
+
+
+</body></html>

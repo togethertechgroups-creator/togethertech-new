@@ -1,0 +1,374 @@
+<!DOCTYPE html><html lang="en" class="light" style=""><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@450&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet"><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">try{
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed": "#111c2d",
+                    "surface": "#fbf8fa",
+                    "primary-fixed": "#d8e3fb",
+                    "surface-dim": "#dcd9db",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed-dim": "#adc6ff",
+                    "on-surface-variant": "#45474c",
+                    "on-primary-container": "#8590a6",
+                    "on-error": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "surface-container-highest": "#e4e2e3",
+                    "on-secondary-container": "#fefcff",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed-dim": "#bcc7de",
+                    "primary": "#091426",
+                    "surface-tint": "#545f73",
+                    "surface-container-high": "#eae7e9",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed": "#d8e2ff",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-fixed-variant": "#004395",
+                    "inverse-on-surface": "#f3f0f2",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed": "#e0e3e5",
+                    "on-secondary-fixed": "#001a42",
+                    "primary-container": "#1e293b",
+                    "on-tertiary-container": "#8d9092",
+                    "inverse-primary": "#bcc7de",
+                    "tertiary": "#111516",
+                    "surface-variant": "#e4e2e3",
+                    "inverse-surface": "#303032",
+                    "tertiary-container": "#26292b",
+                    "surface-container": "#f0edef",
+                    "surface-container-low": "#f5f3f4",
+                    "on-tertiary-fixed": "#191c1e",
+                    "on-primary-fixed-variant": "#3c475a",
+                    "background": "#fbf8fa",
+                    "outline": "#75777d",
+                    "surface-bright": "#fbf8fa",
+                    "on-tertiary": "#ffffff",
+                    "secondary-container": "#2170e4",
+                    "secondary": "#0058be",
+                    "on-surface": "#1b1b1d",
+                    "on-tertiary-fixed-variant": "#444749",
+                    "tertiary-fixed-dim": "#c4c7c9",
+                    "on-background": "#1b1b1d",
+                    "outline-variant": "#c5c6cd"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "xl": "32px",
+                    "gutter": "16px",
+                    "margin-desktop": "32px",
+                    "xs": "4px",
+                    "sm": "8px",
+                    "md": "16px",
+                    "base": "4px",
+                    "lg": "24px",
+                    "container-max": "1280px"
+            },
+            "fontFamily": {
+                    "title-sm": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "data-mono": ["JetBrains Mono"],
+                    "body-sm": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "headline-md-mobile": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "title-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "display-lg": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "data-mono": ["14px", {"lineHeight": "20px", "fontWeight": "450"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    }catch(_e){}</script><meta charset="utf-8"></head><body class="font-body-md text-on-surface">
+<!-- Sidebar Navigation Shell -->
+<aside class="h-screen w-64 fixed left-0 top-0 overflow-y-auto bg-surface-container-low border-r border-outline-variant flex flex-col py-md px-sm z-40 side-nav-scroll">
+<!-- Brand Identity -->
+<div class="px-sm mb-lg flex items-center gap-sm">
+<div class="w-8 h-8 bg-primary rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary text-body-md" data-original-icon="account_balance">account_balance</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">B2B Finance</h1>
+<p class="font-label-caps text-label-caps text-on-surface-variant">Enterprise Tier</p>
+</div>
+</div>
+<!-- Main Navigation Links -->
+<nav class="flex-1 space-y-xs">
+<a href="#" class="flex items-center gap-md px-md py-sm rounded transition-all text-on-surface-variant hover:bg-surface-container-high">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-caps text-label-caps">Dashboard</span>
+</a>
+<a href="#" class="flex items-center gap-md px-md py-sm rounded transition-all text-on-surface-variant hover:bg-surface-container-high">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-caps text-label-caps">Customers</span>
+</a>
+<!-- Active State: Quotations -->
+<a href="#" class="flex items-center gap-md px-md py-sm rounded transition-all text-secondary font-bold bg-secondary-container/10 border-r-4 border-secondary">
+<span class="material-symbols-outlined">request_quote</span>
+<span class="font-label-caps text-label-caps">Quotations</span>
+</a>
+<a href="#" class="flex items-center gap-md px-md py-sm rounded transition-all text-on-surface-variant hover:bg-surface-container-high">
+<span class="material-symbols-outlined">receipt</span>
+<span class="font-label-caps text-label-caps">Invoices</span>
+</a>
+<a href="#" class="flex items-center gap-md px-md py-sm rounded transition-all text-on-surface-variant hover:bg-surface-container-high">
+<span class="material-symbols-outlined">description</span>
+<span class="font-label-caps text-label-caps">Documents</span>
+</a>
+<a href="#" class="flex items-center gap-md px-md py-sm rounded transition-all text-on-surface-variant hover:bg-surface-container-high">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-caps text-label-caps">Settings</span>
+</a>
+<a href="#" class="flex items-center gap-md px-md py-sm rounded transition-all text-on-surface-variant hover:bg-surface-container-high">
+<span class="material-symbols-outlined">assessment</span>
+<span class="font-label-caps text-label-caps">Reports</span>
+</a>
+</nav>
+<!-- CTA Button -->
+<div class="px-sm mb-lg mt-md">
+<button class="w-full bg-secondary text-on-secondary py-sm rounded font-label-caps text-label-caps hover:opacity-90 transition-opacity">
+                New Document
+            </button>
+</div>
+<!-- Footer Navigation -->
+<div class="mt-auto pt-md border-t border-outline-variant space-y-xs">
+<a href="#" class="flex items-center gap-md px-md py-sm rounded transition-all text-on-surface-variant hover:bg-surface-container-high">
+<span class="material-symbols-outlined">contact_support</span>
+<span class="font-label-caps text-label-caps">Support</span>
+</a>
+<a href="#" class="flex items-center gap-md px-md py-sm rounded transition-all text-on-surface-variant hover:bg-surface-container-high">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-caps text-label-caps">Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 min-h-screen">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-30 bg-surface-container-lowest border-b border-outline-variant px-lg py-sm flex justify-between items-center">
+<div class="flex items-center gap-md">
+<a href="#" class="flex items-center text-on-surface-variant hover:text-primary transition-colors gap-xs">
+<span class="material-symbols-outlined text-body-md">arrow_back</span>
+<span class="font-body-sm text-body-sm">Back to Quotations</span>
+</a>
+</div>
+<div class="flex items-center gap-lg">
+<div class="flex gap-md">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary">help</span>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-container-high border border-outline-variant overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Professional headshot of a financial operations manager for a corporate B2B dashboard. The image is crisp, with studio lighting and a clean, neutral background, reflecting a professional and authoritative persona. The color palette is minimal, focusing on cool greys and blues." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDF5TKgPgIRuHN1YJRgiRQVFc87DQX9dWuB44F4qeGS50yn4UaghOz2_JcpoZ-_8rFx0gYEy81ye_xwCiQo8_tpixgb1E-b41FXCjS0pCvGhht0fWthw8kg01NAz4S0uVh_4-zzjzzWwK-IdXMxk7_D6a36ghBXmPqsjD5PC1OyfK0o9nhGM6wHBmnffIYu4m1sOMxVe8bAvMdIEI4yNamFTRxHcbLMVmcJqJOfh_r0ks7Ya1kIxEYa-rfuakIYEvi6Lvz0Pns4uSJi">
+</div>
+</div>
+</header>
+<!-- Content Area -->
+<div class="p-lg max-w-5xl mx-auto">
+<!-- Page Header & Summary -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-xl gap-md">
+<div>
+<h2 class="font-display-lg text-display-lg text-primary mb-xs">Create New Quotation</h2>
+<p class="font-body-md text-on-surface-variant">Drafting a proposal for client review and approval.</p>
+</div>
+<div class="flex items-center gap-sm bg-surface-container-high px-md py-xs rounded-full border border-outline-variant">
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+<span class="font-label-caps text-label-caps uppercase text-on-surface-variant">Status: Draft</span>
+</div>
+</div>
+<!-- Form Container -->
+<div class="space-y-gutter">
+<!-- Section 1: Client & Metadata Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Client Selection -->
+<div class="lg:col-span-2 bg-surface-container-lowest p-lg border border-outline-variant rounded shadow-sm">
+<label class="block font-label-caps text-label-caps text-on-surface-variant mb-xs">Billing Recipient</label>
+<div class="relative">
+<select class="w-full bg-surface-container-low border border-outline-variant px-md py-sm rounded focus:ring-2 focus:ring-secondary focus:border-secondary transition-all appearance-none">
+<option>Search or select customer...</option>
+<option>Global Logistics Corp.</option>
+<option>TechNova Solutions Ltd.</option>
+<option>Bright Sky Energy Group</option>
+</select>
+<span class="material-symbols-outlined absolute right-md top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant">expand_more</span>
+</div>
+<div class="mt-md p-md bg-surface-container-low/50 rounded border border-dashed border-outline-variant">
+<p class="font-body-sm text-body-sm text-on-surface-variant italic">No customer selected. Billing details will appear once a recipient is chosen.</p>
+</div>
+</div>
+<!-- Quotation Metadata -->
+<div class="bg-surface-container-lowest p-lg border border-outline-variant rounded shadow-sm flex flex-col gap-md">
+<div>
+<label class="block font-label-caps text-label-caps text-on-surface-variant mb-xs">Quotation Number</label>
+<input class="w-full bg-surface-container-low border border-outline-variant px-md py-sm rounded text-on-surface-variant font-data-mono text-data-mono" placeholder="QT-2023-0042" readonly="" type="text">
+</div>
+<div>
+<label class="block font-label-caps text-label-caps text-on-surface-variant mb-xs">Project Reference</label>
+<input class="w-full bg-white border border-outline-variant px-md py-sm rounded focus:ring-2 focus:ring-secondary focus:border-secondary transition-all" placeholder="e.g. Q4 Platform Migration" type="text">
+</div>
+</div>
+</div>
+<!-- Section 2: Dates Row -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="bg-surface-container-lowest p-lg border border-outline-variant rounded shadow-sm">
+<label class="block font-label-caps text-label-caps text-on-surface-variant mb-xs">Issue Date</label>
+<div class="relative">
+<input class="w-full bg-white border border-outline-variant px-md py-sm rounded focus:ring-2 focus:ring-secondary focus:border-secondary transition-all" type="date">
+<span class="material-symbols-outlined absolute right-md top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant">calendar_today</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-lg border border-outline-variant rounded shadow-sm">
+<label class="block font-label-caps text-label-caps text-on-surface-variant mb-xs">Expiry Date</label>
+<div class="relative">
+<input class="w-full bg-white border border-outline-variant px-md py-sm rounded focus:ring-2 focus:ring-secondary focus:border-secondary transition-all" type="date">
+<span class="material-symbols-outlined absolute right-md top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant">event_busy</span>
+</div>
+</div>
+</div>
+<!-- Section 3: Line Items Table -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded shadow-sm overflow-hidden">
+<div class="p-lg border-b border-outline-variant flex justify-between items-center">
+<h3 class="font-title-sm text-title-sm text-primary">Service Items</h3>
+<button class="flex items-center gap-xs text-secondary font-label-caps text-label-caps hover:underline">
+<span class="material-symbols-outlined text-body-sm">add</span> Add Line Item
+                        </button>
+</div>
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low">
+<tr>
+<th class="px-lg py-md font-label-caps text-label-caps text-on-surface-variant">Description</th>
+<th class="px-lg py-md font-label-caps text-label-caps text-on-surface-variant w-32">Quantity</th>
+<th class="px-lg py-md font-label-caps text-label-caps text-on-surface-variant text-right w-40">Rate (INR)</th>
+<th class="px-lg py-md font-label-caps text-label-caps text-on-surface-variant text-right w-40">Total (INR)</th>
+<th class="px-md py-md w-12"></th>
+</tr>
+</thead>
+<tbody id="line-items-container">
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors">
+<td class="px-lg py-md">
+<input class="w-full border-none focus:ring-0 p-0 font-body-md text-body-md placeholder:text-outline-variant" placeholder="e.g. Strategic Consulting - Phase 1" type="text">
+</td>
+<td class="px-lg py-md">
+<input class="w-full border border-outline-variant rounded px-sm py-xs font-data-mono text-data-mono" type="number" value="1">
+</td>
+<td class="px-lg py-md text-right">
+<input class="w-full text-right border border-outline-variant rounded px-sm py-xs font-data-mono text-data-mono" type="text" value="2,500.00">
+</td>
+<td class="px-lg py-md text-right font-data-mono text-data-mono">
+                                    2,500.00
+                                </td>
+<td class="px-md py-md text-center">
+<span class="material-symbols-outlined text-outline cursor-pointer hover:text-error transition-colors">delete</span>
+</td>
+</tr>
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors">
+<td class="px-lg py-md">
+<input class="w-full border-none focus:ring-0 p-0 font-body-md text-body-md placeholder:text-outline-variant" placeholder="e.g. Implementation Support" type="text">
+</td>
+<td class="px-lg py-md">
+<input class="w-full border border-outline-variant rounded px-sm py-xs font-data-mono text-data-mono" type="number" value="40">
+</td>
+<td class="px-lg py-md text-right">
+<input class="w-full text-right border border-outline-variant rounded px-sm py-xs font-data-mono text-data-mono" type="text" value="125.00">
+</td>
+<td class="px-lg py-md text-right font-data-mono text-data-mono">
+                                    5,000.00
+                                </td>
+<td class="px-md py-md text-center">
+<span class="material-symbols-outlined text-outline cursor-pointer hover:text-error transition-colors">delete</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Section 4: Footer - Summary & Terms -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter">
+<!-- Custom Terms -->
+<div class="bg-surface-container-lowest p-lg border border-outline-variant rounded shadow-sm">
+<label class="block font-label-caps text-label-caps text-on-surface-variant mb-md">Terms &amp; Conditions</label>
+<textarea class="w-full bg-white border border-outline-variant p-md rounded font-body-sm text-body-sm focus:ring-2 focus:ring-secondary focus:border-secondary transition-all resize-none" placeholder="Enter custom terms, payment schedules, or validity periods for this quotation..." rows="6"></textarea>
+</div>
+<!-- Financial Summary -->
+<div class="bg-surface-container-lowest p-lg border border-outline-variant rounded shadow-sm flex flex-col">
+<div class="flex-1 space-y-md">
+<div class="flex justify-between items-center">
+<span class="font-body-md text-body-md text-on-surface-variant">Subtotal</span>
+<span class="font-data-mono text-data-mono">7,500.00</span>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-xs">
+<span class="font-body-md text-body-md text-on-surface-variant">Tax</span>
+<input class="w-12 text-center border border-outline-variant rounded px-xs py-xs font-data-mono text-data-mono" type="text" value="10">
+<span class="text-on-surface-variant">%</span>
+</div>
+<span class="font-data-mono text-data-mono">750.00</span>
+</div>
+</div>
+<div class="mt-lg pt-lg border-t-2 border-outline-variant flex justify-between items-center">
+<span class="font-title-sm text-title-sm text-primary">Grand Total (INR)</span>
+<span class="font-display-lg text-headline-md text-secondary font-bold">₹8,250.00</span>
+</div>
+</div>
+</div>
+<!-- Section 5: Action Bar -->
+<div class="flex flex-col md:flex-row justify-between items-center pt-xl gap-md">
+<button class="flex items-center gap-sm text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">delete</span>
+<span class="font-label-caps text-label-caps">Discard Draft</span>
+</button>
+<div class="flex flex-wrap gap-md justify-center w-full md:w-auto">
+<button class="px-lg py-sm border border-outline text-primary rounded font-label-caps text-label-caps hover:bg-surface-container-low transition-colors">
+                            Save as Draft
+                        </button>
+<button class="px-lg py-sm border border-outline text-primary rounded font-label-caps text-label-caps hover:bg-surface-container-low transition-colors flex items-center gap-xs">
+<span class="material-symbols-outlined text-body-sm">picture_as_pdf</span> Preview PDF
+                        </button>
+<button class="px-xl py-sm bg-secondary text-on-secondary rounded font-label-caps text-label-caps hover:opacity-90 transition-opacity shadow-md flex items-center gap-sm">
+<span class="material-symbols-outlined text-body-sm">send</span> Send Quotation
+                        </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Subtle Background Ornament -->
+<div class="fixed bottom-0 right-0 p-lg pointer-events-none opacity-5">
+<span class="material-symbols-outlined text-[200px]" style="font-variation-settings: 'wght' 100;">request_quote</span>
+</div>
+</main>
+<script>
+        // Micro-interactions and simple reactive behavior
+        document.addEventListener('DOMContentLoaded', () => {
+            const inputs = document.querySelectorAll('input, select, textarea');
+            
+            // Focus state visual feedback
+            inputs.forEach(input => {
+                input.addEventListener('focus', () => {
+                    input.parentElement.classList.add('ring-offset-2');
+                });
+                input.addEventListener('blur', () => {
+                    input.parentElement.classList.remove('ring-offset-2');
+                });
+            });
+
+            // Prevent scroll on sidebar when main content scrolls
+            const main = document.querySelector('main');
+            main.addEventListener('scroll', (e) => {
+                // Main content scrolling logic
+            });
+        });
+    </script>
+
+</body></html>

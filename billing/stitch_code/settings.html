@@ -1,0 +1,392 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Company Settings | FinOps Central</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@450&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-primary": "#bcc7de",
+                    "surface-dim": "#dcd9db",
+                    "surface-bright": "#fbf8fa",
+                    "secondary": "#0058be",
+                    "background": "#fbf8fa",
+                    "on-secondary-container": "#fefcff",
+                    "on-primary-container": "#8590a6",
+                    "on-surface": "#1b1b1d",
+                    "primary-container": "#1e293b",
+                    "surface-container-low": "#f5f3f4",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-on-surface": "#f3f0f2",
+                    "on-tertiary-container": "#8d9092",
+                    "on-background": "#1b1b1d",
+                    "on-secondary-fixed": "#001a42",
+                    "on-primary-fixed": "#111c2d",
+                    "on-secondary": "#ffffff",
+                    "outline-variant": "#c5c6cd",
+                    "on-primary-fixed-variant": "#3c475a",
+                    "secondary-container": "#2170e4",
+                    "secondary-fixed": "#d8e2ff",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed-dim": "#adc6ff",
+                    "on-error": "#ffffff",
+                    "tertiary": "#111516",
+                    "surface-container": "#f0edef",
+                    "surface-tint": "#545f73",
+                    "tertiary-fixed": "#e0e3e5",
+                    "inverse-surface": "#303032",
+                    "on-tertiary-fixed-variant": "#444749",
+                    "surface": "#fbf8fa",
+                    "tertiary-fixed-dim": "#c4c7c9",
+                    "surface-container-highest": "#e4e2e3",
+                    "on-surface-variant": "#45474c",
+                    "error": "#ba1a1a",
+                    "on-error-container": "#93000a",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed-dim": "#bcc7de",
+                    "on-tertiary-fixed": "#191c1e",
+                    "tertiary-container": "#26292b",
+                    "surface-container-high": "#eae7e9",
+                    "error-container": "#ffdad6",
+                    "surface-variant": "#e4e2e3",
+                    "primary": "#091426",
+                    "on-secondary-fixed-variant": "#004395",
+                    "outline": "#75777d",
+                    "primary-fixed": "#d8e3fb"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "xl": "32px",
+                    "sm": "8px",
+                    "md": "16px",
+                    "container-max": "1280px",
+                    "margin-desktop": "32px",
+                    "lg": "24px",
+                    "base": "4px",
+                    "gutter": "16px",
+                    "xs": "4px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "data-mono": ["JetBrains Mono"],
+                    "label-caps": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "headline-md-mobile": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "title-sm": ["Inter"],
+                    "body-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "data-mono": ["14px", {"lineHeight": "20px", "fontWeight": "450"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "display-lg": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "title-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #F8FAFC; /* Overriding with Design System Surface Level 0 */
+            color: #1b1b1d;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        /* Custom scrollbar for professional density */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #E2E8F0; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #CBD5E1; }
+    </style>
+</head>
+<body class="font-body-md text-body-md">
+<!-- TopNavBar -->
+<header class="bg-surface-container-lowest docked full-width top-0 sticky z-50 border-b border-outline-variant flex justify-between items-center w-full px-lg py-sm max-w-container-max mx-auto h-16">
+<div class="flex items-center gap-md">
+<span class="font-headline-md text-headline-md font-bold text-primary">FinOps Central</span>
+</div>
+<div class="flex items-center gap-md">
+<div class="relative hidden md:block">
+<input class="bg-surface-container-low border-none rounded-lg px-md py-xs pl-xl text-body-sm w-64 focus:ring-2 focus:ring-secondary transition-all" placeholder="Search settings..." type="text">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+</div>
+<div class="flex items-center gap-sm">
+<button class="p-xs hover:bg-surface-container-low rounded-full transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+</button>
+<button class="p-xs hover:bg-surface-container-low rounded-full transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined text-on-surface-variant">help</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-secondary/10 flex items-center justify-center border border-outline-variant ml-sm overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a business executive in a high-key office environment, styled with a modern corporate aesthetic and soft, bright lighting to match the light-mode UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDImWE1lbgnZrSC-dLMYBM92Iu-_eT3tIVKa8Z2v2Iql2ZGdZMzI6gf5l6FKD53UxII1_0YzPYO3fvR9GKFteN47QSnUHa7fD0QBfO_k48pb0diQOdCf4fIwlZNER3bEO2agwJc0ut8SSqgnZl2Yy3yVVz-Ph115cWMa43dEIPnczmL4OPLcfQiY_ra_rd6I2wGLZdnjxG_VGWz4Hp0hjyjnmqER5eRH4coYd54OiRU0KQ4n66VkxJU7CeOX2JDQ3qdpcKGJElALHfN">
+</div>
+</div>
+</div>
+</header>
+<div class="flex">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 overflow-y-auto bg-surface-container-low border-r border-outline-variant flex flex-col py-md px-sm z-40">
+<div class="flex items-center gap-sm px-sm mb-xl">
+<div class="h-10 w-10 bg-primary rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-[24px]" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+</div>
+<div>
+<div class="font-headline-md text-[18px] font-bold text-primary leading-tight">B2B Finance</div>
+<div class="font-label-caps text-[10px] text-on-surface-variant uppercase tracking-wider">Enterprise Tier</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-md px-sm py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-caps text-label-caps">Dashboard</span>
+</a>
+<a class="flex items-center gap-md px-sm py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-caps text-label-caps">Customers</span>
+</a>
+<a class="flex items-center gap-md px-sm py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined">request_quote</span>
+<span class="font-label-caps text-label-caps">Quotations</span>
+</a>
+<a class="flex items-center gap-md px-sm py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined">receipt</span>
+<span class="font-label-caps text-label-caps">Invoices</span>
+</a>
+<a class="flex items-center gap-md px-sm py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-label-caps text-label-caps">Documents</span>
+</a>
+<a class="flex items-center gap-md px-sm py-sm rounded-lg text-secondary font-bold bg-secondary-container/10 border-r-4 border-secondary transition-all active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="font-label-caps text-label-caps">Settings</span>
+</a>
+<a class="flex items-center gap-md px-sm py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined">assessment</span>
+<span class="font-label-caps text-label-caps">Reports</span>
+</a>
+</nav>
+<div class="mt-auto pt-md space-y-1">
+<button class="w-full flex items-center gap-md px-sm py-sm rounded-lg bg-secondary text-white font-label-caps text-label-caps justify-center mb-md hover:brightness-110 transition-all active:scale-95">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                    New Document
+                </button>
+<a class="flex items-center gap-md px-sm py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all active:translate-x-1" href="#">
+<span class="material-symbols-outlined">contact_support</span>
+<span class="font-label-caps text-label-caps">Support</span>
+</a>
+<a class="flex items-center gap-md px-sm py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all active:translate-x-1" href="#">
+<span class="material-symbols-outlined text-error">logout</span>
+<span class="font-label-caps text-label-caps text-error">Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 ml-64 p-xl max-w-5xl mx-auto">
+<div class="mb-xl">
+<h1 class="font-display-lg text-display-lg text-primary mb-xs">Company Settings</h1>
+<p class="text-on-surface-variant font-body-md">Manage your business profile and branding for generated invoices and financial documents.</p>
+</div>
+<div class="space-y-gutter">
+<!-- Section: Brand Identity -->
+<section class="bg-surface-container-lowest border border-outline-variant p-lg rounded-xl shadow-none">
+<div class="flex items-center gap-sm mb-lg border-b border-outline-variant pb-md">
+<span class="material-symbols-outlined text-secondary">palette</span>
+<h2 class="font-title-sm text-title-sm text-primary">Brand Identity</h2>
+</div>
+<div class="grid md:grid-cols-2 gap-xl">
+<div class="space-y-md">
+<label class="block font-label-caps text-label-caps text-on-surface-variant mb-xs">Company Logo</label>
+<div class="flex items-center gap-lg">
+<div class="h-32 w-32 bg-surface-container-low rounded-lg border-2 border-dashed border-outline-variant flex flex-col items-center justify-center gap-sm cursor-pointer hover:bg-surface-container transition-colors group">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-secondary transition-colors">cloud_upload</span>
+<span class="text-[12px] text-on-surface-variant font-medium">Upload PNG/JPG</span>
+</div>
+<div class="flex-1">
+<p class="text-body-sm text-on-surface-variant mb-md">This logo will appear on the top right of your generated PDFs and in your customer portal. Recommended size: 500x500px.</p>
+<button class="px-md py-sm border border-error text-error rounded-lg font-label-caps text-label-caps hover:bg-error/10 transition-all active:scale-95">Remove Logo</button>
+</div>
+</div>
+</div>
+<div class="space-y-md">
+<label class="block font-label-caps text-label-caps text-on-surface-variant mb-xs">Primary Brand Color</label>
+<div class="flex items-center gap-md">
+<input class="h-12 w-24 p-1 rounded-lg border border-outline-variant bg-white cursor-pointer" type="color" value="#0058be">
+<div class="flex-1">
+<input class="w-full border border-outline-variant rounded-lg px-md py-sm font-data-mono text-data-mono focus:border-secondary focus:ring-1 focus:ring-secondary outline-none" type="text" value="#0058BE">
+</div>
+</div>
+<p class="text-body-sm text-on-surface-variant">This color will be used for headings and borders in your generated PDFs.</p>
+</div>
+</div>
+</section>
+<!-- Section: Business Details -->
+<section class="bg-surface-container-lowest border border-outline-variant p-lg rounded-xl shadow-none">
+<div class="flex items-center gap-sm mb-lg border-b border-outline-variant pb-md">
+<span class="material-symbols-outlined text-secondary">business_center</span>
+<h2 class="font-title-sm text-title-sm text-primary">Business Details</h2>
+</div>
+<div class="grid md:grid-cols-2 gap-md">
+<div class="space-y-xs">
+<label class="font-label-caps text-label-caps text-on-surface-variant">Business Name</label>
+<input class="w-full border border-outline-variant rounded-lg px-md py-sm focus:border-secondary focus:ring-1 focus:ring-secondary outline-none" placeholder="e.g. Acme Corp Inc." type="text" value="FinOps Enterprise Solutions">
+</div>
+<div class="space-y-xs">
+<label class="font-label-caps text-label-caps text-on-surface-variant">GST / Tax Identification Number</label>
+<input class="w-full border border-outline-variant rounded-lg px-md py-sm focus:border-secondary focus:ring-1 focus:ring-secondary outline-none" placeholder="e.g. 27AAAAA0000A1Z5" type="text" value="27AAACF4582G1ZX">
+</div>
+<div class="md:col-span-2 space-y-xs">
+<label class="font-label-caps text-label-caps text-on-surface-variant">Registered Office Address</label>
+<textarea class="w-full border border-outline-variant rounded-lg px-md py-sm focus:border-secondary focus:ring-1 focus:ring-secondary outline-none resize-none" rows="3">Suite 405, Tech Plaza, Financial District,
+San Francisco, CA 94105,
+United States</textarea>
+</div>
+</div>
+</section>
+<!-- Section: Bank Information -->
+<section class="bg-surface-container-lowest border border-outline-variant p-lg rounded-xl shadow-none">
+<div class="flex items-center gap-sm mb-lg border-b border-outline-variant pb-md">
+<span class="material-symbols-outlined text-secondary">account_balance</span>
+<h2 class="font-title-sm text-title-sm text-primary">Bank Information</h2>
+</div>
+<div class="grid md:grid-cols-3 gap-md">
+<div class="space-y-xs">
+<label class="font-label-caps text-label-caps text-on-surface-variant">Account Number</label>
+<input class="w-full border border-outline-variant rounded-lg px-md py-sm font-data-mono text-data-mono focus:border-secondary focus:ring-1 focus:ring-secondary outline-none" placeholder="XXXX XXXX XXXX" type="text" value="8829 4410 2293">
+</div>
+<div class="space-y-xs">
+<label class="font-label-caps text-label-caps text-on-surface-variant">IFSC / SWIFT Code</label>
+<input class="w-full border border-outline-variant rounded-lg px-md py-sm font-data-mono text-data-mono focus:border-secondary focus:ring-1 focus:ring-secondary outline-none" placeholder="ABCD0123456" type="text" value="BNKUS00129">
+</div>
+<div class="space-y-xs">
+<label class="font-label-caps text-label-caps text-on-surface-variant">Branch Name</label>
+<input class="w-full border border-outline-variant rounded-lg px-md py-sm focus:border-secondary focus:ring-1 focus:ring-secondary outline-none" placeholder="e.g. Downtown Branch" type="text" value="Global Business Center">
+</div>
+</div>
+<div class="mt-md p-md bg-surface-container-low rounded-lg flex items-start gap-sm">
+<span class="material-symbols-outlined text-secondary text-[20px]">info</span>
+<p class="text-body-sm text-on-surface-variant">Bank details are automatically appended to the footer of every quotation and invoice generated by the system for easy wire transfers.</p>
+</div>
+</section>
+<!-- Save Actions -->
+<div class="pt-lg flex items-center justify-end gap-md">
+<button class="px-xl py-md border border-outline-variant rounded-xl font-label-caps text-label-caps text-on-surface-variant hover:bg-surface-container-low transition-all active:scale-95">
+                        Cancel
+                    </button>
+<button class="px-xl py-md bg-secondary text-white rounded-xl font-label-caps text-label-caps flex items-center gap-sm hover:brightness-110 shadow-md transition-all active:scale-95 group" id="saveBtn">
+<span class="material-symbols-outlined text-[18px] group-hover:animate-pulse">save</span>
+                        Save Changes
+                    </button>
+</div>
+</div>
+<!-- Preview Placeholder for PDF -->
+<div class="mt-xl pt-xl border-t border-outline-variant">
+<div class="flex items-center justify-between mb-lg">
+<h3 class="font-title-sm text-title-sm text-primary">PDF Preview</h3>
+<button class="px-md py-sm bg-secondary/10 text-secondary rounded-lg font-label-caps text-label-caps flex items-center gap-xs hover:bg-secondary/20 transition-all active:scale-95">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+                        Full Screen Preview
+                    </button>
+</div>
+<div class="w-full aspect-[1/1.4] bg-white border border-outline-variant rounded-xl overflow-hidden shadow-md relative">
+<div class="p-xl">
+<div class="flex justify-between items-start mb-xl">
+<div class="h-12 w-32 bg-surface-container-low rounded animate-pulse"></div>
+<div class="text-right">
+<div class="h-6 w-24 bg-surface-container-low rounded ml-auto mb-xs"></div>
+<div class="h-4 w-32 bg-surface-container-low rounded ml-auto"></div>
+</div>
+</div>
+<div class="space-y-sm mb-xl">
+<div class="h-8 w-48 bg-surface-container-low rounded"></div>
+<div class="h-4 w-full bg-surface-container-low rounded opacity-50"></div>
+<div class="h-4 w-full bg-surface-container-low rounded opacity-50"></div>
+</div>
+<div class="border-t border-b border-surface-container py-md mb-xl">
+<div class="grid grid-cols-4 gap-md">
+<div class="h-4 bg-surface-container rounded"></div>
+<div class="h-4 bg-surface-container rounded"></div>
+<div class="h-4 bg-surface-container rounded"></div>
+<div class="h-4 bg-surface-container rounded"></div>
+</div>
+</div>
+<div class="absolute bottom-xl left-xl right-xl">
+<div class="h-1 w-full bg-secondary opacity-20 mb-md"></div>
+<div class="grid grid-cols-2 gap-xl">
+<div class="space-y-xs">
+<div class="h-3 w-20 bg-surface-container rounded"></div>
+<div class="h-3 w-40 bg-surface-container rounded opacity-50"></div>
+</div>
+<div class="space-y-xs text-right">
+<div class="h-3 w-20 bg-surface-container rounded ml-auto"></div>
+<div class="h-3 w-40 bg-surface-container rounded opacity-50 ml-auto"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Success Notification Toast -->
+<div class="fixed bottom-lg right-lg translate-y-20 opacity-0 bg-primary-container text-white px-xl py-md rounded-xl flex items-center gap-md shadow-lg transition-all duration-300 z-[100]" id="toast">
+<span class="material-symbols-outlined text-secondary-fixed">check_circle</span>
+<span class="font-label-caps text-label-caps">Settings saved successfully</span>
+</div>
+<script>
+        document.getElementById('saveBtn').addEventListener('click', function() {
+            const toast = document.getElementById('toast');
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+            
+            this.innerHTML = '<span class="material-symbols-outlined text-[18px] animate-spin">sync</span> Saving...';
+            
+            setTimeout(() => {
+                this.innerHTML = '<span class="material-symbols-outlined text-[18px]">save</span> Save Changes';
+                setTimeout(() => {
+                    toast.classList.add('translate-y-20', 'opacity-0');
+                    toast.classList.remove('translate-y-0', 'opacity-100');
+                }, 3000);
+            }, 1000);
+        });
+
+        // Micro-interaction for inputs
+        const inputs = document.querySelectorAll('input, textarea');
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.classList.add('scale-[1.01]');
+                input.parentElement.style.transition = 'transform 0.2s ease';
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.classList.remove('scale-[1.01]');
+            });
+        });
+    </script>
+
+
+</body></html>

@@ -1,0 +1,458 @@
+<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Create Quotation | FinOps Central</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;family=JetBrains+Mono:wght@450&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-primary": "#bcc7de",
+                    "surface-dim": "#dcd9db",
+                    "surface-bright": "#fbf8fa",
+                    "secondary": "#0058be",
+                    "background": "#fbf8fa",
+                    "on-secondary-container": "#fefcff",
+                    "on-primary-container": "#8590a6",
+                    "on-surface": "#1b1b1d",
+                    "primary-container": "#1e293b",
+                    "surface-container-low": "#f5f3f4",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-on-surface": "#f3f0f2",
+                    "on-tertiary-container": "#8d9092",
+                    "on-background": "#1b1b1d",
+                    "on-secondary-fixed": "#001a42",
+                    "on-primary-fixed": "#111c2d",
+                    "on-secondary": "#ffffff",
+                    "outline-variant": "#c5c6cd",
+                    "on-primary-fixed-variant": "#3c475a",
+                    "secondary-container": "#2170e4",
+                    "secondary-fixed": "#d8e2ff",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed-dim": "#adc6ff",
+                    "on-error": "#ffffff",
+                    "tertiary": "#111516",
+                    "surface-container": "#f0edef",
+                    "surface-tint": "#545f73",
+                    "tertiary-fixed": "#e0e3e5",
+                    "inverse-surface": "#303032",
+                    "on-tertiary-fixed-variant": "#444749",
+                    "surface": "#fbf8fa",
+                    "tertiary-fixed-dim": "#c4c7c9",
+                    "surface-container-highest": "#e4e2e3",
+                    "on-surface-variant": "#45474c",
+                    "error": "#ba1a1a",
+                    "on-error-container": "#93000a",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed-dim": "#bcc7de",
+                    "on-tertiary-fixed": "#191c1e",
+                    "tertiary-container": "#26292b",
+                    "surface-container-high": "#eae7e9",
+                    "error-container": "#ffdad6",
+                    "surface-variant": "#e4e2e3",
+                    "primary": "#091426",
+                    "on-secondary-fixed-variant": "#004395",
+                    "outline": "#75777d",
+                    "primary-fixed": "#d8e3fb"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "xl": "32px",
+                    "sm": "8px",
+                    "md": "16px",
+                    "container-max": "1280px",
+                    "margin-desktop": "32px",
+                    "lg": "24px",
+                    "base": "4px",
+                    "gutter": "16px",
+                    "xs": "4px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "data-mono": ["JetBrains Mono"],
+                    "label-caps": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "title-sm": ["Inter"],
+                    "body-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "data-mono": ["14px", {"lineHeight": "20px", "fontWeight": "450"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "display-lg": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "title-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+            line-height: 1;
+        }
+        
+        /* Custom Table Scrollbar */
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 10px; }
+        
+        /* Input Focus Ring */
+        .finops-input:focus {
+            outline: none;
+            border-color: #3B82F6;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-hidden">
+<!-- Sidebar Navigation Shell (Predicted SideNavBar) -->
+<aside class="h-screen w-64 fixed left-0 top-0 overflow-y-auto bg-surface-container-low border-r border-outline-variant flex flex-col py-md px-sm z-40">
+<div class="px-md py-sm mb-lg">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">B2B Finance</h1>
+<p class="font-label-caps text-label-caps text-on-surface-variant">Enterprise Tier</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-caps text-label-caps">Dashboard</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-caps text-label-caps">Customers</span>
+</a>
+<!-- Active State: Quotations -->
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-secondary font-bold bg-secondary-container/10 border-r-4 border-secondary active:translate-x-1 duration-150 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="request_quote">request_quote</span>
+<span class="font-label-caps text-label-caps">Quotations</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="receipt">receipt</span>
+<span class="font-label-caps text-label-caps">Invoices</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-label-caps text-label-caps">Documents</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-caps text-label-caps">Settings</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="assessment">assessment</span>
+<span class="font-label-caps text-label-caps">Reports</span>
+</a>
+</nav>
+<button class="mt-lg mb-xl mx-sm bg-secondary text-on-secondary px-md py-sm rounded-lg font-label-caps text-label-caps hover:opacity-90 transition-opacity flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+            New Document
+        </button>
+<div class="pt-md border-t border-outline-variant space-y-1">
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="contact_support">contact_support</span>
+<span class="font-label-caps text-label-caps">Support</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-label-caps text-label-caps">Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 h-screen overflow-y-auto bg-surface relative">
+<!-- Top Navigation Bar Shell (Predicted TopNavBar) -->
+<header class="bg-surface-container-lowest sticky top-0 z-30 border-b border-outline-variant">
+<div class="flex justify-between items-center w-full px-lg py-sm max-w-container-max mx-auto h-16">
+<div class="flex items-center gap-xl">
+<span class="font-headline-md text-headline-md font-bold text-primary">FinOps Central</span>
+<div class="relative w-96 hidden md:block">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="search">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-full py-xs pl-xl pr-md text-body-sm finops-input" placeholder="Search transactions, clients..." type="text">
+</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="p-sm rounded-full hover:bg-surface-container-low transition-colors text-on-surface-variant relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="p-sm rounded-full hover:bg-surface-container-low transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-primary overflow-hidden ml-sm cursor-pointer">
+<img class="w-full h-full object-cover" data-alt="Close-up professional headshot of a female financial controller in business attire, clean white background, soft corporate lighting, sharp focus, friendly expression." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmNpnD8FvQ1yuObX33VjPZnZzfHTxZ-lI7J6h_WQpoIID0oks5efl6Tsi9s6aSQjZtYJEjiOcA0AwLIrAFRAIk_2cRHsUClxilLj2TA_F2LluRFwBWMEYuVumEeQyTmM-40OJhhSsE0OvQJ8oUkghoPq86KnRIozWDnyvHdr9xrM3kN-UndavtCGG020pgd3RunSNaEJ3Sg2Y4PSpMAQM-WuAsdyPOaR5s6kL0KZ5fJHt7b3ai4z5A8oWHr16582sHkQOO_-2584TN">
+</div>
+</div>
+</div>
+</header>
+<div class="max-w-container-max mx-auto px-lg py-xl">
+<!-- Header Section: Creation Title & Primary Actions -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-lg mb-xl">
+<div>
+<nav class="flex items-center gap-xs text-on-surface-variant mb-xs">
+<span class="font-label-caps text-label-caps">Quotations</span>
+<span class="material-symbols-outlined text-[14px]" data-icon="chevron_right">chevron_right</span>
+<span class="font-label-caps text-label-caps text-secondary">New Quotation</span>
+</nav>
+<h2 class="font-display-lg text-display-lg text-primary">Create New Quotation</h2>
+</div>
+<div class="flex gap-md">
+<button class="px-lg py-sm bg-surface-container-lowest border border-outline text-primary font-label-caps text-label-caps rounded hover:bg-surface-container-low transition-all">
+                        Save Draft
+                    </button>
+<button class="px-lg py-sm bg-secondary text-on-secondary font-label-caps text-label-caps rounded hover:opacity-90 transition-all flex items-center gap-sm shadow-sm">
+<span class="material-symbols-outlined text-[18px]" data-icon="picture_as_pdf">picture_as_pdf</span>
+                        Generate PDF
+                    </button>
+</div>
+</div>
+<!-- Quotation Form Container -->
+<div class="grid grid-cols-1 gap-gutter">
+<!-- Section 1: Core Details -->
+<div class="bg-surface-container-lowest border border-outline-variant p-lg rounded-lg">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-lg">
+<div class="flex flex-col gap-xs">
+<label class="font-label-caps text-label-caps text-on-surface-variant">Select Customer</label>
+<div class="relative">
+<select class="w-full appearance-none bg-surface border border-outline-variant rounded px-md py-sm text-body-md finops-input cursor-pointer">
+<option>Search or select customer...</option>
+<option>Global Corp Industries</option>
+<option>TechNova Solutions</option>
+<option>Horizon Logistics</option>
+</select>
+<span class="material-symbols-outlined absolute right-md top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant" data-icon="keyboard_arrow_down">keyboard_arrow_down</span>
+</div>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-caps text-label-caps text-on-surface-variant">Quotation Date</label>
+<input class="w-full bg-surface border border-outline-variant rounded px-md py-sm text-body-md finops-input" type="date" value="2023-11-20">
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-caps text-label-caps text-on-surface-variant">Expiry Date</label>
+<input class="w-full bg-surface border border-outline-variant rounded px-md py-sm text-body-md finops-input" type="date" value="2023-12-20">
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-caps text-label-caps text-on-surface-variant">Currency</label>
+<select class="w-full appearance-none bg-surface border border-outline-variant rounded px-md py-sm text-body-md finops-input"><option selected="">INR - Indian Rupee</option><option>USD - US Dollar</option><option>EUR - Euro</option><option>GBP - British Pound</option></select>
+</div>
+</div>
+</div>
+<!-- Section 2: Itemized Table -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden">
+<div class="p-md border-b border-outline-variant bg-surface-container-low flex items-center justify-between">
+<h3 class="font-title-sm text-title-sm text-primary">Line Items</h3>
+<button class="flex items-center gap-xs text-secondary hover:underline font-label-caps text-label-caps" onclick="addRow()">
+<span class="material-symbols-outlined text-[16px]" data-icon="add_circle">add_circle</span>
+                            Add Row
+                        </button>
+</div>
+<div class="overflow-x-auto custom-scrollbar">
+<table class="w-full text-left border-collapse" id="quoteTable">
+<thead>
+<tr class="bg-surface-container-low/50">
+<th class="px-lg py-md font-label-caps text-label-caps text-on-surface-variant border-b border-outline-variant w-12 text-center">#</th>
+<th class="px-lg py-md font-label-caps text-label-caps text-on-surface-variant border-b border-outline-variant min-w-[300px]">Product/Service Name</th>
+<th class="px-lg py-md font-label-caps text-label-caps text-on-surface-variant border-b border-outline-variant w-24 text-right">Qty</th>
+<th class="px-lg py-md font-label-caps text-label-caps text-on-surface-variant border-b border-outline-variant w-40 text-right">Unit Price</th>
+<th class="px-lg py-md font-label-caps text-label-caps text-on-surface-variant border-b border-outline-variant w-24 text-right">Tax %</th>
+<th class="px-lg py-md font-label-caps text-label-caps text-on-surface-variant border-b border-outline-variant w-40 text-right">Total</th>
+<th class="px-lg py-md font-label-caps text-label-caps text-on-surface-variant border-b border-outline-variant w-12"></th>
+</tr>
+</thead>
+<tbody id="lineItemsBody">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low/30 transition-colors group">
+<td class="px-lg py-md border-b border-outline-variant text-body-sm text-on-surface-variant text-center font-data-mono">1</td>
+<td class="px-lg py-md border-b border-outline-variant">
+<input class="w-full bg-transparent border-none p-0 focus:ring-0 text-body-md text-primary font-medium" placeholder="e.g. Monthly Maintenance" type="text" value="Enterprise Cloud License (Annual)">
+</td>
+<td class="px-lg py-md border-b border-outline-variant">
+<input class="qty-input w-full bg-transparent border-none p-0 focus:ring-0 text-body-md text-right font-data-mono" oninput="calculateRow(this)" type="number" value="1">
+</td>
+<td class="px-lg py-md border-b border-outline-variant">
+<div class="flex items-center justify-end">
+<span class="text-on-surface-variant mr-xs">₹</span>
+<input class="price-input w-full bg-transparent border-none p-0 focus:ring-0 text-body-md text-right font-data-mono" oninput="calculateRow(this)" step="0.01" type="number" value="12500.00">
+</div>
+</td>
+<td class="px-lg py-md border-b border-outline-variant">
+<input class="tax-input w-full bg-transparent border-none p-0 focus:ring-0 text-body-md text-right font-data-mono" oninput="calculateRow(this)" type="number" value="15">
+</td>
+<td class="px-lg py-md border-b border-outline-variant text-right font-data-mono text-body-md text-primary">₹14,375.00</td>
+<td class="px-lg py-md border-b border-outline-variant text-center">
+<button class="text-on-surface-variant hover:text-error opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[18px]" data-icon="delete">delete</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low/30 transition-colors group">
+<td class="px-lg py-md border-b border-outline-variant text-body-sm text-on-surface-variant text-center font-data-mono">2</td>
+<td class="px-lg py-md border-b border-outline-variant">
+<input class="w-full bg-transparent border-none p-0 focus:ring-0 text-body-md text-primary font-medium" placeholder="e.g. Monthly Maintenance" type="text" value="Implementation &amp; Onboarding">
+</td>
+<td class="px-lg py-md border-b border-outline-variant">
+<input class="qty-input w-full bg-transparent border-none p-0 focus:ring-0 text-body-md text-right font-data-mono" oninput="calculateRow(this)" type="number" value="1">
+</td>
+<td class="px-lg py-md border-b border-outline-variant">
+<div class="flex items-center justify-end">
+<span class="text-on-surface-variant mr-xs">₹</span>
+<input class="price-input w-full bg-transparent border-none p-0 focus:ring-0 text-body-md text-right font-data-mono" oninput="calculateRow(this)" step="0.01" type="number" value="2500.00">
+</div>
+</td>
+<td class="px-lg py-md border-b border-outline-variant">
+<input class="tax-input w-full bg-transparent border-none p-0 focus:ring-0 text-body-md text-right font-data-mono" oninput="calculateRow(this)" type="number" value="15">
+</td>
+<td class="px-lg py-md border-b border-outline-variant text-right font-data-mono text-body-md text-primary">₹2,875.00</td>
+<td class="px-lg py-md border-b border-outline-variant text-center">
+<button class="text-on-surface-variant hover:text-error opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[18px]" data-icon="delete">delete</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Section 3: Summary and Footer -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left: Terms and Conditions -->
+<div class="lg:col-span-7 bg-surface-container-lowest border border-outline-variant p-lg rounded-lg flex flex-col gap-md">
+<label class="font-label-caps text-label-caps text-on-surface-variant">Terms and Conditions</label>
+<textarea class="w-full bg-surface border border-outline-variant rounded p-md text-body-sm finops-input resize-none" placeholder="Enter specific terms, payment conditions, or notes for the customer..." rows="6">1. Payment is due within 30 days from the invoice date.
+2. This quotation is valid for 30 days.
+3. Service availability depends on technical feasibility at the time of order.</textarea>
+<div class="flex items-center gap-sm mt-sm">
+<input class="rounded border-outline-variant text-secondary focus:ring-secondary" id="attachDocs" type="checkbox">
+<label class="text-body-sm text-on-surface-variant" for="attachDocs">Attach standard Service Level Agreement (SLA)</label>
+</div>
+</div>
+<!-- Right: Calculations -->
+<div class="lg:col-span-5 bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden flex flex-col">
+<div class="p-lg flex-1 space-y-md">
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant text-body-md">Subtotal</span>
+<span class="font-data-mono text-primary text-body-md" id="subtotalText">₹15,000.00</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant text-body-md">Tax Amount (Total)</span>
+<span class="font-data-mono text-primary text-body-md" id="taxTotalText">₹2,250.00</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant text-body-md">Discount (%)</span>
+<div class="flex items-center gap-sm">
+<input class="w-16 bg-surface border border-outline-variant rounded px-sm py-xs text-right font-data-mono text-body-sm finops-input" type="number" value="0">
+</div>
+</div>
+</div>
+<div class="bg-primary-container p-lg flex justify-between items-center text-on-secondary-container">
+<span class="font-headline-md text-headline-md text-on-primary-container">Grand Total</span>
+<span class="font-headline-md text-headline-md font-bold text-surface-bright" id="grandTotalText">₹17,250.00</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Contextual Help / Status -->
+<div class="mt-xl flex items-center justify-between text-on-surface-variant border-t border-outline-variant pt-lg">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary" data-icon="info" style="font-variation-settings: 'FILL' 1">info</span>
+<p class="text-body-sm">All calculations are updated in real-time. Changes are saved locally until 'Save Draft' is clicked.</p>
+</div>
+<p class="text-body-sm">Quotation ID: <span class="font-data-mono">QTN-2023-4412</span></p>
+</div>
+</div>
+</main>
+<script>
+        function calculateRow(element) {
+            const row = element.closest('tr');
+            const qty = parseFloat(row.querySelector('.qty-input').value) || 0;
+            const price = parseFloat(row.querySelector('.price-input').value) || 0;
+            const taxPercent = parseFloat(row.querySelector('.tax-input').value) || 0;
+            
+            const lineTotalCell = row.cells[5];
+            const lineSubtotal = qty * price;
+            const lineTotal = lineSubtotal + (lineSubtotal * (taxPercent / 100));
+            
+            lineTotalCell.textContent = '$' + lineTotal.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            updateOverallTotal();
+        }
+
+        function updateOverallTotal() {
+            let subtotal = 0;
+            let taxAmount = 0;
+            
+            const rows = document.querySelectorAll('#lineItemsBody tr');
+            rows.forEach(row => {
+                const qty = parseFloat(row.querySelector('.qty-input').value) || 0;
+                const price = parseFloat(row.querySelector('.price-input').value) || 0;
+                const taxPercent = parseFloat(row.querySelector('.tax-input').value) || 0;
+                
+                const lineSubtotal = qty * price;
+                subtotal += lineSubtotal;
+                taxAmount += (lineSubtotal * (taxPercent / 100));
+            });
+            
+            const grandTotal = subtotal + taxAmount;
+            
+            document.getElementById('subtotalText').textContent = '$' + subtotal.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            document.getElementById('taxTotalText').textContent = '$' + taxAmount.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            document.getElementById('grandTotalText').textContent = '$' + grandTotal.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        }
+
+        function addRow() {
+            const tbody = document.getElementById('lineItemsBody');
+            const rowCount = tbody.rows.length + 1;
+            const newRow = document.createElement('tr');
+            newRow.className = "hover:bg-surface-container-low/30 transition-colors group";
+            newRow.innerHTML = `
+                <td class="px-lg py-md border-b border-outline-variant text-body-sm text-on-surface-variant text-center font-data-mono">${rowCount}</td>
+                <td class="px-lg py-md border-b border-outline-variant">
+                    <input type="text" placeholder="Product/Service name..." class="w-full bg-transparent border-none p-0 focus:ring-0 text-body-md text-primary font-medium">
+                </td>
+                <td class="px-lg py-md border-b border-outline-variant">
+                    <input type="number" value="1" oninput="calculateRow(this)" class="qty-input w-full bg-transparent border-none p-0 focus:ring-0 text-body-md text-right font-data-mono">
+                </td>
+                <td class="px-lg py-md border-b border-outline-variant">
+                    <div class="flex items-center justify-end">
+                        <span class="text-on-surface-variant mr-xs">$</span>
+                        <input type="number" value="0.00" step="0.01" oninput="calculateRow(this)" class="price-input w-full bg-transparent border-none p-0 focus:ring-0 text-body-md text-right font-data-mono">
+                    </div>
+                </td>
+                <td class="px-lg py-md border-b border-outline-variant">
+                    <input type="number" value="0" oninput="calculateRow(this)" class="tax-input w-full bg-transparent border-none p-0 focus:ring-0 text-body-md text-right font-data-mono">
+                </td>
+                <td class="px-lg py-md border-b border-outline-variant text-right font-data-mono text-body-md text-primary">
+                    $0.00
+                </td>
+                <td class="px-lg py-md border-b border-outline-variant text-center">
+                    <button onclick="this.closest('tr').remove(); updateOverallTotal();" class="text-on-surface-variant hover:text-error opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span class="material-symbols-outlined text-[18px]" data-icon="delete">delete</span>
+                    </button>
+                </td>
+            `;
+            tbody.appendChild(newRow);
+        }
+
+        // Initialize calculations on load
+        window.onload = updateOverallTotal;
+    </script>
+
+
+
+
+</body></html>

@@ -1,0 +1,375 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>PDF Preview | FinOps Central</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@450&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-primary": "#bcc7de",
+                    "surface-dim": "#dcd9db",
+                    "surface-bright": "#fbf8fa",
+                    "secondary": "#0058be",
+                    "background": "#fbf8fa",
+                    "on-secondary-container": "#fefcff",
+                    "on-primary-container": "#8590a6",
+                    "on-surface": "#1b1b1d",
+                    "primary-container": "#1e293b",
+                    "surface-container-low": "#f5f3f4",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-on-surface": "#f3f0f2",
+                    "on-tertiary-container": "#8d9092",
+                    "on-background": "#1b1b1d",
+                    "on-secondary-fixed": "#001a42",
+                    "on-primary-fixed": "#111c2d",
+                    "on-secondary": "#ffffff",
+                    "outline-variant": "#c5c6cd",
+                    "on-primary-fixed-variant": "#3c475a",
+                    "secondary-container": "#2170e4",
+                    "secondary-fixed": "#d8e2ff",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed-dim": "#adc6ff",
+                    "on-error": "#ffffff",
+                    "tertiary": "#111516",
+                    "surface-container": "#f0edef",
+                    "surface-tint": "#545f73",
+                    "tertiary-fixed": "#e0e3e5",
+                    "inverse-surface": "#303032",
+                    "on-tertiary-fixed-variant": "#444749",
+                    "surface": "#fbf8fa",
+                    "tertiary-fixed-dim": "#c4c7c9",
+                    "surface-container-highest": "#e4e2e3",
+                    "on-surface-variant": "#45474c",
+                    "error": "#ba1a1a",
+                    "on-error-container": "#93000a",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed-dim": "#bcc7de",
+                    "on-tertiary-fixed": "#191c1e",
+                    "tertiary-container": "#26292b",
+                    "surface-container-high": "#eae7e9",
+                    "error-container": "#ffdad6",
+                    "surface-variant": "#e4e2e3",
+                    "primary": "#091426",
+                    "on-secondary-fixed-variant": "#004395",
+                    "outline": "#75777d",
+                    "primary-fixed": "#d8e3fb"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "xl": "32px",
+                    "sm": "8px",
+                    "md": "16px",
+                    "container-max": "1280px",
+                    "margin-desktop": "32px",
+                    "lg": "24px",
+                    "base": "4px",
+                    "gutter": "16px",
+                    "xs": "4px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "data-mono": ["JetBrains Mono"],
+                    "label-caps": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "headline-md-mobile": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "title-sm": ["Inter"],
+                    "body-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "data-mono": ["14px", {"lineHeight": "20px", "fontWeight": "450"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "display-lg": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "title-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+            line-height: 1;
+        }
+        .page-shadow {
+            box-shadow: 0 0 40px rgba(0,0,0,0.1);
+        }
+        @media print {
+            .no-print { display: none !important; }
+            .print-only { display: block !important; }
+            body { background-color: white !important; }
+            .page-shadow { box-shadow: none !important; border: none !important; }
+        }
+    </style>
+</head>
+<body class="bg-surface-container-high font-body-md text-on-surface">
+<!-- TopNavBar (Shared Component) -->
+<nav class="bg-surface-container-lowest dark:bg-surface-container-low text-primary dark:text-primary-fixed border-b border-outline-variant dark:border-outline docked full-width top-0 sticky z-50 flat no shadows flex justify-between items-center w-full px-lg py-sm max-w-container-max mx-auto no-print">
+<div class="flex items-center gap-md">
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">FinOps Central</span>
+</div>
+<div class="flex items-center gap-md">
+<div class="flex items-center gap-sm px-md py-xs bg-surface-container-low dark:bg-surface-container rounded-lg">
+<span class="material-symbols-outlined text-on-surface-variant">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-sm w-48" placeholder="Search orders..." type="text">
+</div>
+<div class="flex items-center gap-md">
+<button class="hover:bg-surface-container-low dark:hover:bg-surface-container transition-colors p-xs rounded-full cursor-pointer active:opacity-80 transition-opacity">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="hover:bg-surface-container-low dark:hover:bg-surface-container transition-colors p-xs rounded-full cursor-pointer active:opacity-80 transition-opacity">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-secondary-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close-up professional studio portrait of a corporate executive for a financial platform profile. The lighting is sophisticated and soft, highlighting a trustworthy expression. The background is a clean, out-of-focus modern office environment with neutral tones and blue accents, matching a professional B2B fintech brand aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVDidU3L5ehGzdHjNrqxAfyiC4A8mP-uEVKt75q1auUN08dicJD1cOhZJYYrUaMPJ1KY6_6ZjR4BuWWq6RRnGxH16AEWtahwJsUxwxBEDq7egQhhwoQp-1EF0v04ge9N1sz5WOQ3yWhmltsq1lNDCIfIYAHBphhu-Htb0tzgXmhyffT4g5RutlMoT56tJp6iiA9oNorAZWEFLpl6yjG4DeP870Ysop0Y5WRoMY2wvG4vMHvyn6rpa5BbImAbWbna7qQV0AVBSbQJ2N">
+</div>
+</div>
+</div>
+</nav>
+<main class="flex flex-col md:flex-row min-h-[calc(100vh-64px)]">
+<!-- Document Preview Canvas -->
+<div class="flex-1 overflow-y-auto p-lg md:p-xl flex justify-center bg-surface-dim/30">
+<div class="bg-white w-full max-w-[800px] min-h-[1100px] p-xl page-shadow flex flex-col gap-xl" style="opacity: 1; transform: translateY(0px); transition: opacity 0.6s ease-out, transform 0.6s ease-out;">
+<!-- Document Header -->
+<div class="flex justify-between items-start border-b border-outline-variant pb-xl">
+<div class="space-y-md">
+<div class="flex items-center gap-sm">
+<div class="w-12 h-12 bg-primary flex items-center justify-center rounded">
+<span class="material-symbols-outlined text-white text-3xl">account_balance</span>
+</div>
+<span class="font-headline-md text-headline-md font-bold text-primary">FinOps Central</span>
+</div>
+<div class="text-on-surface-variant font-body-sm">
+<p class="">123 Enterprise Way, Suite 500</p>
+<p class="">San Francisco, CA 94107</p>
+<p class="">contact@finopscentral.io</p>
+<p class="">+1 (555) 012-3456</p>
+</div>
+</div>
+<div class="text-right space-y-xs">
+<h1 class="font-display-lg text-display-lg text-primary uppercase tracking-tight">Invoice</h1>
+<div class="flex flex-col gap-xs pt-md">
+<div class="grid grid-cols-2 gap-x-md text-right">
+<span class="text-on-surface-variant font-label-caps uppercase">Number:</span>
+<span class="font-data-mono">INV-2024-0892</span>
+<span class="text-on-surface-variant font-label-caps uppercase">Date:</span>
+<span class="font-data-mono">Oct 24, 2024</span>
+<span class="text-on-surface-variant font-label-caps uppercase">Due Date:</span>
+<span class="font-data-mono">Nov 23, 2024</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Customer Info -->
+<div class="grid grid-cols-2 gap-xl">
+<div class="space-y-sm">
+<span class="text-on-surface-variant font-label-caps uppercase border-b border-outline-variant block pb-xs">Bill To</span>
+<div class="pt-xs">
+<p class="font-title-sm text-title-sm text-primary">Global Logistics Corp</p>
+<p class="text-on-surface-variant font-body-sm">Attn: Accounts Payable</p>
+<p class="text-on-surface-variant font-body-sm">456 Commerce Avenue, Building B</p>
+<p class="text-on-surface-variant font-body-sm">Chicago, IL 60601</p>
+<p class="text-on-surface-variant font-body-sm">ap@globallogistics.com</p>
+</div>
+</div>
+<div class="space-y-sm">
+<span class="text-on-surface-variant font-label-caps uppercase border-b border-outline-variant block pb-xs">Project Details</span>
+<div class="pt-xs">
+<p class="text-on-surface-variant font-body-sm"><span class="font-semibold text-on-surface">Project:</span> Q4 Infrastructure Scaling</p>
+<p class="text-on-surface-variant font-body-sm"><span class="font-semibold text-on-surface">PO Number:</span> PO-9921-A</p>
+<p class="text-on-surface-variant font-body-sm"><span class="font-semibold text-on-surface">Terms:</span> Net 30</p>
+</div>
+</div>
+</div>
+<!-- Line Items Table -->
+<div class="flex-1">
+<table class="w-full border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-y border-outline-variant">
+<th class="py-md px-md text-left font-label-caps text-on-surface-variant uppercase w-12">#</th>
+<th class="py-md px-md text-left font-label-caps text-on-surface-variant uppercase">Description</th>
+<th class="py-md px-md text-center font-label-caps text-on-surface-variant uppercase w-24">Qty</th>
+<th class="py-md px-md text-right font-label-caps text-on-surface-variant uppercase w-32">Unit Price</th>
+<th class="py-md px-md text-right font-label-caps text-on-surface-variant uppercase w-32">Amount</th>
+</tr>
+</thead>
+<tbody class="text-body-sm">
+<tr class="border-b border-outline-variant/50">
+<td class="py-md px-md text-on-surface-variant font-data-mono">01</td>
+<td class="py-md px-md">
+<p class="font-semibold text-primary">Cloud Infrastructure Management</p>
+<p class="text-on-surface-variant text-xs">Professional services for AWS/Azure hybrid environment orchestration.</p>
+</td>
+<td class="py-md px-md text-center">40.0</td>
+<td class="py-md px-md text-right font-data-mono">₹185.00</td>
+<td class="py-md px-md text-right font-data-mono">₹7,400.00</td>
+</tr>
+<tr class="border-b border-outline-variant/50 bg-surface-container-lowest/50">
+<td class="py-md px-md text-on-surface-variant font-data-mono">02</td>
+<td class="py-md px-md">
+<p class="font-semibold text-primary">Security Audit &amp; Compliance Package</p>
+<p class="text-on-surface-variant text-xs">Quarterly SOC2 compliance check and penetration testing report.</p>
+</td>
+<td class="py-md px-md text-center">1.0</td>
+<td class="py-md px-md text-right font-data-mono">₹2,250.00</td>
+<td class="py-md px-md text-right font-data-mono">₹2,250.00</td>
+</tr>
+<tr class="border-b border-outline-variant/50">
+<td class="py-md px-md text-on-surface-variant font-data-mono">03</td>
+<td class="py-md px-md">
+<p class="font-semibold text-primary">Data Migration Support</p>
+<p class="text-on-surface-variant text-xs">Premium support hours for legacy database transition.</p>
+</td>
+<td class="py-md px-md text-center">12.5</td>
+<td class="py-md px-md text-right font-data-mono">₹150.00</td>
+<td class="py-md px-md text-right font-data-mono">₹1,875.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Totals -->
+<div class="flex justify-end pt-lg">
+<div class="w-full max-w-xs space-y-sm">
+<div class="flex justify-between items-center text-body-sm">
+<span class="text-on-surface-variant">Subtotal</span>
+<span class="font-data-mono text-primary">₹11,525.00</span>
+</div>
+<div class="flex justify-between items-center text-body-sm">
+<span class="text-on-surface-variant">Tax (8.5%)</span>
+<span class="font-data-mono text-primary">₹979.62</span>
+</div>
+<div class="border-t-2 border-primary pt-md flex justify-between items-center">
+<span class="font-bold text-primary uppercase tracking-wider">Grand Total</span>
+<span class="font-headline-md text-headline-md font-bold text-secondary">₹12,504.62</span>
+</div>
+<div class="pt-xl text-right">
+<div class="inline-block px-md py-xs bg-secondary-fixed/30 rounded text-secondary font-semibold text-xs uppercase tracking-widest">
+                                Status: Pending Approval
+                            </div>
+</div>
+</div>
+</div>
+<!-- Footer Notes -->
+<div class="mt-auto pt-xl border-t border-outline-variant">
+<div class="grid grid-cols-2 gap-xl text-xs text-on-surface-variant">
+<div>
+<p class="font-bold uppercase mb-xs text-[10px]">Payment Information</p>
+<p class="">Bank: Commerce National Bank</p>
+<p class="">SWIFT: CNBKUS33XXX</p>
+<p class="">Account: **** **** 8821</p>
+</div>
+<div class="text-right">
+<p class="font-bold uppercase mb-xs text-[10px]">Notes</p>
+<p class="">Please include invoice number on all correspondence.</p>
+<p class="">Interest of 1.5% per month will be charged on late payments.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Sidebar Actions -->
+<aside class="w-full md:w-80 bg-surface-container-low border-l border-outline-variant p-lg flex flex-col gap-md no-print sticky top-[64px] h-[calc(100vh-64px)]">
+<div class="space-y-sm">
+<h3 class="font-title-sm text-title-sm text-primary">Actions</h3>
+<p class="text-body-sm text-on-surface-variant">Review the high-fidelity document before distribution.</p>
+</div>
+<div class="flex flex-col gap-sm">
+<button class="flex items-center justify-center gap-sm bg-secondary text-white py-md px-lg rounded-lg font-bold hover:opacity-90 transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined">download</span>
+                    Download PDF
+                </button>
+<button class="flex items-center justify-center gap-sm bg-white border border-primary text-primary py-md px-lg rounded-lg font-bold hover:bg-surface-container-high transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined">send</span>
+                    Send to Customer
+                </button>
+<button class="flex items-center justify-center gap-sm bg-white border border-outline text-on-surface-variant py-md px-lg rounded-lg font-bold hover:bg-surface-container-high transition-all active:scale-[0.98]" onclick="window.print()">
+<span class="material-symbols-outlined">print</span>
+                    Print
+                </button>
+</div>
+<hr class="border-outline-variant my-md">
+<div class="space-y-md">
+<h4 class="font-label-caps text-label-caps text-on-surface-variant uppercase">Document History</h4>
+<div class="space-y-md">
+<div class="flex gap-sm">
+<div class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-sm">edit</span>
+</div>
+<div>
+<p class="text-body-sm font-semibold">Draft Created</p>
+<p class="text-xs text-on-surface-variant">Oct 23, 2:45 PM by Sarah J.</p>
+</div>
+</div>
+<div class="flex gap-sm">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-secondary text-sm">visibility</span>
+</div>
+<div>
+<p class="text-body-sm font-semibold">Preview Generated</p>
+<p class="text-xs text-on-surface-variant">Just now</p>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-auto p-md bg-surface-container rounded-lg border border-outline-variant/30">
+<div class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-secondary">info</span>
+<p class="text-xs text-on-surface-variant italic">
+                        This preview follows the "Corporate Modern" branding template. You can change templates in Settings.
+                    </p>
+</div>
+</div>
+</aside>
+</main>
+<!-- SideNavBar (Shared Component Logic - Suppressed per "Task-Focused" rule but available via Top Bar triggers if needed) -->
+<!-- The user is in a focused PDF Preview journey, prioritizing content canvas -->
+<script>
+        // Micro-interaction for buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('mousedown', () => {
+                button.style.transform = 'scale(0.97)';
+            });
+            button.addEventListener('mouseup', () => {
+                button.style.transform = 'scale(1)';
+            });
+            button.addEventListener('mouseleave', () => {
+                button.style.transform = 'scale(1)';
+            });
+        });
+
+        // Simple Fade In for the document
+        window.addEventListener('DOMContentLoaded', () => {
+            const doc = document.querySelector('.page-shadow');
+            doc.style.opacity = '0';
+            doc.style.transform = 'translateY(10px)';
+            doc.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            
+            setTimeout(() => {
+                doc.style.opacity = '1';
+                doc.style.transform = 'translateY(0)';
+            }, 100);
+        });
+    </script>
+
+
+
+
+</body></html>

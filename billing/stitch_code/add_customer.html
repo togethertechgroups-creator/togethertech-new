@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Add New Customer | FinOps Central</title>
+<!-- Tailwind CSS with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Inter & JetBrains Mono -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;family=JetBrains+Mono:wght@450&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "surface-container-highest": "#e4e2e3",
+                "secondary-fixed": "#d8e2ff",
+                "primary-fixed-dim": "#bcc7de",
+                "primary": "#091426",
+                "on-primary-container": "#8590a6",
+                "surface-container-lowest": "#ffffff",
+                "tertiary-fixed-dim": "#c4c7c9",
+                "on-error-container": "#93000a",
+                "error-container": "#ffdad6",
+                "on-error": "#ffffff",
+                "surface-container": "#f0edef",
+                "on-surface": "#1b1b1d",
+                "surface-dim": "#dcd9db",
+                "surface": "#fbf8fa",
+                "secondary-container": "#2170e4",
+                "on-tertiary-fixed": "#191c1e",
+                "tertiary-fixed": "#e0e3e5",
+                "surface-bright": "#fbf8fa",
+                "surface-tint": "#545f73",
+                "on-tertiary": "#ffffff",
+                "on-primary-fixed-variant": "#3c475a",
+                "on-background": "#1b1b1d",
+                "surface-container-high": "#eae7e9",
+                "secondary-fixed-dim": "#adc6ff",
+                "outline": "#75777d",
+                "tertiary-container": "#26292b",
+                "secondary": "#0058be",
+                "on-tertiary-fixed-variant": "#444749",
+                "inverse-surface": "#303032",
+                "on-surface-variant": "#45474c",
+                "primary-fixed": "#d8e3fb",
+                "on-secondary-fixed-variant": "#004395",
+                "on-secondary": "#ffffff",
+                "outline-variant": "#c5c6cd",
+                "primary-container": "#1e293b",
+                "surface-variant": "#e4e2e3",
+                "on-secondary-fixed": "#001a42",
+                "error": "#ba1a1a",
+                "surface-container-low": "#f5f3f4",
+                "inverse-primary": "#bcc7de",
+                "on-primary": "#ffffff",
+                "background": "#fbf8fa",
+                "inverse-on-surface": "#f3f0f2",
+                "tertiary": "#111516",
+                "on-tertiary-container": "#8d9092",
+                "on-secondary-container": "#fefcff",
+                "on-primary-fixed": "#111c2d"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+            },
+            "spacing": {
+                "md": "16px",
+                "xl": "32px",
+                "base": "4px",
+                "xs": "4px",
+                "container-max": "1280px",
+                "margin-desktop": "32px",
+                "gutter": "16px",
+                "margin-mobile": "16px",
+                "sm": "8px",
+                "lg": "24px"
+            },
+            "fontFamily": {
+                "title-sm": ["Inter"],
+                "headline-md": ["Inter"],
+                "display-lg": ["Inter"],
+                "label-caps": ["Inter"],
+                "data-mono": ["JetBrains Mono"],
+                "body-md": ["Inter"],
+                "body-sm": ["Inter"],
+                "headline-md-mobile": ["Inter"]
+            },
+            "fontSize": {
+                "title-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                "display-lg": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                "data-mono": ["14px", {"lineHeight": "20px", "fontWeight": "450"}],
+                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                "headline-md-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fbf8fa;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        /* Custom transitions and states */
+        .form-input-focus:focus {
+            outline: none;
+            border-color: #3B82F6;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- Sidebar Navigation -->
+<!-- Applying SideNavBar JSON execution logic -->
+<nav class="h-screen w-64 fixed left-0 top-0 overflow-y-auto flex flex-col py-md px-sm bg-surface-container-low dark:bg-surface-container-lowest border-r border-outline-variant dark:border-outline z-50">
+<div class="mb-xl px-sm">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-[20px]">account_balance</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">B2B Finance</h1>
+<p class="font-label-caps text-label-caps text-on-surface-variant">Enterprise Tier</p>
+</div>
+</div>
+</div>
+<button class="mb-xl mx-sm bg-secondary text-on-secondary py-sm px-md rounded font-title-sm text-title-sm flex items-center justify-center gap-sm hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined">add_circle</span>
+            New Document
+        </button>
+<div class="flex-grow space-y-base">
+<!-- Active State Logic: 'Customers' is active -->
+<a class="flex items-center gap-sm py-sm px-md rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all active:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-caps text-label-caps">Dashboard</span>
+</a>
+<a class="flex items-center gap-sm py-sm px-md rounded-lg text-secondary font-bold bg-secondary-container/10 border-r-4 border-secondary transition-all active:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-caps text-label-caps">Customers</span>
+</a>
+<a class="flex items-center gap-sm py-sm px-md rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all active:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="request_quote">request_quote</span>
+<span class="font-label-caps text-label-caps">Quotations</span>
+</a>
+<a class="flex items-center gap-sm py-sm px-md rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all active:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="receipt">receipt</span>
+<span class="font-label-caps text-label-caps">Invoices</span>
+</a>
+<a class="flex items-center gap-sm py-sm px-md rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all active:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-label-caps text-label-caps">Documents</span>
+</a>
+<a class="flex items-center gap-sm py-sm px-md rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all active:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-caps text-label-caps">Settings</span>
+</a>
+<a class="flex items-center gap-sm py-sm px-md rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all active:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="assessment">assessment</span>
+<span class="font-label-caps text-label-caps">Reports</span>
+</a>
+</div>
+<div class="pt-md mt-auto border-t border-outline-variant space-y-base">
+<a class="flex items-center gap-sm py-sm px-md rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all active:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="contact_support">contact_support</span>
+<span class="font-label-caps text-label-caps">Support</span>
+</a>
+<a class="flex items-center gap-sm py-sm px-md rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all active:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-label-caps text-label-caps">Sign Out</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="ml-64 min-h-screen">
+<!-- Top Utility Bar (derived from TopNavBar style commands) -->
+<header class="flex justify-between items-center w-full px-lg py-sm bg-surface-container-lowest dark:bg-surface-container-low border-b border-outline-variant dark:border-outline sticky top-0 z-40">
+<div class="flex items-center gap-md">
+<a class="text-secondary hover:underline flex items-center gap-xs font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined text-[18px]">arrow_back</span>
+                    Back to Registry
+                </a>
+</div>
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer">help</span>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest">
+<img class="w-full h-full rounded-full object-cover" data-alt="A professional headshot of a female financial operations executive in business attire, clean corporate lighting, soft grey background, high resolution, minimalist aesthetic matching a B2B finance application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCptn0NQ5qf2pRx2-hKs4MwPFslrsVAfa6EZGyI9CQuyfMfvJhsiJS0r8ddzWgiCC6sOFCpfxRNtvDcKVs9rWjDBmVdqxiJU8tBUGakPk8VG2wQtZ-Qn9rfkNYg3xnMZRmugFKWYEsOXfCRJJG_fVn1UJ7utg37NAkrYjuCe1Tpy8FHnk6Q7CQdxK0C-CAJwqRiMS1NpUUoygU9CqaZpRMbABw3tUW1PFtL38mIwrOkoK7i0AZNObBPFFg35CtKLr6ApEliojK6Fvm9"/>
+</div>
+</div>
+</header>
+<div class="max-w-4xl mx-auto p-xl">
+<!-- Page Header -->
+<div class="mb-xl">
+<h2 class="font-headline-md text-headline-md text-primary mb-xs">Add New Customer</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Create a new entry in your client ledger to streamline future billing and quotation workflows.</p>
+</div>
+<!-- Registration Form -->
+<form class="space-y-xl">
+<!-- Section: Basic Information -->
+<section class="bg-white rounded-lg border border-outline-variant overflow-hidden">
+<div class="px-md py-sm bg-surface-container-low border-b border-outline-variant">
+<h3 class="font-title-sm text-title-sm text-primary">Basic Information</h3>
+</div>
+<div class="p-md grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="space-y-xs">
+<label class="font-label-caps text-label-caps text-on-surface-variant">Customer/Company Name</label>
+<input class="w-full p-sm border border-outline-variant rounded-lg font-body-md text-body-md form-input-focus transition-colors" placeholder="e.g. Acme Corp" type="text"/>
+</div>
+<div class="space-y-xs">
+<label class="font-label-caps text-label-caps text-on-surface-variant">Primary Contact Person</label>
+<input class="w-full p-sm border border-outline-variant rounded-lg font-body-md text-body-md form-input-focus transition-colors" placeholder="John Doe" type="text"/>
+</div>
+<div class="space-y-xs">
+<label class="font-label-caps text-label-caps text-on-surface-variant">Email Address</label>
+<input class="w-full p-sm border border-outline-variant rounded-lg font-body-md text-body-md form-input-focus transition-colors" placeholder="billing@acme.com" type="email"/>
+</div>
+<div class="space-y-xs">
+<label class="font-label-caps text-label-caps text-on-surface-variant">Phone Number</label>
+<input class="w-full p-sm border border-outline-variant rounded-lg font-body-md text-body-md form-input-focus transition-colors" placeholder="+1 (555) 000-0000" type="tel"/>
+</div>
+</div>
+</section>
+<!-- Section: Tax & Identification -->
+<section class="bg-white rounded-lg border border-outline-variant overflow-hidden">
+<div class="px-md py-sm bg-surface-container-low border-b border-outline-variant">
+<h3 class="font-title-sm text-title-sm text-primary">Tax &amp; Identification</h3>
+</div>
+<div class="p-md grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="space-y-xs">
+<label class="font-label-caps text-label-caps text-on-surface-variant">GST/Tax Identification Number</label>
+<input class="w-full p-sm border border-outline-variant rounded-lg font-data-mono text-data-mono form-input-focus transition-colors" placeholder="VAT-123456789" type="text"/>
+</div>
+<div class="space-y-xs">
+<label class="font-label-caps text-label-caps text-on-surface-variant">Business Registration Type</label>
+<select class="w-full p-sm border border-outline-variant rounded-lg font-body-md text-body-md form-input-focus transition-colors bg-white">
+<option>Private Limited</option>
+<option>Public Company</option>
+<option>Partnership</option>
+<option>Sole Proprietorship</option>
+<option>Non-Profit</option>
+</select>
+</div>
+</div>
+</section>
+<!-- Section: Billing Address -->
+<section class="bg-white rounded-lg border border-outline-variant overflow-hidden">
+<div class="px-md py-sm bg-surface-container-low border-b border-outline-variant">
+<h3 class="font-title-sm text-title-sm text-primary">Billing Address</h3>
+</div>
+<div class="p-md space-y-md">
+<div class="space-y-xs">
+<label class="font-label-caps text-label-caps text-on-surface-variant">Street Address</label>
+<input class="w-full p-sm border border-outline-variant rounded-lg font-body-md text-body-md form-input-focus transition-colors" placeholder="123 Financial Plaza, Suite 400" type="text"/>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<div class="space-y-xs">
+<label class="font-label-caps text-label-caps text-on-surface-variant">City</label>
+<input class="w-full p-sm border border-outline-variant rounded-lg font-body-md text-body-md form-input-focus transition-colors" placeholder="New York" type="text"/>
+</div>
+<div class="space-y-xs">
+<label class="font-label-caps text-label-caps text-on-surface-variant">State/Province</label>
+<input class="w-full p-sm border border-outline-variant rounded-lg font-body-md text-body-md form-input-focus transition-colors" placeholder="NY" type="text"/>
+</div>
+<div class="space-y-xs">
+<label class="font-label-caps text-label-caps text-on-surface-variant">Postal Code</label>
+<input class="w-full p-sm border border-outline-variant rounded-lg font-data-mono text-data-mono form-input-focus transition-colors" placeholder="10001" type="text"/>
+</div>
+</div>
+<div class="space-y-xs">
+<label class="font-label-caps text-label-caps text-on-surface-variant">Country</label>
+<select class="w-full p-sm border border-outline-variant rounded-lg font-body-md text-body-md form-input-focus transition-colors bg-white">
+<option>United States</option>
+<option>United Kingdom</option>
+<option>Germany</option>
+<option>Singapore</option>
+<option>Japan</option>
+</select>
+</div>
+</div>
+</section>
+<!-- Section: Financial Settings -->
+<section class="bg-white rounded-lg border border-outline-variant overflow-hidden">
+<div class="px-md py-sm bg-surface-container-low border-b border-outline-variant">
+<h3 class="font-title-sm text-title-sm text-primary">Financial Settings <span class="font-body-sm text-body-sm text-on-surface-variant font-normal">(Optional)</span></h3>
+</div>
+<div class="p-md grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="space-y-xs">
+<label class="font-label-caps text-label-caps text-on-surface-variant">Default Payment Terms</label>
+<select class="w-full p-sm border border-outline-variant rounded-lg font-body-md text-body-md form-input-focus transition-colors bg-white">
+<option>Net 15</option>
+<option selected="">Net 30</option>
+<option>Net 60</option>
+<option>Due on Receipt</option>
+</select>
+</div>
+<div class="space-y-xs">
+<label class="font-label-caps text-label-caps text-on-surface-variant">Primary Currency</label>
+<select class="w-full p-sm border border-outline-variant rounded-lg font-body-md text-body-md form-input-focus transition-colors bg-white">
+<option>USD - US Dollar</option>
+<option>EUR - Euro</option>
+<option>GBP - British Pound</option>
+<option>SGD - Singapore Dollar</option>
+</select>
+</div>
+</div>
+</section>
+<!-- Action Buttons -->
+<div class="flex items-center justify-end gap-md pt-md pb-xl">
+<button class="px-xl py-sm border border-outline text-primary font-title-sm text-title-sm rounded-lg hover:bg-surface-container transition-colors" type="button">
+                        Cancel
+                    </button>
+<button class="px-xl py-sm bg-secondary text-on-secondary font-title-sm text-title-sm rounded-lg shadow-sm hover:opacity-90 active:scale-[0.98] transition-all flex items-center gap-sm" type="submit">
+<span class="material-symbols-outlined">save</span>
+                        Save Customer
+                    </button>
+</div>
+</form>
+</div>
+<!-- Atmospheric Footer (subtle branding) -->
+<footer class="mt-xl py-md text-center border-t border-outline-variant">
+<p class="font-label-caps text-label-caps text-on-surface-variant">FinOps Central © 2024 • Secured by Enterprise Ledger Systems</p>
+</footer>
+</main>
+<script>
+        // Simple micro-interaction for form validation visual feedback
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalContent = btn.innerHTML;
+            
+            btn.disabled = true;
+            btn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Saving...';
+            
+            setTimeout(() => {
+                btn.innerHTML = '<span class="material-symbols-outlined">check_circle</span> Customer Saved';
+                btn.classList.replace('bg-secondary', 'bg-emerald-600');
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalContent;
+                    btn.classList.replace('bg-emerald-600', 'bg-secondary');
+                    btn.disabled = false;
+                }, 2000);
+            }, 1000);
+        });
+    </script>
+</body></html>

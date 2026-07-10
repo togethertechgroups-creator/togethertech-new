@@ -1,0 +1,527 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Customers | FinOps Central</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@450&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-primary": "#bcc7de",
+                    "surface-dim": "#dcd9db",
+                    "surface-bright": "#fbf8fa",
+                    "secondary": "#0058be",
+                    "background": "#fbf8fa",
+                    "on-secondary-container": "#fefcff",
+                    "on-primary-container": "#8590a6",
+                    "on-surface": "#1b1b1d",
+                    "primary-container": "#1e293b",
+                    "surface-container-low": "#f5f3f4",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-on-surface": "#f3f0f2",
+                    "on-tertiary-container": "#8d9092",
+                    "on-background": "#1b1b1d",
+                    "on-secondary-fixed": "#001a42",
+                    "on-primary-fixed": "#111c2d",
+                    "on-secondary": "#ffffff",
+                    "outline-variant": "#c5c6cd",
+                    "on-primary-fixed-variant": "#3c475a",
+                    "secondary-container": "#2170e4",
+                    "secondary-fixed": "#d8e2ff",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed-dim": "#adc6ff",
+                    "on-error": "#ffffff",
+                    "tertiary": "#111516",
+                    "surface-container": "#f0edef",
+                    "surface-tint": "#545f73",
+                    "tertiary-fixed": "#e0e3e5",
+                    "inverse-surface": "#303032",
+                    "on-tertiary-fixed-variant": "#444749",
+                    "surface": "#fbf8fa",
+                    "tertiary-fixed-dim": "#c4c7c9",
+                    "surface-container-highest": "#e4e2e3",
+                    "on-surface-variant": "#45474c",
+                    "error": "#ba1a1a",
+                    "on-error-container": "#93000a",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed-dim": "#bcc7de",
+                    "on-tertiary-fixed": "#191c1e",
+                    "tertiary-container": "#26292b",
+                    "surface-container-high": "#eae7e9",
+                    "error-container": "#ffdad6",
+                    "surface-variant": "#e4e2e3",
+                    "primary": "#091426",
+                    "on-secondary-fixed-variant": "#004395",
+                    "outline": "#75777d",
+                    "primary-fixed": "#d8e3fb"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "xl": "32px",
+                    "sm": "8px",
+                    "md": "16px",
+                    "container-max": "1280px",
+                    "margin-desktop": "32px",
+                    "lg": "24px",
+                    "base": "4px",
+                    "gutter": "16px",
+                    "xs": "4px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "data-mono": ["JetBrains Mono"],
+                    "label-caps": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "headline-md-mobile": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "title-sm": ["Inter"],
+                    "body-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "data-mono": ["14px", {"lineHeight": "20px", "fontWeight": "450"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "display-lg": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "title-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+        .side-panel {
+            transform: translateX(100%);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .side-panel.open {
+            transform: translateX(0);
+        }
+        .overlay {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-secondary/20 overflow-hidden">
+<!-- TopNavBar -->
+<header class="bg-surface-container-lowest dark:bg-surface-container-low border-b border-outline-variant dark:border-outline docked full-width top-0 sticky z-50 flex justify-between items-center w-full px-lg py-sm max-w-container-max mx-auto h-16">
+<div class="flex items-center gap-md">
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">FinOps Central</h1>
+</div>
+<div class="flex-1 max-w-xl mx-xl hidden md:flex">
+<div class="relative w-full group">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant group-focus-within:text-secondary transition-colors">search</span>
+<input class="w-full pl-xl pr-md py-sm bg-surface-container-low dark:bg-surface border-none rounded-lg focus:ring-2 focus:ring-secondary transition-all outline-none font-body-sm" placeholder="Search Customers" type="text">
+</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-primary dark:text-primary-fixed p-sm hover:bg-surface-container-low dark:hover:bg-surface-container transition-colors cursor-pointer active:opacity-80 rounded-full">notifications</button>
+<button class="material-symbols-outlined text-primary dark:text-primary-fixed p-sm hover:bg-surface-container-low dark:hover:bg-surface-container transition-colors cursor-pointer active:opacity-80 rounded-full">help</button>
+<div class="w-8 h-8 rounded-full bg-secondary-container/20 flex items-center justify-center overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a corporate financial officer, soft studio lighting, high resolution, minimalist grey background, wearing a modern navy suit, focused and trustworthy expression, 8k quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFMHaKFrYsZhNlK-x_PUGHcidsdGTjLhwSpYbfoYz4GZFelq7smPBUsoPxpfXmf1BBunG51EFPUTNRhrFpMaNpqTnnAFODFLLeLg1x8tOOX_NQLCIn3CRvyEGq9cCG23EpNmNP4MCGrdKnSwP8uxiyFVQ4Q6qc_94-gZqsNY_lTRZHeAVltgJGh0abXrqQRbbKYUZ4GsIUg3rFniqh3H_8hi3PY55uts-3pKqnOzyXgx8voMPn7mumJugzFEvlnMV06I4xU_sJ1hGJ">
+</div>
+</div>
+</header>
+<div class="flex h-[calc(100vh-64px)] overflow-hidden">
+<!-- SideNavBar -->
+<nav class="bg-surface-container-low dark:bg-surface-container-lowest border-r border-outline-variant dark:border-outline h-screen w-64 hidden md:flex flex-col h-full py-md px-sm overflow-y-auto shrink-0">
+<div class="px-md mb-xl">
+<div class="flex items-center gap-sm mb-base">
+<div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary">account_balance</span>
+</div>
+<div>
+<div class="font-headline-md text-sm font-bold text-primary dark:text-primary-fixed leading-tight">B2B Finance</div>
+<div class="text-[10px] text-on-surface-variant uppercase tracking-widest font-semibold">Enterprise Tier</div>
+</div>
+</div>
+</div>
+<div class="flex-1 space-y-1">
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-all active:translate-x-1 duration-150 rounded-lg group" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-caps text-label-caps">Dashboard</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-secondary font-bold bg-secondary-container/10 border-r-4 border-secondary transition-all active:translate-x-1 duration-150 rounded-lg group" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-caps text-label-caps">Customers</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-all active:translate-x-1 duration-150 rounded-lg group" href="#">
+<span class="material-symbols-outlined">request_quote</span>
+<span class="font-label-caps text-label-caps">Quotations</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-all active:translate-x-1 duration-150 rounded-lg group" href="#">
+<span class="material-symbols-outlined">receipt</span>
+<span class="font-label-caps text-label-caps">Invoices</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-all active:translate-x-1 duration-150 rounded-lg group" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-label-caps text-label-caps">Documents</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-all active:translate-x-1 duration-150 rounded-lg group" href="#">
+<span class="material-symbols-outlined">assessment</span>
+<span class="font-label-caps text-label-caps">Reports</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-all active:translate-x-1 duration-150 rounded-lg group" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-caps text-label-caps">Settings</span>
+</a>
+</div>
+<div class="mt-auto pt-md border-t border-outline-variant space-y-1">
+<button class="w-full mb-md flex items-center justify-center gap-sm bg-secondary text-on-secondary px-md py-sm rounded-lg font-bold hover:brightness-110 active:scale-[0.98] transition-all" onclick="document.getElementById('addCustomerPanel').classList.add('open'); document.getElementById('panelOverlay').classList.add('active')">
+<span class="material-symbols-outlined">add</span>
+<span class="font-label-caps text-label-caps">New Document</span>
+</button>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-all active:translate-x-1 duration-150 rounded-lg group" href="#">
+<span class="material-symbols-outlined">contact_support</span>
+<span class="font-label-caps text-label-caps">Support</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-all active:translate-x-1 duration-150 rounded-lg group text-error" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-caps text-label-caps">Sign Out</span>
+</a>
+</div>
+</nav>
+<!-- Main Canvas -->
+<main class="flex-1 overflow-y-auto custom-scrollbar bg-background">
+<div class="max-w-container-max mx-auto p-xl">
+<!-- Header Actions -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-lg mb-xl">
+<div>
+<div class="flex items-center gap-sm mb-xs">
+<nav class="flex text-xs text-on-surface-variant font-medium gap-sm">
+<span class="">Main</span>
+<span class="">/</span>
+<span class="text-secondary">Customers</span>
+</nav>
+</div>
+<h2 class="font-display-lg text-display-lg text-primary">Customer Registry</h2>
+<p class="text-on-surface-variant mt-xs">Manage and monitor enterprise accounts and billing status.</p>
+</div>
+<div class="flex gap-md">
+<button class="bg-surface-container-lowest border border-outline-variant px-md py-sm flex items-center gap-sm font-bold text-on-surface hover:bg-surface-container-low transition-colors rounded-lg">
+<span class="material-symbols-outlined text-xl">download</span>
+<span class="font-label-caps text-label-caps">Export List</span>
+</button>
+<button class="bg-secondary text-on-secondary px-lg py-sm flex items-center gap-sm font-bold shadow-sm hover:shadow-md active:scale-95 transition-all rounded-lg" onclick="openPanel()">
+<span class="material-symbols-outlined text-xl">person_add</span>
+<span class="font-label-caps text-label-caps">+ Add Customer</span>
+</button>
+</div>
+</div>
+<!-- Bento Stats (Contextual Depth) -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter mb-xl">
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded flex flex-col gap-sm">
+<span class="text-on-surface-variant font-label-caps text-xs">Total Customers</span>
+<div class="flex items-baseline gap-sm">
+<span class="text-headline-md font-bold text-primary">1,284</span>
+<span class="text-[10px] text-green-600 font-bold bg-green-50 px-base rounded">+12%</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded flex flex-col gap-sm">
+<span class="text-on-surface-variant font-label-caps text-xs">Active GST</span>
+<div class="flex items-baseline gap-sm">
+<span class="text-headline-md font-bold text-primary">98.2%</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded flex flex-col gap-sm">
+<span class="text-on-surface-variant font-label-caps text-xs">Avg. Invoice Value</span>
+<div class="flex items-baseline gap-sm">
+<span class="text-headline-md font-bold text-primary">₹4,820</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded flex flex-col gap-sm">
+<span class="text-on-surface-variant font-label-caps text-xs">Pending Approvals</span>
+<div class="flex items-baseline gap-sm">
+<span class="text-headline-md font-bold text-primary">14</span>
+<span class="text-[10px] text-error font-bold bg-error-container/20 px-base rounded">High</span>
+</div>
+</div>
+</div>
+<!-- Customer Table Container -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden flex flex-col">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low/50 border-b border-outline-variant">
+<th class="px-md py-lg font-label-caps text-on-surface-variant text-xs uppercase tracking-wider">Customer Name</th>
+<th class="px-md py-lg font-label-caps text-on-surface-variant text-xs uppercase tracking-wider">GST Number</th>
+<th class="px-md py-lg font-label-caps text-on-surface-variant text-xs uppercase tracking-wider">Contact Info</th>
+<th class="px-md py-lg font-label-caps text-on-surface-variant text-xs uppercase tracking-wider">Status</th>
+<th class="px-md py-lg font-label-caps text-on-surface-variant text-xs uppercase tracking-wider text-right">Total Invoiced</th>
+<th class="px-md py-lg font-label-caps text-on-surface-variant text-xs uppercase tracking-wider text-center">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-md py-md">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded bg-primary-container text-inverse-primary flex items-center justify-center font-bold">GT</div>
+<div>
+<div class="text-on-surface font-bold">Global Tech Solutions</div>
+<div class="text-xs text-on-surface-variant">Tier 1 Enterprise</div>
+</div>
+</div>
+</td>
+<td class="px-md py-md font-data-mono text-data-mono">27AAACG0000Z1Z1</td>
+<td class="px-md py-md">
+<div class="flex flex-col">
+<span class="text-sm">billing@globaltech.com</span>
+<span class="text-xs text-on-surface-variant">+1 (555) 902-1234</span>
+</div>
+</td>
+<td class="px-md py-md">
+<span class="inline-flex items-center px-sm py-xs rounded-full text-[10px] font-bold bg-green-100 text-green-800">ACTIVE</span>
+</td>
+<td class="px-md py-md text-right font-data-mono text-primary font-bold">₹428,500.00</td>
+<td class="px-md py-md text-center">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary p-xs rounded transition-colors">more_vert</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="bg-surface-container-low/20 hover:bg-surface-container-low transition-colors group">
+<td class="px-md py-md">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded bg-secondary-container/20 text-secondary flex items-center justify-center font-bold">NL</div>
+<div>
+<div class="text-on-surface font-bold">Nova Logistics Ltd</div>
+<div class="text-xs text-on-surface-variant">Standard Partner</div>
+</div>
+</div>
+</td>
+<td class="px-md py-md font-data-mono text-data-mono">19BBBCH1234A2Z5</td>
+<td class="px-md py-md">
+<div class="flex flex-col">
+<span class="text-sm">accounts@novalog.co</span>
+<span class="text-xs text-on-surface-variant">+44 20 7946 0123</span>
+</div>
+</td>
+<td class="px-md py-md">
+<span class="inline-flex items-center px-sm py-xs rounded-full text-[10px] font-bold bg-green-100 text-green-800">ACTIVE</span>
+</td>
+<td class="px-md py-md text-right font-data-mono text-primary font-bold">₹112,240.50</td>
+<td class="px-md py-md text-center">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary p-xs rounded transition-colors">more_vert</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-md py-md">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded bg-tertiary-container/10 text-tertiary flex items-center justify-center font-bold">SA</div>
+<div>
+<div class="text-on-surface font-bold">Stellar Analytics</div>
+<div class="text-xs text-on-surface-variant">Onboarding</div>
+</div>
+</div>
+</td>
+<td class="px-md py-md font-data-mono text-data-mono">05CCCDK5678Q1Z9</td>
+<td class="px-md py-md">
+<div class="flex flex-col">
+<span class="text-sm">m.ross@stellar.io</span>
+<span class="text-xs text-on-surface-variant">+61 2 9876 5432</span>
+</div>
+</td>
+<td class="px-md py-md">
+<span class="inline-flex items-center px-sm py-xs rounded-full text-[10px] font-bold bg-yellow-100 text-yellow-800">PENDING</span>
+</td>
+<td class="px-md py-md text-right font-data-mono text-primary font-bold">₹0.00</td>
+<td class="px-md py-md text-center">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary p-xs rounded transition-colors">more_vert</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="bg-surface-container-low/20 hover:bg-surface-container-low transition-colors group">
+<td class="px-md py-md">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded bg-primary text-on-primary flex items-center justify-center font-bold">PX</div>
+<div>
+<div class="text-on-surface font-bold">Phoenix Dynamics</div>
+<div class="text-xs text-on-surface-variant">Priority Client</div>
+</div>
+</div>
+</td>
+<td class="px-md py-md font-data-mono text-data-mono">29DDDEF9012W1Z0</td>
+<td class="px-md py-md">
+<div class="flex flex-col">
+<span class="text-sm">finance@phoenixdyn.com</span>
+<span class="text-xs text-on-surface-variant">+1 (212) 555-0198</span>
+</div>
+</td>
+<td class="px-md py-md">
+<span class="inline-flex items-center px-sm py-xs rounded-full text-[10px] font-bold bg-green-100 text-green-800">ACTIVE</span>
+</td>
+<td class="px-md py-md text-right font-data-mono text-primary font-bold">₹985,000.00</td>
+<td class="px-md py-md text-center">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary p-xs rounded transition-colors">more_vert</button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-md py-md">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded bg-error-container/20 text-error flex items-center justify-center font-bold">BM</div>
+<div>
+<div class="text-on-surface font-bold">Blue Mountain Peaks</div>
+<div class="text-xs text-on-surface-variant">Tier 3 Merchant</div>
+</div>
+</div>
+</td>
+<td class="px-md py-md font-data-mono text-data-mono">33EEEGH3456M1Z2</td>
+<td class="px-md py-md">
+<div class="flex flex-col">
+<span class="text-sm">ops@bluemountain.ca</span>
+<span class="text-xs text-on-surface-variant">+1 (416) 555-0147</span>
+</div>
+</td>
+<td class="px-md py-md">
+<span class="inline-flex items-center px-sm py-xs rounded-full text-[10px] font-bold bg-red-100 text-red-800">DELINQUENT</span>
+</td>
+<td class="px-md py-md text-right font-data-mono text-primary font-bold">₹12,400.00</td>
+<td class="px-md py-md text-center">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary p-xs rounded transition-colors">more_vert</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Footer -->
+<div class="p-md bg-surface-container-lowest border-t border-outline-variant flex items-center justify-between">
+<span class="text-xs text-on-surface-variant font-medium">Showing 1 to 5 of 1,284 customers</span>
+<div class="flex gap-sm">
+<button class="p-xs border border-outline-variant hover:bg-surface-container-low transition-colors rounded-lg"><span class="material-symbols-outlined text-sm">chevron_left</span></button>
+<button class="px-sm py-xs bg-secondary text-on-secondary text-xs font-bold rounded-lg">1</button>
+<button class="px-sm py-xs border border-outline-variant text-xs font-bold hover:bg-surface-container-low rounded-lg">2</button>
+<button class="px-sm py-xs border border-outline-variant text-xs font-bold hover:bg-surface-container-low rounded-lg">3</button>
+<span class="px-sm py-xs">...</span>
+<button class="px-sm py-xs border border-outline-variant text-xs font-bold hover:bg-surface-container-low rounded-lg">257</button>
+<button class="p-xs border border-outline-variant hover:bg-surface-container-low transition-colors rounded-lg"><span class="material-symbols-outlined text-sm">chevron_right</span></button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Overlay for Panel -->
+<div class="overlay fixed inset-0 bg-primary/40 backdrop-blur-sm z-[60]" id="panelOverlay" onclick="closePanel()"></div>
+<!-- Side Panel: Add Customer -->
+<aside class="side-panel fixed top-0 right-0 h-full w-full max-w-md bg-surface-container-lowest shadow-2xl z-[70] flex flex-col" id="addCustomerPanel">
+<div class="p-lg border-b border-outline-variant flex items-center justify-between bg-primary text-on-primary">
+<div>
+<h3 class="font-headline-md text-title-sm">Create New Customer</h3>
+<p class="text-[10px] text-on-primary-container font-medium uppercase tracking-widest mt-base">Enterprise Onboarding</p>
+</div>
+<button class="material-symbols-outlined hover:bg-white/10 rounded-full p-sm transition-colors" onclick="closePanel()">close</button>
+</div>
+<form class="flex-1 overflow-y-auto p-lg space-y-lg custom-scrollbar">
+<!-- Form Section -->
+<div class="space-y-md">
+<div class="flex flex-col gap-xs">
+<label class="text-xs font-bold text-on-surface-variant uppercase">Customer Legal Name</label>
+<input class="w-full px-md py-sm border border-outline rounded-lg focus:ring-2 focus:ring-secondary focus:border-secondary outline-none transition-all font-body-sm" placeholder="e.g. Acme Corp Inc." type="text">
+</div>
+<div class="flex flex-col gap-xs">
+<label class="text-xs font-bold text-on-surface-variant uppercase">GST Number</label>
+<input class="w-full px-md py-sm border border-outline rounded-lg focus:ring-2 focus:ring-secondary focus:border-secondary outline-none transition-all font-data-mono uppercase" placeholder="27XXXXX0000X0Z0" type="text">
+</div>
+<div class="grid grid-cols-2 gap-md">
+<div class="flex flex-col gap-xs">
+<label class="text-xs font-bold text-on-surface-variant uppercase">Email Address</label>
+<input class="w-full px-md py-sm border border-outline rounded-lg focus:ring-2 focus:ring-secondary focus:border-secondary outline-none transition-all font-body-sm" placeholder="billing@company.com" type="email">
+</div>
+<div class="flex flex-col gap-xs">
+<label class="text-xs font-bold text-on-surface-variant uppercase">Phone Number</label>
+<input class="w-full px-md py-sm border border-outline rounded-lg focus:ring-2 focus:ring-secondary focus:border-secondary outline-none transition-all font-body-sm" placeholder="+1 000 000 0000" type="tel">
+</div>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="text-xs font-bold text-on-surface-variant uppercase">Business Address</label>
+<textarea class="w-full px-md py-sm border border-outline rounded-lg focus:ring-2 focus:ring-secondary focus:border-secondary outline-none transition-all font-body-sm resize-none" placeholder="Full registered office address..." rows="3"></textarea>
+</div>
+<div class="pt-md">
+<div class="p-md bg-surface-container rounded-lg border border-outline-variant border-dashed">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-secondary text-2xl">verified_user</span>
+<div class="text-xs">
+<p class="font-bold text-on-surface">Automatic Compliance Check</p>
+<p class="text-on-surface-variant">System will verify GST credentials with government servers upon submission.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</form>
+<div class="p-lg bg-surface-container-low border-t border-outline-variant flex gap-md">
+<button class="flex-1 py-sm border border-outline-variant bg-white text-on-surface-variant font-bold rounded-lg hover:bg-surface-container transition-colors font-label-caps text-label-caps hover:bg-surface-container-high" onclick="closePanel()" type="button">Cancel</button>
+<button class="flex-[2] py-sm bg-secondary text-on-secondary font-bold rounded-lg hover:brightness-110 active:scale-95 transition-all font-label-caps text-label-caps shadow-lg shadow-secondary/20 hover:shadow-xl" type="submit">Register Customer</button>
+</div>
+</aside>
+<script>
+        function openPanel() {
+            document.getElementById('addCustomerPanel').classList.add('open');
+            document.getElementById('panelOverlay').classList.add('active');
+        }
+
+        function closePanel() {
+            document.getElementById('addCustomerPanel').classList.remove('open');
+            document.getElementById('panelOverlay').classList.remove('active');
+        }
+
+        // Add micro-interaction to table rows
+        document.querySelectorAll('tbody tr').forEach(row => {
+            row.addEventListener('click', (e) => {
+                if (e.target.tagName !== 'BUTTON' && e.target.tagName !== 'SPAN') {
+                    // Logic for selecting a customer row
+                    row.classList.toggle('bg-secondary/5');
+                }
+            });
+        });
+
+        // Search Bar focus effect
+        const searchInput = document.querySelector('header input');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('shadow-md');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('shadow-md');
+        });
+    </script>
+
+
+
+
+</body></html>
