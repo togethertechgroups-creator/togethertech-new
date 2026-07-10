@@ -36,7 +36,7 @@ export async function POST(req: NextRequest) {
     formData.append('fileToUpload', blob, fileName || 'document.pdf');
 
     // Upload to litterbox temporary file hosting
-    const uploadRes = await fetch('https://litterbox.catbox.moe/resources/api.php', {
+    const uploadRes = await fetch('https://litterbox.catbox.moe/resources/internals/api.php', {
       method: 'POST',
       body: formData,
       headers: {
