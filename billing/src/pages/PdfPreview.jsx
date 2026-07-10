@@ -243,23 +243,23 @@ export default function PdfPreview({ settings, customers, documents, setDocument
       showToast('Uploading PDF for WhatsApp delivery...', 'info_outline');
 
       const formData = new FormData();
-      formData.append('files[]', pdfBlob, `${activeDoc.id}.pdf`);
+      formData.append('file', pdfBlob, `${activeDoc.id}.pdf`);
 
-      const uploadRes = await fetch('https://uguu.se/upload', {
+      const uploadRes = await fetch('https://www.togethertechgroups.in/api/upload-pdf', {
         method: 'POST',
         body: formData
       });
 
       if (!uploadRes.ok) {
-        throw new Error('Upload to uguu.se failed');
+        throw new Error('Upload to custom server failed');
       }
 
       const uploadData = await uploadRes.json();
-      if (!uploadData.success || !uploadData.files || !uploadData.files[0]) {
-        throw new Error('Upload response failed or missing file info');
+      if (!uploadData.success || !uploadData.url) {
+        throw new Error('Upload helper failed to return direct URL');
       }
 
-      const publicUrl = uploadData.files[0].url;
+      const publicUrl = uploadData.url;
 
       showToast('Sending via Metamerged WhatsApp API...', 'send');
 
@@ -283,7 +283,7 @@ export default function PdfPreview({ settings, customers, documents, setDocument
       navigate(activeDoc.type === 'Invoice' ? '/invoices' : '/quotations');
     } catch (err) {
       console.error('WhatsApp API delivery failed:', err);
-      showToast('Failed to send document automatically. Redirecting to manual WhatsApp link...', 'warning');
+      showToast(`Error: ${err.message || 'Unknown error'}. Redirecting to manual link...`, 'error');
       
       // Fallback: Open wa.me link directly
       const message = `Hello ${clientInfo?.name || ''},\n\nPlease find your ${activeDoc.type} *#${activeDoc.id}* from *${settings?.businessName || 'Together Tech'}*.\n\nAmount: ₹${(activeDoc.amount || 0).toLocaleString()}\nDate: ${activeDoc.date}\n\nThank you!`;
