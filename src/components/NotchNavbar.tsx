@@ -81,7 +81,7 @@ export function NotchNavbar() {
           <Link href="/" className="flex items-center gap-2.5 shrink-0">
             <Image
               src="/images/logo.png"
-              alt="Together Tech Groups Logo"
+              alt="Together Tech Logo"
               width={36}
               height={36}
               className="w-8 h-8 sm:w-9 sm:h-9 object-contain drop-shadow-md"

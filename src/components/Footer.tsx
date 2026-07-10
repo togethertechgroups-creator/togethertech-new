@@ -35,7 +35,7 @@ export default function Footer() {
           <Link href="/" className="flex items-center space-x-3">
             <Image
               src="/images/logo.png"
-              alt="Together Tech Groups Logo"
+              alt="Together Tech Logo"
               width={52}
               height={52}
               className="w-13 h-13 object-contain"
@@ -45,7 +45,7 @@ export default function Footer() {
             </span>
           </Link>
           <p className="text-sm leading-relaxed text-brandGray">
-            Together Tech Groups is a digital technology company helping businesses grow through premium websites, mobile apps, custom software, branding, SEO, and result-oriented digital marketing.
+            Together Tech is a digital technology company helping businesses grow through premium websites, mobile apps, custom software, branding, SEO, and result-oriented digital marketing.
           </p>
           <div className="flex items-center space-x-4">
             <a href="https://facebook.com/togethertech" className="w-9 h-9 rounded-full bg-slate-200/80 hover:bg-brandGreen hover:text-white text-brandDark transition-colors flex items-center justify-center" aria-label="Facebook">
@@ -111,7 +111,7 @@ export default function Footer() {
 
       <div className="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center text-sm text-brandGray/80 space-y-4 md:space-y-0">
         <div>
-          © {new Date().getFullYear()} Together Tech Groups. All rights reserved.
+          © {new Date().getFullYear()} Together Tech. All rights reserved.
         </div>
         <div className="flex space-x-6">
           <a href="#" className="hover:text-brandGreen transition-colors">Privacy Policy</a>

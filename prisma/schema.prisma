@@ -103,13 +103,13 @@ model Enquiry {
 
 model Settings {
   id             String @id @default("global")
-  companyName    String @default("Together Tech Groups")
+  companyName    String @default("Together Tech")
   phone          String @default("+91 98765 43210")
   email          String @default("togethertechgroups@gmail.com")
   whatsapp       String @default("+91 98765 43210")
   address        String @default("123 Tech Park, India")
   logo           String @default("/images/logo.svg")
   socialLinks    String @default("{}") // JSON string
-  seoTitle       String @default("Together Tech Groups | Your Growth, Our Technology")
+  seoTitle       String @default("Together Tech | Your Growth, Our Technology")
   seoDescription String @default("We create professional websites, mobile apps, custom software, branding, SEO, and digital marketing solutions.")
 }

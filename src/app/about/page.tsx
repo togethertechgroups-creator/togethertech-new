@@ -49,7 +49,7 @@ export default function AboutPage() {
               We Build Solutions That Fuel Your Business Expansion.
             </h2>
             <p className="text-brandGray leading-relaxed font-medium font-biooris">
-              Together Tech Groups is a modern digital technology agency. We specialize in engineering premium web portfolios, secure administrative dashboards, native iOS/Android applications, and automated system workflows that eliminate bottlenecks.
+              Together Tech is a modern digital technology agency. We specialize in engineering premium web portfolios, secure administrative dashboards, native iOS/Android applications, and automated system workflows that eliminate bottlenecks.
             </p>
             <p className="text-brandGray/90 leading-relaxed font-biooris">
               We started with a single premise: technology should serve business development, not create frustration. We combine transparent pricing models (Basic, Semi-Custom, Custom) with modern design tools (Figma, React, Flutter) to ensure our clients launch with absolute market authority.

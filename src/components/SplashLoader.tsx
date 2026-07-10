@@ -69,7 +69,7 @@ export default function SplashLoader() {
               <div className="absolute w-20 h-20 rounded-full bg-brandGreen/20 blur-xl animate-pulse" />
               <Image
                 src="/images/logo.png"
-                alt="Together Tech Groups Logo"
+                alt="Together Tech Logo"
                 width={70}
                 height={70}
                 className="w-16 h-16 object-contain relative z-10 drop-shadow-[0_0_15px_rgba(112,179,63,0.4)]"

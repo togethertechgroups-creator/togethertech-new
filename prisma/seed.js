@@ -29,7 +29,7 @@ async function main() {
     update: {},
     create: {
       id: 'global',
-      companyName: 'Together Tech Groups',
+      companyName: 'Together Tech',
       phone: '+91 98765 43210',
       email: 'togethertechgroups@gmail.com',
       whatsapp: '+91 98765 43210',
@@ -41,7 +41,7 @@ async function main() {
         linkedin: 'https://linkedin.com/company/togethertech',
         instagram: 'https://www.instagram.com/togethertechofficial'
       }),
-      seoTitle: 'Together Tech Groups | Your Growth, Our Technology',
+      seoTitle: 'Together Tech | Your Growth, Our Technology',
       seoDescription: 'We create professional websites, mobile apps, custom software, branding, SEO, and digital marketing solutions that help your business grow faster.',
     },
   });
@@ -274,7 +274,7 @@ async function main() {
     {
       clientName: 'Rajesh Kumar',
       businessName: 'Vikas Retailers',
-      review: 'Together Tech Groups built our billing software. The system is extremely fast, works offline when needed, and printing invoices has never been easier. Highly recommended!',
+      review: 'Together Tech built our billing software. The system is extremely fast, works offline when needed, and printing invoices has never been easier. Highly recommended!',
       rating: 5,
       status: 'ACTIVE'
     },

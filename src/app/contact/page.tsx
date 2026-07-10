@@ -77,7 +77,7 @@ function ContactContent() {
       
       // Auto redirect to WhatsApp after 2 seconds
       setTimeout(() => {
-        const waText = `Hi Together Tech Groups, my name is ${formData.name}. I am enquiring about ${formData.requiredService} (Budget: ${formData.budget}). ${formData.message}`;
+        const waText = `Hi Together Tech, my name is ${formData.name}. I am enquiring about ${formData.requiredService} (Budget: ${formData.budget}). ${formData.message}`;
         window.open(`https://wa.me/919047549682?text=${encodeURIComponent(waText)}`, '_blank');
       }, 1500);
 
