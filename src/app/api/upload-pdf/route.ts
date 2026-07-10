@@ -8,13 +8,7 @@ export async function POST(req: NextRequest) {
     const { fileData, fileName, fileType } = body;
 
     if (!fileData) {
-      return NextResponse.json({ error: 'No file data provided' }, { status: 400 }, {
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Methods': 'POST, OPTIONS',
-          'Access-Control-Allow-Headers': 'Content-Type'
-        }
-      });
+      return NextResponse.json({ error: 'No file data provided' }, { status: 400 });
     }
 
     const buffer = Buffer.from(fileData, 'base64');
@@ -42,33 +36,10 @@ export async function POST(req: NextRequest) {
 
     const directUrl = uguuData.files[0].url;
 
-    return NextResponse.json({ success: true, url: directUrl }, {
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'POST, OPTIONS',
-        'Access-Control-Allow-Headers': 'Content-Type'
-      }
-    });
+    return NextResponse.json({ success: true, url: directUrl });
   } catch (err: any) {
     console.error('Server PDF upload helper failed:', err);
-    return NextResponse.json({ error: err.message || 'Internal Server Error' }, {
-      status: 500,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'POST, OPTIONS',
-        'Access-Control-Allow-Headers': 'Content-Type'
-      }
-    });
+    return NextResponse.json({ error: err.message || 'Internal Server Error' }, { status: 500 });
   }
 }
 
-// 2. Handle Preflight Options Request
-export async function OPTIONS() {
-  return new NextResponse(null, {
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'POST, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type'
-    }
-  });
-}
