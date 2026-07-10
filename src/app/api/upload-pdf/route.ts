@@ -15,7 +15,7 @@ export async function OPTIONS(req: NextRequest) {
 }
 
 // 1. Upload PDF Endpoint (POST)
-// Receives Base64 encoded PDF from browser, stores it in SQLite, and returns our own custom download link
+// Receives Base64 encoded PDF from browser, uploads it to Litterbox temporary hosting, and returns direct link
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
@@ -25,18 +25,35 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'No file data provided' }, { status: 400, headers: corsHeaders });
     }
 
-    // Save to SQLite database using Prisma
-    const savedFile = await prisma.pdfFile.create({
-      data: {
-        name: fileName || 'document.pdf',
-        data: fileData // Store base64 string directly
+    // Convert base64 data to buffer
+    const buffer = Buffer.from(fileData, 'base64');
+    const blob = new Blob([buffer], { type: 'application/pdf' });
+
+    // Create FormData for Litterbox upload
+    const formData = new FormData();
+    formData.append('reqtype', 'fileupload');
+    formData.append('time', '24h'); // Keep file online for 24 hours
+    formData.append('fileToUpload', blob, fileName || 'document.pdf');
+
+    // Upload to litterbox temporary file hosting
+    const uploadRes = await fetch('https://litterbox.catbox.moe/resources/api.php', {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
       }
     });
 
-    // Return the URL on our custom domain
-    const downloadUrl = `https://www.togethertechgroups.in/api/upload-pdf?id=${savedFile.id}`;
+    if (!uploadRes.ok) {
+      throw new Error(`Failed to upload to temporary hosting: ${uploadRes.statusText}`);
+    }
 
-    return NextResponse.json({ success: true, url: downloadUrl }, { headers: corsHeaders });
+    const downloadUrl = await uploadRes.text();
+    if (!downloadUrl || !downloadUrl.startsWith('https://')) {
+      throw new Error('Temporary hosting returned an invalid URL');
+    }
+
+    return NextResponse.json({ success: true, url: downloadUrl.trim() }, { headers: corsHeaders });
   } catch (err: any) {
     console.error('Server PDF upload helper failed:', err);
     return NextResponse.json({ error: err.message || 'Internal Server Error' }, { status: 500, headers: corsHeaders });
