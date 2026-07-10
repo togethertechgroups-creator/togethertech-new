@@ -4,8 +4,7 @@ import { useEffect } from 'react';
 
 export default function AdminPage() {
   useEffect(() => {
-    // Redirect to the billing admin app
-    window.location.href = process.env.NEXT_PUBLIC_BILLING_URL || 'http://localhost:5173';
+    window.location.href = 'https://billing.togethertechgroups.in';
   }, []);
 
   return (
