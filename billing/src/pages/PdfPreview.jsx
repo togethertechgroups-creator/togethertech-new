@@ -191,104 +191,38 @@ export default function PdfPreview({ settings, customers, documents, setDocument
       formattedPhone = '91' + formattedPhone;
     }
 
-    showToast('Generating document for WhatsApp...', 'info_outline');
-    
     try {
+      // First download the PDF
+      showToast('Downloading PDF...', 'download');
       const invoiceElement = document.getElementById('invoice-print-area');
       if (!invoiceElement) {
         showToast('Error: Invoice print area not found', 'error');
         return;
       }
 
-      // Hide shadows/borders temporarily for clean screenshot
-      const originalBoxShadow = invoiceElement.style.boxShadow;
-      const originalBorder = invoiceElement.style.border;
-      const originalBorderRadius = invoiceElement.style.borderRadius;
-
-      invoiceElement.style.boxShadow = 'none';
-      invoiceElement.style.border = 'none';
-      invoiceElement.style.borderRadius = '0';
-
       const canvas = await html2canvas(invoiceElement, {
-        scale: 2, // 2x is plenty and uploads faster
+        scale: 2,
         useCORS: true,
-        backgroundColor: "#ffffff",
+        backgroundColor: '#ffffff',
         logging: false
       });
 
-      invoiceElement.style.boxShadow = originalBoxShadow;
-      invoiceElement.style.border = originalBorder;
-      invoiceElement.style.borderRadius = originalBorderRadius;
-
-      const imageData = canvas.toDataURL("image/png");
-
-      const pdf = new jsPDF({
-        orientation: "portrait",
-        unit: "mm",
-        format: "a4",
-      });
-
+      const imageData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
       const pdfWidth = 210;
-      const pdfHeight = 297;
       const imageHeight = (canvas.height * pdfWidth) / canvas.width;
+      pdf.addImage(imageData, 'PNG', 0, 0, pdfWidth, imageHeight);
+      pdf.save(`${activeDoc.id}.pdf`);
 
-      let heightLeft = imageHeight;
-      let position = 0;
+      // Then open WhatsApp with pre-filled message
+      const message = `Hello ${clientInfo?.name || ''},\n\nPlease find your ${activeDoc.type} *#${activeDoc.id}* from *${settings?.businessName || 'Together Tech'}*.\n\nAmount: ₹${(activeDoc.amount || 0).toLocaleString()}\nDate: ${activeDoc.date}\n\nThank you for your business! 🙏`;
+      
+      const waUrl = `https://wa.me/${formattedPhone}?text=${encodeURIComponent(message)}`;
+      window.open(waUrl, '_blank');
 
-      pdf.addImage(imageData, "PNG", 0, position, pdfWidth, imageHeight);
-      heightLeft -= pdfHeight;
-
-      while (heightLeft > 0) {
-        position = heightLeft - imageHeight;
-        pdf.addPage();
-        pdf.addImage(imageData, "PNG", 0, position, pdfWidth, imageHeight);
-        heightLeft -= pdfHeight;
-      }
-
-      const pdfBlob = pdf.output('blob');
-
-      showToast('Uploading PDF for delivery...', 'info_outline');
-
-      const formData = new FormData();
-      formData.append('reqtype', 'fileupload');
-      formData.append('time', '24h');
-      formData.append('fileToUpload', pdfBlob, `${activeDoc.id}.pdf`);
-
-      const uploadRes = await fetch('https://litterbox.catbox.moe/resources/internals/api.php', {
-        method: 'POST',
-        body: formData
-      });
-
-      if (!uploadRes.ok) {
-        throw new Error('Upload failed');
-      }
-
-      const publicUrl = (await uploadRes.text()).trim();
-      if (!publicUrl.startsWith('https://')) {
-        throw new Error('Upload failed: Invalid response URL');
-      }
-
-      showToast('Sending WhatsApp message...', 'send');
-
-      const apiToken = '6706963cd785e0eefa38f06c81e39cd3';
-      const messageText = `Here is your ${activeDoc.type} #${activeDoc.id} from ${settings?.businessName || 'Together Tech'}.`;
-      const apiUrl = `https://api.metamerged.com/api/send?number=${formattedPhone}&type=document&message=${encodeURIComponent(messageText)}&document_url=${encodeURIComponent(publicUrl)}&file_name=${encodeURIComponent(activeDoc.id + '.pdf')}&access_token=${apiToken}`;
-
-      await fetch(apiUrl);
-
-      if (setDocuments && activeDoc) {
-        setDocuments(prevDocs => prevDocs.map(doc => {
-          if (doc.id === activeDoc.id) {
-            return { ...doc, status: 'SENT' };
-          }
-          return doc;
-        }));
-      }
-
-      showToast('Document sent successfully to customer!');
-      navigate(activeDoc.type === 'Invoice' ? '/invoices' : '/quotations');
+      showToast('PDF downloaded! WhatsApp opened — attach the PDF and send. ✅');
     } catch (err) {
-      console.error("WhatsApp delivery failed:", err);
+      console.error('Send failed:', err);
       showToast('Failed to send document to WhatsApp', 'error');
     }
   };
