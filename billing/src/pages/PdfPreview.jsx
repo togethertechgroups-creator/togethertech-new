@@ -240,14 +240,34 @@ export default function PdfPreview({ settings, customers, documents, setDocument
 
       const pdfBlob = pdf.output('blob');
 
-      showToast('Uploading PDF for WhatsApp delivery...', 'info_outline');
+      // Convert PDF Blob to Base64 string for clean JSON upload (bypasses FormData/CORS boundaries issues)
+      const blobToBase64 = (blob) => {
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onloadend = () => {
+            const base64String = reader.result.split(',')[1];
+            resolve(base64String);
+          };
+          reader.onerror = reject;
+          reader.readAsDataURL(blob);
+        });
+      };
 
-      const formData = new FormData();
-      formData.append('file', pdfBlob, `${activeDoc.id}.pdf`);
+      showToast('Preparing PDF for transmission...', 'info_outline');
+      const base64Data = await blobToBase64(pdfBlob);
+
+      showToast('Uploading PDF for WhatsApp delivery...', 'info_outline');
 
       const uploadRes = await fetch('https://www.togethertechgroups.in/api/upload-pdf', {
         method: 'POST',
-        body: formData
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          fileData: base64Data,
+          fileName: `${activeDoc.id}.pdf`,
+          fileType: 'application/pdf'
+        })
       });
 
       if (!uploadRes.ok) {
