@@ -209,7 +209,7 @@ export default function PdfPreview({ settings, customers, documents, setDocument
       invoiceElement.style.borderRadius = '0';
 
       const canvas = await html2canvas(invoiceElement, {
-        scale: 2,
+        scale: 1.5,
         useCORS: true,
         backgroundColor: '#ffffff',
         logging: false
@@ -219,7 +219,7 @@ export default function PdfPreview({ settings, customers, documents, setDocument
       invoiceElement.style.border = originalBorder;
       invoiceElement.style.borderRadius = originalBorderRadius;
 
-      const imageData = canvas.toDataURL('image/png');
+      const imageData = canvas.toDataURL('image/jpeg', 0.85);
       const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
       const pdfWidth = 210;
       const pdfHeight = 297;
@@ -228,13 +228,13 @@ export default function PdfPreview({ settings, customers, documents, setDocument
       let heightLeft = imageHeight;
       let position = 0;
 
-      pdf.addImage(imageData, 'PNG', 0, position, pdfWidth, imageHeight);
+      pdf.addImage(imageData, 'JPEG', 0, position, pdfWidth, imageHeight);
       heightLeft -= pdfHeight;
 
       while (heightLeft > 0) {
         position = heightLeft - imageHeight;
         pdf.addPage();
-        pdf.addImage(imageData, 'PNG', 0, position, pdfWidth, imageHeight);
+        pdf.addImage(imageData, 'JPEG', 0, position, pdfWidth, imageHeight);
         heightLeft -= pdfHeight;
       }
 
