@@ -374,7 +374,7 @@ export default function App() {
           
           <Route path="/invoices" element={<InvoicesList documents={documents} setDocuments={handleSetDocuments} showToast={showToast} />} />
           <Route path="/invoices/create" element={<CreateInvoice settings={settings} customers={customers} documents={documents} setDocuments={handleSetDocuments} showToast={showToast} />} />
-          <Route path="/invoices/edit/:id" element={<CreateInvoice settings={settings} customers={customers} documents={documents} setDocuments={setDocuments} showToast={showToast} />} />
+          <Route path="/invoices/edit/:id" element={<CreateInvoice settings={settings} customers={customers} documents={documents} setDocuments={handleSetDocuments} showToast={showToast} />} />
           
           <Route path="/quotations" element={<QuotationsList documents={documents} setDocuments={handleSetDocuments} showToast={showToast} />} />
           <Route path="/quotations/create" element={<CreateQuotation settings={settings} customers={customers} documents={documents} setDocuments={handleSetDocuments} showToast={showToast} />} />
