@@ -177,6 +177,7 @@ model BillingSettings {
   swift        String   @default("BNKUS00129")
   branch       String   @default("Global Business Center")
   brandColor   String   @default("#8ec63f")
+  signatures   String   @default("[]")
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 }

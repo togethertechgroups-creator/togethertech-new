@@ -36,11 +36,17 @@ export async function GET() {
           swift: 'BNKUS00129',
           branch: 'Global Business Center',
           brandColor: '#8ec63f',
+          signatures: '[]',
         },
       });
     }
 
-    return NextResponse.json(settings, { headers: corsHeaders });
+    const parsedSettings = {
+      ...settings,
+      signatures: settings.signatures ? JSON.parse(settings.signatures) : []
+    };
+
+    return NextResponse.json(parsedSettings, { headers: corsHeaders });
   } catch (err: any) {
     return NextResponse.json({ error: err.message || 'Failed to fetch settings' }, { status: 500, headers: corsHeaders });
   }
@@ -50,7 +56,7 @@ export async function GET() {
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { businessName, gstin, address, website, email, phone, accountNum, swift, branch, brandColor } = body;
+    const { businessName, gstin, address, website, email, phone, accountNum, swift, branch, brandColor, signatures } = body;
 
     const settings = await prisma.billingSettings.upsert({
       where: { id: 'billing-settings' },
@@ -65,6 +71,7 @@ export async function POST(req: NextRequest) {
         swift: swift || '',
         branch: branch || '',
         brandColor: brandColor || '#8ec63f',
+        signatures: typeof signatures === 'string' ? signatures : JSON.stringify(signatures || []),
       },
       create: {
         id: 'billing-settings',
@@ -78,10 +85,16 @@ export async function POST(req: NextRequest) {
         swift: swift || '',
         branch: branch || '',
         brandColor: brandColor || '#8ec63f',
+        signatures: typeof signatures === 'string' ? signatures : JSON.stringify(signatures || []),
       },
     });
 
-    return NextResponse.json(settings, { headers: corsHeaders });
+    const parsedSettings = {
+      ...settings,
+      signatures: settings.signatures ? JSON.parse(settings.signatures) : []
+    };
+
+    return NextResponse.json(parsedSettings, { headers: corsHeaders });
   } catch (err: any) {
     return NextResponse.json({ error: err.message || 'Failed to save settings' }, { status: 500, headers: corsHeaders });
   }
