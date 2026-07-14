@@ -340,18 +340,6 @@ export default function App() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-[#8ec63f]/10 rounded-full blur-3xl pointer-events-none" />
         
         <div className="flex flex-col items-center z-10 space-y-6">
-          {/* Logo with breathing / pulsing animation */}
-          <div className="relative">
-            <img 
-              src="/logo.webp" 
-              alt="Together Tech" 
-              className="w-24 h-24 object-contain animate-pulse"
-              onError={(e) => {
-                e.currentTarget.style.display = 'none';
-              }}
-            />
-          </div>
-          
           {/* Minimalist sleek loader */}
           <div className="w-10 h-10 relative flex items-center justify-center">
             {/* Spinning ring */}
