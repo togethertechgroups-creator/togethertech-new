@@ -86,6 +86,31 @@ if (localStorage.getItem('finops_data_reset_v3') !== 'true') {
   localStorage.setItem('finops_data_reset_v3', 'true');
 }
 
+// Cloud API Configuration
+const API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+  ? 'http://localhost:3000/api'
+  : 'https://www.togethertechgroups.in/api';
+
+async function callApi(endpoint, method = 'GET', body = null) {
+  const headers = {
+    'Content-Type': 'application/json',
+  };
+  const config = {
+    method,
+    headers,
+  };
+  if (body) {
+    config.body = JSON.stringify(body);
+  }
+  
+  const res = await fetch(`${API_BASE_URL}${endpoint}`, config);
+  if (!res.ok) {
+    const errorText = await res.text();
+    throw new Error(errorText || `API call failed: ${res.statusText}`);
+  }
+  return res.json();
+}
+
 export default function App() {
   const [customers, setCustomers] = useState(() => {
     const saved = localStorage.getItem('finops_customers');
@@ -132,8 +157,9 @@ export default function App() {
   });
 
   const [toast, setToast] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  // Sync to local storage
+  // Sync to local storage cache
   useEffect(() => {
     localStorage.setItem('finops_customers', JSON.stringify(customers));
   }, [customers]);
@@ -161,6 +187,31 @@ export default function App() {
     }
   }, [theme]);
 
+  // Load from Cloud Database on mount
+  useEffect(() => {
+    async function loadData() {
+      try {
+        const [customersData, documentsData, paymentsData, settingsData] = await Promise.all([
+          callApi('/billing/customers', 'GET'),
+          callApi('/billing/documents', 'GET'),
+          callApi('/billing/payments', 'GET'),
+          callApi('/billing/settings', 'GET'),
+        ]);
+
+        if (customersData && customersData.length > 0) setCustomers(customersData);
+        if (documentsData && documentsData.length > 0) setDocuments(documentsData);
+        if (paymentsData && paymentsData.length > 0) setPayments(paymentsData);
+        if (settingsData) setSettings(settingsData);
+      } catch (err) {
+        console.error('Failed to load data from cloud database:', err);
+        showToast('Offline mode: Using cached browser data.');
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadData();
+  }, []);
+
   const showToast = (message) => {
     setToast(message);
     setTimeout(() => {
@@ -172,6 +223,126 @@ export default function App() {
     setTheme(theme === 'light' ? 'dark' : 'light');
   };
 
+  // Sync state mutations to Cloud Database
+  const handleSetCustomers = async (value) => {
+    let nextVal;
+    if (typeof value === 'function') {
+      nextVal = value(customers);
+    } else {
+      nextVal = value;
+    }
+    setCustomers(nextVal);
+
+    try {
+      // Create / Update
+      for (const next of nextVal) {
+        const prev = customers.find(c => c.id === next.id);
+        if (!prev || JSON.stringify(prev) !== JSON.stringify(next)) {
+          await callApi('/billing/customers', 'POST', next);
+        }
+      }
+      // Delete
+      for (const prev of customers) {
+        const next = nextVal.find(c => c.id === prev.id);
+        if (!next) {
+          await callApi(`/billing/customers?id=${prev.id}`, 'DELETE');
+        }
+      }
+    } catch (err) {
+      console.error('Cloud sync failed for customers:', err);
+      showToast('Database write failed. Changes saved locally.');
+    }
+  };
+
+  const handleSetDocuments = async (value) => {
+    let nextVal;
+    if (typeof value === 'function') {
+      nextVal = value(documents);
+    } else {
+      nextVal = value;
+    }
+    setDocuments(nextVal);
+
+    try {
+      // Create / Update
+      for (const next of nextVal) {
+        const prev = documents.find(d => d.id === next.id);
+        if (!prev || JSON.stringify(prev) !== JSON.stringify(next)) {
+          await callApi('/billing/documents', 'POST', next);
+        }
+      }
+      // Delete
+      for (const prev of documents) {
+        const next = nextVal.find(d => d.id === prev.id);
+        if (!next) {
+          await callApi(`/billing/documents?id=${prev.id}`, 'DELETE');
+        }
+      }
+    } catch (err) {
+      console.error('Cloud sync failed for documents:', err);
+      showToast('Database write failed. Changes saved locally.');
+    }
+  };
+
+  const handleSetPayments = async (value) => {
+    let nextVal;
+    if (typeof value === 'function') {
+      nextVal = value(payments);
+    } else {
+      nextVal = value;
+    }
+    setPayments(nextVal);
+
+    try {
+      // Create / Update
+      for (const next of nextVal) {
+        const prev = payments.find(p => p.id === next.id);
+        if (!prev || JSON.stringify(prev) !== JSON.stringify(next)) {
+          await callApi('/billing/payments', 'POST', next);
+        }
+      }
+      // Delete
+      for (const prev of payments) {
+        const next = nextVal.find(p => p.id === prev.id);
+        if (!next) {
+          await callApi(`/billing/payments?id=${prev.id}`, 'DELETE');
+        }
+      }
+    } catch (err) {
+      console.error('Cloud sync failed for payments:', err);
+      showToast('Database write failed. Changes saved locally.');
+    }
+  };
+
+  const handleSetSettings = async (value) => {
+    let nextVal;
+    if (typeof value === 'function') {
+      nextVal = value(settings);
+    } else {
+      nextVal = value;
+    }
+    setSettings(nextVal);
+
+    try {
+      if (JSON.stringify(settings) !== JSON.stringify(nextVal)) {
+        await callApi('/billing/settings', 'POST', nextVal);
+      }
+    } catch (err) {
+      console.error('Cloud sync failed for settings:', err);
+      showToast('Database write failed. Changes saved locally.');
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-[#0f172a] flex flex-col items-center justify-center space-y-4">
+        <div className="w-16 h-16 border-4 border-[#8ec63f] border-t-transparent rounded-full animate-spin" />
+        <p className="text-white font-bold text-lg tracking-wide">Syncing with Cloud Database...</p>
+        <p className="text-gray-400 text-sm">Loading Together Tech Billing System</p>
+      </div>
+    );
+  }
+
   return (
     <BrowserRouter>
       <Routes>
@@ -180,20 +351,20 @@ export default function App() {
         {/* Auth Layout Wrapper */}
         <Route element={<Layout settings={settings} toast={toast} theme={theme} toggleTheme={toggleTheme} />}>
           <Route path="/dashboard" element={<Dashboard customers={customers} documents={documents} payments={payments} />} />
-          <Route path="/customers" element={<Customers customers={customers} setCustomers={setCustomers} documents={documents} payments={payments} showToast={showToast} />} />
-          <Route path="/customers/:id" element={<CustomerDueDetails customers={customers} documents={documents} payments={payments} setPayments={setPayments} setDocuments={setDocuments} showToast={showToast} />} />
-          <Route path="/add-customer" element={<AddCustomer customers={customers} setCustomers={setCustomers} showToast={showToast} />} />
+          <Route path="/customers" element={<Customers customers={customers} setCustomers={handleSetCustomers} documents={documents} payments={payments} showToast={showToast} />} />
+          <Route path="/customers/:id" element={<CustomerDueDetails customers={customers} documents={documents} payments={payments} setPayments={handleSetPayments} setDocuments={handleSetDocuments} showToast={showToast} />} />
+          <Route path="/add-customer" element={<AddCustomer customers={customers} setCustomers={handleSetCustomers} showToast={showToast} />} />
           
-          <Route path="/invoices" element={<InvoicesList documents={documents} setDocuments={setDocuments} showToast={showToast} />} />
-          <Route path="/invoices/create" element={<CreateInvoice settings={settings} customers={customers} documents={documents} setDocuments={setDocuments} showToast={showToast} />} />
+          <Route path="/invoices" element={<InvoicesList documents={documents} setDocuments={handleSetDocuments} showToast={showToast} />} />
+          <Route path="/invoices/create" element={<CreateInvoice settings={settings} customers={customers} documents={documents} setDocuments={handleSetDocuments} showToast={showToast} />} />
           <Route path="/invoices/edit/:id" element={<CreateInvoice settings={settings} customers={customers} documents={documents} setDocuments={setDocuments} showToast={showToast} />} />
           
-          <Route path="/quotations" element={<QuotationsList documents={documents} setDocuments={setDocuments} showToast={showToast} />} />
-          <Route path="/quotations/create" element={<CreateQuotation settings={settings} customers={customers} documents={documents} setDocuments={setDocuments} showToast={showToast} />} />
-          <Route path="/quotations/edit/:id" element={<CreateQuotation settings={settings} customers={customers} documents={documents} setDocuments={setDocuments} showToast={showToast} />} />
+          <Route path="/quotations" element={<QuotationsList documents={documents} setDocuments={handleSetDocuments} showToast={showToast} />} />
+          <Route path="/quotations/create" element={<CreateQuotation settings={settings} customers={customers} documents={documents} setDocuments={handleSetDocuments} showToast={showToast} />} />
+          <Route path="/quotations/edit/:id" element={<CreateQuotation settings={settings} customers={customers} documents={documents} setDocuments={handleSetDocuments} showToast={showToast} />} />
           
-          <Route path="/pdf-preview" element={<PdfPreview settings={settings} customers={customers} documents={documents} setDocuments={setDocuments} payments={payments} showToast={showToast} />} />
-          <Route path="/settings" element={<Settings settings={settings} setSettings={setSettings} showToast={showToast} />} />
+          <Route path="/pdf-preview" element={<PdfPreview settings={settings} customers={customers} documents={documents} setDocuments={handleSetDocuments} payments={payments} showToast={showToast} />} />
+          <Route path="/settings" element={<Settings settings={settings} setSettings={handleSetSettings} showToast={showToast} />} />
           
           {/* Default redirect to dashboard */}
           <Route path="/" element={<Navigate to="/dashboard" replace />} />

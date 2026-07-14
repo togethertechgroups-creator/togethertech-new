@@ -1,5 +1,5 @@
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -119,4 +119,64 @@ model PdfFile {
   name      String
   data      String   // Store base64 string
   createdAt DateTime @default(now())
+}
+
+model BillingCustomer {
+  id        String   @id
+  name      String
+  tier      String
+  gstin     String
+  email     String
+  phone     String
+  status    String   @default("ACTIVE")
+  spend     Float    @default(0.0)
+  address   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model BillingDocument {
+  id              String   @id
+  client          String
+  type            String   // "Invoice" or "Quotation"
+  date            String
+  dueDate         String
+  status          String   // "PAID", "UNPAID", "DRAFT", etc.
+  amount          Float
+  gstPercent      Float    @default(0.0)
+  discountPercent Float    @default(0.0)
+  billingAddress  String
+  lineItems       String   // JSON string of array of items
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model BillingPayment {
+  id           String   @id
+  invoiceId    String
+  customerId   String
+  customerName String
+  date         String
+  amount       Float
+  mode         String
+  reference    String
+  notes        String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model BillingSettings {
+  id           String   @id @default("billing-settings")
+  businessName String   @default("Together Tech")
+  gstin        String   @default("27AAACF4582G1ZX")
+  address      String   @default("Suite 405, Tech Plaza, Financial District,\nSan Francisco, CA 94105")
+  website      String   @default("togethertechgroups.in")
+  email        String   @default("togethertechgroups@gmail.com")
+  phone        String   @default("+91 90475 49682")
+  accountNum   String   @default("8829 4410 2293")
+  swift        String   @default("BNKUS00129")
+  branch       String   @default("Global Business Center")
+  brandColor   String   @default("#8ec63f")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 }
