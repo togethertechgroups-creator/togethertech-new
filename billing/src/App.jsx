@@ -335,10 +335,39 @@ export default function App() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#0f172a] flex flex-col items-center justify-center space-y-4">
-        <div className="w-16 h-16 border-4 border-[#8ec63f] border-t-transparent rounded-full animate-spin" />
-        <p className="text-white font-bold text-lg tracking-wide">Syncing with Cloud Database...</p>
-        <p className="text-gray-400 text-sm">Loading Together Tech Billing System</p>
+      <div className="min-h-screen bg-[#0b0f19] flex flex-col items-center justify-center relative overflow-hidden">
+        {/* Subtle background glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-[#8ec63f]/10 rounded-full blur-3xl pointer-events-none" />
+        
+        <div className="flex flex-col items-center z-10 space-y-6">
+          {/* Logo with breathing / pulsing animation */}
+          <div className="relative">
+            <img 
+              src="/logo.webp" 
+              alt="Together Tech" 
+              className="w-24 h-24 object-contain animate-pulse"
+              onError={(e) => {
+                e.currentTarget.style.display = 'none';
+              }}
+            />
+          </div>
+          
+          {/* Minimalist sleek loader */}
+          <div className="w-10 h-10 relative flex items-center justify-center">
+            {/* Spinning ring */}
+            <div className="absolute inset-0 border-2 border-gray-800 rounded-full" />
+            <div className="absolute inset-0 border-2 border-t-[#8ec63f] border-r-transparent border-b-transparent border-l-transparent rounded-full animate-spin" />
+          </div>
+          
+          <div className="text-center space-y-1">
+            <h1 className="text-xl font-bold tracking-wider text-white font-neogen bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+              Together Tech
+            </h1>
+            <p className="text-[10px] text-gray-500 font-bold tracking-widest uppercase">
+              Billing Portal
+            </p>
+          </div>
+        </div>
       </div>
     );
   }
