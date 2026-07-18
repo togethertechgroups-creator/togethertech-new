@@ -196,6 +196,33 @@ export default function RootLayout({
             { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Meta Ads Management" } }
           ]
         }
+      },
+      {
+        "@type": "ItemList",
+        "name": "Together Tech Main Pages",
+        "description": "Main navigation pages of Together Tech website",
+        "itemListElement": [
+          {
+            "@type": "SiteLinksSearchBox",
+            "target": "https://www.togethertechgroups.in/?q={search_term_string}"
+          }
+        ]
+      },
+      {
+        "@type": "ItemList",
+        "name": "Together Tech Navigation",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "url": "https://www.togethertechgroups.in/" },
+          { "@type": "ListItem", "position": 2, "name": "Services", "url": "https://www.togethertechgroups.in/services" },
+          { "@type": "ListItem", "position": 3, "name": "Website Development", "url": "https://www.togethertechgroups.in/services/website-development" },
+          { "@type": "ListItem", "position": 4, "name": "Mobile App Development", "url": "https://www.togethertechgroups.in/services/mobile-app-development" },
+          { "@type": "ListItem", "position": 5, "name": "Digital Marketing", "url": "https://www.togethertechgroups.in/services/digital-marketing" },
+          { "@type": "ListItem", "position": 6, "name": "Portfolio", "url": "https://www.togethertechgroups.in/portfolio" },
+          { "@type": "ListItem", "position": 7, "name": "Packages", "url": "https://www.togethertechgroups.in/packages" },
+          { "@type": "ListItem", "position": 8, "name": "Contact", "url": "https://www.togethertechgroups.in/contact" },
+          { "@type": "ListItem", "position": 9, "name": "About", "url": "https://www.togethertechgroups.in/about" },
+          { "@type": "ListItem", "position": 10, "name": "Blog", "url": "https://www.togethertechgroups.in/blog" }
+        ]
       }
     ]
   };
