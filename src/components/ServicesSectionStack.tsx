@@ -51,7 +51,7 @@ export default function ServicesSectionStack({ services }: ServicesSectionStackP
           height="100%"
           cardDistance={50}
           verticalDistance={30}
-          delay={4000}
+          delay={7000}
           pauseOnHover={true}
           skewAmount={4}
           easing="elastic"
