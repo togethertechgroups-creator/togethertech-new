@@ -178,7 +178,7 @@ export default function HomeClient({
                   className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-neogen tracking-tight text-brandDark text-left leading-tight"
                 >
                   Custom Software, Website & <br />
-                  <span className="text-[#0038BD]">Mobile App</span> <span className="text-brandGreen">Development</span> Company
+                  <span className="text-[#0038BD]">Mobile App</span> <span className="text-brandGreenDark">Development</span> Company
                 </motion.h1>
 
                 {/* Paragraph (Increased size and weight on mobile: text-base font-semibold) */}

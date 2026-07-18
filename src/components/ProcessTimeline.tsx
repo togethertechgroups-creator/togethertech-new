@@ -134,7 +134,7 @@ export default function ProcessTimeline() {
               {/* Step number — green by default, orange when line arrives */}
               <div
                 className="text-4xl font-extrabold font-outfit transition-colors duration-500"
-                style={{ color: isReached ? 'rgba(255,122,0,0.75)' : 'rgba(74,222,128,0.2)' }}
+                style={{ color: isReached ? '#FF7A00' : '#94a3b8' }}
               >
                 {step.step}
               </div>

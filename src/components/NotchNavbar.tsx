@@ -89,7 +89,7 @@ export function NotchNavbar() {
             />
             <span className="font-neogen text-xs sm:text-sm md:text-base tracking-normal leading-none font-bold">
               <span className="text-[#0038BD]">Together</span>
-              <span className="text-brandGreen">Tech</span>
+              <span className="text-brandGreenDark">Tech</span>
             </span>
           </Link>
 
