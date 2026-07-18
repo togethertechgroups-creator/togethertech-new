@@ -36,10 +36,12 @@ export interface ArcRevealHeroProps {
   /** Class for the wrapper around `children` (the revealed content). */
   revealClassName?: string;
   /**
-   * Optional `sessionStorage` key — when set, the intro plays only once per
+   * Optional sessionStorage key — when set, the intro plays only once per
    * session for the same key. Leave unset to replay on every mount.
    */
   storageKey?: string;
+  /** If true, skips the intro animation completely and renders the children immediately. */
+  skipIntro?: boolean;
   /** Content shown after the curtain reveal (the "landing"). */
   children?: React.ReactNode;
 }
@@ -69,11 +71,14 @@ export function ArcRevealHero({
   greetingClassName,
   revealClassName,
   storageKey,
+  skipIntro = false,
   children,
 }: ArcRevealHeroProps) {
   const prefersReducedMotion = useReducedMotion();
 
-  const [phase, setPhase] = React.useState<Phase>("intro");
+  const [phase, setPhase] = React.useState<Phase>(
+    skipIntro || prefersReducedMotion ? "done" : "intro"
+  );
   const [index, setIndex] = React.useState(0);
 
   // Drive the arc shape from a single 0→1 progress.

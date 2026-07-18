@@ -123,7 +123,7 @@ export default function HomeClient({
   };
 
   return (
-    <ArcRevealHero storageKey="togethertech-splash-done">
+    <ArcRevealHero storageKey="togethertech-splash-done" skipIntro={true}>
       <div className="space-y-0">
         {/* 1. HERO SECTION */}
         <section className="relative min-h-[95vh] flex items-center justify-center overflow-hidden bg-white pt-24 pb-16">
