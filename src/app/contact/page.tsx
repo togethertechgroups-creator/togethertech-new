@@ -135,7 +135,7 @@ function ContactContent() {
                 </div>
                 <div>
                   <h4 className="font-extrabold text-brandDark text-sm uppercase tracking-wide">Office Address</h4>
-                  <p className="text-sm text-brandGray mt-1">123 Tech Park, IT Corridor, Chennai, India</p>
+                  <p className="text-sm text-brandGray mt-1">voc street, abith colony, industrial area, saidapet, chennai, tamil nadu</p>
                 </div>
               </li>
             </ul>

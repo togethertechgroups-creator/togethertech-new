@@ -103,7 +103,7 @@ export default function Footer() {
             </li>
             <li className="flex items-start space-x-3">
               <MapPin className="w-5 h-5 text-brandGreen mt-0.5 flex-shrink-0" />
-              <span>123 Tech Park, IT Corridor, Chennai, India</span>
+              <span>voc street, abith colony, industrial area, saidapet, chennai, tamil nadu</span>
             </li>
           </ul>
         </div>

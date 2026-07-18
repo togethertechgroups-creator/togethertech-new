@@ -33,7 +33,7 @@ async function main() {
       phone: '+91 98765 43210',
       email: 'togethertechgroups@gmail.com',
       whatsapp: '+91 98765 43210',
-      address: '123 Tech Park, IT Corridor, Chennai, India',
+      address: 'VOC Street, Abith Colony, Industrial Area, Saidapet, Chennai, Tamil Nadu',
       logo: '/images/logo.svg',
       socialLinks: JSON.stringify({
         facebook: 'https://facebook.com/togethertech',

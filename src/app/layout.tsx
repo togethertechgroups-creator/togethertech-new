@@ -161,16 +161,16 @@ export default function RootLayout({
         "email": "togethertechgroups@gmail.com",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "123 Tech Park, IT Corridor",
+          "streetAddress": "VOC Street, Abith Colony, Industrial Area, Saidapet",
           "addressLocality": "Chennai",
           "addressRegion": "Tamil Nadu",
-          "postalCode": "600096",
+          "postalCode": "600015",
           "addressCountry": "IN"
         },
         "geo": {
           "@type": "GeoCoordinates",
-          "latitude": 12.971598,
-          "longitude": 80.245224
+          "latitude": 13.0208,
+          "longitude": 80.2241
         },
         "openingHoursSpecification": {
           "@type": "OpeningHoursSpecification",
