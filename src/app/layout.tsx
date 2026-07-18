@@ -259,11 +259,20 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
+        {/* Preload the LCP hero image with high fetchpriority so the browser discovers and fetches it immediately */}
         <link
           rel="preload"
-          href="/fonts/Neogen-Black.ttf"
+          href="/_next/image?url=%2Fimages%2Fhero.webp&w=1920&q=75"
+          as="image"
+          type="image/webp"
+          fetchPriority="high"
+        />
+        {/* Preload the primary heading font used above the fold */}
+        <link
+          rel="preload"
+          href="/fonts/Neogen-Black.woff2"
           as="font"
-          type="font/ttf"
+          type="font/woff2"
           crossOrigin="anonymous"
         />
         <script
