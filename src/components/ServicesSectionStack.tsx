@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight, Check } from 'lucide-react';
 import CardSwap, { Card } from './ui/CardSwap';
 
@@ -116,22 +117,17 @@ export default function ServicesSectionStack({ services }: ServicesSectionStackP
 
                 {/* Right Side: Image */}
                 <div className="relative hidden md:block w-full lg:w-[46%] h-[240px] lg:h-full rounded-2xl overflow-hidden border border-slate-100 flex-shrink-0">
-                  <div className="w-full h-full">
-                    <picture>
-                      <source
-                        srcSet={service.image.replace(/\.jpg$/, '.webp')}
-                        type="image/webp"
-                      />
-                      <img
-                        src={service.image}
-                        alt={service.title}
-                        className="absolute inset-0 w-full h-full object-cover"
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    </picture>
+                  <div className="w-full h-full relative">
+                    <Image
+                      src={service.image.replace(/\.jpg$/, '.webp')}
+                      alt={service.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 372px"
+                      className="object-cover"
+                      loading="lazy"
+                    />
                   </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent z-10" />
                 </div>
               </Card>
             );

@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { cn } from "@/lib/utils";
 import { RisingGlow } from "./rising-glow";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -312,9 +313,11 @@ export function CinematicHero({
               ease: "easeInOut",
             }}
           >
-            <img 
+            <Image 
               src="/images/chibi-boy.webp" 
               alt="Chibi Coding Boy" 
+              width={224}
+              height={224}
               className="w-full h-full object-contain filter drop-shadow-[0_10px_20px_rgba(0,0,0,0.15)]" 
             />
           </motion.div>
