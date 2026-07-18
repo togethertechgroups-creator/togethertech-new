@@ -13,6 +13,7 @@ export default {
         foreground: "var(--foreground)",
         brandGreen: "#70B33F",
         brandGreenHover: "#5c9930",
+        brandGreenDark: "#376916",
         brandGreenLight: "#f0fdf4",
         brandDark: "#0f172a",
         brandLight: "#ffffff",

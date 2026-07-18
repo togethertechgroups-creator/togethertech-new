@@ -104,7 +104,7 @@ export function NotchNavbar() {
           <div className="flex items-center gap-2 shrink-0">
             <Link
               href="/contact"
-              className="px-5 py-2.5 rounded-full bg-brandGreen hover:bg-brandGreenHover text-white text-xs sm:text-sm font-bold transition-all duration-200 shadow-md shadow-brandGreen/30 shrink-0"
+              className="px-5 py-2.5 rounded-full bg-brandGreen hover:bg-brandGreenHover text-brandDark text-xs sm:text-sm font-extrabold transition-all duration-200 shadow-md shadow-brandGreen/30 shrink-0"
             >
               Get a Quote
             </Link>
@@ -152,7 +152,7 @@ export function NotchNavbar() {
               })}
               <Link
                 href="/contact"
-                className="mt-2 flex items-center justify-center gap-2 p-3 rounded-xl bg-brandGreen text-white font-bold text-sm transition-all hover:bg-brandGreenHover"
+                className="mt-2 flex items-center justify-center gap-2 p-3 rounded-xl bg-brandGreen text-brandDark font-extrabold text-sm transition-all hover:bg-brandGreenHover"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Get a Quote

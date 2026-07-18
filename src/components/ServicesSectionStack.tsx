@@ -75,13 +75,13 @@ export default function ServicesSectionStack({ services }: ServicesSectionStackP
                   <div className="space-y-4">
                     {/* Icon & Title Row */}
                     <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 rounded-2xl bg-brandGreen/10 border border-brandGreen/25 flex items-center justify-center text-brandGreen">
+                      <div className="w-12 h-12 rounded-2xl bg-brandGreen/10 border border-brandGreen/25 flex items-center justify-center text-brandGreenDark">
                         <IconComponent className="w-6 h-6" />
                       </div>
-                      <span className="text-xs font-bold tracking-widest text-[#EF8E01] uppercase">Service {i + 1} of {services.length}</span>
+                      <span className="text-xs font-bold tracking-widest text-[#c27200] uppercase">Service {i + 1} of {services.length}</span>
                     </div>
 
-                    <h3 className="text-2xl sm:text-3xl font-extrabold font-outfit tracking-tight group-hover:text-brandGreen transition-colors leading-tight">
+                    <h3 className="text-2xl sm:text-3xl font-extrabold font-outfit tracking-tight group-hover:text-brandGreenDark transition-colors leading-tight">
                       {service.title}
                     </h3>
 
@@ -94,7 +94,7 @@ export default function ServicesSectionStack({ services }: ServicesSectionStackP
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-2">
                         {featuresList.map((feature, idx) => (
                           <div key={idx} className="flex items-center space-x-2 text-xs text-slate-700">
-                            <Check className="w-3.5 h-3.5 text-brandGreen flex-shrink-0" />
+                            <Check className="w-3.5 h-3.5 text-brandGreenDark flex-shrink-0" />
                             <span className="truncate">{feature}</span>
                           </div>
                         ))}
@@ -105,7 +105,7 @@ export default function ServicesSectionStack({ services }: ServicesSectionStackP
                   <div className="pt-6 lg:pt-4">
                     <Link
                       href={`/services/${service.slug}`}
-                      className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-brandGreen hover:bg-brandGreenHover text-white font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow-md shadow-brandGreen/25 space-x-2"
+                      className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-brandGreen hover:bg-brandGreenHover text-brandDark font-extrabold text-xs uppercase tracking-wider transition-all duration-300 shadow-md shadow-brandGreen/25 space-x-2"
                       aria-label={`Explore details for ${service.title}`}
                     >
                       <span>Explore details <span className="sr-only">for {service.title}</span></span>

@@ -44,7 +44,7 @@ export default function PortfolioClient({ portfolios }: PortfolioClientProps) {
                 key={cat}
                 onClick={() => setFilter(cat)}
                 className={`px-5 py-2.5 rounded-full font-bold text-xs uppercase tracking-wider transition-all duration-300 ${filter === cat
-                    ? 'bg-brandGreen text-white shadow-md shadow-brandGreen/20'
+                    ? 'bg-brandGreen text-brandDark font-extrabold shadow-md shadow-brandGreen/20'
                     : 'bg-white text-brandGray hover:bg-slate-100 border border-slate-200'
                   }`}
               >

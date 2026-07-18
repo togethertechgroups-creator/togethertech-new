@@ -163,7 +163,7 @@ export default function HomeClient({
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
-                    className="inline-flex items-center space-x-2 bg-brandGreenLight border border-brandGreen/20 px-4 py-1.5 rounded-full text-brandGreen"
+                    className="inline-flex items-center space-x-2 bg-brandGreenLight border border-brandGreen/20 px-4 py-1.5 rounded-full text-brandGreenDark"
                   >
                     <span className="w-2.5 h-2.5 rounded-full bg-brandGreen animate-pulse" />
                     <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider">Turning Ideas Into Real Digital Solutions</span>
@@ -200,7 +200,7 @@ export default function HomeClient({
                 >
                   <Link
                     href="/contact"
-                    className="w-full sm:w-auto px-8 py-4 rounded-full bg-brandGreen hover:bg-brandGreenHover text-white font-bold tracking-wide transition-all duration-300 shadow-md shadow-brandGreen/20 flex items-center justify-center space-x-2 text-sm uppercase"
+                    className="w-full sm:w-auto px-8 py-4 rounded-full bg-brandGreen hover:bg-brandGreenHover text-brandDark font-extrabold tracking-wide transition-all duration-300 shadow-md shadow-brandGreen/20 flex items-center justify-center space-x-2 text-sm uppercase"
                   >
                     <span>Get Free Quote</span>
                     <ArrowRight className="w-5 h-5" />
@@ -265,7 +265,7 @@ export default function HomeClient({
                         </div>
                         <div className="space-y-0.5 min-w-0">
                           <h3 className="font-extrabold text-brandDark text-[11px] sm:text-sm tracking-tight font-outfit leading-tight truncate">{pt.label}</h3>
-                          <p className="text-[9px] sm:text-[10px] text-brandGreen font-bold uppercase tracking-wider leading-snug truncate">{pt.desc}</p>
+                          <p className="text-[9px] sm:text-[10px] text-brandGreenDark font-bold uppercase tracking-wider leading-snug truncate">{pt.desc}</p>
                         </div>
                       </div>
                     );
@@ -298,7 +298,7 @@ export default function HomeClient({
         <section className="pt-24 pb-8 bg-[url('/images/services-bg.webp')] bg-cover bg-center bg-no-repeat bg-fixed text-brandDark overflow-hidden">
           <div className="max-w-7xl mx-auto px-6 space-y-6">
             <div className="text-center max-w-3xl mx-auto space-y-4">
-              <span className="text-brandGreen font-extrabold text-sm uppercase tracking-wider bg-brandGreen/10 border border-brandGreen/25 rounded-full px-4 py-1.5">Our Expertise</span>
+              <span className="text-brandGreenDark font-extrabold text-sm uppercase tracking-wider bg-brandGreen/10 border border-brandGreen/25 rounded-full px-4 py-1.5">Our Expertise</span>
               <h2 className="text-3xl md:text-5xl text-brandDark font-rustic">Services We Offer</h2>
               <p className="text-brandDark font-medium font-biooris">We design and construct high-performance digital solutions to resolve complex business bottlenecks.</p>
             </div>
@@ -328,7 +328,7 @@ export default function HomeClient({
                     <div className="space-y-3">
                       {/* Icon & Title Row */}
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-xl bg-brandGreen/10 border border-brandGreen/25 flex items-center justify-center text-brandGreen">
+                        <div className="w-10 h-10 rounded-xl bg-brandGreen/10 border border-brandGreen/25 flex items-center justify-center text-brandGreenDark">
                           <IconComponent className="w-5 h-5" />
                         </div>
                         <span className="text-[10px] font-bold tracking-widest text-[#EF8E01] uppercase">Service {i + 1} of {services.length}</span>
@@ -347,7 +347,7 @@ export default function HomeClient({
                         <div className="grid grid-cols-2 gap-2 pt-2 border-t border-slate-100">
                           {featuresList.map((feature: string, idx: number) => (
                             <div key={idx} className="flex items-center space-x-1.5 text-[10px] text-slate-700">
-                              <Check className="w-3 h-3 text-brandGreen flex-shrink-0" />
+                              <Check className="w-3.5 h-3.5 text-brandGreenDark flex-shrink-0" />
                               <span className="truncate">{feature}</span>
                             </div>
                           ))}
@@ -358,7 +358,7 @@ export default function HomeClient({
                     <div className="pt-2">
                       <Link
                         href={`/services/${service.slug}`}
-                        className="w-full flex items-center justify-center px-4 py-2.5 rounded-xl bg-brandGreen hover:bg-brandGreenHover text-white font-bold text-xs uppercase tracking-wider transition-all duration-300 space-x-2"
+                        className="w-full flex items-center justify-center px-4 py-2.5 rounded-xl bg-brandGreen hover:bg-brandGreenHover text-brandDark font-extrabold text-xs uppercase tracking-wider transition-all duration-300 space-x-2"
                         aria-label={`Explore details for ${service.title}`}
                       >
                         <span>Explore details <span className="sr-only">for {service.title}</span></span>
@@ -373,7 +373,7 @@ export default function HomeClient({
             <div className="text-center">
               <Link
                 href="/services"
-                className="inline-flex items-center px-8 py-3.5 rounded-full bg-brandGreen hover:bg-brandGreenHover text-white font-bold text-sm tracking-wide transition-all duration-300 shadow-md shadow-brandGreen/25"
+                className="inline-flex items-center px-8 py-3.5 rounded-full bg-brandGreen hover:bg-brandGreenHover text-brandDark font-extrabold text-sm tracking-wide transition-all duration-300 shadow-md shadow-brandGreen/25"
               >
                 <span>View All 13 Services</span>
               </Link>
@@ -385,7 +385,7 @@ export default function HomeClient({
         <section className="py-24 bg-white text-brandDark relative overflow-hidden md:hidden">
           <div className="max-w-7xl mx-auto px-6 space-y-12">
             <div className="text-center max-w-3xl mx-auto space-y-4">
-              <span className="text-brandGreen font-extrabold text-sm uppercase tracking-wider bg-brandGreen/10 border border-brandGreen/25 rounded-full px-4 py-1.5">Our Verticals</span>
+              <span className="text-brandGreenDark font-extrabold text-sm uppercase tracking-wider bg-brandGreen/10 border border-brandGreen/25 rounded-full px-4 py-1.5">Our Verticals</span>
               <h2 className="text-3xl md:text-5xl text-brandDark font-rustic">Our Service Verticals</h2>
               <p className="text-brandGray font-medium leading-relaxed font-biooris">We specialize in these 8 core divisions to deliver premium digital systems for your business.</p>
             </div>
@@ -405,7 +405,7 @@ export default function HomeClient({
                 return (
                   <div key={index} className="p-6 rounded-3xl bg-slate-50 border border-slate-200 hover:border-brandGreen/35 hover:shadow-lg transition-all duration-300 flex flex-col justify-between space-y-4">
                     <div className="space-y-3">
-                      <div className="w-10 h-10 rounded-xl bg-brandGreen/10 border border-brandGreen/25 flex items-center justify-center text-brandGreen">
+                      <div className="w-10 h-10 rounded-xl bg-brandGreen/10 border border-brandGreen/25 flex items-center justify-center text-brandGreenDark">
                         <Icon className="w-5 h-5" />
                       </div>
                       <h2 className="text-lg font-extrabold font-outfit text-brandDark">
@@ -415,7 +415,7 @@ export default function HomeClient({
                     </div>
                     <Link 
                       href={`/services/${item.slug}`} 
-                      className="text-xs font-bold text-brandGreen hover:text-brandGreenHover flex items-center space-x-1.5 pt-2"
+                      className="text-xs font-bold text-brandGreenDark hover:text-brandGreen flex items-center space-x-1.5 pt-2"
                       aria-label={`Learn more about ${item.title}`}
                     >
                       <span>Learn more <span className="sr-only">about {item.title}</span></span>
@@ -464,9 +464,9 @@ export default function HomeClient({
               <div className="text-center lg:text-left z-10">
                 <h2 className="text-4xl sm:text-6xl md:text-7xl font-black leading-tight flex flex-row flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-4 font-outfit text-brandDark">
                   <span className="tracking-tight">WHY</span>
-                  <span className="text-brandGreen tracking-tight">CHOOSE</span>
+                  <span className="text-brandGreenDark tracking-tight">CHOOSE</span>
                   <span className="flex items-center gap-3 sm:gap-4">
-                    <span className="bg-brandGreen text-white rounded-full p-2 inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 shadow-md">
+                    <span className="bg-brandGreen text-brandDark rounded-full p-2 inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 shadow-md">
                       <svg className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
@@ -554,10 +554,10 @@ export default function HomeClient({
                     {/* Inner Card Content */}
                     <div className="relative bg-white p-8 rounded-[1.92rem] flex flex-col justify-between h-full w-full z-10">
                       <div>
-                        <div className="w-12 h-12 rounded-2xl bg-brandGreen/10 border border-brandGreen/25 flex items-center justify-center text-brandGreen mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <div className="w-12 h-12 rounded-2xl bg-brandGreen/10 border border-brandGreen/25 flex items-center justify-center text-brandGreenDark mb-6 group-hover:scale-110 transition-transform duration-300">
                           <IconComponent className="w-6 h-6" />
                         </div>
-                        <h3 className="text-xl font-extrabold text-brandDark mb-3 group-hover:text-brandGreen transition-colors">
+                        <h3 className="text-xl font-extrabold text-brandDark mb-3 group-hover:text-brandGreenDark transition-colors">
                           {pill.title}
                         </h3>
                         <p className="text-xs text-brandGray font-medium leading-relaxed">
@@ -586,7 +586,7 @@ export default function HomeClient({
                               key={check}
                               className="flex items-center space-x-1.5 text-[10px] text-slate-500 font-bold"
                             >
-                              <Check className="w-3.5 h-3.5 text-brandGreen flex-shrink-0" />
+                              <Check className="w-3.5 h-3.5 text-brandGreenDark flex-shrink-0" />
                               <span className="truncate">{check}</span>
                             </div>
                           ))}
@@ -627,7 +627,7 @@ export default function HomeClient({
                   <div className="mt-8">
                     <Link
                       href="/contact"
-                      className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-white hover:bg-slate-50 text-brandGreen font-bold text-xs uppercase tracking-wider transition-colors duration-300 space-x-2 shadow-sm"
+                      className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-white hover:bg-slate-50 text-brandGreenDark font-extrabold text-xs uppercase tracking-wider transition-colors duration-300 space-x-2 shadow-sm"
                     >
                       <span>Enquire Now</span>
                       <ArrowRight className="w-4 h-4" />
@@ -645,7 +645,7 @@ export default function HomeClient({
               <div className="order-1 md:order-2">
                 <Link
                   href="/contact"
-                  className="bg-brandGreen text-white px-8 py-3 rounded-full font-black text-xs uppercase tracking-widest hover:bg-brandGreenHover transition-colors duration-300 inline-block shadow-md shadow-brandGreen/25"
+                  className="bg-brandGreen text-brandDark font-extrabold px-8 py-3 rounded-full font-black text-xs uppercase tracking-widest hover:bg-brandGreenHover transition-colors duration-300 inline-block shadow-md shadow-brandGreen/25"
                 >
                   Contact Us
                 </Link>
@@ -683,7 +683,7 @@ export default function HomeClient({
         <section className="py-24 bg-slate-50 text-brandDark relative overflow-hidden border-t border-slate-100">
           <div className="max-w-7xl mx-auto px-6 space-y-16">
             <div className="text-center max-w-3xl mx-auto space-y-4">
-              <span className="text-brandGreen font-extrabold text-sm uppercase tracking-wider bg-brandGreen/10 border border-brandGreen/25 rounded-full px-4 py-1.5">Who We Support</span>
+              <span className="text-brandGreenDark font-extrabold text-sm uppercase tracking-wider bg-brandGreen/10 border border-brandGreen/25 rounded-full px-4 py-1.5">Who We Support</span>
               <h2 className="text-3xl md:text-5xl text-brandDark font-rustic mt-2">Industries We Serve</h2>
               <p className="text-brandGray font-medium font-biooris">Engineering custom software and digital portals for a diverse range of business sectors.</p>
             </div>
@@ -700,7 +700,7 @@ export default function HomeClient({
                 const Icon = ind.icon;
                 return (
                   <div key={i} className="bg-white p-6 rounded-3xl border border-slate-200 text-center hover:border-brandGreen/35 hover:shadow-md transition-all space-y-3">
-                    <div className="w-10 h-10 rounded-2xl bg-brandGreen/10 flex items-center justify-center text-brandGreen mx-auto">
+                    <div className="w-10 h-10 rounded-2xl bg-brandGreen/10 flex items-center justify-center text-brandGreenDark mx-auto">
                       <Icon className="w-5 h-5" />
                     </div>
                     <h3 className="font-extrabold text-sm text-brandDark font-outfit">{ind.name}</h3>
@@ -717,7 +717,7 @@ export default function HomeClient({
           <div className="max-w-7xl mx-auto px-6 space-y-12">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
               <div className="space-y-4">
-                <span className="text-brandGreen font-extrabold text-sm uppercase tracking-wider bg-brandGreen/10 border border-brandGreen/25 rounded-full px-4 py-1.5">Our Showcase</span>
+                <span className="text-brandGreenDark font-extrabold text-sm uppercase tracking-wider bg-brandGreen/10 border border-brandGreen/25 rounded-full px-4 py-1.5">Our Showcase</span>
                 <h2 className="text-3xl md:text-5xl text-brandDark font-rustic">Recent Projects</h2>
               </div>
               {/* Filter tags (Starbucks circular layout) */}
@@ -727,7 +727,7 @@ export default function HomeClient({
                     key={cat}
                     onClick={() => setPortfolioFilter(cat)}
                     className={`px-5 py-2 rounded-full font-bold text-xs uppercase tracking-wider transition-all duration-300 ${portfolioFilter === cat
-                      ? 'bg-brandGreen text-white shadow-md shadow-brandGreen/20'
+                      ? 'bg-brandGreen text-brandDark font-extrabold shadow-md shadow-brandGreen/20'
                       : 'bg-white text-brandGray hover:bg-slate-100 border border-slate-200'
                       }`}
                   >
@@ -753,7 +753,7 @@ export default function HomeClient({
 
           <div className="max-w-7xl mx-auto px-6 space-y-16 relative z-10">
             <div className="text-center max-w-3xl mx-auto space-y-4">
-              <span className="text-brandGreen font-extrabold text-sm uppercase tracking-wider bg-brandGreen/10 border border-brandGreen/25 rounded-full px-4 py-1.5">Simple Invoicing</span>
+              <span className="text-brandGreenDark font-extrabold text-sm uppercase tracking-wider bg-brandGreen/10 border border-brandGreen/25 rounded-full px-4 py-1.5">Simple Invoicing</span>
               <h2 className="text-3xl md:text-5xl text-white font-rustic">Our Development Packages</h2>
               <p className="text-white/90 font-medium font-biooris">Select a predefined structure or contact us for a customized development plan.</p>
             </div>
@@ -770,7 +770,7 @@ export default function HomeClient({
         <section className="py-24 bg-slate-50 text-brandDark border-t border-slate-100">
           <div className="max-w-7xl mx-auto px-6 space-y-16">
             <div className="text-center max-w-3xl mx-auto space-y-4">
-              <span className="text-brandGreen font-extrabold text-sm uppercase tracking-wider bg-brandGreen/10 border border-brandGreen/25 rounded-full px-4 py-1.5">Creative Brains</span>
+              <span className="text-brandGreenDark font-extrabold text-sm uppercase tracking-wider bg-brandGreen/10 border border-brandGreen/25 rounded-full px-4 py-1.5">Creative Brains</span>
               <h2 className="text-3xl md:text-5xl text-brandDark font-mitshuka">Meet Our Team</h2>
               <p className="text-brandDark font-medium font-biooris">A group of young, highly-skilled professionals turning concepts into software.</p>
             </div>
@@ -782,12 +782,12 @@ export default function HomeClient({
                   className="bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm p-6 space-y-6 text-center hover:shadow-md hover:border-brandGreen/20 transition-all duration-300"
                 >
                   {/* Team avatar mockup with double border leaf aesthetic */}
-                  <div className="w-24 h-24 rounded-full bg-brandGreenLight mx-auto flex items-center justify-center text-brandGreen text-3xl font-black border-4 border-brandGreen shadow-md">
+                  <div className="w-24 h-24 rounded-full bg-brandGreenLight mx-auto flex items-center justify-center text-brandGreenDark text-3xl font-black border-4 border-brandGreen shadow-md">
                     {member.name.split(' ').map((n: string) => n[0]).join('')}
                   </div>
                   <div className="space-y-1">
                     <h3 className="font-extrabold text-xl text-brandDark">{member.name}</h3>
-                    <p className="text-xs text-brandGreen font-bold tracking-wider uppercase">{member.role}</p>
+                    <p className="text-xs text-brandGreenDark font-bold tracking-wider uppercase">{member.role}</p>
                   </div>
                   <p className="text-xs text-brandGray leading-relaxed min-h-[60px]">{member.bio}</p>
                   <div className="flex flex-wrap justify-center gap-1">
@@ -807,7 +807,7 @@ export default function HomeClient({
         <section className="py-24 bg-white text-brandDark relative border-t border-slate-100">
           <div className="max-w-7xl mx-auto px-6 space-y-16">
             <div className="text-center max-w-3xl mx-auto space-y-4">
-              <span className="text-brandGreen font-extrabold text-sm uppercase tracking-wider bg-brandGreen/10 border border-brandGreen/25 rounded-full px-4 py-1.5">Social Proof</span>
+              <span className="text-brandGreenDark font-extrabold text-sm uppercase tracking-wider bg-brandGreen/10 border border-brandGreen/25 rounded-full px-4 py-1.5">Social Proof</span>
               <h2 className="text-3xl md:text-5xl text-brandDark font-mitshuka">Client Feedback</h2>
             </div>
 
@@ -833,7 +833,7 @@ export default function HomeClient({
                   </div>
                   <div className="border-t border-slate-200/80 pt-4">
                     <h4 className="font-extrabold text-brandDark">{test.clientName}</h4>
-                    <p className="text-xxs text-brandGreen font-semibold uppercase tracking-wider">{test.businessName}</p>
+                    <p className="text-xxs text-brandGreenDark font-semibold uppercase tracking-wider">{test.businessName}</p>
                   </div>
                 </div>
               ))}
@@ -845,7 +845,7 @@ export default function HomeClient({
         <section className="py-24 bg-slate-50 text-brandDark border-t border-slate-100">
           <div className="max-w-4xl mx-auto px-6 space-y-16">
             <div className="text-center space-y-4">
-              <span className="text-brandGreen font-extrabold text-sm uppercase tracking-wider bg-brandGreen/10 border border-brandGreen/25 rounded-full px-4 py-1.5">Got Questions?</span>
+              <span className="text-brandGreenDark font-extrabold text-sm uppercase tracking-wider bg-brandGreen/10 border border-brandGreen/25 rounded-full px-4 py-1.5">Got Questions?</span>
               <h2 className="text-3xl md:text-5xl text-brandDark font-rustic mt-4">Frequently Asked Questions</h2>
             </div>
 
@@ -859,11 +859,11 @@ export default function HomeClient({
                   >
                     <button
                       onClick={() => toggleFaq(index)}
-                      className="w-full px-6 py-5 text-left flex justify-between items-center font-bold text-lg text-brandDark hover:text-brandGreen transition-colors"
+                      className="w-full px-6 py-5 text-left flex justify-between items-center font-bold text-lg text-brandDark hover:text-brandGreenDark transition-colors"
                     >
                       <span>{faq.q}</span>
                       <ChevronDown
-                        className={`w-5 h-5 text-slate-400 transition-transform duration-300 ${isOpen ? 'rotate-180 text-brandGreen' : ''
+                        className={`w-5 h-5 text-slate-400 transition-transform duration-300 ${isOpen ? 'rotate-180 text-brandGreenDark' : ''
                           }`}
                       />
                     </button>
@@ -900,7 +900,7 @@ export default function HomeClient({
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
               <Link
                 href="/contact"
-                className="w-full sm:w-auto px-8 py-4 rounded-full bg-white hover:bg-brandDark text-brandGreen hover:text-white font-bold tracking-wide transition-all duration-300 shadow-lg flex items-center justify-center space-x-2"
+                className="w-full sm:w-auto px-8 py-4 rounded-full bg-white hover:bg-brandDark text-brandGreenDark hover:text-white font-extrabold tracking-wide transition-all duration-300 shadow-lg flex items-center justify-center space-x-2"
               >
                 <span>Contact Us</span>
                 <ArrowRight className="w-5 h-5" />

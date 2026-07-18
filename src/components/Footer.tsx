@@ -41,23 +41,23 @@ export default function Footer() {
               className="w-13 h-13 object-contain"
             />
             <span className="font-neogen text-2xl tracking-tight text-brandDark">
-              Together<span className="text-brandGreen">Tech</span>
+              Together<span className="text-brandGreenDark">Tech</span>
             </span>
           </Link>
           <p className="text-sm leading-relaxed text-brandGray">
             Together Tech is a digital technology company helping businesses grow through premium websites, mobile apps, custom software, branding, SEO, and result-oriented digital marketing.
           </p>
           <div className="flex items-center space-x-4">
-            <a href="https://facebook.com/togethertech" className="w-9 h-9 rounded-full bg-slate-200/80 hover:bg-brandGreen hover:text-white text-brandDark transition-colors flex items-center justify-center" aria-label="Facebook">
+            <a href="https://facebook.com/togethertech" className="w-9 h-9 rounded-full bg-slate-200/80 hover:bg-brandGreenDark hover:text-white text-brandDark transition-colors flex items-center justify-center" aria-label="Facebook">
               <FacebookIcon />
             </a>
-            <a href="https://twitter.com/togethertech" className="w-9 h-9 rounded-full bg-slate-200/80 hover:bg-brandGreen hover:text-white text-brandDark transition-colors flex items-center justify-center" aria-label="Twitter">
+            <a href="https://twitter.com/togethertech" className="w-9 h-9 rounded-full bg-slate-200/80 hover:bg-brandGreenDark hover:text-white text-brandDark transition-colors flex items-center justify-center" aria-label="Twitter">
               <TwitterIcon />
             </a>
-            <a href="https://linkedin.com/company/togethertech" className="w-9 h-9 rounded-full bg-slate-200/80 hover:bg-brandGreen hover:text-white text-brandDark transition-colors flex items-center justify-center" aria-label="Linkedin">
+            <a href="https://linkedin.com/company/togethertech" className="w-9 h-9 rounded-full bg-slate-200/80 hover:bg-brandGreenDark hover:text-white text-brandDark transition-colors flex items-center justify-center" aria-label="Linkedin">
               <LinkedinIcon />
             </a>
-            <a href="https://www.instagram.com/togethertechofficial" className="w-9 h-9 rounded-full bg-slate-200/80 hover:bg-brandGreen hover:text-white text-brandDark transition-colors flex items-center justify-center" aria-label="Instagram">
+            <a href="https://www.instagram.com/togethertechofficial" className="w-9 h-9 rounded-full bg-slate-200/80 hover:bg-brandGreenDark hover:text-white text-brandDark transition-colors flex items-center justify-center" aria-label="Instagram">
               <InstagramIcon />
             </a>
           </div>
@@ -68,12 +68,12 @@ export default function Footer() {
         <div className="space-y-6">
           <h3 className="font-extrabold text-lg tracking-wide border-l-4 border-brandGreen pl-3 text-brandDark">Quick Links</h3>
           <ul className="grid grid-cols-2 gap-3 text-sm">
-            <li><Link href="/" className="hover:text-brandGreen transition-colors">Home</Link></li>
-            <li><Link href="/about" className="hover:text-brandGreen transition-colors">About Us</Link></li>
-            <li><Link href="/services" className="hover:text-brandGreen transition-colors">Services</Link></li>
-            <li><Link href="/portfolio" className="hover:text-brandGreen transition-colors">Portfolio</Link></li>
-            <li><Link href="/packages" className="hover:text-brandGreen transition-colors">Packages</Link></li>
-            <li><Link href="/contact" className="hover:text-brandGreen transition-colors">Contact Us</Link></li>
+            <li><Link href="/" className="hover:text-brandGreenDark transition-colors">Home</Link></li>
+            <li><Link href="/about" className="hover:text-brandGreenDark transition-colors">About Us</Link></li>
+            <li><Link href="/services" className="hover:text-brandGreenDark transition-colors">Services</Link></li>
+            <li><Link href="/portfolio" className="hover:text-brandGreenDark transition-colors">Portfolio</Link></li>
+            <li><Link href="/packages" className="hover:text-brandGreenDark transition-colors">Packages</Link></li>
+            <li><Link href="/contact" className="hover:text-brandGreenDark transition-colors">Contact Us</Link></li>
           </ul>
         </div>
 
@@ -81,11 +81,11 @@ export default function Footer() {
         <div className="space-y-6">
           <h3 className="font-extrabold text-lg tracking-wide border-l-4 border-brandGreen pl-3 text-brandDark">Services</h3>
           <ul className="space-y-3 text-sm">
-            <li><Link href="/services/website-development" className="hover:text-brandGreen transition-colors">Website Development</Link></li>
-            <li><Link href="/services/mobile-app-development" className="hover:text-brandGreen transition-colors">Mobile App Development</Link></li>
-            <li><Link href="/services/flutter-app-development" className="hover:text-brandGreen transition-colors">Flutter App Development</Link></li>
-            <li><Link href="/services/ui-ux-design" className="hover:text-brandGreen transition-colors">UI/UX Prototype Design</Link></li>
-            <li><Link href="/services/digital-marketing" className="hover:text-brandGreen transition-colors">Digital Marketing</Link></li>
+            <li><Link href="/services/website-development" className="hover:text-brandGreenDark transition-colors">Website Development</Link></li>
+            <li><Link href="/services/mobile-app-development" className="hover:text-brandGreenDark transition-colors">Mobile App Development</Link></li>
+            <li><Link href="/services/flutter-app-development" className="hover:text-brandGreenDark transition-colors">Flutter App Development</Link></li>
+            <li><Link href="/services/ui-ux-design" className="hover:text-brandGreenDark transition-colors">UI/UX Prototype Design</Link></li>
+            <li><Link href="/services/digital-marketing" className="hover:text-brandGreenDark transition-colors">Digital Marketing</Link></li>
           </ul>
         </div>
 
@@ -94,15 +94,15 @@ export default function Footer() {
           <h3 className="font-extrabold text-lg tracking-wide border-l-4 border-brandGreen pl-3 text-brandDark">Get in Touch</h3>
           <ul className="space-y-4 text-sm text-brandGray">
             <li className="flex items-start space-x-3">
-              <Phone className="w-5 h-5 text-brandGreen mt-0.5 flex-shrink-0" />
+              <Phone className="w-5 h-5 text-brandGreenDark mt-0.5 flex-shrink-0" />
               <span>+91 90475 49682</span>
             </li>
             <li className="flex items-start space-x-3">
-              <Mail className="w-5 h-5 text-brandGreen mt-0.5 flex-shrink-0" />
+              <Mail className="w-5 h-5 text-brandGreenDark mt-0.5 flex-shrink-0" />
               <span>togethertechgroups@gmail.com</span>
             </li>
             <li className="flex items-start space-x-3">
-              <MapPin className="w-5 h-5 text-brandGreen mt-0.5 flex-shrink-0" />
+              <MapPin className="w-5 h-5 text-brandGreenDark mt-0.5 flex-shrink-0" />
               <span>voc street, abith colony, industrial area, saidapet, chennai, tamil nadu</span>
             </li>
           </ul>
@@ -114,8 +114,8 @@ export default function Footer() {
           © {new Date().getFullYear()} Together Tech. All rights reserved.
         </div>
         <div className="flex space-x-6">
-          <Link href="/privacy" className="hover:text-brandGreen transition-colors">Privacy Policy</Link>
-          <Link href="/terms" className="hover:text-brandGreen transition-colors">Terms of Service</Link>
+          <Link href="/privacy" className="hover:text-brandGreenDark transition-colors">Privacy Policy</Link>
+          <Link href="/terms" className="hover:text-brandGreenDark transition-colors">Terms of Service</Link>
         </div>
       </div>
     </footer>
