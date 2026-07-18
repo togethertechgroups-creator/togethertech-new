@@ -3,18 +3,18 @@
 import React, { useRef, useEffect, useState, useCallback } from 'react';
 
 const steps = [
-  { step: '01', title: 'Discovery & Plan',  desc: 'We align on requirements, user flows, and wireframe prototypes.' },
-  { step: '02', title: 'UI/UX Design',      desc: 'Figma mockups, typography selection, and color palettes are approved.' },
-  { step: '03', title: 'Development',       desc: 'We write fully responsive code, set up secure databases, and hook APIs.' },
-  { step: '04', title: 'QA & Testing',      desc: 'We test load speeds, mobile responsiveness, and technical SEO structure.' },
-  { step: '05', title: 'Deployment',        desc: 'Client domain mapping, server configuration, and final hand-over.' },
+  { step: '01', title: 'Discovery & Plan', desc: 'We align on requirements, user flows, and wireframe prototypes.' },
+  { step: '02', title: 'UI/UX Design', desc: 'Figma mockups, typography selection, and color palettes are approved.' },
+  { step: '03', title: 'Development', desc: 'We write fully responsive code, set up secure databases, and hook APIs.' },
+  { step: '04', title: 'QA & Testing', desc: 'We test load speeds, mobile responsiveness, and technical SEO structure.' },
+  { step: '05', title: 'Deployment', desc: 'Client domain mapping, server configuration, and final hand-over.' },
 ];
 
 // ── Animation timing constants (shared with AnimatedPath) ──────────────────
-const SEG_DURATION  = 0.5;   // seconds to draw each segment
-const SEG_GAP       = 0.1;   // gap between segments
-const HOLD_END      = 0.6;   // hold pause at end before repeat
-const TOTAL_CYCLE   = (SEG_DURATION + SEG_GAP) * (steps.length - 1) + HOLD_END; // ~3s
+const SEG_DURATION = 0.5;   // seconds to draw each segment
+const SEG_GAP = 0.1;   // gap between segments
+const HOLD_END = 0.6;   // hold pause at end before repeat
+const TOTAL_CYCLE = (SEG_DURATION + SEG_GAP) * (steps.length - 1) + HOLD_END; // ~3s
 
 // When each card number should turn orange (= when the line finishes arriving at it)
 // Card 0 starts orange immediately (it's the origin)
@@ -33,10 +33,10 @@ interface Segment {
 }
 
 export default function ProcessTimeline() {
-  const cardRefs     = useRef<(HTMLDivElement | null)[]>([]);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
   const [segments, setSegments] = useState<Segment[]>([]);
-  const [svgBox,   setSvgBox]   = useState({ width: 0, height: 0 });
+  const [svgBox, setSvgBox] = useState({ width: 0, height: 0 });
 
   // Which step the line has "arrived at" so far in the current cycle
   const [reachedStep, setReachedStep] = useState(0);
@@ -50,23 +50,23 @@ export default function ProcessTimeline() {
 
     for (let i = 0; i < rects.length - 1; i++) {
       const from = rects[i];
-      const to   = rects[i + 1];
+      const to = rects[i + 1];
       if (!from || !to) continue;
 
       const arcOffset = 40;
       let x1: number, y1: number, x2: number, y2: number, cpY: number;
 
       if (i % 2 === 0) {
-        x1  = from.left - cr.left + from.width / 2;
-        y1  = from.top  - cr.top;
-        x2  = to.left   - cr.left + to.width / 2;
-        y2  = to.top    - cr.top;
+        x1 = from.left - cr.left + from.width / 2;
+        y1 = from.top - cr.top;
+        x2 = to.left - cr.left + to.width / 2;
+        y2 = to.top - cr.top;
         cpY = Math.min(y1, y2) - arcOffset;
       } else {
-        x1  = from.left   - cr.left + from.width / 2;
-        y1  = from.bottom - cr.top;
-        x2  = to.left     - cr.left + to.width / 2;
-        y2  = to.bottom   - cr.top;
+        x1 = from.left - cr.left + from.width / 2;
+        y1 = from.bottom - cr.top;
+        x2 = to.left - cr.left + to.width / 2;
+        y2 = to.bottom - cr.top;
         cpY = Math.max(y1, y2) + arcOffset;
       }
 
@@ -158,37 +158,15 @@ interface AnimatedPathProps {
 function AnimatedPath({ d, length, index }: AnimatedPathProps) {
   const pathRef = useRef<SVGPathElement>(null);
   const [realLen, setRealLen] = useState(length);
-  const [isStatic, setIsStatic] = useState(false);
 
   useEffect(() => {
     if (pathRef.current) setRealLen(pathRef.current.getTotalLength());
-    
-    if (typeof window !== 'undefined' && typeof navigator !== 'undefined') {
-      const ua = navigator.userAgent.toLowerCase();
-      const isBot = /lighthouse|chrome-lighthouse|googlebot|gtmetrix|pingdom/i.test(ua);
-      if (isBot) {
-        setIsStatic(true);
-      }
-    }
   }, [d]);
 
   const startTime = index * (SEG_DURATION + SEG_GAP);
-  const endTime   = startTime + SEG_DURATION;
+  const endTime = startTime + SEG_DURATION;
   const t0 = startTime / TOTAL_CYCLE;
-  const t1 = endTime   / TOTAL_CYCLE;
-
-  if (isStatic) {
-    return (
-      <path
-        d={d}
-        fill="none"
-        stroke="#FF7A00"
-        strokeWidth={4}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    );
-  }
+  const t1 = endTime / TOTAL_CYCLE;
 
   return (
     <path

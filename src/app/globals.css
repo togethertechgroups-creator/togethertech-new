@@ -222,9 +222,12 @@ body {
 
 /* Animated border glow keyframes */
 @keyframes gradient-shift {
-  0%, 100% {
+
+  0%,
+  100% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
@@ -233,12 +236,4 @@ body {
 .animate-border-flow {
   background-size: 200% 200%;
   animation: gradient-shift 6s ease infinite;
-}
-
-/* Hover-only spinning border animation to save CPU idle cycles */
-.hover-spin-border {
-  animation: none;
-}
-.group:hover .hover-spin-border {
-  animation: spin 6s linear infinite;
 }

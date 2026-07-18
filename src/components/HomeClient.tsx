@@ -156,7 +156,7 @@ export default function HomeClient({
 
               {/* Left Column: Text & CTAs & Mobile Mockup & Feature Boxes */}
               <div className="lg:col-span-6 text-left space-y-6 relative z-10">
-                
+
                 {/* Badge */}
                 <div className="flex justify-start">
                   <motion.div
@@ -389,7 +389,7 @@ export default function HomeClient({
               <h2 className="text-3xl md:text-5xl text-brandDark font-rustic">Our Service Verticals</h2>
               <p className="text-brandGray font-medium leading-relaxed font-biooris">We specialize in these 8 core divisions to deliver premium digital systems for your business.</p>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {[
                 { title: 'Website Development Services', slug: 'website-development', desc: 'Custom responsive designs, eCommerce sites, corporate portals, and landing pages with Next.js.', icon: Code },
@@ -413,8 +413,8 @@ export default function HomeClient({
                       </h3>
                       <p className="text-xs text-brandGray leading-relaxed font-biooris">{item.desc}</p>
                     </div>
-                    <Link 
-                      href={`/services/${item.slug}`} 
+                    <Link
+                      href={`/services/${item.slug}`}
                       className="text-xs font-bold text-brandGreenDark hover:text-brandGreen flex items-center space-x-1.5 pt-2"
                       aria-label={`Learn more about ${item.title}`}
                     >
@@ -547,7 +547,8 @@ export default function HomeClient({
                   >
                     {/* Rotating light beam border */}
                     <div
-                      className="absolute inset-[-1000%] bg-[conic-gradient(from_0deg,#22c55e_0%,#EF8E01_25%,transparent_50%,#22c55e_75%,#22c55e_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none hover-spin-border"
+                      className="absolute inset-[-1000%] bg-[conic-gradient(from_0deg,#22c55e_0%,#EF8E01_25%,transparent_50%,#22c55e_75%,#22c55e_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                      style={{ animation: 'spin 6s linear infinite' }}
                     />
 
                     {/* Inner Card Content */}
@@ -607,7 +608,8 @@ export default function HomeClient({
               >
                 {/* Rotating light beam border for CTA */}
                 <div
-                  className="absolute inset-[-1000%] bg-[conic-gradient(from_0deg,#ffffff_0%,#EF8E01_25%,transparent_50%,#EF8E01_75%,#ffffff_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none hover-spin-border"
+                  className="absolute inset-[-1000%] bg-[conic-gradient(from_0deg,#ffffff_0%,#EF8E01_25%,transparent_50%,#EF8E01_75%,#ffffff_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                  style={{ animation: 'spin 6s linear infinite' }}
                 />
 
                 <div className="relative bg-gradient-to-br from-brandGreen to-[#5c9930] p-8 rounded-[1.92rem] text-white flex flex-col justify-between h-full w-full z-10">
@@ -685,7 +687,7 @@ export default function HomeClient({
               <h2 className="text-3xl md:text-5xl text-brandDark font-rustic mt-2">Industries We Serve</h2>
               <p className="text-brandGray font-medium font-biooris">Engineering custom software and digital portals for a diverse range of business sectors.</p>
             </div>
-            
+
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
               {[
                 { name: 'Startups & SMEs', desc: 'SaaS, MVP designs & websites', icon: Zap },
