@@ -6,6 +6,8 @@ export const metadata: Metadata = {
   title: 'Together Tech | #1 Software, Website & Mobile App Development Company in Chennai',
   description: 'Together Tech is a leading IT Services company in Chennai offering Website Development, Software Development, Mobile App Development, SEO, Digital Marketing, UI/UX Design & Branding across India. Get a free quote today.',
   keywords: [
+    'website developers in chennai', 'app developers in chennai',
+    'best website developers in chennai', 'best app developers in chennai',
     'Website Development Company Chennai', 'Software Development Company Chennai',
     'Mobile App Development Company India', 'Best Web Design Company Chennai',
     'Digital Marketing Agency Chennai', 'SEO Company Chennai',

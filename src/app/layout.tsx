@@ -43,6 +43,8 @@ export const metadata: Metadata = {
   },
   description: 'Together Tech provides Website Development, Software Development, Mobile App Development, Digital Marketing, SEO, Meta Ads, UI/UX Design, Branding, and Custom IT Solutions for businesses across India.',
   keywords: [
+    'website developers in chennai', 'app developers in chennai',
+    'best website developers in chennai', 'best app developers in chennai',
     // Primary — Company type
     'IT Services Company', 'Software Development Company', 'Website Development Company',
     'Web Development Company', 'Mobile App Development Company', 'Digital Marketing Agency',
