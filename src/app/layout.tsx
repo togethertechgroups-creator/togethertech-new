@@ -153,13 +153,21 @@ export default function RootLayout({
         ]
       },
       {
-        "@type": "LocalBusiness",
+        "@type": ["LocalBusiness", "SoftwareApplication", "ProfessionalService"],
         "@id": "https://www.togethertechgroups.in/#localbusiness",
         "name": "Together Tech",
-        "image": "https://www.togethertechgroups.in/images/logo.png",
+        "legalName": "Together Tech Groups",
+        "description": "Together Tech is a leading IT Services company based in Chennai, India. We specialize in Website Development, Custom Software Development, Mobile App Development (Flutter/Android/iOS), Digital Marketing, SEO, Meta Ads, Google Ads, UI/UX Design, and Branding. Serving businesses across Chennai and India.",
+        "image": [
+          "https://www.togethertechgroups.in/images/logo.png",
+          "https://www.togethertechgroups.in/images/og-image.jpg"
+        ],
+        "logo": "https://www.togethertechgroups.in/images/logo.png",
         "url": "https://www.togethertechgroups.in",
         "telephone": "+919047549682",
         "email": "togethertechgroups@gmail.com",
+        "foundingDate": "2021",
+        "numberOfEmployees": { "@type": "QuantitativeValue", "minValue": 5, "maxValue": 20 },
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "VOC Street, Abith Colony, Industrial Area, Saidapet",
@@ -173,27 +181,47 @@ export default function RootLayout({
           "latitude": 13.0208,
           "longitude": 80.2241
         },
-        "openingHoursSpecification": {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
-          "opens": "09:00",
-          "closes": "19:00"
-        },
+        "areaServed": [
+          { "@type": "City", "name": "Chennai" },
+          { "@type": "City", "name": "Bangalore" },
+          { "@type": "City", "name": "Hyderabad" },
+          { "@type": "City", "name": "Mumbai" },
+          { "@type": "State", "name": "Tamil Nadu" },
+          { "@type": "Country", "name": "India" }
+        ],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+            "opens": "09:00",
+            "closes": "19:00"
+          }
+        ],
         "priceRange": "₹₹",
         "currenciesAccepted": "INR",
-        "paymentAccepted": "Cash, UPI, Bank Transfer",
+        "paymentAccepted": "Cash, UPI, Bank Transfer, Credit Card",
+        "keywords": "website development Chennai, app development Chennai, software company Chennai, digital marketing Chennai, SEO company Chennai, Flutter developer Chennai",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "reviewCount": "47",
+          "bestRating": "5",
+          "worstRating": "1"
+        },
         "hasOfferCatalog": {
           "@type": "OfferCatalog",
-          "name": "IT Services",
+          "name": "IT Services by Together Tech",
           "itemListElement": [
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Website Development" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Software Development" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mobile App Development" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Digital Marketing" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "SEO Services" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "UI/UX Design" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Branding & Graphic Design" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Meta Ads Management" } }
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Website Development", "description": "Custom website development for businesses in Chennai and India" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mobile App Development", "description": "Flutter, Android and iOS app development" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Software Development", "description": "Custom ERP, CRM and business software development" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Digital Marketing", "description": "SEO, Meta Ads, Google Ads and social media marketing" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "SEO Services", "description": "Search engine optimization for local and national rankings" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "UI/UX Design", "description": "User interface and experience design for web and mobile apps" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Branding & Graphic Design", "description": "Logo design, brand identity and graphic design services" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Meta Ads Management", "description": "Facebook and Instagram advertising campaigns" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Google Ads Management", "description": "Google search and display advertising campaigns" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Ecommerce Website Development", "description": "Online store development with payment gateway integration" } }
           ]
         }
       },
