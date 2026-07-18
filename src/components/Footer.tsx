@@ -109,7 +109,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center text-sm text-brandGray/80 space-y-4 md:space-y-0">
+      <div className="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center text-sm text-slate-600 space-y-4 md:space-y-0">
         <div>
           © {new Date().getFullYear()} Together Tech. All rights reserved.
         </div>

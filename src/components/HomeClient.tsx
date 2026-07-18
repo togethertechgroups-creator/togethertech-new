@@ -264,7 +264,7 @@ export default function HomeClient({
                           <IconComponent className={`w-4 h-4 sm:w-5 h-5 ${pt.iconColor}`} />
                         </div>
                         <div className="space-y-0.5 min-w-0">
-                          <h3 className="font-extrabold text-brandDark text-[11px] sm:text-sm tracking-tight font-outfit leading-tight truncate">{pt.label}</h3>
+                          <h2 className="font-extrabold text-brandDark text-[11px] sm:text-sm tracking-tight font-outfit leading-tight truncate">{pt.label}</h2>
                           <p className="text-[9px] sm:text-[10px] text-brandGreenDark font-bold uppercase tracking-wider leading-snug truncate">{pt.desc}</p>
                         </div>
                       </div>
@@ -408,9 +408,9 @@ export default function HomeClient({
                       <div className="w-10 h-10 rounded-xl bg-brandGreen/10 border border-brandGreen/25 flex items-center justify-center text-brandGreenDark">
                         <Icon className="w-5 h-5" />
                       </div>
-                      <h2 className="text-lg font-extrabold font-outfit text-brandDark">
+                      <h3 className="text-lg font-extrabold font-outfit text-brandDark">
                         {item.title}
-                      </h2>
+                      </h3>
                       <p className="text-xs text-brandGray leading-relaxed font-biooris">{item.desc}</p>
                     </div>
                     <Link 
@@ -753,7 +753,7 @@ export default function HomeClient({
 
           <div className="max-w-7xl mx-auto px-6 space-y-16 relative z-10">
             <div className="text-center max-w-3xl mx-auto space-y-4">
-              <span className="text-brandGreenDark font-extrabold text-sm uppercase tracking-wider bg-brandGreen/10 border border-brandGreen/25 rounded-full px-4 py-1.5">Simple Invoicing</span>
+              <span className="text-brandGreen font-extrabold text-sm uppercase tracking-wider bg-brandGreen/10 border border-brandGreen/25 rounded-full px-4 py-1.5">Simple Invoicing</span>
               <h2 className="text-3xl md:text-5xl text-white font-rustic">Our Development Packages</h2>
               <p className="text-white/90 font-medium font-biooris">Select a predefined structure or contact us for a customized development plan.</p>
             </div>
@@ -832,7 +832,7 @@ export default function HomeClient({
                     </p>
                   </div>
                   <div className="border-t border-slate-200/80 pt-4">
-                    <h4 className="font-extrabold text-brandDark">{test.clientName}</h4>
+                    <h3 className="font-extrabold text-brandDark">{test.clientName}</h3>
                     <p className="text-xxs text-brandGreenDark font-semibold uppercase tracking-wider">{test.businessName}</p>
                   </div>
                 </div>
