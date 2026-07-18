@@ -118,9 +118,12 @@ export default function ServicesSectionStack({ services }: ServicesSectionStackP
                 <div className="relative hidden md:block w-full lg:w-[46%] h-[240px] lg:h-full rounded-2xl overflow-hidden border border-slate-100 flex-shrink-0">
                   <div className="w-full h-full">
                     <img
-                      src={service.image}
+                      src={service.image === '/images/services/software-dev.jpg' ? '/images/services/custom-software.jpg' : service.image}
                       alt={service.title}
                       className="absolute inset-0 w-full h-full object-cover"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = '/images/services/custom.jpg';
+                      }}
                     />
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />

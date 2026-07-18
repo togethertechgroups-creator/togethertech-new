@@ -62,7 +62,7 @@ async function main() {
       slug: 'software-development',
       shortDescription: 'Custom software, ERP, CRM, and automation solutions built for scalable business growth.',
       fullDescription: 'As a leading Software Development Company in Chennai, Together Tech designs and develops custom software, ERP software, CRM software, inventory management systems, billing systems, and HR management software tailored for startups and enterprises across India.',
-      image: '/images/services/software-dev.jpg',
+      image: '/images/services/custom-software.jpg',
       features: 'Custom Software Development, ERP Software Development, CRM Software Development, Inventory Management Software, Billing Software, HR Management Software, Business Automation Software, Software for Startups',
     },
     {
