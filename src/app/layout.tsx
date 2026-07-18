@@ -99,8 +99,7 @@ export const metadata: Metadata = {
     images: ['/images/og-image.jpg'],
   },
   verification: {
-    // Add Google Search Console site verification token here when available
-    // google: 'your-google-verification-token',
+    google: 'google214a226b5c4489ff',
   },
 };
 
