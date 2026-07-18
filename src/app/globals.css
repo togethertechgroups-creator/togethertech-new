@@ -234,3 +234,11 @@ body {
   background-size: 200% 200%;
   animation: gradient-shift 6s ease infinite;
 }
+
+/* Hover-only spinning border animation to save CPU idle cycles */
+.hover-spin-border {
+  animation: none;
+}
+.group:hover .hover-spin-border {
+  animation: spin 6s linear infinite;
+}

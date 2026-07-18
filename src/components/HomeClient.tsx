@@ -547,8 +547,7 @@ export default function HomeClient({
                   >
                     {/* Rotating light beam border */}
                     <div
-                      className="absolute inset-[-1000%] bg-[conic-gradient(from_0deg,#22c55e_0%,#EF8E01_25%,transparent_50%,#22c55e_75%,#22c55e_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                      style={{ animation: 'spin 6s linear infinite' }}
+                      className="absolute inset-[-1000%] bg-[conic-gradient(from_0deg,#22c55e_0%,#EF8E01_25%,transparent_50%,#22c55e_75%,#22c55e_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none hover-spin-border"
                     />
 
                     {/* Inner Card Content */}
@@ -608,8 +607,7 @@ export default function HomeClient({
               >
                 {/* Rotating light beam border for CTA */}
                 <div
-                  className="absolute inset-[-1000%] bg-[conic-gradient(from_0deg,#ffffff_0%,#EF8E01_25%,transparent_50%,#EF8E01_75%,#ffffff_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                  style={{ animation: 'spin 6s linear infinite' }}
+                  className="absolute inset-[-1000%] bg-[conic-gradient(from_0deg,#ffffff_0%,#EF8E01_25%,transparent_50%,#EF8E01_75%,#ffffff_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none hover-spin-border"
                 />
 
                 <div className="relative bg-gradient-to-br from-brandGreen to-[#5c9930] p-8 rounded-[1.92rem] text-white flex flex-col justify-between h-full w-full z-10">
