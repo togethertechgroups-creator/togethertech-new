@@ -57,14 +57,6 @@ export default function HomeClient({
 }: HomeClientProps) {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
   const [portfolioFilter, setPortfolioFilter] = useState('All');
-  const [isBot, setIsBot] = useState(false);
-
-  useEffect(() => {
-    if (typeof window !== "undefined" && typeof navigator !== "undefined") {
-      const ua = navigator.userAgent.toLowerCase();
-      setIsBot(/lighthouse|chrome-lighthouse|googlebot|gtmetrix|pingdom/i.test(ua));
-    }
-  }, []);
 
 
 
@@ -167,9 +159,9 @@ export default function HomeClient({
                 {/* Badge */}
                 <div className="flex justify-start">
                   <motion.div
-                    initial={isBot ? false : { opacity: 0, y: -20 }}
+                    initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: isBot ? 0 : 0.5 }}
+                    transition={{ duration: 0.5 }}
                     className="inline-flex items-center space-x-2 bg-brandGreenLight border border-brandGreen/20 px-4 py-1.5 rounded-full text-brandGreen"
                   >
                     <span className="w-2.5 h-2.5 rounded-full bg-brandGreen animate-pulse" />
@@ -179,9 +171,9 @@ export default function HomeClient({
 
                 {/* Heading (Increased size on mobile: text-4xl) */}
                 <motion.h1
-                  initial={isBot ? false : { opacity: 0, y: 30 }}
+                  initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: isBot ? 0 : 0.6, delay: isBot ? 0 : 0.1 }}
+                  transition={{ duration: 0.6, delay: 0.1 }}
                   className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-neogen tracking-tight text-brandDark text-left leading-tight"
                 >
                   Custom Software, Website & <br />
@@ -190,9 +182,9 @@ export default function HomeClient({
 
                 {/* Paragraph (Increased size and weight on mobile: text-base font-semibold) */}
                 <motion.p
-                  initial={isBot ? false : { opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: isBot ? 0 : 0.6, delay: isBot ? 0 : 0.2 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
                   className="text-base sm:text-base md:text-lg text-brandGray max-w-2xl text-left font-semibold leading-relaxed font-biooris"
                 >
                   We Create Professional Websites, Mobile Apps, Custom Software, Branding, SEO, and Digital Marketing Solutions That Help Your Business Grow Faster.
@@ -200,9 +192,9 @@ export default function HomeClient({
 
                 {/* Action buttons (stacked on mobile, row on tablet/desktop) */}
                 <motion.div
-                  initial={isBot ? false : { opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: isBot ? 0 : 0.6, delay: isBot ? 0 : 0.3 }}
+                  transition={{ duration: 0.6, delay: 0.3 }}
                   className="flex flex-col sm:flex-row items-center justify-start gap-4 pt-2 w-full max-w-md"
                 >
                   <Link
@@ -222,9 +214,9 @@ export default function HomeClient({
 
                 {/* Quick trust points / Feature boxes (Responsive grid: 2-col on all viewports) */}
                 <motion.div
-                  initial={isBot ? false : { opacity: 0, y: 15 }}
+                  initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: isBot ? 0 : 0.8, delay: isBot ? 0 : 0.5 }}
+                  transition={{ duration: 0.8, delay: 0.5 }}
                   className="grid grid-cols-2 gap-2 sm:gap-4 pt-8 border-t border-slate-200 w-full"
                 >
                   {[
