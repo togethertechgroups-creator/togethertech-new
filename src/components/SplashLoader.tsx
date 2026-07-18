@@ -67,8 +67,8 @@ export default function SplashLoader() {
               className="relative flex items-center justify-center"
             >
               <div className="absolute w-20 h-20 rounded-full bg-brandGreen/20 blur-xl animate-pulse" />
-              <Image
-                src="/images/logo.png"
+               <Image
+                src="/images/logo.webp"
                 alt="Together Tech Logo"
                 width={70}
                 height={70}

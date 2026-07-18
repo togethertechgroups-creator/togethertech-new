@@ -106,8 +106,9 @@ export default function ServicesSectionStack({ services }: ServicesSectionStackP
                     <Link
                       href={`/services/${service.slug}`}
                       className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-brandGreen hover:bg-brandGreenHover text-white font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow-md shadow-brandGreen/25 space-x-2"
+                      aria-label={`Explore details for ${service.title}`}
                     >
-                      <span>Explore details</span>
+                      <span>Explore details <span className="sr-only">for {service.title}</span></span>
                       <ArrowRight className="w-4 h-4" />
                     </Link>
                   </div>

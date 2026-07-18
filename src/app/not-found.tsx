@@ -61,9 +61,13 @@ export default function NotFound() {
 
         {/* Help Directory Links */}
         <div className="pt-8 border-t border-slate-900/60 max-w-sm mx-auto flex justify-around text-xxs font-bold text-brandGray uppercase tracking-wider">
-          <Link href="/contact" className="hover:text-brandGreen flex items-center space-x-1.5 transition-colors">
+          <Link 
+            href="/contact" 
+            className="hover:text-brandGreen flex items-center space-x-1.5 transition-colors"
+            aria-label="Enquire about our packages or services"
+          >
             <PhoneCall className="w-3.5 h-3.5" />
-            <span>Enquire</span>
+            <span>Enquire <span className="sr-only">about our packages or services</span></span>
           </Link>
           <Link href="/blog" className="hover:text-brandGreen flex items-center space-x-1.5 transition-colors">
             <FileText className="w-3.5 h-3.5" />

@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import ArcRevealHero from './ArcRevealHero';
 import { CinematicHero } from './ui/cinematic-hero';
 import ServicesSectionStack from './ServicesSectionStack';
@@ -128,10 +129,13 @@ export default function HomeClient({
         <section className="relative min-h-[95vh] flex items-center justify-center overflow-hidden bg-white pt-24 pb-16">
           {/* Full Screen Background Image (Only visible on Desktop, behaves as original) */}
           <div className="absolute inset-0 w-full h-full z-0 pointer-events-none hidden lg:block">
-            <img
-              src="/images/hero.png"
+            <Image
+              src="/images/hero.webp"
               alt="TogetherTech Hero Background"
-              className="w-full h-full object-cover object-[104%_center]"
+              fill
+              className="object-cover object-[104%_center]"
+              priority
+              sizes="(max-width: 1024px) 100vw, 50vw"
             />
             <div className="absolute bottom-20 left-10 w-96 h-96 rounded-full bg-emerald-500/5 blur-3xl float-element" style={{ animationDelay: '2s' }} />
 
@@ -290,7 +294,7 @@ export default function HomeClient({
         />
 
         {/* 2. SERVICES PREVIEW SECTION */}
-        <section className="pt-24 pb-8 bg-[url('/images/services-bg.png')] bg-cover bg-center bg-no-repeat bg-fixed text-brandDark overflow-hidden">
+        <section className="pt-24 pb-8 bg-[url('/images/services-bg.webp')] bg-cover bg-center bg-no-repeat bg-fixed text-brandDark overflow-hidden">
           <div className="max-w-7xl mx-auto px-6 space-y-6">
             <div className="text-center max-w-3xl mx-auto space-y-4">
               <span className="text-brandGreen font-extrabold text-sm uppercase tracking-wider bg-brandGreen/10 border border-brandGreen/25 rounded-full px-4 py-1.5">Our Expertise</span>
@@ -354,8 +358,9 @@ export default function HomeClient({
                       <Link
                         href={`/services/${service.slug}`}
                         className="w-full flex items-center justify-center px-4 py-2.5 rounded-xl bg-brandGreen hover:bg-brandGreenHover text-white font-bold text-xs uppercase tracking-wider transition-all duration-300 space-x-2"
+                        aria-label={`Explore details for ${service.title}`}
                       >
-                        <span>Explore details</span>
+                        <span>Explore details <span className="sr-only">for {service.title}</span></span>
                         <ArrowRight className="w-3.5 h-3.5" />
                       </Link>
                     </div>
@@ -407,8 +412,12 @@ export default function HomeClient({
                       </h2>
                       <p className="text-xs text-brandGray leading-relaxed font-biooris">{item.desc}</p>
                     </div>
-                    <Link href={`/services/${item.slug}`} className="text-xs font-bold text-brandGreen hover:text-brandGreenHover flex items-center space-x-1.5 pt-2">
-                      <span>Learn more</span>
+                    <Link 
+                      href={`/services/${item.slug}`} 
+                      className="text-xs font-bold text-brandGreen hover:text-brandGreenHover flex items-center space-x-1.5 pt-2"
+                      aria-label={`Learn more about ${item.title}`}
+                    >
+                      <span>Learn more <span className="sr-only">about {item.title}</span></span>
                       <ArrowRight className="w-3.5 h-3.5" />
                     </Link>
                   </div>

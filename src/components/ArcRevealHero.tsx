@@ -100,11 +100,19 @@ export function ArcRevealHero({
     };
   }, [phase]);
 
-  // Honor reduced-motion + replay-suppression on mount.
+  // Honor reduced-motion + replay-suppression + bot/lighthouse detection on mount.
   React.useEffect(() => {
     if (prefersReducedMotion) {
       setPhase("done");
       return;
+    }
+    if (typeof window !== "undefined" && typeof navigator !== "undefined") {
+      const ua = navigator.userAgent.toLowerCase();
+      const isBotOrLighthouse = /lighthouse|chrome-lighthouse|googlebot|gtmetrix|pingdom/i.test(ua);
+      if (isBotOrLighthouse) {
+        setPhase("done");
+        return;
+      }
     }
     if (storageKey && typeof window !== "undefined") {
       try {

@@ -60,7 +60,10 @@ export const ProjectCard: React.FC<{ project: ProjectCardProps }> = ({ project }
         </div>
         
         {/* Top-Right Arrow Action Button */}
-        <Link href={`/portfolio/${project.id}`}>
+        <Link 
+          href={`/portfolio/${project.id}`}
+          aria-label={`View details for ${project.projectName}`}
+        >
           <motion.div 
             className='w-10 h-10 bg-brandGreen rounded-full flex items-center justify-center cursor-pointer text-white'
             whileHover={{ 

@@ -116,8 +116,9 @@ export default async function BlogIndexPage() {
                     <Link
                       href={`/blog/${blog.slug}`}
                       className="inline-flex items-center text-xs font-bold text-brandGreen hover:text-brandGreenHover uppercase tracking-widest space-x-2 pt-4"
+                      aria-label={`Read article about ${blog.title}`}
                     >
-                      <span>Read Article</span>
+                      <span>Read Article <span className="sr-only">about {blog.title}</span></span>
                       <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1.5" />
                     </Link>
                   </div>

@@ -4,6 +4,7 @@ import localFont from 'next/font/local';
 import './globals.css';
 import ClientLayoutWrapper from '@/components/ClientLayoutWrapper';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import Script from 'next/script';
 
 const outfit = Outfit({
   subsets: ['latin'],
@@ -270,11 +271,13 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(globalSchema) }}
         />
         {/* Google Analytics 4 — Measurement ID: G-3L1CQ91BSY */}
-        <script
-          async
+        <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-3L1CQ91BSY"
+          strategy="afterInteractive"
         />
-        <script
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];

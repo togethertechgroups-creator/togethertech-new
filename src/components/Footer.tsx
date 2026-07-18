@@ -34,7 +34,7 @@ export default function Footer() {
         <div className="space-y-6">
           <Link href="/" className="flex items-center space-x-3">
             <Image
-              src="/images/logo.png"
+              src="/images/logo.webp"
               alt="Together Tech Logo"
               width={52}
               height={52}

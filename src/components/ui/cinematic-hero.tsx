@@ -313,7 +313,7 @@ export function CinematicHero({
             }}
           >
             <img 
-              src="/images/chibi-boy.png" 
+              src="/images/chibi-boy.webp" 
               alt="Chibi Coding Boy" 
               className="w-full h-full object-contain filter drop-shadow-[0_10px_20px_rgba(0,0,0,0.15)]" 
             />

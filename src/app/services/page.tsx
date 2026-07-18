@@ -130,8 +130,9 @@ export default async function ServicesPage() {
                       <Link
                         href={`/services/${svc.slug}`}
                         className="w-full py-3.5 bg-brandGreen hover:bg-brandGreenHover text-white font-extrabold text-center block text-xs tracking-wider transition-colors rounded-xl shadow-md uppercase"
+                        aria-label={`Explore service for ${svc.title}`}
                       >
-                        Explore Service
+                        Explore Service <span className="sr-only">for {svc.title}</span>
                       </Link>
                     </div>
                   </FlipCardBack>

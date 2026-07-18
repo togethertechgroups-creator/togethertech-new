@@ -242,8 +242,9 @@ export const InfoCard: React.FC<InfoCardProps> = ({
                 <Link
                   href={projectLink}
                   className="inline-flex items-center text-xs font-bold text-brandGreen hover:text-white transition-colors space-x-1.5 uppercase tracking-wider"
+                  aria-label={`View details for ${title}`}
                 >
-                  <span>View Details</span>
+                  <span>View Details <span className="sr-only">for {title}</span></span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
