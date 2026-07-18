@@ -183,7 +183,7 @@ const CardSwap: React.FC<CardSwapProps> = ({
 
     swapRef.current = swap;
 
-    swap();
+    // Do not run swap() immediately on mount so the first card is displayed first.
     intervalRef.current = window.setInterval(swap, delay);
 
     if (pauseOnHover) {

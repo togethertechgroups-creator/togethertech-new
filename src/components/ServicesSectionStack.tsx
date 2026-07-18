@@ -65,7 +65,7 @@ export default function ServicesSectionStack({ services }: ServicesSectionStackP
             return (
               <Card
                 key={service.id}
-                className="relative flex flex-col lg:flex-row h-full w-full rounded-[2.5rem] p-8 sm:p-10 bg-white border border-slate-200 shadow-2xl justify-between gap-8 group select-none text-left"
+                className="flex flex-col lg:flex-row h-full w-full rounded-[2.5rem] p-8 sm:p-10 bg-white border border-slate-200 shadow-2xl justify-between gap-8 group select-none text-left"
               >
                 {/* Glow effect on hover */}
                 <div className="absolute inset-0 bg-gradient-to-br from-brandGreen/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
