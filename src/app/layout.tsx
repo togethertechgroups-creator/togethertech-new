@@ -241,6 +241,23 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(globalSchema) }}
         />
+        {/* Google Analytics 4 — Measurement ID: G-3L1CQ91BSY */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-3L1CQ91BSY"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-3L1CQ91BSY', {
+                page_path: window.location.pathname,
+              });
+            `,
+          }}
+        />
       </head>
       <body className={`${outfit.variable} ${hoshikoSatsuki.variable} ${eternalo.variable} ${rusticDelight.variable} ${neogenBlack.variable} antialiased bg-brandDark text-slate-100`}>
         <ClientLayoutWrapper>{children}</ClientLayoutWrapper>
