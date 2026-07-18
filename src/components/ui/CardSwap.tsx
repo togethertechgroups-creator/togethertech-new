@@ -1,6 +1,5 @@
 import React, { Children, cloneElement, forwardRef, isValidElement, useEffect, useMemo, useRef } from 'react';
 import gsap from 'gsap';
-import './CardSwap.css';
 
 interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   customClass?: string;

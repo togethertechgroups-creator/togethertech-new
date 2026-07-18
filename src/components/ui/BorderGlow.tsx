@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useRef, useCallback, useEffect } from 'react';
-import './BorderGlow.css';
 
 interface HSL {
   h: number;

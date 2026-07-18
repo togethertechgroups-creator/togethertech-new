@@ -1,3 +1,6 @@
+@import "../components/ui/BorderGlow.css";
+@import "../components/ui/CardSwap.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
