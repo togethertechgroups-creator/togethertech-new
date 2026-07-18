@@ -282,11 +282,11 @@ export default function RootLayout({
         {/* Google Analytics 4 — Measurement ID: G-3L1CQ91BSY */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-3L1CQ91BSY"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
         <Script
           id="google-analytics"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
