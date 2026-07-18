@@ -13,25 +13,25 @@ const outfit = Outfit({
 });
 
 const hoshikoSatsuki = localFont({
-  src: './fonts/HoshikoSatsuki.ttf',
+  src: './fonts/HoshikoSatsuki.woff2',
   variable: '--font-hoshiko',
   display: 'swap',
 });
 
 const eternalo = localFont({
-  src: './fonts/Eternalo.ttf',
+  src: './fonts/Eternalo.woff2',
   variable: '--font-eternalo',
   display: 'swap',
 });
 
 const rusticDelight = localFont({
-  src: './fonts/RusticDelight.ttf',
+  src: './fonts/RusticDelight.woff2',
   variable: '--font-rustic',
   display: 'swap',
 });
 
 const neogenBlack = localFont({
-  src: './fonts/Neogen-Black.ttf',
+  src: './fonts/Neogen-Black.woff2',
   variable: '--font-neogen',
   display: 'swap',
 });

@@ -7,7 +7,7 @@
 
 @font-face {
   font-family: 'Hoshiko Satsuki';
-  src: url('/fonts/HoshikoSatsuki.ttf') format('truetype');
+  src: url('/fonts/HoshikoSatsuki.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -19,7 +19,7 @@
 
 @font-face {
   font-family: 'Neogen-Black';
-  src: url('/fonts/Neogen-Black.ttf') format('truetype');
+  src: url('/fonts/Neogen-Black.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -31,7 +31,7 @@
 
 @font-face {
   font-family: 'Biooris';
-  src: url('/fonts/biooris.otf') format('opentype');
+  src: url('/fonts/biooris.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -43,7 +43,7 @@
 
 @font-face {
   font-family: 'Mitshuka';
-  src: url('/fonts/Mitshuka.otf') format('opentype');
+  src: url('/fonts/Mitshuka.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -60,7 +60,7 @@
 
 @font-face {
   font-family: 'Eternalo';
-  src: url('/fonts/Eternalo.ttf') format('truetype');
+  src: url('/fonts/Eternalo.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -72,7 +72,7 @@
 
 @font-face {
   font-family: 'Rustic Delight';
-  src: url('/fonts/RusticDelight.ttf') format('truetype');
+  src: url('/fonts/RusticDelight.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
   font-display: swap;

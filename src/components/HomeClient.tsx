@@ -135,6 +135,7 @@ export default function HomeClient({
               fill
               className="object-cover object-[104%_center]"
               priority
+              fetchPriority="high"
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
             <div className="absolute bottom-20 left-10 w-96 h-96 rounded-full bg-emerald-500/5 blur-3xl float-element" style={{ animationDelay: '2s' }} />

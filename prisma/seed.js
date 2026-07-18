@@ -54,7 +54,7 @@ async function main() {
       slug: 'website-development',
       shortDescription: 'We build responsive, fast-loading, and SEO-optimized websites tailored to your business needs.',
       fullDescription: 'Our Website Development Company in Chennai provides high-impact responsive website design, business website design, corporate website development, landing page development, and eCommerce website development across India. We use Next.js and Tailwind CSS for lightning-fast speeds and search engine rankings.',
-      image: '/images/services/web-dev.jpg',
+      image: '/images/services/web-dev.webp',
       features: 'Responsive Website Development, Business Website Design, Corporate Website Development, Ecommerce Website Development, Landing Page Development, Portfolio Website Design, WordPress Development, Custom Website Development',
     },
     {
@@ -62,7 +62,7 @@ async function main() {
       slug: 'software-development',
       shortDescription: 'Custom software, ERP, CRM, and automation solutions built for scalable business growth.',
       fullDescription: 'As a leading Software Development Company in Chennai, Together Tech designs and develops custom software, ERP software, CRM software, inventory management systems, billing systems, and HR management software tailored for startups and enterprises across India.',
-      image: '/images/services/custom-software.jpg',
+      image: '/images/services/custom-software.webp',
       features: 'Custom Software Development, ERP Software Development, CRM Software Development, Inventory Management Software, Billing Software, HR Management Software, Business Automation Software, Software for Startups',
     },
     {
@@ -70,7 +70,7 @@ async function main() {
       slug: 'mobile-app-development',
       shortDescription: 'Premium cross-platform and native mobile applications for Android and iOS devices.',
       fullDescription: 'Together Tech is a premier Mobile App Development Company in Chennai. We develop native iOS, Android, and cross-platform apps using Flutter. Get secure user authentication, offline support, real-time databases, and payment gateway integrations built for business mobile apps.',
-      image: '/images/services/mobile-dev.jpg',
+      image: '/images/services/mobile-dev.webp',
       features: 'Android App Development, iOS App Development, Flutter App Development, Cross-Platform App Development, Business Mobile Apps, Push Notifications, Payment Gateways',
     },
     {
@@ -78,7 +78,7 @@ async function main() {
       slug: 'digital-marketing',
       shortDescription: 'Data-driven performance marketing, social media campaigns, and lead generation.',
       fullDescription: 'Our Digital Marketing Agency in Chennai helps brands grow with tailored social media marketing, performance marketing, Instagram marketing, Facebook ads, and brand authority building across India.',
-      image: '/images/services/digital-marketing.jpg',
+      image: '/images/services/digital-marketing.webp',
       features: 'Performance Marketing, Social Media Marketing, Instagram Marketing, Facebook Ads, Lead Generation, Brand Authority, Content Strategy',
     },
     {
@@ -86,7 +86,7 @@ async function main() {
       slug: 'seo-services',
       shortDescription: 'Rank higher on Google and AI search engines with on-page, local, and technical SEO.',
       fullDescription: 'Together Tech is an expert SEO Company in Chennai. We deliver organic traffic growth, technical SEO audits, local SEO setup, and Schema markup optimization to make your business discoverable in Google and generative search engines (Gemini, ChatGPT).',
-      image: '/images/services/seo.jpg',
+      image: '/images/services/seo.webp',
       features: 'Technical SEO, Local SEO, On-Page SEO Audit, Schema Markup, XML Sitemap, Robots.txt, Google Search Console, Canonical URLs',
     },
     {
@@ -94,7 +94,7 @@ async function main() {
       slug: 'meta-ads-management',
       shortDescription: 'High-converting ad campaigns on Facebook and Instagram to scale lead generation and ROAS.',
       fullDescription: 'As a result-driven Meta Ads Agency in Chennai, we build conversion-focused ad funnels, set up Meta Pixels, create ad copy, and optimize bids to generate high-quality leads for businesses across India.',
-      image: '/images/services/ads.jpg',
+      image: '/images/services/ads.webp',
       features: 'Facebook Ads, Instagram Marketing, Meta Pixel Setup, Lead Generation, Retargeting Funnels, Copywriting & Ad Creatives, Weekly Reports',
     },
     {
@@ -102,7 +102,7 @@ async function main() {
       slug: 'ui-ux-design',
       shortDescription: 'Stunning user-centered interface designs, wireframes, and prototypes in Figma.',
       fullDescription: 'Our UI/UX Design Company in Chennai creates user journey maps, high-fidelity Figma mockups, and interactive prototypes. We focus on modern typography, accessibility, custom components, and layouts that convert visitors.',
-      image: '/images/services/ui-ux.jpg',
+      image: '/images/services/ui-ux.webp',
       features: 'UI/UX Design, Web UI Design, Figma Mockups, User Journey Mapping, Interactive Prototypes, Design System Creation, Responsive Grid, Usability Testing',
     },
     {
@@ -110,7 +110,7 @@ async function main() {
       slug: 'branding-graphic-design',
       shortDescription: 'Establish your brand identity with professional logos, graphic designs, and creatives.',
       fullDescription: 'Our Branding Agency in Chennai designs vector-based professional logos, brand identity guides, social media creatives, and premium graphic design packages that elevate business visibility and establish a lasting visual brand.',
-      image: '/images/services/logo-design.jpg',
+      image: '/images/services/logo-design.webp',
       features: 'Branding Agency, Graphic Design, Logo Design, Brand Identity Design, Social Media Creatives, Vector SVGs, Brand Kit Guides',
     },
     // Keep old slugs for compatibility
@@ -119,7 +119,7 @@ async function main() {
       slug: 'flutter-app-development',
       shortDescription: 'Premium cross-platform mobile applications with native feel, fast delivery, and clean code.',
       fullDescription: 'Using Google\'s Flutter framework, we build highly responsive and visually gorgeous mobile apps for both iOS and Android from a single codebase. This ensures faster delivery times and reduced development costs while preserving a smooth 60fps native performance.',
-      image: '/images/services/flutter-dev.jpg',
+      image: '/images/services/flutter-dev.webp',
       features: 'Single Codebase, High Performance, Custom Widget Design, Real-time APIs, In-App Purchases, Material Design / Cupertino UI',
     },
     {
@@ -127,7 +127,7 @@ async function main() {
       slug: 'restaurant-software',
       shortDescription: 'Complete POS, table management, and kitchen display systems for restaurants, cafes, and bars.',
       fullDescription: 'Streamline your restaurant operations. Our restaurant POS system handles tables, takes online/offline orders, coordinates with kitchen displays, and keeps track of recipe ingredients in real time. Also includes a digital QR menu system for contactless ordering.',
-      image: '/images/services/restaurant-software.jpg',
+      image: '/images/services/restaurant-software.webp',
       features: 'POS Terminal, QR Digital Menu, Kitchen Order Ticket (KOT), Table Billing, Multi-branch Tracking, Daily Sales Analytics',
     },
     {
@@ -135,7 +135,7 @@ async function main() {
       slug: 'crm-admin-dashboard',
       shortDescription: 'Powerful customer relationship management and admin dashboards to monitor and drive your business analytics.',
       fullDescription: 'Get complete visibility of your operations, customer journeys, sales leads, and team targets. Our bespoke CRMs and custom admin panels aggregate your data into interactive visual charts (bar, line, donut) to help you make informed business decisions.',
-      image: '/images/services/crm-dashboard.jpg',
+      image: '/images/services/crm-dashboard.webp',
       features: 'Lead Management, Dynamic Charts, Data Export (CSV/PDF), Client Profiles, Automated Email Alerts, Responsive Admin Shell',
     },
     {
@@ -143,7 +143,7 @@ async function main() {
       slug: 'logo-design',
       shortDescription: 'Vector-based professional brand logos that establish a lasting visual identity for your business.',
       fullDescription: 'Your logo is the first impression of your brand. We design clean, minimalist, and vector-based logos that scale beautifully from small app icon glyphs to massive billboard banners. We deliver complete brand packages (color palette, files, fonts).',
-      image: '/images/services/logo-design.jpg',
+      image: '/images/services/logo-design.webp',
       features: 'Vector SVGs, Complete Brand Kit, Light/Dark Background Formats, High Resolution PNGs, Source Files (AI/EPS), Copyright Ownership',
     },
     {
@@ -151,7 +151,7 @@ async function main() {
       slug: 'poster-design',
       shortDescription: 'Eye-catching posters, banners, and digital graphics for social media marketing and print media.',
       fullDescription: 'Promote your events, sales campaigns, or corporate announcements with custom graphics. We blend typography, contrast, and layout elements to create visual posters that demand attention and drive customer actions.',
-      image: '/images/services/poster-design.jpg',
+      image: '/images/services/poster-design.webp',
       features: 'Social Media Templates, High DPI Print Files, Custom Typography, Visual Hierarchy, Source PSD/AI Files, Rapid Delivery',
     },
     {
@@ -159,7 +159,7 @@ async function main() {
       slug: 'seo',
       shortDescription: 'Increase your organic website visitors and rank higher on Google search results.',
       fullDescription: 'We perform deep keyword research, optimize meta headings, clean up site speeds, set up structural schemas, and configure Google Search Console to rank your pages for local and global search terms. Drive high-quality leads organically without paying for ads.',
-      image: '/images/services/seo.jpg',
+      image: '/images/services/seo.webp',
       features: 'On-Page SEO Audit, Google Search Console, Meta Tag Configuration, XML Sitemap Creation, Load Speed Optimization, Local SEO Setup',
     },
     {
@@ -167,7 +167,7 @@ async function main() {
       slug: 'meta-google-ads',
       shortDescription: 'Highly targeted paid ad campaigns on Facebook, Instagram, and Google to generate instant quality leads.',
       fullDescription: 'Stop throwing away money on untargeted boosts. We build conversion-driven ad funnels, set up tracking pixels, design high-converting visual creatives, and monitor custom audiences to maximize your return on ad spend (ROAS).',
-      image: '/images/services/ads.jpg',
+      image: '/images/services/ads.webp',
       features: 'Pixel Setup & API, Lead Generation Ads, Retargeting Funnels, Copywriting & Ad Visuals, Weekly Performance Reports, Bid Optimization',
     }
   ];

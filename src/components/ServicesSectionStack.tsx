@@ -117,11 +117,19 @@ export default function ServicesSectionStack({ services }: ServicesSectionStackP
                 {/* Right Side: Image */}
                 <div className="relative hidden md:block w-full lg:w-[46%] h-[240px] lg:h-full rounded-2xl overflow-hidden border border-slate-100 flex-shrink-0">
                   <div className="w-full h-full">
-                    <img
-                      src={service.image}
-                      alt={service.title}
-                      className="absolute inset-0 w-full h-full object-cover"
-                    />
+                    <picture>
+                      <source
+                        srcSet={service.image.replace(/\.jpg$/, '.webp')}
+                        type="image/webp"
+                      />
+                      <img
+                        src={service.image}
+                        alt={service.title}
+                        className="absolute inset-0 w-full h-full object-cover"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </picture>
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
                 </div>
