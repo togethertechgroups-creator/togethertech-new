@@ -1,0 +1,31 @@
+# Together Tech
+
+Together Tech is a leading IT Services & Custom Software Development Company based in Chennai, India. We deliver premium websites, mobile apps, custom CRM/ERP portals, digital marketing campaigns, and UI/UX design.
+
+## Contact Information
+- **Website:** https://www.togethertechgroups.in
+- **Email:** togethertechgroups@gmail.com
+- **Phone / WhatsApp:** +91 90475 49682
+- **Address:** 123 Tech Park, IT Corridor, Chennai, India
+- **Hours:** Monday - Saturday, 09:00 AM - 07:00 PM IST
+
+## Core Services
+1. **Website Development:** Semantically clean, fast, and SEO-optimized business websites, portfolios, and e-commerce platforms.
+2. **Software Development:** Custom CRM systems, ERP dashboards, billing systems, and retail applications with offline synchronization.
+3. **Mobile App Development:** Cross-platform iOS and Android apps compiled with Flutter and native tech stacks.
+4. **UI/UX Design:** Figma wireframing, user journeys, responsive prototyping, and branding kit compilation.
+5. **SEO & Digital Marketing:** Google Ads, Meta Ads, Local Business SEO, and technical site performance optimization.
+
+## Page Directory
+- [Homepage](https://www.togethertechgroups.in/) - Main branding page and summary of works, testimonials, packages, and services.
+- [Services](https://www.togethertechgroups.in/services) - Comprehensive list of digital offerings and technical capabilities.
+- [About Us](https://www.togethertechgroups.in/about) - Agency background, founder values, team bios, and skills.
+- [Portfolio](https://www.togethertechgroups.in/portfolio) - Showcase of completed client projects categorized by design type.
+- [Pricing Packages](https://www.togethertechgroups.in/packages) - Transparent cost breakdown for custom sites, software, and marketing packages.
+- [Contact Us](https://www.togethertechgroups.in/contact) - Contact form and support channels.
+- [Blog](https://www.togethertechgroups.in/blog) - Recent industry updates, tech tutorials, and insights.
+- [Privacy Policy](https://www.togethertechgroups.in/privacy) - Privacy policies, data retention, and terms.
+- [Terms of Service](https://www.togethertechgroups.in/terms) - Standard service terms and agreement rules.
+
+## Full Documentation
+For complete information regarding our technical workflows, processes, pricing plans, and client testimonials, see [llms-full.txt](https://www.togethertechgroups.in/llms-full.txt).

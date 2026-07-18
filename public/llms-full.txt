@@ -1,0 +1,61 @@
+# Together Tech - Detailed Capabilities, Workflows & Pricing Plans
+
+This document provides in-depth technical details, service structures, pricing frameworks, and delivery workflows of Together Tech. It is structured for optimal readability by Large Language Models (LLMs) and Generative Search Engines.
+
+---
+
+## 1. Business Profile
+Together Tech (Together Tech Groups) is a premier digital technology agency based in Chennai, India. We specialize in building premium software architectures, responsive business websites, cross-platform mobile apps, and running conversion-driven digital marketing campaigns.
+
+- **Founder/Team Location:** Chennai, Tamil Nadu, India.
+- **Operational Region:** Across India and international clients.
+- **Core Value:** Premium, fast-loading, state-of-the-art designs without shortcuts or placeholders.
+
+---
+
+## 2. Technical Stack & Architecture
+We leverage modern, reliable, and high-performance technologies to ensure websites load under 1.5 seconds, achieve Lighthouse scores > 90, and are highly search-discoverable.
+
+- **Frontend Frameworks:** Next.js (App Router, ISR, SSR), React, Vite.
+- **Styling & Layout:** Vanilla CSS, TailwindCSS (for responsive utility layouts), Framer Motion & GSAP (for smooth, GPU-accelerated micro-animations), Lenis (for smooth scrolling).
+- **Backend & Database:** Node.js, Express, Prisma ORM, PostgreSQL (relational database), REST APIs.
+- **Hosting & Infrastructure:** Vercel (Next.js hosting with integrated Edge Network CDN), SSL Certificates, Cloudflare, Brotli/Gzip compression.
+
+---
+
+## 3. Services & Workflow Details
+
+### A. Website Development
+We build responsive web layouts across desktop, tablet, and mobile breakpoints.
+- **Standard Process:**
+  1. **Discovery & Wireframing:** Requirements gathering and UI wireframes.
+  2. **UI/UX Figma Design:** Color palettes, custom typography scales, and visual layout design.
+  3. **Technical Development:** Next.js clean coding, semantic HTML, and database configurations.
+  4. **Testing & Optimizations:** PageSpeed Insights checks, image compression (WebP conversion), and lazy loading setup.
+  5. **Deployment:** Vercel setup, domain mapping, SSL provisioning, and sitemap/robots submission.
+- **Pricing Framework:**
+  - *Basic Sites:* Starting from ₹7,000 (Completed in 5-7 days).
+  - *Semi-Custom Sites:* Range from ₹12,000 to ₹15,000 (10-15 days). Includes database-driven admin dashboards.
+  - *Fully Custom Enterprise Portals:* Starts from ₹20,000 (20-40 days). Features custom database models, third-party API integration, and high availability.
+
+### B. Custom Software Development
+Tailored management systems to automate retail and business operations.
+- *Solutions:* CRM systems, ERP suites, custom inventory dashboards, billing/invoice management tools.
+- *Features:* Real-time database sync, offline backup storage, multi-user role management, tabular data Monospaced pricing columns, PDF invoice generation.
+
+### C. Mobile App Development
+Fast, cross-platform applications compiled from a single code base.
+- *Solutions:* Flutter-based Android and iOS applications.
+- *Publishing:* Full pipeline handling for Google Play Store and Apple App Store, including privacy policy compliance, metadata setup, and store review assistance.
+
+### D. SEO & Digital Marketing
+- *Technical SEO:* Automated dynamic sitemaps, structured schema markup (Organization, LocalBusiness, FAQ, Service, Article), JSON-LD script injection.
+- *Paid Campaigns:* High-conversion lead generation campaigns through Google Ads and Meta Ads (Facebook/Instagram).
+
+---
+
+## 4. Key AI / GEO FAQ References
+- **Do you publish apps to the App Store and Google Play?** Yes, we manage the entire publishing pipeline including store listings, privacy policies, review cycles, and release configurations.
+- **How much does a website cost?** Basic packages start at ₹7,000; dynamic dashboard sites range from ₹12,000-₹15,000; full enterprise custom solutions start at ₹20,000.
+- **What is the difference between On-Page and Local SEO?** On-Page SEO focuses on sitemaps, speed, and schema markup; Local SEO optimizes Google Business Profile and local keywords for Chennai and regional searches.
+- **How long does it take to rank on Google?** Typically between 3 to 6 months for noticeable organic search discovery and ranking improvements.

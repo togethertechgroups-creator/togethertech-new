@@ -1,0 +1,15 @@
+/* TEAM */
+Chef / Founder: Together Tech Team
+Contact: togethertechgroups@gmail.com
+Twitter: @togethertech
+From: Chennai, Tamil Nadu, India
+
+/* THANKS */
+Google Deepmind (Antigravity AI)
+
+/* SITE */
+Last update: 2026/07/18
+Standards: HTML5, CSS3, JSON-LD Schema, WCAG 2.1
+Software / Tools: Next.js, React, TailwindCSS, Prisma, PostgreSQL, Framer Motion
+Coding Language: TypeScript, JavaScript
+Hosting: Vercel

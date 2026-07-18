@@ -1,0 +1,23 @@
+{
+  "name": "Together Tech",
+  "short_name": "TogetherTech",
+  "description": "Together Tech is a leading IT Services company in Chennai offering Website Development, Software Development, Mobile App Development, SEO, Digital Marketing, UI/UX Design & Branding.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#090d16",
+  "theme_color": "#8ec63f",
+  "icons": [
+    {
+      "src": "/images/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

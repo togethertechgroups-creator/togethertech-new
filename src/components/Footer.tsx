@@ -114,8 +114,8 @@ export default function Footer() {
           © {new Date().getFullYear()} Together Tech. All rights reserved.
         </div>
         <div className="flex space-x-6">
-          <a href="#" className="hover:text-brandGreen transition-colors">Privacy Policy</a>
-          <a href="#" className="hover:text-brandGreen transition-colors">Terms of Service</a>
+          <Link href="/privacy" className="hover:text-brandGreen transition-colors">Privacy Policy</Link>
+          <Link href="/terms" className="hover:text-brandGreen transition-colors">Terms of Service</Link>
         </div>
       </div>
     </footer>
