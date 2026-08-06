@@ -44,32 +44,45 @@ export const metadata: Metadata = {
   },
   description: 'Together Tech provides Website Development, Software Development, Mobile App Development, Digital Marketing, SEO, Meta Ads, UI/UX Design, Branding, and Custom IT Solutions for businesses across India.',
   keywords: [
+    // Top High-Intent Transactional Keywords (Chennai & Local)
+    'custom software development company in chennai',
+    'web development services chennai',
+    'hire software developers in chennai',
+    'top-rated app development company chennai',
+    'ecommerce website development company in chennai',
+    'affordable website design for small business chennai',
+    'custom crm software development chennai',
+    'restaurant pos software development chennai',
+    'custom billing software developers chennai',
+    'best website development company for startups in chennai',
+    'website development cost in chennai',
+    'web design agency in saidapet chennai',
+    
+    // Core Service & Company Keywords
     'website developers in chennai', 'app developers in chennai',
     'best website developers in chennai', 'best app developers in chennai',
-    // Primary — Company type
     'IT Services Company', 'Software Development Company', 'Website Development Company',
     'Web Development Company', 'Mobile App Development Company', 'Digital Marketing Agency',
     'SEO Company', 'SEO Services', 'Meta Ads Agency', 'UI/UX Design Company', 'Branding Agency',
-    // Primary — Service type
     'Ecommerce Website Development', 'Custom Software Development', 'ERP Software Development',
     'CRM Software Development', 'Business Website Development', 'IT Solutions Company',
     'Flutter App Development', 'Android App Development', 'iOS App Development',
     'Web Application Development', 'Google Ads Agency', 'Social Media Marketing Agency',
     'Graphic Design Company', 'Logo Design Company',
-    // Local — Chennai
+
+    // Localized Search Modifiers
     'IT Company in Chennai', 'Software Company in Chennai', 'Website Development Company in Chennai',
     'Best Web Development Company in Chennai', 'Digital Marketing Company in Chennai',
     'SEO Services in Chennai', 'Meta Ads Agency Chennai', 'Google Ads Agency Chennai',
     'Mobile App Development Company Chennai', 'Flutter Developer Chennai',
     'Software Development Company Chennai', 'Branding Agency Chennai',
-    // Local — India
+    
+    // Pan-India & High Intent Terms
     'Website Development Company India', 'Software Development Company India',
     'Digital Marketing Agency India', 'Mobile App Development Company India',
     'SEO Company India', 'IT Services Company India', 'Custom Software Development India',
-    // Long-tail
     'Best Website Development Company in Chennai', 'Affordable Website Development Services',
-    'Custom Software Development Company', 'SEO Company for Small Business',
-    'Professional Digital Marketing Agency', 'Ecommerce Website Development Company',
+    'SEO Company for Small Business', 'Ecommerce Website Development Company',
     'Web Application Development Services', 'Software Development Services in India',
     'Website Development Cost India', 'ERP Development Company India',
     'CRM Development Company India', 'UI UX Design Agency India',
