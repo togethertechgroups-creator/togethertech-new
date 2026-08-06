@@ -7,10 +7,45 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   const { id } = await params;
   const project = await prisma.portfolio.findUnique({ where: { id } });
   if (!project) return { title: 'Project Not Found' };
+  
+  const title = `${project.projectName} | Together Tech Portfolio`;
+  const description = project.description || `Explore ${project.projectName} project developed by Together Tech.`;
+  
   return {
-    title: `${project.projectName} | Project Details`,
-    description: project.description,
+    title,
+    description,
+    alternates: {
+      canonical: `https://www.togethertechgroups.in/portfolio/${id}`,
+    },
+    openGraph: {
+      title,
+      description,
+      url: `https://www.togethertechgroups.in/portfolio/${id}`,
+      siteName: 'Together Tech',
+      locale: 'en_IN',
+      type: 'website',
+      images: [
+        {
+          url: project.image || 'https://www.togethertechgroups.in/images/og-image.jpg',
+          alt: project.projectName,
+        }
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [project.image || 'https://www.togethertechgroups.in/images/og-image.jpg'],
+    }
   };
+}
+
+export async function generateStaticParams() {
+  const portfolios = await prisma.portfolio.findMany({
+    where: { status: 'ACTIVE' },
+    select: { id: true },
+  });
+  return portfolios.map((portfolio) => ({ id: portfolio.id }));
 }
 
 export const revalidate = 60; // Cache and revalidate every 60 seconds (ISR)

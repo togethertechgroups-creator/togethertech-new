@@ -116,10 +116,10 @@ export default function AboutPage() {
           </p>
           <div className="flex justify-center">
             <Link
-              href="/team"
+              href="/contact"
               className="inline-flex items-center px-8 py-3.5 rounded-full bg-brandGreen hover:bg-brandGreenHover text-white font-bold text-sm tracking-wide transition-all duration-300 shadow-md shadow-brandGreen/25"
             >
-              <span>Meet The Devs</span>
+              <span>Get in Touch</span>
               <ArrowRight className="w-4 h-4 ml-2" />
             </Link>
           </div>

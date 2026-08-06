@@ -41,6 +41,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
+export async function generateStaticParams() {
+  const blogs = await prisma.blog.findMany({
+    where: { status: 'PUBLISHED' },
+    select: { slug: true },
+  });
+  return blogs.map((blog) => ({ slug: blog.slug }));
+}
+
 export const revalidate = 60; // Cache and revalidate every 60 seconds (ISR)
 
 export default async function BlogDetailPage({

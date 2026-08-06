@@ -99,6 +99,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
+export async function generateStaticParams() {
+  const services = await prisma.service.findMany({
+    where: { status: 'ACTIVE' },
+    select: { slug: true },
+  });
+  return services.map((service) => ({ slug: service.slug }));
+}
+
 export const revalidate = 60; // Cache and revalidate every 60 seconds (ISR)
 
 export default async function ServiceDetailPage({

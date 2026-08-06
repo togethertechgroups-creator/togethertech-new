@@ -17,6 +17,16 @@ export default function SplashLoader() {
         setLoading(false);
         return;
       }
+
+      // Skip splash if already loaded once during this browser session
+      try {
+        if (sessionStorage.getItem('togethertech-splash-done') === 'true') {
+          setLoading(false);
+          return;
+        }
+      } catch (e) {
+        /* ignore */
+      }
     }
 
     // Disable scrolling when loading
@@ -41,6 +51,11 @@ export default function SplashLoader() {
     const timeout = setTimeout(() => {
       setLoading(false);
       document.body.style.overflow = 'unset';
+      try {
+        sessionStorage.setItem('togethertech-splash-done', 'true');
+      } catch (e) {
+        /* ignore */
+      }
     }, 1600);
 
     return () => {

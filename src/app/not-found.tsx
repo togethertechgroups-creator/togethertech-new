@@ -5,6 +5,10 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Page Not Found | Together Tech',
   description: 'The page you are looking for does not exist on Together Tech. Browse our services or contact us for custom software and website development.',
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default function NotFound() {

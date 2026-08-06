@@ -12,7 +12,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${baseUrl}/portfolio`,          priority: 0.8 },
     { url: `${baseUrl}/packages`,           priority: 0.8 },
     { url: `${baseUrl}/contact`,            priority: 0.8 },
-    { url: `${baseUrl}/blog`,              priority: 0.7 },
+    { url: `${baseUrl}/blog`,               priority: 0.7 },
+    { url: `${baseUrl}/privacy`,            priority: 0.5 },
+    { url: `${baseUrl}/terms`,              priority: 0.5 },
   ].map(({ url, priority }) => ({
     url,
     lastModified: new Date(),
@@ -34,6 +36,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.7,
     }));
 
+    // Portfolio pages
+    const portfolios = await prisma.portfolio.findMany({
+      where: { status: 'ACTIVE' },
+      select: { id: true, createdAt: true },
+    });
+
+    const portfolioRoutes = portfolios.map((portfolio) => ({
+      url: `${baseUrl}/portfolio/${portfolio.id}`,
+      lastModified: portfolio.createdAt || new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    }));
+
     // Blog pages
     const blogs = await prisma.blog.findMany({
       where: { status: 'PUBLISHED' },
@@ -47,7 +62,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.6,
     }));
 
-    return [...staticRoutes, ...serviceRoutes, ...blogRoutes];
+    return [...staticRoutes, ...serviceRoutes, ...portfolioRoutes, ...blogRoutes];
   } catch (error) {
     console.error('Error generating sitemap:', error);
     return staticRoutes;
