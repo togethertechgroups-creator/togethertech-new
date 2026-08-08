@@ -74,13 +74,17 @@ export default function Layout({ settings, toast, theme, toggleTheme }) {
             <span className="font-label-caps text-label-caps">New Invoice</span>
           </button>
           
-          <Link
-            to="/login"
-            className="flex items-center gap-md py-sm px-md rounded-full text-on-surface-variant dark:text-on-primary-fixed-variant hover:bg-surface-container-high dark:hover:bg-primary-container text-error"
+          <button
+            onClick={() => {
+              localStorage.removeItem('finops_authenticated');
+              localStorage.removeItem('finops_user');
+              navigate('/login');
+            }}
+            className="w-full flex items-center gap-md py-sm px-md rounded-full text-on-surface-variant dark:text-on-primary-fixed-variant hover:bg-surface-container-high dark:hover:bg-primary-container text-error cursor-pointer"
           >
             <span className="material-symbols-outlined">logout</span>
             <span className="font-label-caps text-label-caps">Sign Out</span>
-          </Link>
+          </button>
         </div>
       </aside>
 

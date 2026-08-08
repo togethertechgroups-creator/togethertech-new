@@ -380,10 +380,10 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/login" element={<Login showToast={showToast} />} />
+        <Route path="/login" element={<PublicLoginRoute showToast={showToast} />} />
         
         {/* Auth Layout Wrapper */}
-        <Route element={<Layout settings={settings} toast={toast} theme={theme} toggleTheme={toggleTheme} />}>
+        <Route element={<ProtectedLayout settings={settings} toast={toast} theme={theme} toggleTheme={toggleTheme} />}>
           <Route path="/dashboard" element={<Dashboard customers={customers} documents={documents} payments={payments} />} />
           <Route path="/customers" element={<Customers customers={customers} setCustomers={handleSetCustomers} documents={documents} payments={payments} showToast={showToast} />} />
           <Route path="/customers/:id" element={<CustomerDueDetails customers={customers} documents={documents} payments={payments} setPayments={handleSetPayments} setDocuments={handleSetDocuments} showToast={showToast} />} />
@@ -400,7 +400,7 @@ export default function App() {
           <Route path="/pdf-preview" element={<PdfPreview settings={settings} customers={customers} documents={documents} setDocuments={handleSetDocuments} payments={payments} showToast={showToast} />} />
           <Route path="/settings" element={<Settings settings={settings} setSettings={handleSetSettings} showToast={showToast} />} />
           
-          {/* Default redirect to dashboard */}
+          {/* Default redirect */}
           <Route path="/" element={<Navigate to="/dashboard" replace />} />
         </Route>
 
@@ -409,4 +409,20 @@ export default function App() {
       </Routes>
     </BrowserRouter>
   );
+}
+
+function ProtectedLayout({ settings, toast, theme, toggleTheme }) {
+  const isAuthenticated = localStorage.getItem('finops_authenticated') === 'true';
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />;
+  }
+  return <Layout settings={settings} toast={toast} theme={theme} toggleTheme={toggleTheme} />;
+}
+
+function PublicLoginRoute({ showToast }) {
+  const isAuthenticated = localStorage.getItem('finops_authenticated') === 'true';
+  if (isAuthenticated) {
+    return <Navigate to="/dashboard" replace />;
+  }
+  return <Login showToast={showToast} />;
 }

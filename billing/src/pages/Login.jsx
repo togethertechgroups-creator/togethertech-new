@@ -230,7 +230,7 @@ const DotMap = () => {
 export default function Login({ showToast: parentShowToast }) {
   const navigate = useNavigate();
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-  const [email, setEmail] = useState("togethertechgroups@gmail.com");
+  const [email, setEmail] = useState("9047549682");
   const [password, setPassword] = useState("ABV100626");
   const [loading, setLoading] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
@@ -252,11 +252,24 @@ export default function Login({ showToast: parentShowToast }) {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-      if (email.toLowerCase() === "togethertechgroups@gmail.com" && password === "ABV100626") {
+      const cleanInput = email.trim().toLowerCase().replace(/\s+/g, '');
+      const rawDigits = cleanInput.replace(/\D/g, '');
+
+      const ALLOWED_PHONES = ['9047549682', '8608193695', '7418196986'];
+      const ALLOWED_EMAIL = 'togethertechgroups@gmail.com';
+      const VALID_PASSWORD = 'ABV100626';
+
+      const isValidUser = ALLOWED_PHONES.includes(rawDigits) || cleanInput === ALLOWED_EMAIL;
+      const isValidPassword = password === VALID_PASSWORD;
+
+      if (isValidUser && isValidPassword) {
+        localStorage.setItem('finops_authenticated', 'true');
+        localStorage.setItem('finops_user', email);
+        if (parentShowToast) parentShowToast("Successfully authenticated!");
         showToast("Successfully authenticated!");
         navigate("/dashboard");
       } else {
-        showToast("Invalid email or password.", "error_outline");
+        showToast("Invalid Phone Number/Email or Password.", "error_outline");
       }
     }, 1500);
   };
@@ -265,11 +278,10 @@ export default function Login({ showToast: parentShowToast }) {
     e.preventDefault();
     showToast("Sending credentials to WhatsApp...");
     
-    const messageText = `Together Tech Login Details:\n\nEmail: togethertechgroups@gmail.com\nPassword: ABV100626`;
+    const messageText = `Together Tech Billing Login Details:\n\nAllowed Mobile: 9047549682, 8608193695, 7418196986\nPassword: ABV100626`;
     const url = `https://api.metamerged.com/api/send?number=919047549682&type=text&message=${encodeURIComponent(messageText)}&access_token=6706963cd785e0eefa38f06c81e39cd3`;
     
     try {
-      // Use mode: 'no-cors' to bypass CORS restriction. The request will still reach Metamerged and trigger the WhatsApp send!
       await fetch(url, { mode: 'no-cors' });
       showToast("Login details sent to WhatsApp! ✅");
     } catch (err) {
@@ -335,14 +347,14 @@ export default function Login({ showToast: parentShowToast }) {
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                    Email <span className="text-blue-500">*</span>
+                    Phone Number / Email <span className="text-blue-500">*</span>
                   </label>
                   <Input
                     id="email"
-                    type="email"
+                    type="text"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Enter your email address"
+                    placeholder="Enter phone number or email address"
                     required
                     className="bg-gray-50 border-gray-200 placeholder:text-gray-400 text-gray-800 w-full focus:border-blue-500 focus:ring-blue-500"
                   />
