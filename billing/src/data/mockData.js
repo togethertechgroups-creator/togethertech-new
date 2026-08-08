@@ -131,5 +131,53 @@ export const DEFAULT_DOCUMENTS = [
     lineItems: [
       { id: 1, desc: 'Personal Training / Gym Services', qty: 1, price: 10000.00 }
     ]
+  },
+  {
+    id: "QTN-001042",
+    client: "ARUNRAJ .S",
+    type: "Quotation",
+    date: "2026-05-10",
+    dueDate: "2026-05-30",
+    expiryDate: "2026-05-30",
+    status: "APPROVED",
+    amount: 12500.00,
+    gstPercent: 0,
+    discountPercent: 0,
+    billingAddress: "KH3 WELLNESS\nChennai, Tamil Nadu",
+    lineItems: [
+      { id: 1, desc: 'Custom Fitness & Wellness Package', qty: 1, price: 12500.00 }
+    ]
+  },
+  {
+    id: "QTN-001043",
+    client: "MICRO LASER ART",
+    type: "Quotation",
+    date: "2026-04-15",
+    dueDate: "2026-05-01",
+    expiryDate: "2026-05-01",
+    status: "DRAFT",
+    amount: 6800.00,
+    gstPercent: 0,
+    discountPercent: 0,
+    billingAddress: "MICRO LASER ART\nChennai, Tamil Nadu",
+    lineItems: [
+      { id: 1, desc: 'Acrylic Signage Design & Cutting', qty: 2, price: 3400.00 }
+    ]
+  },
+  {
+    id: "QTN-001044",
+    client: "GOWTHAM",
+    type: "Quotation",
+    date: "2026-03-25",
+    dueDate: "2026-04-10",
+    expiryDate: "2026-04-10",
+    status: "REJECTED",
+    amount: 15000.00,
+    gstPercent: 0,
+    discountPercent: 0,
+    billingAddress: "Olympia gym\nChennai, Tamil Nadu",
+    lineItems: [
+      { id: 1, desc: 'Gym Interior Branding & Lighting', qty: 1, price: 15000.00 }
+    ]
   }
 ];

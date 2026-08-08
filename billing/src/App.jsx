@@ -78,12 +78,12 @@ const DEFAULT_PAYMENTS = [
 ];
 
 // One-time data reset requested by user
-if (localStorage.getItem('finops_data_reset_v3') !== 'true') {
+if (localStorage.getItem('finops_data_reset_v5') !== 'true') {
   localStorage.removeItem('finops_customers');
   localStorage.removeItem('finops_documents');
   localStorage.removeItem('finops_payments');
   localStorage.removeItem('finops_settings');
-  localStorage.setItem('finops_data_reset_v3', 'true');
+  localStorage.setItem('finops_data_reset_v5', 'true');
 }
 
 // Cloud API Configuration
@@ -119,7 +119,16 @@ export default function App() {
 
   const [documents, setDocuments] = useState(() => {
     const saved = localStorage.getItem('finops_documents');
-    return saved ? JSON.parse(saved) : DEFAULT_DOCUMENTS;
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      const hasQuotations = parsed.some(d => d.type === 'Quotation');
+      if (!hasQuotations) {
+        const defaultQuotes = DEFAULT_DOCUMENTS.filter(d => d.type === 'Quotation');
+        return [...parsed, ...defaultQuotes];
+      }
+      return parsed;
+    }
+    return DEFAULT_DOCUMENTS;
   });
 
   const [payments, setPayments] = useState(() => {
@@ -199,7 +208,15 @@ export default function App() {
         ]);
 
         if (customersData && customersData.length > 0) setCustomers(customersData);
-        if (documentsData && documentsData.length > 0) setDocuments(documentsData);
+        if (documentsData && documentsData.length > 0) {
+          const hasQuotations = documentsData.some(d => d.type === 'Quotation');
+          if (!hasQuotations) {
+            const defaultQuotes = DEFAULT_DOCUMENTS.filter(d => d.type === 'Quotation');
+            setDocuments([...documentsData, ...defaultQuotes]);
+          } else {
+            setDocuments(documentsData);
+          }
+        }
         if (paymentsData && paymentsData.length > 0) setPayments(paymentsData);
         if (settingsData) setSettings(settingsData);
       } catch (err) {
